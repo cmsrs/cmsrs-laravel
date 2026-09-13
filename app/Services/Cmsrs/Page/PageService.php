@@ -276,7 +276,7 @@ class PageService
         $page = $pageModel->toArray();
 
         $formatPage = $this->getPageDataFormat($page);
-        $formatPage['images'] = $this->imageService->getImagesAndThumbsByTypeAndRefId('page', $page['id']);
+        $formatPage['images'] = $this->imageService->getImagesAndThumbsByTypeAndRefId('page', $mPage->id);
 
         return $formatPage;
     }

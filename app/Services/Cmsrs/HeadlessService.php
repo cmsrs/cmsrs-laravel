@@ -84,7 +84,7 @@ class HeadlessService
         $page = $pageModel?->toArray() ?? [];
 
         $formatPage = $this->getPageDataFormatByLang($page, $lang);
-        $formatPage['images'] = $this->imageService->getImagesAndThumbsByTypeAndRefId('page', $page['id'], $lang);
+        $formatPage['images'] = $this->imageService->getImagesAndThumbsByTypeAndRefId('page', $mPage->id, $lang);
 
         return $formatPage;
     }

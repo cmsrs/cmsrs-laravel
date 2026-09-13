@@ -47,12 +47,12 @@ class OrderService
 
                 unset($arrBasket['created_at']);
                 unset($arrBasket['updated_at']);
-                $productId = $arrBasket['product_id'];
+                //$productId = $arrBasket['product_id'];
 
                 // find order by product_id
                 $objOrderByProductId = null;
                 foreach ($objOrders as $objOrder) {
-                    if ($objOrder->product_id == $productId) {
+                    if ($objOrder->product_id == $objBasket->product_id) {
                         $objOrderByProductId = $objOrder;
                         break;
                     }
@@ -61,7 +61,7 @@ class OrderService
                 if (empty($objOrderByProductId)) {
                     Order::create($arrBasket);
                 } else {
-                    $objOrderByProductId->qty = $objOrderByProductId->qty + $arrBasket['qty'];
+                    $objOrderByProductId->qty = $objOrderByProductId->qty + $objBasket->qty;
                     $objOrderByProductId->save();
                 }
             }

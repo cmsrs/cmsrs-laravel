@@ -10,10 +10,19 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
-use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
+use PHPOpenSourceSaver\JWTAuth\JWTAuth;
+
+
 
 class AuthController extends Controller
 {
+
+    
+    public function __construct(
+        private JWTAuth $jwtAuth
+    ){
+    }
+
     /**
      * API Login, on success return JWT Auth token
      */
@@ -44,7 +53,7 @@ class AuthController extends Controller
     {
         try {
             // attempt to verify the credentials and create a token for the user
-            if (! $token = JWTAuth::attempt($credentials)) {
+            if (! $token = $this->jwtAuth->attempt($credentials)) {
                 return response()->json(['success' => false, 'error' => 'We cant find an account with this credentials.'], 200);
             }
         } catch (JWTException $e) {
@@ -73,7 +82,10 @@ class AuthController extends Controller
         ]);
 
         try {
-            JWTAuth::invalidate($request->input('token'));
+            $this->jwtAuth
+                ->setToken($request->input('token'))
+                ->invalidate();            
+            //JWTAuth::invalidate($request->input('token'));
 
             return response()->json(['success' => true, 'message' => 'You have successfully logged out.']);
         } catch (JWTException $e) {

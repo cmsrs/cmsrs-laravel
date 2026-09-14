@@ -10,7 +10,7 @@ use App\Services\Cmsrs\Page\PageService;
 use App\Services\Cmsrs\MenuService;
 
 #[Signature('cmsrs:load-welcome-page')]
-#[Description('load welcome page')]
+#[Description('Load welcome page')]
 class LoadWelcomePage extends Command
 {
     /**

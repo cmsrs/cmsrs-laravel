@@ -34,7 +34,31 @@ class MenuService
             $key,
             fn () => $this->getMenuPriv()
         );
+    }
 
+    /**
+     * use in cli command.
+     * @return bool
+     */
+    public function isWelcomePage(): bool
+    {
+        return ( $this->countPublishedPages() === 0 && $this->countItemsInMenu() === 0 );
+    }
+
+    /**
+     * @return int
+     */
+    private function countPublishedPages(): int
+    {
+        return Page::where('published', 1)->count();
+    }    
+    
+    /**
+     * @return int
+     */
+    private function countItemsInMenu(): int
+    {
+        return Menu::count();
     }
 
     /**

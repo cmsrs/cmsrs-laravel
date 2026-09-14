@@ -52,8 +52,11 @@ class CmsrsInstall extends Command
 
         if ($demo) {
             $this->info('Loading demo data...');
+            $this->info('Please wait...');
             $this->call('cmsrs:load-demo-data');
             $this->info('Demo data loaded successfully.');
+        }else {
+            $this->info('cmsrs:load-welcome-page');
         }
 
         $this->info('');

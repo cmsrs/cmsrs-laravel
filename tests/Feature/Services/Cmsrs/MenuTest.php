@@ -5,6 +5,7 @@ namespace Tests\Feature\Services\Cmsrs;
 use App\Models\Cmsrs\Menu;
 use App\Models\Cmsrs\Page;
 use App\Services\Cmsrs\MenuService;
+use App\Services\Cmsrs\Page\PageService;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,8 @@ class MenuTest extends Base
     use RefreshDatabase;
 
     private $testData;
+
+    private $testPageData;    
 
     private $objMenu;
 
@@ -40,6 +43,21 @@ class MenuTest extends Base
         [
             'name' => ['en' => 'test menu1'],
         ];
+
+        $this->testPageData =
+        [
+            'title' => ['en' => 'some title'],
+            'short_title' => ['en' => 'page1'],
+            'description' => ['en' => 'this page: test desc ...'],
+            'published' => 1,
+            'commented' => 1,
+            'after_login' => 0,
+            'type' => 'cms',
+            'content' => ['en' => 'content test133445'],
+            'menu_id' => null,
+            'page_id' => null,
+        ];
+
     }
 
     protected function tearDown(): void
@@ -51,6 +69,23 @@ class MenuTest extends Base
     {
         $this->objMenu = (app(MenuService::class))->wrapCreate($this->testData);
     }
+
+    public function test_it_will_count_item_in_menu_empty()
+    {
+        $this->assertTrue((app(MenuService::class))->isWelcomePage());        
+    }    
+
+    public function test_it_will_count_item_in_menu_one()
+    {
+        $this->setTestData();
+        $this->assertFalse((app(MenuService::class))->isWelcomePage());        
+    } 
+
+    public function test_it_will_one_page()
+    {
+        (app(PageService::class))->wrapCreate($this->testPageData);
+        $this->assertFalse((app(MenuService::class))->isWelcomePage());
+    }    
 
     public function test_it_will_check_uniq_name_add_menus()
     {

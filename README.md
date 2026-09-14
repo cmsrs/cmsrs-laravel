@@ -19,8 +19,11 @@
 
 </br>
 <p>
-    <a href="https://www.cmsrs.pl/en/cms/cmsrs/cmsrs-installation">🚀 Install</a> | 
-    <a target="_blank" href="https://www.cmsrs.pl/en/cms/cmsrs/demo-version">🌐 Demo</a>
+    <a target="_blank" href="https://www.cmsrs.pl/en/cms/cmsrs/cmsrs-installation">🚀 Install</a> | 
+    <a target="_blank" href="https://www.cmsrs.pl/en/cms/cmsrs/demo-version">🌐 Demo</a> | 
+    <a target="_blank" href="https://www.cmsrs.pl/en/cms/cmsrs/documentation">📚 Documentation</a> | 
+    <a target="_blank" href="https://www.cmsrs.pl/en/cms/cmsrs/rest-api">🔌 REST API</a> |    
+    <a target="_blank" href="https://www.cmsrs.pl/en/cms/cmsrs/about-cmsrs">ℹ️ About cmsRS</a>
 </p>
 </br>
 
@@ -155,15 +158,11 @@ php artisan cmsrs:create-client {user} {password}
 php artisan cmsrs:change-admin-pass {new-password}
 ```
 
-## 🌐 Demo
+## 🌐 DEMO
 
 - [Frontend](https://demo.cmsrs.pl)
 - [Admin Panel](https://demo.cmsrs.pl/admin-demo/)
 - [Headless / Nuxt](https://demo-headless.cmsrs.pl/)
-
-## MORE INFORMATION
-
-https://www.cmsrs.pl/en/cms/cmsrs/about-cmsrs
 
 ## REPORTING ISSUES AND SUGGESTIONS
 

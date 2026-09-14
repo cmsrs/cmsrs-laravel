@@ -2,12 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Services\Cmsrs\ConfigService;
+use App\Services\Cmsrs\MenuService;
+use App\Services\Cmsrs\Page\PageService;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
-use App\Services\Cmsrs\ConfigService;
-use App\Services\Cmsrs\Page\PageService;
-use App\Services\Cmsrs\MenuService;
 
 #[Signature('cmsrs:load-welcome-page')]
 #[Description('Load welcome page')]
@@ -21,6 +21,7 @@ class LoadWelcomePage extends Command
         $isWelcomePage = (app(MenuService::class))->isWelcomePage();
         if (! $isWelcomePage) {
             $this->info('Welcome page is not needed. There are already pages or menu items in the system.');
+
             return Command::SUCCESS;
         }
 
@@ -51,6 +52,7 @@ class LoadWelcomePage extends Command
         ];
 
         app(PageService::class)->wrapCreate($mainPage);
+
         return Command::SUCCESS;
     }
 }

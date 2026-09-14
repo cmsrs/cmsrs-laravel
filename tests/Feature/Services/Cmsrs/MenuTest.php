@@ -17,7 +17,7 @@ class MenuTest extends Base
 
     private $testData;
 
-    private $testPageData;    
+    private $testPageData;
 
     private $objMenu;
 
@@ -72,20 +72,20 @@ class MenuTest extends Base
 
     public function test_it_will_count_item_in_menu_empty()
     {
-        $this->assertTrue((app(MenuService::class))->isWelcomePage());        
-    }    
+        $this->assertTrue((app(MenuService::class))->isWelcomePage());
+    }
 
     public function test_it_will_count_item_in_menu_one()
     {
         $this->setTestData();
-        $this->assertFalse((app(MenuService::class))->isWelcomePage());        
-    } 
+        $this->assertFalse((app(MenuService::class))->isWelcomePage());
+    }
 
     public function test_it_will_one_page()
     {
         (app(PageService::class))->wrapCreate($this->testPageData);
         $this->assertFalse((app(MenuService::class))->isWelcomePage());
-    }    
+    }
 
     public function test_it_will_check_uniq_name_add_menus()
     {

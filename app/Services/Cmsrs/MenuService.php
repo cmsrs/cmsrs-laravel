@@ -41,7 +41,7 @@ class MenuService
      */
     public function isWelcomePage(): bool
     {
-        return  $this->countPublishedPages() === 0 && $this->countItemsInMenu() === 0;
+        return $this->countPublishedPages() === 0 && $this->countItemsInMenu() === 0;
     }
 
     private function countPublishedPages(): int

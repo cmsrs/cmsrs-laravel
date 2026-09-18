@@ -62,4 +62,16 @@ class ProductTest extends TestCase
         $this->expectException(UniqueConstraintViolationException::class);
         $tag1->products()->attach($product->id, ['lang' => 'en']);
     }
+
+    public function test_product_tags_unique_exception(): void
+    {
+        $product = Product::create(); 
+        $tag1 = Tag::create(['tag_category_id' => TagCategory::create()->id]);        
+
+
+        $product->tags()->attach($tag1->id, ['lang' => 'en']);
+        $this->expectException(UniqueConstraintViolationException::class);
+        $product->tags()->attach($tag1->id, ['lang' => 'en']);        
+    }    
+    
 }

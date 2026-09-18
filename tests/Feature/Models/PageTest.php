@@ -62,4 +62,15 @@ class PageTest extends TestCase
         $this->expectException(UniqueConstraintViolationException::class);
         $tag1->pages()->attach($page->id, ['lang' => 'en']);
     }
+
+    public function test_page_tags_unique_exception(): void
+    {
+        $page = Page::create(); 
+        $tag1 = Tag::create(['tag_category_id' => TagCategory::create()->id]);        
+
+
+        $page->tags()->attach($tag1->id, ['lang' => 'en']);
+        $this->expectException(UniqueConstraintViolationException::class);
+        $page->tags()->attach($tag1->id, ['lang' => 'en']);        
+    }    
 }

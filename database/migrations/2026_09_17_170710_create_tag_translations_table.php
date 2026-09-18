@@ -19,7 +19,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
 
             $table->string('lang', 8);
-            $table->string('name');
+            $table->string('value', 255);
 
             $table->unique(
                 ['tag_id', 'lang'],

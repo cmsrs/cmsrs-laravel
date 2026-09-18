@@ -2,19 +2,18 @@
 
 namespace Tests\Feature\Models\Tags;
 
-use App\Models\Cmsrs\Tags\TagCategory;
-use App\Models\Cmsrs\Tags\Tag;
-use App\Models\Cmsrs\Tags\TagTranslation;
 use App\Models\Cmsrs\Page;
 use App\Models\Cmsrs\Product;
-
+use App\Models\Cmsrs\Tags\Tag;
+use App\Models\Cmsrs\Tags\TagCategory;
+use App\Models\Cmsrs\Tags\TagTranslation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-//use Illuminate\Foundation\Testing\WithFaker;
+// use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 /*
 (cetegory) Product Type
-- (tag) book 
+- (tag) book
 - trousers
 - shoes
 
@@ -69,7 +68,6 @@ class TagTest extends TestCase
         $this->assertEquals(2, $tag->pages->count());
         $this->assertEquals($tag->pages[0]->id, $page1->id);
         $this->assertEquals($tag->pages[1]->id, $page2->id);
-        
 
         $this->assertEquals('en', $tag->pages[0]->pivot->lang);
         $this->assertEquals('en', $tag->pages[1]->pivot->lang);
@@ -93,7 +91,6 @@ class TagTest extends TestCase
         $this->assertEquals(2, $tag->products->count());
         $this->assertEquals($tag->products[0]->id, $product1->id);
         $this->assertEquals($tag->products[1]->id, $product2->id);
-        
 
         $this->assertEquals('en', $tag->products[0]->pivot->lang);
         $this->assertEquals('en', $tag->products[1]->pivot->lang);
@@ -104,5 +101,4 @@ class TagTest extends TestCase
         $this->assertEquals($dbTaggableFields['tag_id'], $tag->id);
         $this->assertEquals($dbTaggableFields['lang'], 'en');
     }
-
 }

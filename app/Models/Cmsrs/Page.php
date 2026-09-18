@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Models\Cmsrs;
 
 use App\Models\Cmsrs\Interfaces\ContentTranslatableInterface;
+use App\Models\Cmsrs\Tags\Tag;
 use App\Models\Cmsrs\Traits\HasTranslationsTrait;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Carbon;
-use App\Models\Cmsrs\Tags\Tag;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -142,5 +142,5 @@ class Page extends Model implements ContentTranslatableInterface
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable')->withPivot('lang');
-    }    
+    }
 }

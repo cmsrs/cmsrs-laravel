@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Models\Cmsrs;
 
+use App\Models\Cmsrs\Tags\Tag;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Carbon;
-use App\Models\Cmsrs\Tags\Tag;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Carbon;
 
 // use App\Models\Cmsrs\Product;
 
@@ -145,5 +145,5 @@ class Product extends Model
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable')->withPivot('lang');
-    }    
+    }
 }

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TagCategoryTranslation extends Model
 {
-
     protected $fillable = [
         'tag_category_id',
         'lang',

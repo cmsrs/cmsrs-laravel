@@ -6,9 +6,9 @@ use App\Models\Cmsrs\Page;
 use App\Models\Cmsrs\Product;
 use App\Models\Cmsrs\Tags\Tag;
 use App\Models\Cmsrs\Tags\TagCategory;
+use App\Models\Cmsrs\Tags\TagCategoryTranslation;
 use App\Models\Cmsrs\Tags\TagTranslation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Models\Cmsrs\Tags\TagCategoryTranslation;
 // use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
@@ -153,7 +153,7 @@ class TagTest extends TestCase
 
         $this->assertDatabaseHas('pages', [
             'id' => $page->id,
-        ]);        
+        ]);
     }
 
     public function test_delete_category_deletes_related_tags_translations_and_taggables(): void
@@ -166,12 +166,11 @@ class TagTest extends TestCase
             'lang' => 'en',
             'value' => 'Product Type']);
 
-        //masz jakis lepszy pomysl na nazwe?
+        // masz jakis lepszy pomysl na nazwe?
         $TagCategoryTranslation2 = TagCategoryTranslation::create([
             'tag_category_id' => $category2->id,
             'lang' => 'en',
-            'value' => 'Product Type - Style']); //masz jakis lepszy pomysl na nazwe?
-
+            'value' => 'Product Type - Style']); // masz jakis lepszy pomysl na nazwe?
 
         $tag1 = Tag::create([
             'tag_category_id' => $category1->id,
@@ -218,14 +217,13 @@ class TagTest extends TestCase
             'lang' => 'en',
         ]);
 
-        $this->assertDatabaseHas('tag_categories_translations', [
+        $this->assertDatabaseHas('tag_category_translations', [
             'id' => $TagCategoryTranslation1->id,
         ]);
 
-        $this->assertDatabaseHas('tag_categories_translations', [
+        $this->assertDatabaseHas('tag_category_translations', [
             'id' => $TagCategoryTranslation2->id,
         ]);
-
 
         // category1, tag1, tag2 i ich zależności istnieją
         $this->assertDatabaseHas('tag_categories', [
@@ -259,14 +257,13 @@ class TagTest extends TestCase
         // Usuwamy kategorię
         $category1->delete();
 
-        $this->assertDatabaseMissing('tag_categories_translations', [
+        $this->assertDatabaseMissing('tag_category_translations', [
             'id' => $TagCategoryTranslation1->id,
         ]);
 
-        $this->assertDatabaseHas('tag_categories_translations', [
+        $this->assertDatabaseHas('tag_category_translations', [
             'id' => $TagCategoryTranslation2->id,
         ]);
-
 
         // Kategoria została usunięta
         $this->assertDatabaseMissing('tag_categories', [
@@ -331,7 +328,5 @@ class TagTest extends TestCase
         $this->assertDatabaseHas('pages', [
             'id' => $page2->id,
         ]);
-    }    
-
-
+    }
 }

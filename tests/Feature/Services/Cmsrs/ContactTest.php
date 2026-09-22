@@ -3,7 +3,7 @@
 namespace Tests\Feature\Services\Cmsrs;
 
 use App\Enums\Cmsrs\SortDirection;
-use App\Models\Cmsrs\Contact;
+use App\Models\Cmsrs\Cms\Contact;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ContactService;
 use Illuminate\Foundation\Testing\RefreshDatabase;

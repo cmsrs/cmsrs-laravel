@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Feature\Models\Tags;
+namespace Tests\Feature\Models\Cmsrs\Tag;
 
-use App\Models\Cmsrs\Page;
-use App\Models\Cmsrs\Product;
-use App\Models\Cmsrs\Tags\Tag;
-use App\Models\Cmsrs\Tags\TagCategory;
-use App\Models\Cmsrs\Tags\TagCategoryTranslation;
-use App\Models\Cmsrs\Tags\TagTranslation;
+use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Shop\Product;
+use App\Models\Cmsrs\Tag\Tag;
+use App\Models\Cmsrs\Tag\TagCategory;
+use App\Models\Cmsrs\Tag\TagCategoryTranslation;
+use App\Models\Cmsrs\Tag\TagTranslation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 // use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

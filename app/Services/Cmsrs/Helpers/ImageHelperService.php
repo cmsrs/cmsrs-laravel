@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Cmsrs\Helpers;
 
-use App\Models\Cmsrs\Image;
+use App\Models\Cmsrs\Cms\Image;
 use GdImage;
 use RuntimeException;
 

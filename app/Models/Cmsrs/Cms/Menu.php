@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Cmsrs;
+namespace App\Models\Cmsrs\Cms;
 
 use App\Models\Cmsrs\Interfaces\TranslatableInterface;
 use App\Models\Cmsrs\Traits\HasTranslationsTrait;
@@ -55,7 +55,7 @@ class Menu extends Model implements TranslatableInterface
      */
     public function pages()
     {
-        return $this->hasMany('App\Models\Cmsrs\Page');
+        return $this->hasMany(Page::class);
     }
 
     /**
@@ -63,7 +63,7 @@ class Menu extends Model implements TranslatableInterface
      */
     public function translates(): HasMany
     {
-        return $this->hasMany('App\Models\Cmsrs\Translate', 'menu_id', 'id'); // it should be work without params - phpstan
+        return $this->hasMany(Translate::class, 'menu_id', 'id'); // it should be work without params - phpstan
     }
 
     public function getId(): int

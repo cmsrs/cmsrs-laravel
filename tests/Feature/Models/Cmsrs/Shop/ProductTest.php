@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature\Models\Cmsrs;
+namespace Tests\Feature\Models\Cmsrs\Shop;
 
-use App\Models\Cmsrs\Product;
-use App\Models\Cmsrs\Tags\Tag;
-use App\Models\Cmsrs\Tags\TagCategory;
+use App\Models\Cmsrs\Shop\Product;
+use App\Models\Cmsrs\Tag\Tag;
+use App\Models\Cmsrs\Tag\TagCategory;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;

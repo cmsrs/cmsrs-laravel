@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Cmsrs;
+namespace App\Models\Cmsrs\Shop;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -91,7 +91,7 @@ class Checkout extends Model
      */
     public function baskets()
     {
-        return $this->hasMany('App\Models\Cmsrs\Basket');
+        return $this->hasMany(Basket::class);
     }
 
     public function getId(): int

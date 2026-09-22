@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Cmsrs\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cmsrs\Page;
+use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ImageService;
 use App\Services\Cmsrs\Page\PageService;

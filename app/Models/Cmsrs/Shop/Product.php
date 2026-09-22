@@ -2,9 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Cmsrs;
+namespace App\Models\Cmsrs\Shop;
 
-use App\Models\Cmsrs\Tags\Tag;
+use App\Models\Cmsrs\Cms\Content;
+use App\Models\Cmsrs\Cms\Image;
+use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Cms\Translate;
+use App\Models\Cmsrs\Tag\Tag;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -107,7 +111,7 @@ class Product extends Model
      */
     public function page(): BelongsTo
     {
-        return $this->belongsTo('App\Models\Cmsrs\Page', 'page_id', 'id');
+        return $this->belongsTo(Page::class, 'page_id', 'id');
     }
 
     /**
@@ -115,7 +119,7 @@ class Product extends Model
      */
     public function images(): HasMany
     {
-        return $this->hasMany('App\Models\Cmsrs\Image');
+        return $this->hasMany(Image::class);
     }
 
     /**
@@ -123,7 +127,7 @@ class Product extends Model
      */
     public function translates(): HasMany
     {
-        return $this->hasMany('App\Models\Cmsrs\Translate'); // it should be work without params , 'product_id', 'id' - phpstan
+        return $this->hasMany(Translate::class); // it should be work without params , 'product_id', 'id' - phpstan
     }
 
     /**
@@ -131,7 +135,7 @@ class Product extends Model
      */
     public function translatesPage(): HasMany
     {
-        return $this->hasMany('App\Models\Cmsrs\Translate', 'page_id', 'page_id');
+        return $this->hasMany(Translate::class, 'page_id', 'page_id');
     }
 
     /**
@@ -139,7 +143,7 @@ class Product extends Model
      */
     public function contents(): HasMany
     {
-        return $this->hasMany('App\Models\Cmsrs\Content');
+        return $this->hasMany(Content::class);
     }
 
     /**

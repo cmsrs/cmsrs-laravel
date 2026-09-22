@@ -4,7 +4,7 @@ namespace Tests\Feature\Services\Cmsrs;
 
 use App\Data\Demo;
 // use App\Page;
-use App\Models\Cmsrs\Page;
+use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\MenuService;
 use App\Services\Cmsrs\Navigation\UrlService;

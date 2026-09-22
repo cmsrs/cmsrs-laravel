@@ -1,28 +1,28 @@
 <?php
 
-namespace App\Models\Cmsrs\Tags;
+namespace App\Models\Cmsrs\Tag;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class TagCategoryTranslation extends Model
+class TagTranslation extends Model
 {
     protected $fillable = [
-        'tag_category_id',
+        'tag_id',
         'lang',
         'value',
     ];
 
     /**
      * TODO remove, maybe it not be necessary to define the relationship here!!!, it is useless
-     * Get the category that owns the translation.
+     * Get the tag that owns the translation.
      */
 
     /**
-     * @return BelongsTo<TagCategory, $this>
+     * @return BelongsTo<Tag, $this>
      */
-    public function category(): BelongsTo
+    public function tag(): BelongsTo
     {
-        return $this->belongsTo(TagCategory::class, 'tag_category_id');
+        return $this->belongsTo(Tag::class);
     }
 }

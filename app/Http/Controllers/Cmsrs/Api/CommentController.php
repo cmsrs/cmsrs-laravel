@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Cmsrs\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cmsrs\Comment;
-use App\Models\Cmsrs\Page;
+use App\Models\Cmsrs\Cms\Comment;
+use App\Models\Cmsrs\Cms\Page;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

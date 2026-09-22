@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Data\Demo;
-use App\Models\Cmsrs\Comment;
-use App\Models\Cmsrs\Product;
+use App\Models\Cmsrs\Cms\Comment;
+use App\Models\Cmsrs\Shop\Product;
 use App\Models\User;
 // use App\Services\Cmsrs\ContentService;
 use App\Services\Cmsrs\ContactService;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Data;
 
-use App\Models\Cmsrs\Page;
-use App\Models\Cmsrs\Product;
+use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Shop\Product;
 use App\Services\Cmsrs\MenuService;
 use App\Services\Cmsrs\Page\PageService;
 use App\Services\Cmsrs\Product\ProductService;

@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Services\Cmsrs;
 
-use App\Models\Cmsrs\Menu;
-use App\Models\Cmsrs\Page;
-use App\Models\Cmsrs\Product;
+use App\Models\Cmsrs\Cms\Menu;
+use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Shop\Product;
 use App\Models\User;
 use App\Services\Cmsrs\ImageService;
 use App\Services\Cmsrs\MenuService;

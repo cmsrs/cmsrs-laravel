@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Cmsrs\FrontController;
 use App\Http\Controllers\Cmsrs\HomeController;
-use App\Models\Cmsrs\Page;
+use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\ConfigService;
 use Illuminate\Support\Facades\Route;
 

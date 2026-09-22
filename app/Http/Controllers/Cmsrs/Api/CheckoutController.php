@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Cmsrs\Api;
 
 use App\Enums\Cmsrs\SortDirection;
 use App\Http\Controllers\Controller;
-use App\Models\Cmsrs\Checkout;
+use App\Models\Cmsrs\Shop\Checkout;
 use App\Services\Cmsrs\CheckoutService;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\OrderService;

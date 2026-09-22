@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Cmsrs\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cmsrs\Image;
+use App\Models\Cmsrs\Cms\Image;
 use App\Services\Cmsrs\ImageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -47,7 +47,11 @@ class ImageController extends Controller
             return response()->json(['success' => false, 'error' => 'refId must be numeric'], 400);
         }
 
-        $modelClass = '\\App\\Models\\Cmsrs\\'.ucfirst($type);
+        $modelClass = Image::$modelClassesByType[$type] ?? null;
+        if ($modelClass === null) {
+            return response()->json(['success' => false, 'error' => 'model class not found for type: '.$type], 404);
+        }
+
         $obj = $modelClass::find($refId);
         if (empty($obj)) {
             return response()->json(['success' => false, 'error' => 'obj not found'], 404);

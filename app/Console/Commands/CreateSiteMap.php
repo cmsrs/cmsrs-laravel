@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\Models\Cmsrs\Page;
+use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Navigation\UrlService;
 use App\Services\Cmsrs\Product\ProductService;

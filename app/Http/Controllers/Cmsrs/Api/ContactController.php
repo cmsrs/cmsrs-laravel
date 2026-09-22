@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Cmsrs\Api;
 
 use App\Enums\Cmsrs\SortDirection;
 use App\Http\Controllers\Controller;
-use App\Models\Cmsrs\Contact;
+use App\Models\Cmsrs\Cms\Contact;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ContactService;
 use Illuminate\Http\JsonResponse;

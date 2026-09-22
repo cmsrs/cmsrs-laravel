@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models\Cmsrs\Tags;
+namespace App\Models\Cmsrs\Tag;
 
-use App\Models\Cmsrs\Page;
-use App\Models\Cmsrs\Product;
+use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Shop\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;

@@ -6,9 +6,9 @@ namespace App\Http\Controllers\Cmsrs;
 
 use App\Http\Controllers\Controller;
 use App\Integration\Payu;
-use App\Models\Cmsrs\Checkout;
-use App\Models\Cmsrs\Menu;
-use App\Models\Cmsrs\Page;
+use App\Models\Cmsrs\Cms\Menu;
+use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Shop\Checkout;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\DeliverService;
 use App\Services\Cmsrs\Helpers\PriceHelperService;

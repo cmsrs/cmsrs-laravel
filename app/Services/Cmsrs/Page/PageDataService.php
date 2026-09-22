@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Services\Cmsrs\Page;
 
-use App\Models\Cmsrs\Image;
-use App\Models\Cmsrs\Menu;
-use App\Models\Cmsrs\Page;
-use App\Models\Cmsrs\Translate;
+use App\Models\Cmsrs\Cms\Image;
+use App\Models\Cmsrs\Cms\Menu;
+use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Cms\Translate;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Helpers\CacheManagerService;
 use App\Services\Cmsrs\ImageService;

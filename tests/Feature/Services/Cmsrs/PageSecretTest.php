@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Services\Cmsrs;
 
-use App\Models\Cmsrs\Page;
+use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\MenuService;
 use App\Services\Cmsrs\Page\PageService;
 use Illuminate\Foundation\Testing\RefreshDatabase;

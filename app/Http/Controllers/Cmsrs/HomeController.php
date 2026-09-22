@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Cmsrs;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cmsrs\Menu;
+use App\Models\Cmsrs\Cms\Menu;
 use App\Services\Cmsrs\CheckoutService;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Helpers\ArrObjHelperService;

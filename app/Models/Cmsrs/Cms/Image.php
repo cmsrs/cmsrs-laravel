@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Cmsrs;
+namespace App\Models\Cmsrs\Cms;
 
 use App\Models\Cmsrs\Interfaces\TranslatableInterface;
+use App\Models\Cmsrs\Shop\Product;
 use App\Models\Cmsrs\Traits\HasTranslationsTrait;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -74,6 +75,14 @@ class Image extends Model implements TranslatableInterface
     public static $type = [
         'page' => 'page_id',
         'product' => 'product_id',
+    ];
+
+    /**
+     * @return array<string, string>
+     */
+    public static $modelClassesByType = [
+        'page' => Page::class,
+        'product' => Product::class,
     ];
 
     protected $casts = [

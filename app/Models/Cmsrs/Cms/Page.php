@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Cmsrs;
+namespace App\Models\Cmsrs\Cms;
 
 use App\Models\Cmsrs\Interfaces\ContentTranslatableInterface;
-use App\Models\Cmsrs\Tags\Tag;
+use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Traits\HasTranslationsTrait;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -107,7 +107,7 @@ class Page extends Model implements ContentTranslatableInterface
      */
     public function menu(): BelongsTo
     {
-        return $this->belongsTo('App\Models\Cmsrs\Menu', 'menu_id', 'id');
+        return $this->belongsTo(Menu::class, 'menu_id', 'id');
     }
 
     /**
@@ -115,7 +115,7 @@ class Page extends Model implements ContentTranslatableInterface
      */
     public function translates(): HasMany
     {
-        return $this->hasMany('App\Models\Cmsrs\Translate');
+        return $this->hasMany(Translate::class);
     }
 
     /**
@@ -123,7 +123,7 @@ class Page extends Model implements ContentTranslatableInterface
      */
     public function contents(): HasMany
     {
-        return $this->hasMany('App\Models\Cmsrs\Content');
+        return $this->hasMany(Content::class);
     }
 
     /**
@@ -131,7 +131,7 @@ class Page extends Model implements ContentTranslatableInterface
      */
     public function images(): HasMany
     {
-        return $this->hasMany('App\Models\Cmsrs\Image')->orderBy('position');
+        return $this->hasMany(Image::class)->orderBy('position');
     }
 
     public function getId(): int

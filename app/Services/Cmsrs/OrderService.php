@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services\Cmsrs;
 
-use App\Models\Cmsrs\Checkout;
-use App\Models\Cmsrs\Order;
+use App\Models\Cmsrs\Shop\Checkout;
+use App\Models\Cmsrs\Shop\Order;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 

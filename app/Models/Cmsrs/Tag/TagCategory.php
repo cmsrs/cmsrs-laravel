@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Cmsrs\Tags;
+namespace App\Models\Cmsrs\Tag;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

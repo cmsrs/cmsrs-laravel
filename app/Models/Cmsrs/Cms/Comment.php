@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Cmsrs;
+namespace App\Models\Cmsrs\Cms;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Services\Cmsrs;
 
 use App\Enums\Cmsrs\SortDirection;
-use App\Models\Cmsrs\Basket;
-use App\Models\Cmsrs\Checkout;
-use App\Models\Cmsrs\Product;
+use App\Models\Cmsrs\Shop\Basket;
+use App\Models\Cmsrs\Shop\Checkout;
+use App\Models\Cmsrs\Shop\Product;
 use App\Services\Cmsrs\Helpers\PaginationHelperService;
 use App\Services\Cmsrs\Helpers\PriceHelperService;
 use App\Services\Cmsrs\Product\ProductDataService;

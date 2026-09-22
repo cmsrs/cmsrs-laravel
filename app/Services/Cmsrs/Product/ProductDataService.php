@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services\Cmsrs\Product;
 
-use App\Models\Cmsrs\Page;
-use App\Models\Cmsrs\Product;
+use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Shop\Product;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Helpers\CacheManagerService;
 use App\Services\Cmsrs\Helpers\LangHelperService;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature\Models\Cmsrs\Tags;
+namespace Tests\Feature\Models\Cmsrs\Tag;
 
-use App\Models\Cmsrs\Tags\Tag;
-use App\Models\Cmsrs\Tags\TagCategory;
-use App\Models\Cmsrs\Tags\TagCategoryTranslation;
+use App\Models\Cmsrs\Tag\Tag;
+use App\Models\Cmsrs\Tag\TagCategory;
+use App\Models\Cmsrs\Tag\TagCategoryTranslation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

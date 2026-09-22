@@ -3,9 +3,9 @@
 namespace Tests\Feature\Services\Cmsrs;
 
 use App\Data\Demo;
-use App\Models\Cmsrs\Menu;
-use App\Models\Cmsrs\Page;
-use App\Models\Cmsrs\Translate;
+use App\Models\Cmsrs\Cms\Menu;
+use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Cms\Translate;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\MenuService;
 use App\Services\Cmsrs\Navigation\UrlService;

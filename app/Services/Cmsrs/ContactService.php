@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Cmsrs;
 
-use App\Models\Cmsrs\Contact;
+use App\Models\Cmsrs\Cms\Contact;
 
 class ContactService
 {

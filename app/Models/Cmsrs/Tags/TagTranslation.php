@@ -17,6 +17,10 @@ class TagTranslation extends Model
      * TODO remove, maybe it not be necessary to define the relationship here!!!, it is useless
      * Get the tag that owns the translation.
      */
+
+    /**
+     * @return BelongsTo<Tag, $this>
+     */
     public function tag(): BelongsTo
     {
         return $this->belongsTo(Tag::class);

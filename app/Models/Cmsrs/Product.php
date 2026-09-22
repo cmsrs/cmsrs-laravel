@@ -142,6 +142,9 @@ class Product extends Model
         return $this->hasMany('App\Models\Cmsrs\Content');
     }
 
+    /**
+     * @return MorphToMany<Tag, $this>
+     */
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable')->withPivot('lang');

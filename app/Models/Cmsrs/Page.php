@@ -139,6 +139,9 @@ class Page extends Model implements ContentTranslatableInterface
         return $this->id;
     }
 
+    /**
+     * @return MorphToMany<Tag, $this>
+     */
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable')->withPivot('lang');

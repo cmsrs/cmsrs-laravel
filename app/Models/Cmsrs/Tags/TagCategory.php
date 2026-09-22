@@ -7,11 +7,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TagCategory extends Model
 {
+    /**
+     * @return HasMany<Tag, $this>
+     */
     public function tags(): HasMany
     {
         return $this->hasMany(Tag::class);
     }
 
+    /**
+     * @return HasMany<TagCategoryTranslation, $this>
+     */
     public function translations(): HasMany
     {
         return $this->hasMany(TagCategoryTranslation::class);

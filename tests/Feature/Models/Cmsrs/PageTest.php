@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Models;
+namespace Tests\Feature\Models\Cmsrs;
 
 use App\Models\Cmsrs\Page;
 use App\Models\Cmsrs\Tags\Tag;

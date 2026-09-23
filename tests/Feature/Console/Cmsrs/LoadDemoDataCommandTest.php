@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Console\Cmsrs;
 
-use App\Models\User;
-use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Cms\Menu;
+use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Shop\Product;
-
-
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -44,20 +42,8 @@ class LoadDemoDataCommandTest extends TestCase
             'Expected more than 3 menus to be created.'
         );
 
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 declare(strict_types=1);

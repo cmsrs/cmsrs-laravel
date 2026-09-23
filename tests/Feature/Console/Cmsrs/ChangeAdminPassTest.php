@@ -35,5 +35,4 @@ class ChangeAdminPassTest extends TestCase
             $admin->password
         );
     }
-
 }

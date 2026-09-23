@@ -23,7 +23,7 @@ class ConfigService
 
     const CACHE_ENABLE_FILE_DEFAULT = 'app/cache_enable.txt';
 
-    const ALLOWED_UPLOAD_FILE_EXT_DEFAULT = 'jpg,jpeg,png,gif';
+    const ALLOWED_UPLOAD_FILE_EXT_DEFAULT = 'jpg,jpeg,png,webp';
 
     const COOKIE_FRONT_LOGIN_LANG_NAME = 'front_login_lang';
 

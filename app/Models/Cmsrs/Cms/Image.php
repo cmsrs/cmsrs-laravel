@@ -78,7 +78,7 @@ class Image extends Model implements TranslatableInterface
     ];
 
     /**
-     * @return array<string, string>
+     * @var array<string, class-string>
      */
     public static $modelClassesByType = [
         'page' => Page::class,

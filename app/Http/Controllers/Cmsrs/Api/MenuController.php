@@ -6,8 +6,8 @@ namespace App\Http\Controllers\Cmsrs\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Cms\Menu;
+use App\Services\Cmsrs\Cms\MenuService;
 use App\Services\Cmsrs\ConfigService;
-use App\Services\Cmsrs\MenuService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

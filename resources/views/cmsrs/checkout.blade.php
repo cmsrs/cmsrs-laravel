@@ -188,7 +188,7 @@
             <h4>{{ __('Payment') }}</h4>
             @foreach ($payments as $key_payment => $payment)
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="payment" id="{{ $key_payment }}" value="{{ $key_payment }}"  @if(old("payment") == $key_payment ) checked @endif  @if( ($key_payment === \app\Services\Cmsrs\PaymentService::KEY_PAYU) && ( config('cmsrs.demo') ) ) disabled @endif >
+                <input class="form-check-input" type="radio" name="payment" id="{{ $key_payment }}" value="{{ $key_payment }}"  @if(old("payment") == $key_payment ) checked @endif  @if( ($key_payment === \app\Services\Cmsrs\Shop\PaymentService::KEY_PAYU) && ( config('cmsrs.demo') ) ) disabled @endif >
                 <label class="form-check-label" for="{{ $key_payment }}">
                   {{ __($payment['name']) }}
                 </label>

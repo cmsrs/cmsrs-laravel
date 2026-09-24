@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Services\Cmsrs\Navigation;
 
 use App\Models\Cmsrs\Cms\Page;
+use App\Services\Cmsrs\Cms\MenuService;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Helpers\CacheManagerService;
-use App\Services\Cmsrs\MenuService;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Cmsrs;
+namespace App\Services\Cmsrs\Shop;
 
 use App\Models\Cmsrs\Shop\Checkout;
 use App\Models\Cmsrs\Shop\Order;

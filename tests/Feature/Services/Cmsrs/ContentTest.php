@@ -4,8 +4,8 @@ namespace Tests\Feature\Services\Cmsrs;
 
 use App\Models\Cmsrs\Content;
 use App\Models\Cmsrs\Translate;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\ConfigService;
-use App\Services\Cmsrs\Page\PageService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ContentTest extends Base

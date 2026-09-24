@@ -6,9 +6,9 @@ namespace App\Data;
 
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Shop\Product;
-use App\Services\Cmsrs\MenuService;
-use App\Services\Cmsrs\Page\PageService;
-use App\Services\Cmsrs\Product\ProductService;
+use App\Services\Cmsrs\Cms\MenuService;
+use App\Services\Cmsrs\Cms\Page\PageService;
+use App\Services\Cmsrs\Shop\Product\ProductService;
 
 class Demo
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Cmsrs;
+namespace App\Services\Cmsrs\Cms;
 
 use App\Models\Cmsrs\Cms\Contact;
 

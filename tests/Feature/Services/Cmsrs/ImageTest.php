@@ -5,9 +5,9 @@ namespace Tests\Feature\Services\Cmsrs;
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Image;
 use App\Models\Cmsrs\Translate;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ImageService;
-use App\Services\Cmsrs\Page\PageService;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

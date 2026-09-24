@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Cmsrs;
+namespace App\Services\Cmsrs\Shop;
 
 use App\Enums\Cmsrs\SortDirection;
 use App\Models\Cmsrs\Shop\Basket;
@@ -10,14 +10,18 @@ use App\Models\Cmsrs\Shop\Checkout;
 use App\Models\Cmsrs\Shop\Product;
 use App\Services\Cmsrs\Helpers\PaginationHelperService;
 use App\Services\Cmsrs\Helpers\PriceHelperService;
-use App\Services\Cmsrs\Product\ProductDataService;
-use App\Services\Cmsrs\Product\ProductService;
+use App\Services\Cmsrs\Shop\Product\ProductDataService;
+use App\Services\Cmsrs\Shop\Product\ProductService;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 class CheckoutService
 {
-    public function __construct(private ProductService $productService, private ProductDataService $productDataService, private PriceHelperService $priceHelperService) {}
+    public function __construct(
+        private ProductService $productService,
+        private ProductDataService $productDataService,
+        private PriceHelperService $priceHelperService
+    ) {}
 
     /**
      * @return Collection<int, Checkout>

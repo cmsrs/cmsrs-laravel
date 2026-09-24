@@ -3,7 +3,7 @@
 namespace Tests\Feature\Services\Cmsrs;
 
 use App\Models\Cmsrs\Cms\Menu;
-use App\Services\Cmsrs\MenuService;
+use App\Services\Cmsrs\Cms\MenuService;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;

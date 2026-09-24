@@ -4,10 +4,10 @@ namespace Tests\Feature\Services\Cmsrs;
 
 use App\Data\Demo;
 use App\Models\Cmsrs\Cms\Page;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\HeadlessService;
-use App\Services\Cmsrs\Page\PageService;
-use App\Services\Cmsrs\Product\ProductService;
+use App\Services\Cmsrs\Shop\Product\ProductService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class HeadlessTest extends Base

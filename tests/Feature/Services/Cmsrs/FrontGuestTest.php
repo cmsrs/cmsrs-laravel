@@ -3,9 +3,9 @@
 namespace Tests\Feature\Services\Cmsrs;
 
 use App\Models\Cmsrs\Cms\Page;
-use App\Services\Cmsrs\MenuService;
+use App\Services\Cmsrs\Cms\MenuService;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\Navigation\UrlService;
-use App\Services\Cmsrs\Page\PageService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 

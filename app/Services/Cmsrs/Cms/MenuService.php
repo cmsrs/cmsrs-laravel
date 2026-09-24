@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Cmsrs;
+namespace App\Services\Cmsrs\Cms;
 
 use App\Models\Cmsrs\Cms\Menu;
 use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\Helpers\CacheManagerService;
+use App\Services\Cmsrs\TranslateService;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Cmsrs\Page;
+namespace App\Services\Cmsrs\Cms\Page;
 
 use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\ConfigService;

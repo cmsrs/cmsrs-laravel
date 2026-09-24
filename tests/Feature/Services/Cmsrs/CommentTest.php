@@ -3,7 +3,7 @@
 namespace Tests\Feature\Services\Cmsrs;
 
 use App\Models\Cmsrs\Cms\Menu;
-use App\Services\Cmsrs\Page\PageService;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CommentTest extends Base

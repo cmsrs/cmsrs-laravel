@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Cmsrs\Page;
+namespace App\Services\Cmsrs\Cms\Page;
 
 use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ImageService;
 use App\Services\Cmsrs\Navigation\UrlService;
-use App\Services\Cmsrs\Product\ProductDataService;
+use App\Services\Cmsrs\Shop\Product\ProductDataService;
 use App\Services\Cmsrs\Translation\TranslationReader;
 
 class PageViewService

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Cmsrs\Product;
+namespace App\Services\Cmsrs\Shop\Product;
 
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Shop\Product;

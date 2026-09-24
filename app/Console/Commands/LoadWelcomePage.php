@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Services\Cmsrs\Cms\MenuService;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\ConfigService;
-use App\Services\Cmsrs\MenuService;
-use App\Services\Cmsrs\Page\PageService;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;

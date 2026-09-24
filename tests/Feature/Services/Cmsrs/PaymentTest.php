@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Services\Cmsrs;
 
-use App\Services\Cmsrs\PaymentService;
+use App\Services\Cmsrs\Shop\PaymentService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

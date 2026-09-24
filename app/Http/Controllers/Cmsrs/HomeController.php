@@ -6,13 +6,13 @@ namespace App\Http\Controllers\Cmsrs;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Cms\Menu;
-use App\Services\Cmsrs\CheckoutService;
+use App\Services\Cmsrs\Cms\MenuService;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Helpers\ArrObjHelperService;
-use App\Services\Cmsrs\MenuService;
-use App\Services\Cmsrs\OrderService;
-use App\Services\Cmsrs\Page\PageService;
-use App\Services\Cmsrs\Product\ProductService;
+use App\Services\Cmsrs\Shop\CheckoutService;
+use App\Services\Cmsrs\Shop\OrderService;
+use App\Services\Cmsrs\Shop\Product\ProductService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

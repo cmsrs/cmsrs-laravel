@@ -4,8 +4,8 @@ namespace Tests\Feature\Services\Cmsrs;
 
 use App\Models\Cmsrs\Content;
 use App\Models\Cmsrs\Translate;
-use App\Services\Cmsrs\MenuService;
-use App\Services\Cmsrs\Page\PageService;
+use App\Services\Cmsrs\Cms\MenuService;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TranslateOneLangTest extends Base

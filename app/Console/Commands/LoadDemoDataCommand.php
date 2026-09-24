@@ -8,12 +8,10 @@ use App\Data\Demo;
 use App\Models\Cmsrs\Cms\Comment;
 use App\Models\Cmsrs\Shop\Product;
 use App\Models\User;
-// use App\Services\Cmsrs\ContentService;
-use App\Services\Cmsrs\ContactService;
-use App\Services\Cmsrs\DeliverService;
-use App\Services\Cmsrs\PaymentService;
-// use App\Services\Cmsrs\TranslateService;
-use App\Services\Cmsrs\Product\ProductService;
+use App\Services\Cmsrs\Cms\ContactService;
+use App\Services\Cmsrs\Shop\DeliverService;
+use App\Services\Cmsrs\Shop\PaymentService;
+use App\Services\Cmsrs\Shop\Product\ProductService;
 use Illuminate\Console\Command;
 
 class LoadDemoDataCommand extends Command

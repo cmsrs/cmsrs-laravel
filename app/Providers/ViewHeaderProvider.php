@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Helpers\RequestService;
 use App\Services\Cmsrs\Navigation\NavigationService;
 use App\Services\Cmsrs\Navigation\UrlService;
-use App\Services\Cmsrs\Page\PageService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;

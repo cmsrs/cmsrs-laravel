@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Services\Cmsrs;
 
 use App\Models\Cmsrs\Cms\Page;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\Helpers\LangHelperService;
-use App\Services\Cmsrs\Page\PageService;
 
 class HeadlessService
 {

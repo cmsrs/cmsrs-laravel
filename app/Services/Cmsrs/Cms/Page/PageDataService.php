@@ -2,23 +2,30 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Cmsrs\Page;
+namespace App\Services\Cmsrs\Cms\Page;
 
 use App\Models\Cmsrs\Cms\Menu;
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Image;
 use App\Models\Cmsrs\Translate;
+use App\Services\Cmsrs\Cms\MenuService;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Helpers\CacheManagerService;
 use App\Services\Cmsrs\ImageService;
-use App\Services\Cmsrs\MenuService;
 use App\Services\Cmsrs\Navigation\UrlService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 
 class PageDataService
 {
-    public function __construct(private ConfigService $configService, private MenuService $menuService, private ImageService $imageService, private CacheManagerService $cacheManagerService, private PageService $pageService, private UrlService $urlService) {}
+    public function __construct(
+        private ConfigService $configService,
+        private MenuService $menuService,
+        private ImageService $imageService,
+        private CacheManagerService $cacheManagerService,
+        private PageService $pageService,
+        private UrlService $urlService
+    ) {}
 
     public function getPageDataByShortTitleCache(string $shortTitle, string $data = 'content', ?string $lang = null): ?string
     {

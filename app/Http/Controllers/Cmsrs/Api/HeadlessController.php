@@ -6,13 +6,13 @@ namespace App\Http\Controllers\Cmsrs\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Cms\Page;
+use App\Services\Cmsrs\Cms\MenuService;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\HeadlessService;
-use App\Services\Cmsrs\MenuService;
 use App\Services\Cmsrs\Navigation\NavigationService;
-use App\Services\Cmsrs\Page\PageService;
-use App\Services\Cmsrs\Product\ProductDataService;
-use App\Services\Cmsrs\Product\ProductService;
+use App\Services\Cmsrs\Shop\Product\ProductDataService;
+use App\Services\Cmsrs\Shop\Product\ProductService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

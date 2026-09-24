@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Cmsrs\Api;
+namespace App\Http\Controllers\Cmsrs\Api\Shop;
 
 use App\Enums\Cmsrs\SortDirection;
 use App\Http\Controllers\Controller;

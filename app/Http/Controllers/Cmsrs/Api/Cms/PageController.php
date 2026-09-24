@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Cmsrs\Api;
+namespace App\Http\Controllers\Cmsrs\Api\Cms;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Cms\Page;

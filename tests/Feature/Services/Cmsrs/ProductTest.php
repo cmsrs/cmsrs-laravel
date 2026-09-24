@@ -3,14 +3,14 @@
 namespace Tests\Feature\Services\Cmsrs;
 
 use App\Enums\Cmsrs\SortDirection;
-use App\Models\Cmsrs\Cms\Content;
-use App\Models\Cmsrs\Cms\Image;
 use App\Models\Cmsrs\Cms\Page;
-use App\Models\Cmsrs\Cms\Translate;
+use App\Models\Cmsrs\Content;
+use App\Models\Cmsrs\Image;
 use App\Models\Cmsrs\Shop\Basket;
 use App\Models\Cmsrs\Shop\Checkout;
 use App\Models\Cmsrs\Shop\Order;
 use App\Models\Cmsrs\Shop\Product;
+use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\DeliverService;
 use App\Services\Cmsrs\Helpers\ArrObjHelperService;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Cmsrs;
 
-use App\Models\Cmsrs\Cms\Content;
+use App\Models\Cmsrs\Content;
 use App\Services\Cmsrs\Translation\TranslationWriter;
 
 class ContentService

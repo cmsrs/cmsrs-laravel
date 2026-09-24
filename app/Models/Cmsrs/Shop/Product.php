@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Models\Cmsrs\Shop;
 
-use App\Models\Cmsrs\Cms\Content;
-use App\Models\Cmsrs\Cms\Image;
 use App\Models\Cmsrs\Cms\Page;
-use App\Models\Cmsrs\Cms\Translate;
+use App\Models\Cmsrs\Content;
+use App\Models\Cmsrs\Image;
 use App\Models\Cmsrs\Tag\Tag;
+use App\Models\Cmsrs\Translate;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

@@ -2,10 +2,8 @@
 
 namespace Tests\Feature\Services\Cmsrs;
 
-use App\Models\Cmsrs\Cms\Content;
-use App\Models\Cmsrs\Cms\Translate;
-// use App\Services\Cmsrs\ConfigService;
-// use App\Services\Cmsrs\ContentService;
+use App\Models\Cmsrs\Content;
+use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\MenuService;
 use App\Services\Cmsrs\Page\PageService;
 use App\Services\Cmsrs\TranslateService;

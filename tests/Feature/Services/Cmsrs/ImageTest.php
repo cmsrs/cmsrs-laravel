@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Services\Cmsrs;
 
-use App\Models\Cmsrs\Cms\Image;
 use App\Models\Cmsrs\Cms\Page;
-use App\Models\Cmsrs\Cms\Translate;
+use App\Models\Cmsrs\Image;
+use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ImageService;
 use App\Services\Cmsrs\Page\PageService;

@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Cmsrs\Cms;
+namespace App\Models\Cmsrs;
 
+use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Interfaces\TranslatableInterface;
 use App\Models\Cmsrs\Shop\Product;
 use App\Models\Cmsrs\Traits\HasTranslationsTrait;

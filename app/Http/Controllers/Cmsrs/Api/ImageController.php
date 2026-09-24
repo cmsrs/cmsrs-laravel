@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Cmsrs\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cmsrs\Cms\Image;
+use App\Models\Cmsrs\Image;
 use App\Services\Cmsrs\ImageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

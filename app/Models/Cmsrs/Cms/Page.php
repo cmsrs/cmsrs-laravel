@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Models\Cmsrs\Cms;
 
+use App\Models\Cmsrs\Content;
+use App\Models\Cmsrs\Image;
 use App\Models\Cmsrs\Interfaces\ContentTranslatableInterface;
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Traits\HasTranslationsTrait;
+use App\Models\Cmsrs\Translate;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

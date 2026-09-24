@@ -6,7 +6,7 @@ namespace App\Services\Cmsrs;
 
 use App\Models\Cmsrs\Cms\Menu;
 use App\Models\Cmsrs\Cms\Page;
-use App\Models\Cmsrs\Cms\Translate;
+use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\Translation\TranslationWriter;
 
 class TranslateService

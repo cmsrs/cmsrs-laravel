@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Cmsrs\Cms;
+namespace App\Models\Cmsrs;
 
+use App\Models\Cmsrs\Cms\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;

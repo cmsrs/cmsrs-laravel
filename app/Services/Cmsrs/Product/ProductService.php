@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Services\Cmsrs\Product;
 
 use App\Enums\Cmsrs\SortDirection;
-use App\Models\Cmsrs\Cms\Translate;
 use App\Models\Cmsrs\Shop\Basket;
 use App\Models\Cmsrs\Shop\Checkout;
 use App\Models\Cmsrs\Shop\Product;
+use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ContentService;
 use App\Services\Cmsrs\DeliverService;

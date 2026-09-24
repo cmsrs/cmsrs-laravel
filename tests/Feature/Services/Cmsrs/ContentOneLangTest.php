@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Services\Cmsrs;
 
-use App\Models\Cmsrs\Cms\Content;
+use App\Models\Cmsrs\Content;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Page\PageService;
 use Illuminate\Foundation\Testing\RefreshDatabase;

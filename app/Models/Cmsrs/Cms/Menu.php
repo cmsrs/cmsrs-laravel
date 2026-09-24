@@ -6,6 +6,7 @@ namespace App\Models\Cmsrs\Cms;
 
 use App\Models\Cmsrs\Interfaces\TranslatableInterface;
 use App\Models\Cmsrs\Traits\HasTranslationsTrait;
+use App\Models\Cmsrs\Translate;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services\Cmsrs\Translation;
 
-use App\Models\Cmsrs\Cms\Content;
-use App\Models\Cmsrs\Cms\Translate;
+use App\Models\Cmsrs\Content;
+use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\ConfigService;
 
 class TranslationWriter

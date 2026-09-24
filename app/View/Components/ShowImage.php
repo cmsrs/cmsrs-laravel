@@ -2,7 +2,7 @@
 
 namespace App\View\Components;
 
-use App\Models\Cmsrs\Cms\Image;
+use App\Models\Cmsrs\Image;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;

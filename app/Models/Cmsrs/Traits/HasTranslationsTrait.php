@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Cmsrs\Traits;
 
-use App\Models\Cmsrs\Cms\Translate;
+use App\Models\Cmsrs\Translate;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait HasTranslationsTrait

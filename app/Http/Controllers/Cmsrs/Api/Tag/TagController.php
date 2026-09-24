@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Tag\Tag;
 use Illuminate\Http\JsonResponse;
 
-class tagController extends Controller
+class TagController extends Controller
 {
     public function index(): JsonResponse
     {

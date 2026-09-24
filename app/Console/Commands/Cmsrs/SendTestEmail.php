@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Cmsrs;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;

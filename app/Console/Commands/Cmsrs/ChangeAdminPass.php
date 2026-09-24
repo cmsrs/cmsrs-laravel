@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Cmsrs;
 
 use App\Models\User;
 use Illuminate\Console\Command;

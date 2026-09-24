@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Cmsrs;
 
 use App\Services\Cmsrs\ConfigService;
 use Illuminate\Console\Command;

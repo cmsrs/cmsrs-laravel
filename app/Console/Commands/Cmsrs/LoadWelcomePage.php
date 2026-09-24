@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Cmsrs;
 
 use App\Services\Cmsrs\Cms\MenuService;
 use App\Services\Cmsrs\Cms\Page\PageService;

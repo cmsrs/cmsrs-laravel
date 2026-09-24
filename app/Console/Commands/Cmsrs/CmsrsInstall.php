@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Cmsrs;
 
 use App\Models\User;
 use Illuminate\Console\Attributes\Description;

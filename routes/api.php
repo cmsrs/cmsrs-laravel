@@ -10,6 +10,7 @@ use App\Http\Controllers\Cmsrs\Api\HeadlessController;
 use App\Http\Controllers\Cmsrs\Api\ImageController;
 use App\Http\Controllers\Cmsrs\Api\Shop\CheckoutController;
 use App\Http\Controllers\Cmsrs\Api\Shop\ProductController;
+use App\Http\Controllers\Cmsrs\Api\Tag\TagCategoryController;
 use App\Http\Controllers\Cmsrs\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -86,6 +87,31 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::put($apiSecret.'config/createsitemap', [ConfigController::class, 'createSiteMap']);
     Route::post($apiSecret.'config/toggle-cache-enable-file', [ConfigController::class, 'toggleCacheEnableFile']);
     Route::get($apiSecret.'config/is-cache-enable', [ConfigController::class, 'isCacheEnable']);
+
+    Route::get(
+        'tag-categories',
+        [TagCategoryController::class, 'index']
+    );
+
+    Route::post(
+        'tag-categories',
+        [TagCategoryController::class, 'create']
+    );
+
+    Route::get(
+        'tag-categories/{tagCategory}',
+        [TagCategoryController::class, 'show']
+    );
+
+    Route::put(
+        'tag-categories/{tagCategory}',
+        [TagCategoryController::class, 'update']
+    );
+
+    Route::delete(
+        'tag-categories/{tagCategory}',
+        [TagCategoryController::class, 'delete']
+    );
 
     /* shop start */
     if (config('cmsrs.features.shop')) {

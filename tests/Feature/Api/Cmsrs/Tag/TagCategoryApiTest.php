@@ -43,7 +43,7 @@ class TagCategoryApiTest extends Base
         ];
     }
 
-    public function test_it_will_add_tag_category(): void
+    public function test_it_will_add_tag_category_post_docs(): void
     {
         $response = $this->post(
             'api/tag-categories?token='.$this->token,
@@ -55,6 +55,8 @@ class TagCategoryApiTest extends Base
         $res = $response->getData();
 
         $this->assertTrue($res->success);
+
+        $this->assertEquals(1, TagCategory::count());
 
         $category = TagCategory::first();
 
@@ -77,7 +79,7 @@ class TagCategoryApiTest extends Base
         ]);
     }
 
-    public function test_it_will_return_all_tag_categories(): void
+    public function test_it_will_return_all_tag_categories_get_docs(): void
     {
         $category1 = TagCategory::create();
         $category2 = TagCategory::create();
@@ -126,9 +128,19 @@ class TagCategoryApiTest extends Base
             'Typ produktu',
             $res->data[0]->name->pl
         );
+
+        $this->assertEquals(
+            'Color',
+            $res->data[1]->name->en
+        );
+
+        $this->assertEquals(
+            'Kolor',
+            $res->data[1]->name->pl
+        );
     }
 
-    public function test_it_will_return_one_tag_category(): void
+    public function test_it_will_return_one_tag_category_get_docs(): void
     {
         $category = TagCategory::create();
 
@@ -171,7 +183,7 @@ class TagCategoryApiTest extends Base
         );
     }
 
-    public function test_it_will_update_tag_category(): void
+    public function test_it_will_update_tag_category_put_docs(): void
     {
         $category = TagCategory::create();
 
@@ -225,9 +237,12 @@ class TagCategoryApiTest extends Base
         ]);
     }
 
-    public function test_it_will_delete_tag_category(): void
+    public function test_it_will_delete_tag_category_delete_docs(): void
     {
         $category = TagCategory::create();
+
+        $this->assertEquals(1, TagCategory::count());
+        $this->assertDatabaseCount('tag_categories', 1);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $category->id,
@@ -251,6 +266,9 @@ class TagCategoryApiTest extends Base
         $res = $response->getData();
 
         $this->assertTrue($res->success);
+
+        $this->assertEquals(0, TagCategory::count());
+        $this->assertDatabaseCount('tag_categories', 0);
 
         $this->assertDatabaseMissing('tag_categories', [
             'id' => $category->id,
@@ -289,6 +307,29 @@ class TagCategoryApiTest extends Base
     {
         $data = [
             'name' => [
+                'en' => 'Product type',
+            ],
+        ];
+
+        $response = $this->post(
+            'api/tag-categories?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertFalse($res->success);
+        $this->assertNotEmpty($res->error);
+
+        $this->assertDatabaseCount('tag_categories', 0);
+    }
+
+    public function test_it_will_not_add_tag_category_when_key_is_wrong(): void
+    {
+        $data = [
+            'name_wrong' => [
                 'en' => 'Product type',
             ],
         ];
@@ -374,6 +415,12 @@ class TagCategoryApiTest extends Base
             'value' => 'Product type',
         ]);
 
+        TagCategoryTranslation::create([
+            'tag_category_id' => $category->id,
+            'lang' => 'pl',
+            'value' => 'Typ produktu',
+        ]);
+
         $tag = Tag::create([
             'tag_category_id' => $category->id,
         ]);
@@ -384,10 +431,26 @@ class TagCategoryApiTest extends Base
             'value' => 'Shoes',
         ]);
 
+        TagTranslation::create([
+            'tag_id' => $tag->id,
+            'lang' => 'pl',
+            'value' => 'Buty',
+        ]);
+
+        $this->assertDatabaseCount('tag_categories', 1);
+        $this->assertDatabaseCount('tag_category_translations', 2);
+        $this->assertDatabaseCount('tags', 1);
+        $this->assertDatabaseCount('tag_translations', 2);
+
         $response = $this->delete(
             'api/tag-categories/'.$category->id.
             '?token='.$this->token
         );
+
+        $this->assertDatabaseCount('tag_categories', 0);
+        $this->assertDatabaseCount('tag_category_translations', 0);
+        $this->assertDatabaseCount('tags', 0);
+        $this->assertDatabaseCount('tag_translations', 0);
 
         $response->assertStatus(200);
 

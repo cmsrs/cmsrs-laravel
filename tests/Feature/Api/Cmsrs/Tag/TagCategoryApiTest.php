@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Api\Tag;
+namespace Tests\Feature\Api\Cmsrs\Tag;
 
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;

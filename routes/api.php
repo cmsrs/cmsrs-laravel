@@ -11,6 +11,7 @@ use App\Http\Controllers\Cmsrs\Api\ImageController;
 use App\Http\Controllers\Cmsrs\Api\Shop\CheckoutController;
 use App\Http\Controllers\Cmsrs\Api\Shop\ProductController;
 use App\Http\Controllers\Cmsrs\Api\Tag\TagCategoryController;
+use App\Http\Controllers\Cmsrs\Api\Tag\TagController;
 use App\Http\Controllers\Cmsrs\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -111,6 +112,31 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::delete(
         'tag-categories/{tagCategory}',
         [TagCategoryController::class, 'delete']
+    );
+
+    Route::get(
+        'tags',
+        [TagController::class, 'index']
+    );
+
+    Route::post(
+        'tags',
+        [TagController::class, 'create']
+    );
+
+    Route::get(
+        'tags/{tag}',
+        [TagController::class, 'show']
+    );
+
+    Route::put(
+        'tags/{tag}',
+        [TagController::class, 'update']
+    );
+
+    Route::delete(
+        'tags/{tag}',
+        [TagController::class, 'delete']
     );
 
     /* shop start */

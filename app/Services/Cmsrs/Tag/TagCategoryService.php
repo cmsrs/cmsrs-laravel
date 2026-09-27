@@ -61,11 +61,12 @@ class TagCategoryService
 
     public function deleteTagCategory(TagCategory $category): bool
     {
-        return $category->delete();
+        return $category->delete() === true;
     }
 
     /**
      * @param  array<string, mixed>  $data
+     * @return array{success: bool, error?: string}
      */
     public function checkIsDuplicateName(
         array $data,

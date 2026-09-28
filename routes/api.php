@@ -5,6 +5,7 @@ use App\Http\Controllers\Cmsrs\Api\Cms\CommentController;
 use App\Http\Controllers\Cmsrs\Api\Cms\ContactController;
 use App\Http\Controllers\Cmsrs\Api\Cms\MenuController;
 use App\Http\Controllers\Cmsrs\Api\Cms\PageController;
+use App\Http\Controllers\Cmsrs\Api\Cms\PageTagController;
 use App\Http\Controllers\Cmsrs\Api\ConfigController;
 use App\Http\Controllers\Cmsrs\Api\HeadlessController;
 use App\Http\Controllers\Cmsrs\Api\ImageController;
@@ -54,6 +55,12 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::get($apiSecret.'logout', [AuthController::class, 'logout']);
 
     Route::get($apiSecret.'pages', [PageController::class, 'index']);
+
+    Route::get(
+        $apiSecret.'pages/{page}/tags',
+        [PageTagController::class, 'index']
+    );
+
     Route::get($apiSecret.'pages/{page}', [PageController::class, 'oneItemAdmin'])->whereNumber('page'); // ->where('id', '[0-9]+');
     Route::post($apiSecret.'pages', [PageController::class, 'create']);
     Route::put($apiSecret.'pages/{page}', [PageController::class, 'update'])->whereNumber('page');
@@ -90,52 +97,52 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::get($apiSecret.'config/is-cache-enable', [ConfigController::class, 'isCacheEnable']);
 
     Route::get(
-        'tag-categories',
+        $apiSecret.'tag-categories',
         [TagCategoryController::class, 'index']
     );
 
     Route::post(
-        'tag-categories',
+        $apiSecret.'tag-categories',
         [TagCategoryController::class, 'create']
     );
 
     Route::get(
-        'tag-categories/{tagCategory}',
+        $apiSecret.'tag-categories/{tagCategory}',
         [TagCategoryController::class, 'show']
     );
 
     Route::put(
-        'tag-categories/{tagCategory}',
+        $apiSecret.'tag-categories/{tagCategory}',
         [TagCategoryController::class, 'update']
     );
 
     Route::delete(
-        'tag-categories/{tagCategory}',
+        $apiSecret.'tag-categories/{tagCategory}',
         [TagCategoryController::class, 'delete']
     );
 
     Route::get(
-        'tags',
+        $apiSecret.'tags',
         [TagController::class, 'index']
     );
 
     Route::post(
-        'tags',
+        $apiSecret.'tags',
         [TagController::class, 'create']
     );
 
     Route::get(
-        'tags/{tag}',
+        $apiSecret.'tags/{tag}',
         [TagController::class, 'show']
     );
 
     Route::put(
-        'tags/{tag}',
+        $apiSecret.'tags/{tag}',
         [TagController::class, 'update']
     );
 
     Route::delete(
-        'tags/{tag}',
+        $apiSecret.'tags/{tag}',
         [TagController::class, 'delete']
     );
 

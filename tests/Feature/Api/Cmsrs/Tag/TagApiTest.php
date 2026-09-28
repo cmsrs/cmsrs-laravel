@@ -49,6 +49,9 @@ class TagApiTest extends Base
 
     public function test_it_will_add_tag(): void
     {
+        $this->assertDatabaseCount('tags', 0);
+        $this->assertDatabaseCount('tag_translations', 0);
+
         $response = $this->post(
             'api/tags?token='.$this->token,
             $this->testData
@@ -60,6 +63,8 @@ class TagApiTest extends Base
 
         $this->assertTrue($res->success);
 
+        $this->assertDatabaseCount('tags', 1);
+        $this->assertDatabaseCount('tag_translations', 2);
         $tag = Tag::first();
 
         $this->assertNotNull($tag);
@@ -146,6 +151,17 @@ class TagApiTest extends Base
             $this->category->id,
             $res->data[0]->tag_category_id
         );
+
+        $this->assertEquals(
+            'T-Shirts',
+            $res->data[1]->name->en
+        );
+
+        $this->assertEquals(
+            'Koszulki',
+            $res->data[1]->name->pl
+        );
+
     }
 
     public function test_it_will_return_one_tag(): void
@@ -235,6 +251,8 @@ class TagApiTest extends Base
         $res = $response->getData();
 
         $this->assertTrue($res->success);
+
+        $this->assertDatabaseCount('tag_translations', 2);
 
         $this->assertDatabaseHas('tag_translations', [
             'tag_id' => $tag->id,
@@ -337,6 +355,9 @@ class TagApiTest extends Base
         $this->assertDatabaseMissing('tag_translations', [
             'tag_id' => $tag->id,
         ]);
+
+        $this->assertDatabaseCount('tags', 0);
+        $this->assertDatabaseCount('tag_translations', 0);
     }
 
     public function test_it_will_not_add_tag_with_empty_name(): void
@@ -362,6 +383,7 @@ class TagApiTest extends Base
         $this->assertNotEmpty($res->error);
 
         $this->assertDatabaseCount('tags', 0);
+        $this->assertDatabaseCount('tag_translations', 0);
     }
 
     public function test_it_will_not_add_tag_when_language_is_missing(): void

@@ -61,6 +61,16 @@ Route::group(['middleware' => ['jwt.auth']], function () {
         [PageTagController::class, 'index']
     );
 
+    Route::put(
+        'pages/{page}/tags',
+        [PageTagController::class, 'update']
+    );
+
+    Route::get(
+        'pages/tag/{tag}',
+        [PageTagController::class, 'pagesByTag']
+    );
+
     Route::get($apiSecret.'pages/{page}', [PageController::class, 'oneItemAdmin'])->whereNumber('page'); // ->where('id', '[0-9]+');
     Route::post($apiSecret.'pages', [PageController::class, 'create']);
     Route::put($apiSecret.'pages/{page}', [PageController::class, 'update'])->whereNumber('page');

@@ -7,37 +7,69 @@ namespace App\Http\Controllers\Cmsrs\Api\Cms;
 use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Tag\Tag;
-use App\Services\Cmsrs\Tag\PageTagService;
+use App\Services\Cmsrs\Cms\PageTagService;
+use App\Services\Cmsrs\ConfigService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Throwable;
 
 class PageTagController extends Controller
 {
+    /**
+     * @var array<int, string>
+     */
+    private array $langs = [];
+
     public function __construct(
+        protected ConfigService $configService,
         protected PageTagService $pageTagService,
-    ) {}
+    ) {
+        $this->langs = $this->configService->arrGetLangs();
+
+        // if (is_array($langs)) {
+        //     $this->langs = array_values($langs);
+        // }
+
+        // if (empty($this->langs)) {
+        //     $this->langs = ['en', 'pl'];
+        // }
+    }
 
     public function index(Page $page): JsonResponse
     {
-        $tags = $this->pageTagService->getPageTags($page);
-
         return response()->json([
             'success' => true,
-            'data' => $tags,
+            'data' => $this->pageTagService
+                ->getPageTags($page),
         ], 200);
     }
 
-    public function update(Request $request, Page $page): JsonResponse
-    {
+    public function update(
+        Request $request,
+        Page $page
+    ): JsonResponse {
+        $rules = [
+            'tags' => [
+                'required',
+                'array',
+            ],
+        ];
+
+        foreach ($this->langs as $lang) {
+            $rules['tags.'.$lang] = [
+                'nullable',
+                'array',
+            ];
+
+            $rules['tags.'.$lang.'.*'] = [
+                'integer',
+                'exists:tags,id',
+            ];
+        }
+
         $validator = Validator::make(
             $request->all(),
-            [
-                'tags' => ['required', 'array'],
-                'tags.*' => ['array'],
-                'tags.*.*' => ['integer', 'distinct'],
-            ]
+            $rules
         );
 
         if ($validator->fails()) {
@@ -47,15 +79,17 @@ class PageTagController extends Controller
             ], 200);
         }
 
-        try {
-            /** @var array<string, array<int, int>> $tags */
-            $tags = $request->input('tags');
+        $data = $validator->validated();
 
-            $this->pageTagService->syncPageTags($page, $tags);
-        } catch (Throwable $e) {
+        try {
+            $this->pageTagService->updatePageTags(
+                $page,
+                $data['tags']
+            );
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'error' => $e->getMessage(),
+                'error' => 'Update page tags problem',
             ], 200);
         }
 
@@ -64,22 +98,23 @@ class PageTagController extends Controller
         ], 200);
     }
 
-    public function pagesByTag(Request $request, Tag $tag): JsonResponse
+    public function pagesByTag(Tag $tag): JsonResponse
     {
-        $lang = $request->query('lang');
+        $pages = $this->pageTagService
+            ->getPagesByTag($tag);
 
-        if ($lang !== null && ! is_string($lang)) {
-            return response()->json([
-                'success' => false,
-                'error' => 'Invalid language',
-            ], 200);
+        $data = [];
+
+        foreach ($pages as $page) {
+            $data[] = [
+                'id' => $page->id,
+                'lang' => $page->pivot->lang,
+            ];
         }
-
-        $pages = $this->pageTagService->getPagesByTag($tag, $lang);
 
         return response()->json([
             'success' => true,
-            'data' => $pages,
+            'data' => $data,
         ], 200);
     }
 }

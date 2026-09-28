@@ -45,6 +45,9 @@ class TagCategoryApiTest extends Base
 
     public function test_it_will_add_tag_category_post_docs(): void
     {
+        $this->assertDatabaseCount('tag_categories', 0);
+        $this->assertDatabaseCount('tag_category_translations', 0);
+
         $response = $this->post(
             'api/tag-categories?token='.$this->token,
             $this->testData
@@ -57,6 +60,8 @@ class TagCategoryApiTest extends Base
         $this->assertTrue($res->success);
 
         $this->assertEquals(1, TagCategory::count());
+        $this->assertDatabaseCount('tag_categories', 1);
+        $this->assertDatabaseCount('tag_category_translations', 2);
 
         $category = TagCategory::first();
 
@@ -520,6 +525,111 @@ class TagCategoryApiTest extends Base
 
         $this->assertDatabaseMissing('tag_translations', [
             'tag_id' => $tag->id,
+        ]);
+    }
+
+    public function test_it_will_add_tag_category_with_additional_language(): void
+    {
+        $this->testData['name']['fr'] = 'Type de produit'; // Adding a language that is not in the LANGS environment variable
+
+        $this->assertDatabaseCount('tag_categories', 0);
+        $this->assertDatabaseCount('tag_category_translations', 0);
+
+        $response = $this->post(
+            'api/tag-categories?token='.$this->token,
+            $this->testData
+        );
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseCount('tag_categories', 1);
+        $this->assertDatabaseCount('tag_category_translations', 2);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertEquals(1, TagCategory::count());
+
+        $category = TagCategory::first();
+
+        $this->assertNotNull($category);
+
+        $this->assertDatabaseHas('tag_categories', [
+            'id' => $category->id,
+        ]);
+
+        $this->assertDatabaseHas('tag_category_translations', [
+            'tag_category_id' => $category->id,
+            'lang' => 'en',
+            'value' => 'Product type',
+        ]);
+
+        $this->assertDatabaseHas('tag_category_translations', [
+            'tag_category_id' => $category->id,
+            'lang' => 'pl',
+            'value' => 'Typ produktu',
+        ]);
+
+        $this->assertDatabaseMissing('tag_category_translations', [
+            'tag_category_id' => $category->id,
+            'lang' => 'fr',
+            'value' => 'Type de produit',
+        ]);
+    }
+
+    public function test_it_will_update_tag_category_with_additional_language(): void
+    {
+        $category = TagCategory::create();
+
+        TagCategoryTranslation::create([
+            'tag_category_id' => $category->id,
+            'lang' => 'en',
+            'value' => 'Old name',
+        ]);
+
+        TagCategoryTranslation::create([
+            'tag_category_id' => $category->id,
+            'lang' => 'pl',
+            'value' => 'Stara nazwa',
+        ]);
+
+        $data = [
+            'name' => [
+                'en' => 'Product type updated',
+                'pl' => 'Typ produktu zmieniony',
+                'fr' => 'Fr Product type updated',
+            ],
+        ];
+
+        $response = $this->put(
+            'api/tag-categories/'.$category->id.
+            '?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertDatabaseHas('tag_category_translations', [
+            'tag_category_id' => $category->id,
+            'lang' => 'en',
+            'value' => 'Product type updated',
+        ]);
+
+        $this->assertDatabaseHas('tag_category_translations', [
+            'tag_category_id' => $category->id,
+            'lang' => 'pl',
+            'value' => 'Typ produktu zmieniony',
+        ]);
+
+        $this->assertDatabaseMissing('tag_category_translations', [
+            'tag_category_id' => $category->id,
+            'lang' => 'en',
+            'value' => 'Old name',
         ]);
     }
 }

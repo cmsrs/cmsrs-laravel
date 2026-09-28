@@ -551,4 +551,123 @@ class TagApiTest extends Base
 
         $response->assertStatus(404);
     }
+
+    public function test_it_will_add_tag_with_additional_language(): void
+    {
+        $this->assertDatabaseCount('tags', 0);
+        $this->assertDatabaseCount('tag_translations', 0);
+
+        $this->testData['name']['fr'] = 'Chaussures'; // Adding a French translation which is not in the allowed languages
+
+        $response = $this->post(
+            'api/tags?token='.$this->token,
+            $this->testData
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertDatabaseCount('tags', 1);
+        $this->assertDatabaseCount('tag_translations', 2);
+        $tag = Tag::first();
+
+        $this->assertNotNull($tag);
+
+        $this->assertEquals(
+            $this->category->id,
+            $tag->tag_category_id
+        );
+
+        $this->assertDatabaseHas('tags', [
+            'id' => $tag->id,
+            'tag_category_id' => $this->category->id,
+        ]);
+
+        $this->assertDatabaseHas('tag_translations', [
+            'tag_id' => $tag->id,
+            'lang' => 'en',
+            'value' => 'Shoes',
+        ]);
+
+        $this->assertDatabaseHas('tag_translations', [
+            'tag_id' => $tag->id,
+            'lang' => 'pl',
+            'value' => 'Buty',
+        ]);
+
+        $this->assertDatabaseMissing('tag_translations', [
+            'tag_id' => $tag->id,
+            'lang' => 'fr',
+            'value' => 'Chaussures',
+        ]);
+    }
+
+    public function test_it_will_update_tag_with_additional_language(): void
+    {
+        $tag = Tag::create([
+            'tag_category_id' => $this->category->id,
+        ]);
+
+        TagTranslation::create([
+            'tag_id' => $tag->id,
+            'lang' => 'en',
+            'value' => 'Old shoes',
+        ]);
+
+        TagTranslation::create([
+            'tag_id' => $tag->id,
+            'lang' => 'pl',
+            'value' => 'Stare buty',
+        ]);
+
+        $data = [
+            'tag_category_id' => $this->category->id,
+            'name' => [
+                'en' => 'New shoes',
+                'pl' => 'Nowe buty',
+                'fr' => 'FR New shoes',
+            ],
+        ];
+
+        $response = $this->put(
+            'api/tags/'.$tag->id.
+            '?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertDatabaseCount('tag_translations', 2);
+
+        $this->assertDatabaseHas('tag_translations', [
+            'tag_id' => $tag->id,
+            'lang' => 'en',
+            'value' => 'New shoes',
+        ]);
+
+        $this->assertDatabaseHas('tag_translations', [
+            'tag_id' => $tag->id,
+            'lang' => 'pl',
+            'value' => 'Nowe buty',
+        ]);
+
+        $this->assertDatabaseMissing('tag_translations', [
+            'tag_id' => $tag->id,
+            'lang' => 'en',
+            'value' => 'Old shoes',
+        ]);
+
+        $this->assertDatabaseMissing('tag_translations', [
+            'tag_id' => $tag->id,
+            'lang' => 'fr',
+            'value' => 'FR New shoes',
+        ]);
+    }
 }

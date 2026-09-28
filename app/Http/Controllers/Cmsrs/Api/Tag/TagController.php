@@ -23,13 +23,18 @@ class TagController extends Controller
         'tag_category_id' => 'required|integer',
     ];
 
+    /**
+     * @var array<int, string>
+     */
+    private array $langs = [];
+
     public function __construct(
         protected ConfigService $configService,
         protected TagService $tagService,
     ) {
-        $langs = $this->configService->arrGetLangs();
+        $this->langs = $this->configService->arrGetLangs();
 
-        foreach ($langs as $lang) {
+        foreach ($this->langs as $lang) {
             $this->validationRules['name.'.$lang] =
                 'max:255|required';
         }
@@ -80,6 +85,11 @@ class TagController extends Controller
                 'error' => 'Tag category does not exist',
             ], 200);
         }
+
+        $data['name'] = array_intersect_key(
+            $data['name'],
+            array_flip($this->langs)
+        );
 
         $valid = $this->tagService
             ->checkIsDuplicateName($data);
@@ -145,6 +155,11 @@ class TagController extends Controller
                 'error' => 'Tag category does not exist',
             ], 200);
         }
+
+        $data['name'] = array_intersect_key(
+            $data['name'],
+            array_flip($this->langs)
+        );
 
         $valid = $this->tagService
             ->checkIsDuplicateName(

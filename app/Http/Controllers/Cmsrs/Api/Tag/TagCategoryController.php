@@ -20,13 +20,18 @@ class TagCategoryController extends Controller
      */
     private array $validationRules = [];
 
+    /**
+     * @var array<int, string>
+     */
+    private array $langs = [];
+
     public function __construct(
         protected ConfigService $configService,
         protected TagCategoryService $tagCategoryService,
     ) {
-        $langs = $this->configService->arrGetLangs();
+        $this->langs = $this->configService->arrGetLangs();
 
-        foreach ($langs as $lang) {
+        foreach ($this->langs as $lang) {
             $this->validationRules['name.'.$lang] =
                 'max:255|required';
         }
@@ -65,6 +70,11 @@ class TagCategoryController extends Controller
                 'error' => $validator->messages(),
             ], 200);
         }
+
+        $data['name'] = array_intersect_key(
+            $data['name'],
+            array_flip($this->langs)
+        );
 
         $valid =
             $this->tagCategoryService
@@ -119,6 +129,11 @@ class TagCategoryController extends Controller
                 'error' => $validator->messages(),
             ], 200);
         }
+
+        $data['name'] = array_intersect_key(
+            $data['name'],
+            array_flip($this->langs)
+        );
 
         $valid =
             $this->tagCategoryService

@@ -47,7 +47,7 @@ class TagApiTest extends Base
         ];
     }
 
-    public function test_it_will_add_tag(): void
+    public function test_it_will_add_tag_post_docs(): void
     {
         $this->assertDatabaseCount('tags', 0);
         $this->assertDatabaseCount('tag_translations', 0);
@@ -92,7 +92,7 @@ class TagApiTest extends Base
         ]);
     }
 
-    public function test_it_will_return_all_tags(): void
+    public function test_it_will_return_all_tags_get_docs(): void
     {
         $tag1 = Tag::create([
             'tag_category_id' => $this->category->id,
@@ -164,7 +164,7 @@ class TagApiTest extends Base
 
     }
 
-    public function test_it_will_return_one_tag(): void
+    public function test_it_will_return_one_tag_get_docs(): void
     {
         $tag = Tag::create([
             'tag_category_id' => $this->category->id,
@@ -214,7 +214,7 @@ class TagApiTest extends Base
         );
     }
 
-    public function test_it_will_update_tag(): void
+    public function test_it_will_update_tag_put_docs(): void
     {
         $tag = Tag::create([
             'tag_category_id' => $this->category->id,
@@ -319,7 +319,7 @@ class TagApiTest extends Base
         ]);
     }
 
-    public function test_it_will_delete_tag(): void
+    public function test_it_will_delete_tag_delete_docs(): void
     {
         $tag = Tag::create([
             'tag_category_id' => $this->category->id,
@@ -474,6 +474,64 @@ class TagApiTest extends Base
         $this->assertNotEmpty($res->error);
 
         $this->assertDatabaseCount('tags', 1);
+    }
+
+    public function test_it_will_not_update_tag_with_duplicate_name(): void
+    {
+        $tag = Tag::create([
+            'tag_category_id' => $this->category->id,
+        ]);
+
+        TagTranslation::create([
+            'tag_id' => $tag->id,
+            'lang' => 'en',
+            'value' => 'Shoes',
+        ]);
+
+        TagTranslation::create([
+            'tag_id' => $tag->id,
+            'lang' => 'pl',
+            'value' => 'Buty',
+        ]);
+
+        $tagSecond = Tag::create([
+            'tag_category_id' => $this->category->id,
+        ]);
+
+        TagTranslation::create([
+            'tag_id' => $tagSecond->id,
+            'lang' => 'en',
+            'value' => 'T-Shirts',
+        ]);
+
+        TagTranslation::create([
+            'tag_id' => $tagSecond->id,
+            'lang' => 'pl',
+            'value' => 'Koszulki',
+        ]);
+
+        $data = [
+            'tag_category_id' => $this->category->id,
+            'name' => [
+                'en' => 'T-Shirts',
+                'pl' => 'Other',
+            ],
+        ];
+
+        $response = $this->put(
+            'api/tags/'.$tag->id.'?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertFalse($res->success);
+        $this->assertNotEmpty($res->error);
+        $this->assertEquals('Duplicate tag: T-Shirts (en)', $res->error);
+
+        $this->assertDatabaseCount('tags', 2);
     }
 
     public function test_it_will_return_404_for_fake_tag(): void

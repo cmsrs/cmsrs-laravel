@@ -387,6 +387,58 @@ class TagCategoryApiTest extends Base
         $this->assertDatabaseCount('tag_categories', 1);
     }
 
+    public function test_it_will_not_update_tag_category_with_duplicate_name(): void
+    {
+        $category = TagCategory::create();
+
+        TagCategoryTranslation::create([
+            'tag_category_id' => $category->id,
+            'lang' => 'en',
+            'value' => 'Product type',
+        ]);
+
+        TagCategoryTranslation::create([
+            'tag_category_id' => $category->id,
+            'lang' => 'pl',
+            'value' => 'Typ produktu',
+        ]);
+
+        $categorySecond = TagCategory::create();
+
+        TagCategoryTranslation::create([
+            'tag_category_id' => $categorySecond->id,
+            'lang' => 'en',
+            'value' => 'Size',
+        ]);
+
+        TagCategoryTranslation::create([
+            'tag_category_id' => $categorySecond->id,
+            'lang' => 'pl',
+            'value' => 'Rozmiar',
+        ]);
+
+        $data = [
+            'name' => [
+                'en' => 'Size',
+                'pl' => 'Inna nazwa',
+            ],
+        ];
+
+        $response = $this->put(
+            'api/tag-categories/'.$category->id.'?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertFalse($res->success);
+        $this->assertNotEmpty($res->error);
+
+        $this->assertDatabaseCount('tag_categories', 2);
+    }
+
     public function test_it_will_return_404_for_fake_tag_category(): void
     {
         $response = $this->get(

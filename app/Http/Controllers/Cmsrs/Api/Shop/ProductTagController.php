@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Cmsrs\Api\Cms;
+namespace App\Http\Controllers\Cmsrs\Api\Shop;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Shop\Product;
 use App\Models\Cmsrs\Tag\Tag;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Tag\TaggableService;
@@ -13,7 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class PageTagController extends Controller
+class ProductTagController extends Controller
 {
     /**
      * @var array<int, string>
@@ -27,18 +27,18 @@ class PageTagController extends Controller
         $this->langs = $this->configService->arrGetLangs();
     }
 
-    public function index(Page $page): JsonResponse
+    public function index(Product $product): JsonResponse
     {
         return response()->json([
             'success' => true,
             'data' => $this->taggableService
-                ->getTags($page),
+                ->getTags($product),
         ], 200);
     }
 
     public function update(
         Request $request,
-        Page $page
+        Product $product
     ): JsonResponse {
         $rules = [
             'tags' => [
@@ -75,13 +75,13 @@ class PageTagController extends Controller
 
         try {
             $this->taggableService->updateTags(
-                $page,
+                $product,
                 $data['tags']
             );
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'error' => 'Update page tags problem',
+                'error' => 'Update product tags problem',
             ], 200);
         }
 
@@ -90,18 +90,18 @@ class PageTagController extends Controller
         ], 200);
     }
 
-    public function pagesByTag(Tag $tag): JsonResponse
+    public function productsByTag(Tag $tag): JsonResponse
     {
-        $pages = $this->taggableService
-            ->getPagesByTag($tag);
+        $products = $this->taggableService
+            ->getproductsByTag($tag);
 
         $data = [];
 
-        foreach ($pages as $page) {
-            /** @var Page&object{pivot: object{lang: string}} $page */
+        foreach ($products as $product) {
+            /** @var Product&object{pivot: object{lang: string}} $product */
             $data[] = [
-                'id' => $page->id,
-                'lang' => $page->pivot->lang,
+                'id' => $product->id,
+                'lang' => $product->pivot->lang,
             ];
         }
 

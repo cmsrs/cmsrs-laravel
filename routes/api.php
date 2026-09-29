@@ -11,6 +11,7 @@ use App\Http\Controllers\Cmsrs\Api\HeadlessController;
 use App\Http\Controllers\Cmsrs\Api\ImageController;
 use App\Http\Controllers\Cmsrs\Api\Shop\CheckoutController;
 use App\Http\Controllers\Cmsrs\Api\Shop\ProductController;
+use App\Http\Controllers\Cmsrs\Api\Shop\ProductTagController;
 use App\Http\Controllers\Cmsrs\Api\Tag\TagCategoryController;
 use App\Http\Controllers\Cmsrs\Api\Tag\TagController;
 use App\Http\Controllers\Cmsrs\Api\UserController;
@@ -159,6 +160,22 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     /* shop start */
     if (config('cmsrs.features.shop')) {
         Route::get($apiSecret.'products', [ProductController::class, 'index']);
+
+        Route::get(
+            $apiSecret.'products/{product}/tags',
+            [ProductTagController::class, 'index']
+        );
+
+        Route::put(
+            'products/{product}/tags',
+            [ProductTagController::class, 'update']
+        );
+
+        Route::get(
+            'products/tag/{tag}',
+            [ProductTagController::class, 'productsByTag']
+        );
+
         Route::post($apiSecret.'products', [ProductController::class, 'create']);
         Route::get($apiSecret.'products/{product}', [ProductController::class, 'getItem'])->whereNumber('product');
         Route::get($apiSecret.'products/pagination/{lang}/{column}/{direction}', [ProductController::class, 'getItemsWithPaginateAndSort']);

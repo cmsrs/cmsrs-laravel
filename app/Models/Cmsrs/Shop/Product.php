@@ -138,6 +138,11 @@ class Product extends Model
         return $this->hasMany(Translate::class, 'page_id', 'page_id');
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
     /**
      * @return HasMany<Content, $this>
      */

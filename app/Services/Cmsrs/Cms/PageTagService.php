@@ -17,7 +17,7 @@ class PageTagService
      *
      * @return array<string, array<int, array<string, mixed>>>
      */
-    public function getTags(Page $page): array
+    public function getTags(Page|Product $page): array
     {
         $page->load([
             'tags.translations',
@@ -45,27 +45,21 @@ class PageTagService
      * @param  array<string, array<int, int>>  $tagsByLang
      */
     public function updateTags(
-        Page $page,
+        Page|Product $taggable,
         array $tagsByLang
     ): bool {
-        return DB::transaction(function () use ($page, $tagsByLang) {
+        return DB::transaction(function () use ($taggable, $tagsByLang) {
             DB::table('taggables')
-                ->where('taggable_type', Page::class)
-                ->where('taggable_id', $page->id)
+                ->where('taggable_type', $taggable::class)
+                ->where('taggable_id', $taggable->getId())
                 ->delete();
 
             foreach ($tagsByLang as $lang => $tagIds) {
                 foreach ($tagIds as $tagId) {
-                    $tag = Tag::find($tagId);
-
-                    if (! $tag) {
-                        continue;
-                    }
-
                     DB::table('taggables')->insert([
-                        'tag_id' => $tag->id,
-                        'taggable_type' => Page::class,
-                        'taggable_id' => $page->id,
+                        'tag_id' => $tagId,
+                        'taggable_type' => $taggable::class,
+                        'taggable_id' => $taggable->getId(),
                         'lang' => $lang,
                     ]);
                 }

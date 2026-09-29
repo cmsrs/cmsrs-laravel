@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Cmsrs\Cms;
 
 use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Shop\Product;
 use App\Models\Cmsrs\Tag\Tag;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,7 @@ class PageTagService
      *
      * @return array<string, array<int, array<string, mixed>>>
      */
-    public function getPageTags(Page $page): array
+    public function getTags(Page $page): array
     {
         $page->load([
             'tags.translations',
@@ -43,7 +44,7 @@ class PageTagService
      *
      * @param  array<string, array<int, int>>  $tagsByLang
      */
-    public function updatePageTags(
+    public function updateTags(
         Page $page,
         array $tagsByLang
     ): bool {
@@ -87,6 +88,22 @@ class PageTagService
                 'translates',
             ])
             ->orderBy('pages.id')
+            ->get();
+    }
+
+    /**
+     * Get products assigned to a tag.
+     *
+     * @return Collection<int, Product>
+     */
+    public function getProductsByTag(Tag $tag): Collection
+    {
+        return $tag->products()
+            ->withPivot('lang')
+            ->with([
+                'translates',
+            ])
+            ->orderBy('products.id')
             ->get();
     }
 

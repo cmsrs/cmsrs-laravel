@@ -40,7 +40,7 @@ class PageTagController extends Controller
         return response()->json([
             'success' => true,
             'data' => $this->pageTagService
-                ->getPageTags($page),
+                ->getTags($page),
         ], 200);
     }
 
@@ -82,7 +82,7 @@ class PageTagController extends Controller
         $data = $validator->validated();
 
         try {
-            $this->pageTagService->updatePageTags(
+            $this->pageTagService->updateTags(
                 $page,
                 $data['tags']
             );

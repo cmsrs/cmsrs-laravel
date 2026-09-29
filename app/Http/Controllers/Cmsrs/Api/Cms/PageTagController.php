@@ -106,6 +106,7 @@ class PageTagController extends Controller
         $data = [];
 
         foreach ($pages as $page) {
+            /** @var Page&object{pivot: object{lang: string}} $page */
             $data[] = [
                 'id' => $page->id,
                 'lang' => $page->pivot->lang,

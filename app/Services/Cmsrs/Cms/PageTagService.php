@@ -25,6 +25,7 @@ class PageTagService
         $out = [];
 
         foreach ($page->tags as $tag) {
+            /** @var Tag&object{pivot: object{lang: string}} $tag */
             $lang = $tag->pivot->lang;
 
             if (! isset($out[$lang])) {

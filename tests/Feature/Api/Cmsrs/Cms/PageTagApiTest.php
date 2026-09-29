@@ -8,7 +8,6 @@ use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Tag\TagTranslation;
-use App\Services\Cmsrs\Cms\Page\PageService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Services\Cmsrs\Base;
 
@@ -44,19 +43,6 @@ class PageTagApiTest extends Base
             'position' => 1,
             'type' => 'cms',
         ]);
-
-        // $dataPage = [
-        //     'title' => ['en' => 'About me', 'pl' => 'O mnie'],
-        //     'short_title' => ['en' => 'About me', 'pl' => 'O mnie'],
-        //     'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
-        //     'published' => 1,
-        //     'commented' => 0,
-        //     'type' => 'cms',
-        //     'content' => ['en' => 'en getDummyTest', 'pl' => 'pl getDummyTest'],
-        //     'menu_id' => null,
-        //     'images' => null,
-        // ];
-        // return app(PageService::class)->wrapCreate($dataPage);
 
     }
 
@@ -216,7 +202,61 @@ class PageTagApiTest extends Base
         );
     }
 
-    public function test_it_will_replace_page_tags_put_docs(): void
+    public function test_it_will_return_pages_by_tag_get_docs(): void
+    {
+        $page1 = $this->createPage();
+        $page2 = $this->createPage();
+
+        $tag = $this->createTag(
+            'Shoes',
+            'Buty'
+        );
+
+        $page1->tags()->attach(
+            $tag->id,
+            ['lang' => 'en']
+        );
+
+        $page2->tags()->attach(
+            $tag->id,
+            ['lang' => 'pl']
+        );
+
+        $response = $this->get(
+            'api/pages/tag/'.$tag->id.
+            '?token='.$this->token
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertCount(2, $res->data);
+
+        $this->assertEquals(
+            $page1->id,
+            $res->data[0]->id
+        );
+
+        $this->assertEquals(
+            'en',
+            $res->data[0]->lang
+        );
+
+        $this->assertEquals(
+            $page2->id,
+            $res->data[1]->id
+        );
+
+        $this->assertEquals(
+            'pl',
+            $res->data[1]->lang
+        );
+    }
+
+    public function test_it_will_replace_page_tags(): void
     {
         $page = $this->createPage();
 
@@ -288,61 +328,7 @@ class PageTagApiTest extends Base
         ]);
     }
 
-    public function test_it_will_return_pages_by_tag_get_docs(): void
-    {
-        $page1 = $this->createPage();
-        $page2 = $this->createPage();
-
-        $tag = $this->createTag(
-            'Shoes',
-            'Buty'
-        );
-
-        $page1->tags()->attach(
-            $tag->id,
-            ['lang' => 'en']
-        );
-
-        $page2->tags()->attach(
-            $tag->id,
-            ['lang' => 'pl']
-        );
-
-        $response = $this->get(
-            'api/pages/tag/'.$tag->id.
-            '?token='.$this->token
-        );
-
-        $response->assertStatus(200);
-
-        $res = $response->getData();
-
-        $this->assertTrue($res->success);
-
-        $this->assertCount(2, $res->data);
-
-        $this->assertEquals(
-            $page1->id,
-            $res->data[0]->id
-        );
-
-        $this->assertEquals(
-            'en',
-            $res->data[0]->lang
-        );
-
-        $this->assertEquals(
-            $page2->id,
-            $res->data[1]->id
-        );
-
-        $this->assertEquals(
-            'pl',
-            $res->data[1]->lang
-        );
-    }
-
-    public function test_it_will_return_empty_tags_for_page_get_docs(): void
+    public function test_it_will_return_empty_tags_for_page(): void
     {
         $page = $this->createPage();
 
@@ -460,5 +446,67 @@ class PageTagApiTest extends Base
         );
 
         $response->assertStatus(404);
+    }
+
+    public function test_it_will_add_tags_to_page_for_unknown_lang(): void
+    {
+        $page = $this->createPage();
+
+        $tag1 = $this->createTag(
+            'Shoes',
+            'Buty'
+        );
+
+        $tag2 = $this->createTag(
+            'Sport',
+            'Sport'
+        );
+
+        $data = [
+            'tags' => [
+                'en' => [
+                    $tag1->id,
+                    $tag2->id,
+                ],
+                'de' => [
+                    $tag1->id,
+                ],
+            ],
+        ];
+
+        $response = $this->put(
+            'api/pages/'.$page->id.'/tags'.
+            '?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertDatabaseCount('taggables', 2);
+
+        $this->assertDatabaseHas('taggables', [
+            'tag_id' => $tag1->id,
+            'taggable_type' => Page::class,
+            'taggable_id' => $page->id,
+            'lang' => 'en',
+        ]);
+
+        $this->assertDatabaseHas('taggables', [
+            'tag_id' => $tag2->id,
+            'taggable_type' => Page::class,
+            'taggable_id' => $page->id,
+            'lang' => 'en',
+        ]);
+
+        $this->assertDatabaseMissing('taggables', [
+            'tag_id' => $tag1->id,
+            'taggable_type' => Page::class,
+            'taggable_id' => $page->id,
+            'lang' => 'de',
+        ]);
     }
 }

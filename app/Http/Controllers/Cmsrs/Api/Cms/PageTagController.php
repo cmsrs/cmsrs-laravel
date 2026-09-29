@@ -7,8 +7,8 @@ namespace App\Http\Controllers\Cmsrs\Api\Cms;
 use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Tag\Tag;
-use App\Services\Cmsrs\Cms\PageTagService;
 use App\Services\Cmsrs\ConfigService;
+use App\Services\Cmsrs\Tag\TaggableService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -22,7 +22,7 @@ class PageTagController extends Controller
 
     public function __construct(
         protected ConfigService $configService,
-        protected PageTagService $pageTagService,
+        protected TaggableService $taggableService,
     ) {
         $this->langs = $this->configService->arrGetLangs();
 
@@ -39,7 +39,7 @@ class PageTagController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => $this->pageTagService
+            'data' => $this->taggableService
                 ->getTags($page),
         ], 200);
     }
@@ -82,7 +82,7 @@ class PageTagController extends Controller
         $data = $validator->validated();
 
         try {
-            $this->pageTagService->updateTags(
+            $this->taggableService->updateTags(
                 $page,
                 $data['tags']
             );
@@ -100,7 +100,7 @@ class PageTagController extends Controller
 
     public function pagesByTag(Tag $tag): JsonResponse
     {
-        $pages = $this->pageTagService
+        $pages = $this->taggableService
             ->getPagesByTag($tag);
 
         $data = [];

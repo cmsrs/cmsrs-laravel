@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Cmsrs\Cms;
+namespace App\Services\Cmsrs\Tag;
 
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Shop\Product;
@@ -10,7 +10,7 @@ use App\Models\Cmsrs\Tag\Tag;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
-class PageTagService
+class TaggableService
 {
     /**
      * Get tags assigned to a page grouped by language.

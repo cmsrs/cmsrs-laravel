@@ -8,6 +8,7 @@ use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Tag\TagTranslation;
+use App\Services\Cmsrs\Cms\Page\PageService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Services\Cmsrs\Base;
 
@@ -37,12 +38,26 @@ class PageTagApiTest extends Base
     private function createPage(): Page
     {
         return Page::create([
-            'published' => 0,
+            'published' => 1,
             'commented' => 0,
             'after_login' => 0,
             'position' => 1,
             'type' => 'cms',
         ]);
+
+        // $dataPage = [
+        //     'title' => ['en' => 'About me', 'pl' => 'O mnie'],
+        //     'short_title' => ['en' => 'About me', 'pl' => 'O mnie'],
+        //     'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
+        //     'published' => 1,
+        //     'commented' => 0,
+        //     'type' => 'cms',
+        //     'content' => ['en' => 'en getDummyTest', 'pl' => 'pl getDummyTest'],
+        //     'menu_id' => null,
+        //     'images' => null,
+        // ];
+        // return app(PageService::class)->wrapCreate($dataPage);
+
     }
 
     private function createTag(
@@ -230,6 +245,8 @@ class PageTagApiTest extends Base
             ['lang' => 'en']
         );
 
+        $this->assertDatabaseCount('taggables', 2);
+
         $data = [
             'tags' => [
                 'en' => [
@@ -340,15 +357,7 @@ class PageTagApiTest extends Base
 
         $this->assertTrue($res->success);
 
-        $this->assertObjectNotHasProperty(
-            'en',
-            $res->data
-        );
-
-        $this->assertObjectNotHasProperty(
-            'pl',
-            $res->data
-        );
+        $this->assertEquals([], $res->data);
     }
 
     public function test_it_will_not_update_page_tags_with_fake_tag(): void

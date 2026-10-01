@@ -328,6 +328,110 @@ class ProductTagApiTest extends Base
         ]);
     }
 
+    public function test_it_will_remove_all_product_whihout_key_tags(): void
+    {
+        $product = $this->createProduct();
+
+        $tag1 = $this->createTag(
+            'Shoes',
+            'Buty'
+        );
+
+        $tag2 = $this->createTag(
+            'Sport',
+            'Sport'
+        );
+
+        $product->tags()->attach(
+            $tag1->id,
+            ['lang' => 'en']
+        );
+
+        $product->tags()->attach(
+            $tag1->id,
+            ['lang' => 'pl']
+        );
+
+        $product->tags()->attach(
+            $tag2->id,
+            ['lang' => 'en']
+        );
+
+        $this->assertDatabaseCount('taggables', 3);
+
+        $data = [
+            'tags' => [
+            ],
+        ];
+
+        $response = $this->put(
+            'api/products/'.$product->id.'/tags'.
+            '?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertDatabaseCount('taggables', 0);
+    }
+
+    public function test_it_will_remove_all_product_with_key_tags(): void
+    {
+        $product = $this->createProduct();
+
+        $tag1 = $this->createTag(
+            'Shoes',
+            'Buty'
+        );
+
+        $tag2 = $this->createTag(
+            'Sport',
+            'Sport'
+        );
+
+        $product->tags()->attach(
+            $tag1->id,
+            ['lang' => 'en']
+        );
+
+        $product->tags()->attach(
+            $tag1->id,
+            ['lang' => 'pl']
+        );
+
+        $product->tags()->attach(
+            $tag2->id,
+            ['lang' => 'en']
+        );
+
+        $this->assertDatabaseCount('taggables', 3);
+
+        $data = [
+            'tags' => [
+                'en' => [
+                ],
+            ],
+        ];
+
+        $response = $this->put(
+            'api/products/'.$product->id.'/tags'.
+            '?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertDatabaseCount('taggables', 0);
+    }
+
     public function test_it_will_return_empty_tags_for_product(): void
     {
         $product = $this->createProduct();

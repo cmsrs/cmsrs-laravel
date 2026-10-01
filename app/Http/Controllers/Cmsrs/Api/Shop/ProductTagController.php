@@ -42,7 +42,7 @@ class ProductTagController extends Controller
     ): JsonResponse {
         $rules = [
             'tags' => [
-                'required',
+                'present',
                 'array',
             ],
         ];
@@ -71,12 +71,12 @@ class ProductTagController extends Controller
             ], 200);
         }
 
-        $data = $validator->validated();
+        $tags = $validator->validated()['tags'] ?? [];
 
         try {
             $this->taggableService->updateTags(
                 $product,
-                $data['tags']
+                $tags
             );
         } catch (\Exception $e) {
             return response()->json([

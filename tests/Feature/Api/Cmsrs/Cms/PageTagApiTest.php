@@ -328,6 +328,110 @@ class PageTagApiTest extends Base
         ]);
     }
 
+    public function test_it_will_remove_all_page_without_key_tags(): void
+    {
+        $page = $this->createPage();
+
+        $tag1 = $this->createTag(
+            'Shoes',
+            'Buty'
+        );
+
+        $tag2 = $this->createTag(
+            'Sport',
+            'Sport'
+        );
+
+        $page->tags()->attach(
+            $tag1->id,
+            ['lang' => 'en']
+        );
+
+        $page->tags()->attach(
+            $tag1->id,
+            ['lang' => 'pl']
+        );
+
+        $page->tags()->attach(
+            $tag2->id,
+            ['lang' => 'en']
+        );
+
+        $this->assertDatabaseCount('taggables', 3);
+
+        $data = [
+            'tags' => [
+            ],
+        ];
+
+        $response = $this->put(
+            'api/pages/'.$page->id.'/tags'.
+            '?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertDatabaseCount('taggables', 0);
+    }
+
+    public function test_it_will_remove_all_page_add_key_tags(): void
+    {
+        $page = $this->createPage();
+
+        $tag1 = $this->createTag(
+            'Shoes',
+            'Buty'
+        );
+
+        $tag2 = $this->createTag(
+            'Sport',
+            'Sport'
+        );
+
+        $page->tags()->attach(
+            $tag1->id,
+            ['lang' => 'en']
+        );
+
+        $page->tags()->attach(
+            $tag1->id,
+            ['lang' => 'pl']
+        );
+
+        $page->tags()->attach(
+            $tag2->id,
+            ['lang' => 'en']
+        );
+
+        $this->assertDatabaseCount('taggables', 3);
+
+        $data = [
+            'tags' => [
+                'en' => [
+                ],
+            ],
+        ];
+
+        $response = $this->put(
+            'api/pages/'.$page->id.'/tags'.
+            '?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertDatabaseCount('taggables', 0);
+    }
+
     public function test_it_will_return_empty_tags_for_page(): void
     {
         $page = $this->createPage();

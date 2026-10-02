@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Models\Cmsrs\Tag;
 
+use App\Enums\Cmsrs\Tag\TagCategoryType;
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Tag\TagCategoryTranslation;
@@ -63,5 +64,39 @@ class TagCategoryTest extends TestCase
 
         $this->assertEquals($category->id, $TagCategoryTranslation1->tag_category_id);
         $this->assertEquals($category->id, $TagCategoryTranslation2->tag_category_id);
+    }
+
+    public function test_entity_type_defaults_to_page(): void
+    {
+        $category = TagCategory::create();
+
+        $category->refresh();
+
+        $this->assertEquals(
+            TagCategoryType::PAGE,
+            $category->entity_type
+        );
+
+        $this->assertDatabaseHas('tag_categories', [
+            'id' => $category->id,
+            'entity_type' => 'page',
+        ]);
+    }
+
+    public function test_entity_type_can_be_product(): void
+    {
+        $category = TagCategory::create([
+            'entity_type' => TagCategoryType::PRODUCT,
+        ]);
+
+        $this->assertEquals(
+            TagCategoryType::PRODUCT,
+            $category->entity_type
+        );
+
+        $this->assertDatabaseHas('tag_categories', [
+            'id' => $category->id,
+            'entity_type' => 'product',
+        ]);
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Cmsrs\Api\Tag;
 
+use App\Enums\Cmsrs\Tag\TagCategoryType;
 use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Tag\TagCategory;
 use App\Services\Cmsrs\ConfigService;
@@ -12,11 +13,13 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 
 class TagCategoryController extends Controller
 {
     /**
-     * @var array<string, string>
+     * @var array<string, string|array<int, string|Enum>>
      */
     private array $validationRules = [];
 
@@ -35,6 +38,12 @@ class TagCategoryController extends Controller
             $this->validationRules['name.'.$lang] =
                 'max:255|required';
         }
+
+        $this->validationRules['entity_type'] = [
+            'required',
+            Rule::enum(TagCategoryType::class),
+        ];
+
     }
 
     public function index(): JsonResponse
@@ -57,7 +66,7 @@ class TagCategoryController extends Controller
 
     public function create(Request $request): JsonResponse
     {
-        $data = $request->only('name');
+        $data = $request->only('name', 'entity_type');
 
         $validator = Validator::make(
             $data,
@@ -116,7 +125,7 @@ class TagCategoryController extends Controller
         Request $request,
         TagCategory $tagCategory
     ): JsonResponse {
-        $data = $request->only('name');
+        $data = $request->only('name', 'entity_type');
 
         $validator = Validator::make(
             $data,

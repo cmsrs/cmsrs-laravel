@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api\Cmsrs\Tag;
 
+use App\Enums\Cmsrs\Tag\TagCategoryType;
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Tag\TagCategoryTranslation;
@@ -36,6 +37,7 @@ class TagCategoryApiTest extends Base
         $this->createUser();
 
         $this->testData = [
+            'entity_type' => TagCategoryType::PRODUCT->value,
             'name' => [
                 'en' => 'Product type',
                 'pl' => 'Typ produktu',
@@ -69,6 +71,7 @@ class TagCategoryApiTest extends Base
 
         $this->assertDatabaseHas('tag_categories', [
             'id' => $category->id,
+            'entity_type' => TagCategoryType::PRODUCT->value,
         ]);
 
         $this->assertDatabaseHas('tag_category_translations', [
@@ -86,8 +89,12 @@ class TagCategoryApiTest extends Base
 
     public function test_it_will_return_all_tag_categories_get_docs(): void
     {
-        $category1 = TagCategory::create();
-        $category2 = TagCategory::create();
+        $category1 = TagCategory::create([
+            'entity_type' => TagCategoryType::PRODUCT->value,
+        ]);
+        $category2 = TagCategory::create([
+            'entity_type' => TagCategoryType::PAGE->value,
+        ]);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $category1->id,
@@ -104,13 +111,13 @@ class TagCategoryApiTest extends Base
         TagCategoryTranslation::create([
             'tag_category_id' => $category2->id,
             'lang' => 'en',
-            'value' => 'Color',
+            'value' => 'Topic',
         ]);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $category2->id,
             'lang' => 'pl',
-            'value' => 'Kolor',
+            'value' => 'Tytul',
         ]);
 
         $response = $this->get(
@@ -130,24 +137,36 @@ class TagCategoryApiTest extends Base
         );
 
         $this->assertEquals(
+            'product',
+            $res->data[0]->entity_type
+        );
+
+        $this->assertEquals(
             'Typ produktu',
             $res->data[0]->name->pl
         );
 
         $this->assertEquals(
-            'Color',
+            'page',
+            $res->data[1]->entity_type
+        );
+
+        $this->assertEquals(
+            'Topic',
             $res->data[1]->name->en
         );
 
         $this->assertEquals(
-            'Kolor',
+            'Tytul',
             $res->data[1]->name->pl
         );
     }
 
     public function test_it_will_return_one_tag_category_get_docs(): void
     {
-        $category = TagCategory::create();
+        $category = TagCategory::create([
+            'entity_type' => TagCategoryType::PRODUCT->value,
+        ]);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $category->id,
@@ -186,11 +205,18 @@ class TagCategoryApiTest extends Base
             'Typ produktu',
             $res->data->name->pl
         );
+
+        $this->assertEquals(
+            'product',
+            $res->data->entity_type
+        );
     }
 
     public function test_it_will_update_tag_category_put_docs(): void
     {
-        $category = TagCategory::create();
+        $category = TagCategory::create([
+            'entity_type' => TagCategoryType::PAGE->value,
+        ]);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $category->id,
@@ -205,6 +231,7 @@ class TagCategoryApiTest extends Base
         ]);
 
         $data = [
+            'entity_type' => TagCategoryType::PRODUCT->value,
             'name' => [
                 'en' => 'Product type updated',
                 'pl' => 'Typ produktu zmieniony',
@@ -222,6 +249,11 @@ class TagCategoryApiTest extends Base
         $res = $response->getData();
 
         $this->assertTrue($res->success);
+
+        $this->assertDatabaseHas('tag_categories', [
+            'id' => $category->id,
+            'entity_type' => TagCategoryType::PRODUCT->value,
+        ]);
 
         $this->assertDatabaseHas('tag_category_translations', [
             'tag_category_id' => $category->id,
@@ -244,7 +276,9 @@ class TagCategoryApiTest extends Base
 
     public function test_it_will_delete_tag_category_delete_docs(): void
     {
-        $category = TagCategory::create();
+        $category = TagCategory::create([
+            'entity_type' => TagCategoryType::PRODUCT->value,
+        ]);
 
         $this->assertEquals(1, TagCategory::count());
         $this->assertDatabaseCount('tag_categories', 1);
@@ -274,6 +308,7 @@ class TagCategoryApiTest extends Base
 
         $this->assertEquals(0, TagCategory::count());
         $this->assertDatabaseCount('tag_categories', 0);
+        $this->assertDatabaseCount('tag_category_translations', 0);
 
         $this->assertDatabaseMissing('tag_categories', [
             'id' => $category->id,
@@ -287,6 +322,7 @@ class TagCategoryApiTest extends Base
     public function test_it_will_not_add_tag_category_with_empty_name(): void
     {
         $data = [
+            'entity_type' => TagCategoryType::PRODUCT->value,
             'name' => [
                 'en' => '',
                 'pl' => 'Typ produktu',
@@ -311,6 +347,7 @@ class TagCategoryApiTest extends Base
     public function test_it_will_not_add_tag_category_when_language_is_missing(): void
     {
         $data = [
+            'entity_type' => TagCategoryType::PRODUCT->value,
             'name' => [
                 'en' => 'Product type',
             ],
@@ -334,6 +371,7 @@ class TagCategoryApiTest extends Base
     public function test_it_will_not_add_tag_category_when_key_is_wrong(): void
     {
         $data = [
+            'entity_type' => TagCategoryType::PRODUCT->value,
             'name_wrong' => [
                 'en' => 'Product type',
             ],
@@ -356,7 +394,9 @@ class TagCategoryApiTest extends Base
 
     public function test_it_will_not_add_tag_category_with_duplicate_name(): void
     {
-        $category = TagCategory::create();
+        $category = TagCategory::create([
+            'entity_type' => TagCategoryType::PRODUCT->value,
+        ]);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $category->id,
@@ -371,6 +411,7 @@ class TagCategoryApiTest extends Base
         ]);
 
         $data = [
+            'entity_type' => TagCategoryType::PRODUCT->value,
             'name' => [
                 'en' => 'Product type',
                 'pl' => 'Inna nazwa',
@@ -394,7 +435,9 @@ class TagCategoryApiTest extends Base
 
     public function test_it_will_not_update_tag_category_with_duplicate_name(): void
     {
-        $category = TagCategory::create();
+        $category = TagCategory::create([
+            'entity_type' => TagCategoryType::PRODUCT->value,
+        ]);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $category->id,
@@ -408,7 +451,9 @@ class TagCategoryApiTest extends Base
             'value' => 'Typ produktu',
         ]);
 
-        $categorySecond = TagCategory::create();
+        $categorySecond = TagCategory::create([
+            'entity_type' => TagCategoryType::PRODUCT->value,
+        ]);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $categorySecond->id,
@@ -464,7 +509,9 @@ class TagCategoryApiTest extends Base
 
     public function test_it_will_delete_category_with_tags(): void
     {
-        $category = TagCategory::create();
+        $category = TagCategory::create([
+            'entity_type' => TagCategoryType::PRODUCT->value,
+        ]);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $category->id,
@@ -556,6 +603,7 @@ class TagCategoryApiTest extends Base
         $this->assertNotNull($category);
 
         $this->assertDatabaseHas('tag_categories', [
+            'entity_type' => TagCategoryType::PRODUCT->value,
             'id' => $category->id,
         ]);
 
@@ -580,7 +628,9 @@ class TagCategoryApiTest extends Base
 
     public function test_it_will_update_tag_category_with_additional_language(): void
     {
-        $category = TagCategory::create();
+        $category = TagCategory::create([
+            'entity_type' => TagCategoryType::PRODUCT->value,
+        ]);
 
         TagCategoryTranslation::create([
             'tag_category_id' => $category->id,
@@ -595,6 +645,7 @@ class TagCategoryApiTest extends Base
         ]);
 
         $data = [
+            'entity_type' => TagCategoryType::PAGE->value,
             'name' => [
                 'en' => 'Product type updated',
                 'pl' => 'Typ produktu zmieniony',
@@ -614,6 +665,11 @@ class TagCategoryApiTest extends Base
 
         $this->assertTrue($res->success);
 
+        $this->assertDatabaseHas('tag_categories', [
+            'id' => $category->id,
+            'entity_type' => TagCategoryType::PAGE->value,
+        ]);
+
         $this->assertDatabaseHas('tag_category_translations', [
             'tag_category_id' => $category->id,
             'lang' => 'en',
@@ -631,5 +687,77 @@ class TagCategoryApiTest extends Base
             'lang' => 'en',
             'value' => 'Old name',
         ]);
+    }
+
+    public function test_it_will_add_product_tag_category(): void
+    {
+        $data = [
+            'entity_type' => 'product',
+            'name' => [
+                'en' => 'Product type',
+                'pl' => 'Typ produktu',
+            ],
+        ];
+
+        $response = $this->post(
+            'api/tag-categories?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertTrue($res->success);
+
+        $this->assertDatabaseHas('tag_categories', [
+            'entity_type' => 'product',
+        ]);
+    }
+
+    public function test_it_will_add_page_tag_category(): void
+    {
+        $data = [
+            'entity_type' => 'page',
+            'name' => [
+                'en' => 'Topics',
+                'pl' => 'Tematy',
+            ],
+        ];
+
+        $response = $this->post(
+            'api/tag-categories?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseHas('tag_categories', [
+            'entity_type' => 'page',
+        ]);
+    }
+
+    public function test_it_will_not_add_tag_category_with_invalid_type(): void
+    {
+        $data = [
+            'entity_type' => 'something',
+            'name' => [
+                'en' => 'Test',
+                'pl' => 'Test',
+            ],
+        ];
+
+        $response = $this->post(
+            'api/tag-categories?token='.$this->token,
+            $data
+        );
+
+        $response->assertStatus(200);
+
+        $res = $response->getData();
+
+        $this->assertFalse($res->success);
+
+        $this->assertDatabaseCount('tag_categories', 0);
     }
 }

@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TagCategory extends Model
 {
+    protected $fillable = [
+        'entity_type',
+    ];
+
     protected $casts = [
         'entity_type' => TagCategoryType::class,
     ];

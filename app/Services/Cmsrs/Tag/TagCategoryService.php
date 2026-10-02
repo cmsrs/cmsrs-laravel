@@ -31,7 +31,9 @@ class TagCategoryService
     public function createTagCategory(array $data): TagCategory
     {
         return DB::transaction(function () use ($data) {
-            $category = TagCategory::create();
+            $category = TagCategory::create([
+                'entity_type' => $data['entity_type'],
+            ]);
 
             $this->saveTranslations(
                 $category,
@@ -50,6 +52,10 @@ class TagCategoryService
         array $data
     ): bool {
         return DB::transaction(function () use ($category, $data) {
+            $category->update([
+                'entity_type' => $data['entity_type'],
+            ]);
+
             $this->saveTranslations(
                 $category,
                 $data['name']
@@ -138,6 +144,7 @@ class TagCategoryService
 
         $out = [
             'id' => $category->id,
+            'entity_type' => $category->entity_type->value,
             'name' => [],
         ];
 

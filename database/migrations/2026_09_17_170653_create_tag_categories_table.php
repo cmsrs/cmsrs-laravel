@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tag_categories', function (Blueprint $table) {
             $table->bigIncrements('id')->index();
+            $table->string('entity_type', 20)->default('page')->index();
             $table->timestamps();
         });
     }

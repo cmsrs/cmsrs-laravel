@@ -17,23 +17,19 @@ class TaggableService
      *
      * @return array<string, array<int, array<string, mixed>>>
      */
-    public function getTags(Page|Product $page): array
+    public function getTags(Page|Product $model): array
     {
-        $page->load([
-            'tags.translations',
-        ]);
 
         $out = [];
 
-        foreach ($page->tags as $tag) {
-            /** @var Tag&object{pivot: object{lang: string}} $tag */
-            $lang = $tag->pivot->lang;
-
-            if (! isset($out[$lang])) {
-                $out[$lang] = [];
+        foreach ($model->tags as $tag) {
+            foreach ($tag->translations as $translation) {
+                $out[$translation->lang][] = [
+                    'id' => $tag->id,
+                    'name' => $translation->value,
+                    'lang' => $translation->lang,
+                ];
             }
-
-            $out[$lang][] = $this->tagToApi($tag, $lang);
         }
 
         return $out;
@@ -54,15 +50,12 @@ class TaggableService
                 ->where('taggable_id', $taggable->getId())
                 ->delete();
 
-            foreach ($tagsByLang as $lang => $tagIds) {
-                foreach ($tagIds as $tagId) {
+            foreach ($tagsByLang as $tagId) {
                     DB::table('taggables')->insert([
                         'tag_id' => $tagId,
                         'taggable_type' => $taggable::class,
                         'taggable_id' => $taggable->getId(),
-                        'lang' => $lang,
                     ]);
-                }
             }
 
             return true;
@@ -77,7 +70,6 @@ class TaggableService
     public function getPagesByTag(Tag $tag): Collection
     {
         return $tag->pages()
-            ->withPivot('lang')
             ->with([
                 'translates',
             ])
@@ -93,7 +85,6 @@ class TaggableService
     public function getProductsByTag(Tag $tag): Collection
     {
         return $tag->products()
-            ->withPivot('lang')
             ->with([
                 'translates',
             ])
@@ -106,15 +97,19 @@ class TaggableService
      *
      * @return array<string, mixed>
      */
-    private function tagToApi(Tag $tag, string $lang): array
-    {
-        $translation = $tag->translations
-            ->firstWhere('lang', $lang);
+    private function tagToApi(Tag $tag): array
+    {   
+        $out = [];
 
-        return [
-            'id' => $tag->id,
-            'name' => $translation?->value,
-            'lang' => $lang,
-        ];
+        foreach ($tag->translations as $translation) {
+            $out[$translation->lang][] = [
+                'id' => $tag->id,
+                'name' => $translation->value,
+                'lang' => $translation->lang,
+            ];
+        }
+
+        return $out;
+
     }
 }

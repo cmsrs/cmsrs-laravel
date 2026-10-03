@@ -87,13 +87,8 @@ class PageTagApiTest extends Base
 
         $data = [
             'tags' => [
-                'en' => [
                     $tag1->id,
                     $tag2->id,
-                ],
-                'pl' => [
-                    $tag1->id,
-                ],
             ],
         ];
 
@@ -109,27 +104,24 @@ class PageTagApiTest extends Base
 
         $this->assertTrue($res->success);
 
-        $this->assertDatabaseCount('taggables', 3);
+        $this->assertDatabaseCount('taggables', 2);
 
         $this->assertDatabaseHas('taggables', [
             'tag_id' => $tag1->id,
             'taggable_type' => Page::class,
             'taggable_id' => $page->id,
-            'lang' => 'en',
         ]);
 
         $this->assertDatabaseHas('taggables', [
             'tag_id' => $tag2->id,
             'taggable_type' => Page::class,
             'taggable_id' => $page->id,
-            'lang' => 'en',
         ]);
 
         $this->assertDatabaseHas('taggables', [
             'tag_id' => $tag1->id,
             'taggable_type' => Page::class,
             'taggable_id' => $page->id,
-            'lang' => 'pl',
         ]);
     }
 
@@ -149,17 +141,10 @@ class PageTagApiTest extends Base
 
         $page->tags()->attach(
             $tag1->id,
-            ['lang' => 'en']
-        );
-
-        $page->tags()->attach(
-            $tag1->id,
-            ['lang' => 'pl']
         );
 
         $page->tags()->attach(
             $tag2->id,
-            ['lang' => 'en']
         );
 
         $response = $this->get(
@@ -174,7 +159,7 @@ class PageTagApiTest extends Base
         $this->assertTrue($res->success);
 
         $this->assertCount(2, $res->data->en);
-        $this->assertCount(1, $res->data->pl);
+        $this->assertCount(2, $res->data->pl);
 
         $this->assertEquals(
             $tag1->id,
@@ -191,6 +176,7 @@ class PageTagApiTest extends Base
             $res->data->en[0]->lang
         );
 
+
         $this->assertEquals(
             $tag1->id,
             $res->data->pl[0]->id
@@ -199,6 +185,11 @@ class PageTagApiTest extends Base
         $this->assertEquals(
             'Buty',
             $res->data->pl[0]->name
+        );
+
+        $this->assertEquals(
+            'pl',
+            $res->data->pl[0]->lang
         );
     }
 
@@ -214,12 +205,10 @@ class PageTagApiTest extends Base
 
         $page1->tags()->attach(
             $tag->id,
-            ['lang' => 'en']
         );
 
         $page2->tags()->attach(
             $tag->id,
-            ['lang' => 'pl']
         );
 
         $response = $this->get(
@@ -240,20 +229,13 @@ class PageTagApiTest extends Base
             $res->data[0]->id
         );
 
-        $this->assertEquals(
-            'en',
-            $res->data[0]->lang
-        );
+        $this->assertFalse(property_exists($res->data[0], 'lang'));
 
         $this->assertEquals(
             $page2->id,
             $res->data[1]->id
         );
 
-        $this->assertEquals(
-            'pl',
-            $res->data[1]->lang
-        );
     }
 
     public function test_it_will_replace_page_tags(): void
@@ -277,21 +259,17 @@ class PageTagApiTest extends Base
 
         $page->tags()->attach(
             $tag1->id,
-            ['lang' => 'en']
         );
 
         $page->tags()->attach(
             $tag2->id,
-            ['lang' => 'en']
         );
 
         $this->assertDatabaseCount('taggables', 2);
 
         $data = [
             'tags' => [
-                'en' => [
-                    $tag3->id,
-                ],
+                $tag3->id,
             ],
         ];
 
@@ -312,19 +290,16 @@ class PageTagApiTest extends Base
         $this->assertDatabaseMissing('taggables', [
             'tag_id' => $tag1->id,
             'taggable_id' => $page->id,
-            'lang' => 'en',
         ]);
 
         $this->assertDatabaseMissing('taggables', [
             'tag_id' => $tag2->id,
             'taggable_id' => $page->id,
-            'lang' => 'en',
         ]);
 
         $this->assertDatabaseHas('taggables', [
             'tag_id' => $tag3->id,
             'taggable_id' => $page->id,
-            'lang' => 'en',
         ]);
     }
 
@@ -344,20 +319,13 @@ class PageTagApiTest extends Base
 
         $page->tags()->attach(
             $tag1->id,
-            ['lang' => 'en']
-        );
-
-        $page->tags()->attach(
-            $tag1->id,
-            ['lang' => 'pl']
         );
 
         $page->tags()->attach(
             $tag2->id,
-            ['lang' => 'en']
         );
 
-        $this->assertDatabaseCount('taggables', 3);
+        $this->assertDatabaseCount('taggables', 2);
 
         $data = [
             'tags' => [
@@ -379,7 +347,7 @@ class PageTagApiTest extends Base
         $this->assertDatabaseCount('taggables', 0);
     }
 
-    public function test_it_will_remove_all_page_add_key_tags(): void
+    public function test_it_will_remove_all_page_add_key_tags_failed(): void
     {
         $page = $this->createPage();
 
@@ -395,24 +363,19 @@ class PageTagApiTest extends Base
 
         $page->tags()->attach(
             $tag1->id,
-            ['lang' => 'en']
         );
 
-        $page->tags()->attach(
-            $tag1->id,
-            ['lang' => 'pl']
-        );
 
         $page->tags()->attach(
             $tag2->id,
-            ['lang' => 'en']
         );
 
-        $this->assertDatabaseCount('taggables', 3);
+        $this->assertDatabaseCount('taggables', 2);
 
         $data = [
             'tags' => [
                 'en' => [
+                    $tag2->id,
                 ],
             ],
         ];
@@ -427,9 +390,11 @@ class PageTagApiTest extends Base
 
         $res = $response->getData();
 
-        $this->assertTrue($res->success);
+        $this->assertFalse($res->success);
 
-        $this->assertDatabaseCount('taggables', 0);
+        $this->assertNotEmpty($res->error);        
+
+        $this->assertDatabaseCount('taggables', 2);
     }
 
     public function test_it_will_return_empty_tags_for_page(): void
@@ -456,9 +421,7 @@ class PageTagApiTest extends Base
 
         $data = [
             'tags' => [
-                'en' => [
                     99999,
-                ],
             ],
         ];
 
@@ -485,9 +448,7 @@ class PageTagApiTest extends Base
 
         $data = [
             'wrong' => [
-                'en' => [
                     1,
-                ],
             ],
         ];
 
@@ -527,9 +488,7 @@ class PageTagApiTest extends Base
 
         $data = [
             'tags' => [
-                'en' => [
                     $tag->id,
-                ],
             ],
         ];
 
@@ -552,65 +511,23 @@ class PageTagApiTest extends Base
         $response->assertStatus(404);
     }
 
-    public function test_it_will_add_tags_to_page_for_unknown_lang(): void
+    public function test_it_will_not_attach_same_tag_to_page_twice(): void
     {
         $page = $this->createPage();
 
-        $tag1 = $this->createTag(
+        $tag = $this->createTag(
             'Shoes',
             'Buty'
         );
 
-        $tag2 = $this->createTag(
-            'Sport',
-            'Sport'
-        );
+        $page->tags()->attach($tag->id);
 
-        $data = [
-            'tags' => [
-                'en' => [
-                    $tag1->id,
-                    $tag2->id,
-                ],
-                'de' => [
-                    $tag1->id,
-                ],
-            ],
-        ];
+        $this->assertDatabaseCount('taggables', 1);
 
-        $response = $this->put(
-            'api/pages/'.$page->id.'/tags'.
-            '?token='.$this->token,
-            $data
-        );
+        $this->expectException(\Illuminate\Database\QueryException::class);
+        $page->tags()->attach($tag->id);
 
-        $response->assertStatus(200);
+        $this->assertDatabaseCount('taggables', 1);
+    }    
 
-        $res = $response->getData();
-
-        $this->assertTrue($res->success);
-
-        $this->assertDatabaseCount('taggables', 2);
-
-        $this->assertDatabaseHas('taggables', [
-            'tag_id' => $tag1->id,
-            'taggable_type' => Page::class,
-            'taggable_id' => $page->id,
-            'lang' => 'en',
-        ]);
-
-        $this->assertDatabaseHas('taggables', [
-            'tag_id' => $tag2->id,
-            'taggable_type' => Page::class,
-            'taggable_id' => $page->id,
-            'lang' => 'en',
-        ]);
-
-        $this->assertDatabaseMissing('taggables', [
-            'tag_id' => $tag1->id,
-            'taggable_type' => Page::class,
-            'taggable_id' => $page->id,
-            'lang' => 'de',
-        ]);
-    }
 }

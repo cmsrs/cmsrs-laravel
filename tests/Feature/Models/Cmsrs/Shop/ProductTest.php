@@ -19,8 +19,8 @@ class ProductTest extends TestCase
         $tag1 = Tag::create(['tag_category_id' => TagCategory::create()->id]);
         $tag2 = Tag::create(['tag_category_id' => TagCategory::create()->id]);
 
-        $product->tags()->attach($tag1->id, ['lang' => 'en']);
-        $product->tags()->attach($tag2->id, ['lang' => 'en']);
+        $product->tags()->attach($tag1->id);
+        $product->tags()->attach($tag2->id);
 
         $dbTaggableFields1 = $product->tags()->first()->pivot->toArray();
         $dbTaggableFields2 = $product->tags()->get()[1]->pivot->toArray();
@@ -28,12 +28,10 @@ class ProductTest extends TestCase
         $this->assertEquals($dbTaggableFields1['taggable_type'], Product::class);
         $this->assertEquals($dbTaggableFields1['taggable_id'], $product->id);
         $this->assertEquals($dbTaggableFields1['tag_id'], $tag1->id);
-        $this->assertEquals($dbTaggableFields1['lang'], 'en');
 
         $this->assertEquals($dbTaggableFields2['taggable_type'], Product::class);
         $this->assertEquals($dbTaggableFields2['taggable_id'], $product->id);
         $this->assertEquals($dbTaggableFields2['tag_id'], $tag2->id);
-        $this->assertEquals($dbTaggableFields2['lang'], 'en');
 
         $this->assertEquals($product->tags()->first()->id, $tag1->id);
         $this->assertEquals($product->tags()->get()[1]->id, $tag2->id);
@@ -42,11 +40,8 @@ class ProductTest extends TestCase
         $this->assertEquals(1, $tag1->products()->count());
         $this->assertEquals(1, $tag2->products()->count());
 
-        $tag1->products()->attach($product->id, ['lang' => 'pl']);
-        $this->assertEquals(2, $tag1->products()->count());
-
         $taggableRecords = \DB::table('taggables')->get();
-        $this->assertEquals(3, $taggableRecords->count());
+        $this->assertEquals(2, $taggableRecords->count());
 
         $taggableData = $taggableRecords->toArray();
         foreach ($taggableData as $record) {
@@ -54,9 +49,8 @@ class ProductTest extends TestCase
             $this->assertEquals($product->id, $record->taggable_id);
         }
 
-        // to zglasza wyjatek i to jest wlasiwe zachowanie!!!!!!!! - bo jest uniq - ale z drugiej strony to robimy
         $this->expectException(UniqueConstraintViolationException::class);
-        $tag1->products()->attach($product->id, ['lang' => 'en']);
+        $tag1->products()->attach($product->id);
     }
 
     public function test_product_tags_unique_exception(): void
@@ -64,8 +58,8 @@ class ProductTest extends TestCase
         $product = Product::create();
         $tag1 = Tag::create(['tag_category_id' => TagCategory::create()->id]);
 
-        $product->tags()->attach($tag1->id, ['lang' => 'en']);
+        $product->tags()->attach($tag1->id);
         $this->expectException(UniqueConstraintViolationException::class);
-        $product->tags()->attach($tag1->id, ['lang' => 'en']);
+        $product->tags()->attach($tag1->id);
     }
 }

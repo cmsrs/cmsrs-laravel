@@ -63,21 +63,20 @@ class TagTest extends TestCase
         $page1 = Page::create();
         $page2 = Page::create();
 
-        $tag->pages()->attach($page1->id, ['lang' => 'en']);
-        $tag->pages()->attach($page2->id, ['lang' => 'en']);
+        $tag->pages()->attach($page1->id);
+        $tag->pages()->attach($page2->id);
 
         $this->assertEquals(2, $tag->pages->count());
         $this->assertEquals($tag->pages[0]->id, $page1->id);
         $this->assertEquals($tag->pages[1]->id, $page2->id);
 
-        $this->assertEquals('en', $tag->pages[0]->pivot->lang);
-        $this->assertEquals('en', $tag->pages[1]->pivot->lang);
+        //$this->assertEquals('en', $tag->pages[0]->pivot-> );
+        //$this->assertEquals('en', $tag->pages[1]->pivot->lang);
 
         $dbTaggableFields = $tag->pages[0]->pivot->toArray();
         $this->assertEquals($dbTaggableFields['taggable_type'], Page::class);
         $this->assertEquals($dbTaggableFields['taggable_id'], $page1->id);
         $this->assertEquals($dbTaggableFields['tag_id'], $tag->id);
-        $this->assertEquals($dbTaggableFields['lang'], 'en');
     }
 
     public function test_tag_has_many_products_morph(): void
@@ -86,21 +85,18 @@ class TagTest extends TestCase
         $product1 = Product::create();
         $product2 = Product::create();
 
-        $tag->products()->attach($product1->id, ['lang' => 'en']);
-        $tag->products()->attach($product2->id, ['lang' => 'en']);
+        $tag->products()->attach($product1->id);
+        $tag->products()->attach($product2->id);
 
         $this->assertEquals(2, $tag->products->count());
         $this->assertEquals($tag->products[0]->id, $product1->id);
         $this->assertEquals($tag->products[1]->id, $product2->id);
 
-        $this->assertEquals('en', $tag->products[0]->pivot->lang);
-        $this->assertEquals('en', $tag->products[1]->pivot->lang);
 
         $dbTaggableFields = $tag->products[0]->pivot->toArray();
         $this->assertEquals($dbTaggableFields['taggable_type'], Product::class);
         $this->assertEquals($dbTaggableFields['taggable_id'], $product1->id);
         $this->assertEquals($dbTaggableFields['tag_id'], $tag->id);
-        $this->assertEquals($dbTaggableFields['lang'], 'en');
     }
 
     public function test_delete_tag_deletes_translations_and_taggables(): void
@@ -117,9 +113,7 @@ class TagTest extends TestCase
             'value' => 'book',
         ]);
 
-        $page->tags()->attach($tag->id, [
-            'lang' => 'en',
-        ]);
+        $page->tags()->attach($tag->id);
 
         $this->assertDatabaseHas('pages', [
             'id' => $page->id,
@@ -205,17 +199,11 @@ class TagTest extends TestCase
             'value' => 'book',
         ]);
 
-        $page1->tags()->attach($tag1->id, [
-            'lang' => 'en',
-        ]);
+        $page1->tags()->attach($tag1->id );
 
-        $page1->tags()->attach($tag2->id, [
-            'lang' => 'en',
-        ]);
+        $page1->tags()->attach($tag2->id);
 
-        $page2->tags()->attach($tag3->id, [
-            'lang' => 'en',
-        ]);
+        $page2->tags()->attach($tag3->id);
 
         $this->assertDatabaseHas('tag_category_translations', [
             'id' => $TagCategoryTranslation1->id,
@@ -317,7 +305,6 @@ class TagTest extends TestCase
             'tag_id' => $tag3->id,
             'taggable_id' => $page2->id,
             'taggable_type' => Page::class,
-            'lang' => 'en',
         ]);
 
         // Page nie zostały usunięte

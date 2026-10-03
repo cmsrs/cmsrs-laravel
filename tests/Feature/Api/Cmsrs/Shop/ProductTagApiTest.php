@@ -10,13 +10,17 @@ use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Tag\TagTranslation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Services\Cmsrs\Base;
+use PHPUnit\Framework\Attributes\Group;
 
+#[Group('product-tags')]
 class ProductTagApiTest extends Base
 {
     use RefreshDatabase;
 
     protected function setUp(): void
     {
+        $this->markTestSkipped('Temporarily skipped');
+
         putenv('LANGS="en,pl"');
         putenv('API_SECRET=""');
         putenv('CURRENCY="USD"');

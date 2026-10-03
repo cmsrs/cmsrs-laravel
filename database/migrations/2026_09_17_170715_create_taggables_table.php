@@ -18,10 +18,9 @@ return new class extends Migration
 
             $table->string('taggable_type');
             $table->unsignedBigInteger('taggable_id');
-            $table->string('lang', 8);
 
             $table->unique(
-                ['tag_id', 'taggable_type', 'taggable_id', 'lang'],
+                ['tag_id', 'taggable_type', 'taggable_id'],
                 'taggables_index_unique'
             );
 

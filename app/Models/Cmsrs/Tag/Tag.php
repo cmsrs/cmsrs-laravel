@@ -36,7 +36,7 @@ class Tag extends Model
      */
     public function pages(): MorphToMany
     {
-        return $this->morphedByMany(Page::class, 'taggable')->withPivot('lang');
+        return $this->morphedByMany(Page::class, 'taggable');
     }
 
     /**
@@ -44,6 +44,6 @@ class Tag extends Model
      */
     public function products(): MorphToMany
     {
-        return $this->morphedByMany(Product::class, 'taggable')->withPivot('lang');
+        return $this->morphedByMany(Product::class, 'taggable');
     }
 }

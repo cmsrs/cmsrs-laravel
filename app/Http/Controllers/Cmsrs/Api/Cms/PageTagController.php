@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Cmsrs\Api\Cms;
 use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Tag\Tag;
-use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Tag\TaggableService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,16 +14,10 @@ use Illuminate\Support\Facades\Validator;
 
 class PageTagController extends Controller
 {
-    /**
-     * @var array<int, string>
-     */
-    private array $langs = [];
 
     public function __construct(
-        protected ConfigService $configService,
         protected TaggableService $taggableService,
     ) {
-        $this->langs = $this->configService->arrGetLangs();
     }
 
     public function index(Page $page): JsonResponse
@@ -47,17 +40,10 @@ class PageTagController extends Controller
             ],
         ];
 
-        foreach ($this->langs as $lang) {
-            $rules['tags.'.$lang] = [
-                'nullable',
-                'array',
-            ];
-
-            $rules['tags.'.$lang.'.*'] = [
-                'integer',
-                'exists:tags,id',
-            ];
-        }
+        $rules['tags.*'] = [
+            'integer',
+            'exists:tags,id',
+        ];
 
         $validator = Validator::make(
             $request->all(),
@@ -79,6 +65,13 @@ class PageTagController extends Controller
                 $tags
             );
         } catch (\Exception $e) {
+
+            // printf(
+            //     "Error updating page tags: %s\n%s\n",
+            //     $e->getMessage(),
+            //     $e->getTraceAsString()
+            // );
+
             return response()->json([
                 'success' => false,
                 'error' => 'Update page tags problem',
@@ -98,10 +91,8 @@ class PageTagController extends Controller
         $data = [];
 
         foreach ($pages as $page) {
-            /** @var Page&object{pivot: object{lang: string}} $page */
             $data[] = [
                 'id' => $page->id,
-                'lang' => $page->pivot->lang,
             ];
         }
 

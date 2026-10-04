@@ -9,8 +9,8 @@ use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Tag\TagTranslation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Feature\Services\Cmsrs\Base;
 use PHPUnit\Framework\Attributes\Group;
+use Tests\Feature\Services\Cmsrs\Base;
 
 #[Group('product-tags')]
 class ProductTagApiTest extends Base

@@ -28,12 +28,12 @@ class PageTest extends TestCase
         $this->assertEquals($dbTaggableFields1['taggable_type'], Page::class);
         $this->assertEquals($dbTaggableFields1['taggable_id'], $page->id);
         $this->assertEquals($dbTaggableFields1['tag_id'], $tag1->id);
-        //$this->assertEquals($dbTaggableFields1['lang'], 'en');
+        // $this->assertEquals($dbTaggableFields1['lang'], 'en');
 
         $this->assertEquals($dbTaggableFields2['taggable_type'], Page::class);
         $this->assertEquals($dbTaggableFields2['taggable_id'], $page->id);
         $this->assertEquals($dbTaggableFields2['tag_id'], $tag2->id);
-        //$this->assertEquals($dbTaggableFields2['lang'], 'en');
+        // $this->assertEquals($dbTaggableFields2['lang'], 'en');
 
         $this->assertEquals($page->tags()->first()->id, $tag1->id);
         $this->assertEquals($page->tags()->get()[1]->id, $tag2->id);
@@ -42,8 +42,8 @@ class PageTest extends TestCase
         $this->assertEquals(1, $tag1->pages()->count());
         $this->assertEquals(1, $tag2->pages()->count());
 
-        //$tag1->pages()->attach($page->id);
-        //$this->assertEquals(2, $tag1->pages()->count());
+        // $tag1->pages()->attach($page->id);
+        // $this->assertEquals(2, $tag1->pages()->count());
 
         $taggableRecords = \DB::table('taggables')->get();
         $this->assertEquals(2, $taggableRecords->count());

@@ -70,8 +70,8 @@ class TagTest extends TestCase
         $this->assertEquals($tag->pages[0]->id, $page1->id);
         $this->assertEquals($tag->pages[1]->id, $page2->id);
 
-        //$this->assertEquals('en', $tag->pages[0]->pivot-> );
-        //$this->assertEquals('en', $tag->pages[1]->pivot->lang);
+        // $this->assertEquals('en', $tag->pages[0]->pivot-> );
+        // $this->assertEquals('en', $tag->pages[1]->pivot->lang);
 
         $dbTaggableFields = $tag->pages[0]->pivot->toArray();
         $this->assertEquals($dbTaggableFields['taggable_type'], Page::class);
@@ -91,7 +91,6 @@ class TagTest extends TestCase
         $this->assertEquals(2, $tag->products->count());
         $this->assertEquals($tag->products[0]->id, $product1->id);
         $this->assertEquals($tag->products[1]->id, $product2->id);
-
 
         $dbTaggableFields = $tag->products[0]->pivot->toArray();
         $this->assertEquals($dbTaggableFields['taggable_type'], Product::class);
@@ -199,7 +198,7 @@ class TagTest extends TestCase
             'value' => 'book',
         ]);
 
-        $page1->tags()->attach($tag1->id );
+        $page1->tags()->attach($tag1->id);
 
         $page1->tags()->attach($tag2->id);
 

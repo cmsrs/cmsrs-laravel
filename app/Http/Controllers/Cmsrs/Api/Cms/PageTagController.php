@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Validator;
 
 class PageTagController extends Controller
 {
-
     public function __construct(
         protected TaggableService $taggableService,
-    ) {
-    }
+    ) {}
 
     public function index(Page $page): JsonResponse
     {

@@ -8,6 +8,7 @@ use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Tag\TagTranslation;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Services\Cmsrs\Base;
 
@@ -87,8 +88,8 @@ class PageTagApiTest extends Base
 
         $data = [
             'tags' => [
-                    $tag1->id,
-                    $tag2->id,
+                $tag1->id,
+                $tag2->id,
             ],
         ];
 
@@ -175,7 +176,6 @@ class PageTagApiTest extends Base
             'en',
             $res->data->en[0]->lang
         );
-
 
         $this->assertEquals(
             $tag1->id,
@@ -365,7 +365,6 @@ class PageTagApiTest extends Base
             $tag1->id,
         );
 
-
         $page->tags()->attach(
             $tag2->id,
         );
@@ -392,7 +391,7 @@ class PageTagApiTest extends Base
 
         $this->assertFalse($res->success);
 
-        $this->assertNotEmpty($res->error);        
+        $this->assertNotEmpty($res->error);
 
         $this->assertDatabaseCount('taggables', 2);
     }
@@ -421,7 +420,7 @@ class PageTagApiTest extends Base
 
         $data = [
             'tags' => [
-                    99999,
+                99999,
             ],
         ];
 
@@ -448,7 +447,7 @@ class PageTagApiTest extends Base
 
         $data = [
             'wrong' => [
-                    1,
+                1,
             ],
         ];
 
@@ -488,7 +487,7 @@ class PageTagApiTest extends Base
 
         $data = [
             'tags' => [
-                    $tag->id,
+                $tag->id,
             ],
         ];
 
@@ -524,10 +523,9 @@ class PageTagApiTest extends Base
 
         $this->assertDatabaseCount('taggables', 1);
 
-        $this->expectException(\Illuminate\Database\QueryException::class);
+        $this->expectException(QueryException::class);
         $page->tags()->attach($tag->id);
 
         $this->assertDatabaseCount('taggables', 1);
-    }    
-
+    }
 }

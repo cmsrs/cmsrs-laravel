@@ -51,11 +51,11 @@ class TaggableService
                 ->delete();
 
             foreach ($tagsByLang as $tagId) {
-                    DB::table('taggables')->insert([
-                        'tag_id' => $tagId,
-                        'taggable_type' => $taggable::class,
-                        'taggable_id' => $taggable->getId(),
-                    ]);
+                DB::table('taggables')->insert([
+                    'tag_id' => $tagId,
+                    'taggable_type' => $taggable::class,
+                    'taggable_id' => $taggable->getId(),
+                ]);
             }
 
             return true;
@@ -98,7 +98,7 @@ class TaggableService
      * @return array<string, mixed>
      */
     private function tagToApi(Tag $tag): array
-    {   
+    {
         $out = [];
 
         foreach ($tag->translations as $translation) {

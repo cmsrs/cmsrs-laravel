@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Api\Cmsrs;
+namespace Tests\Feature\Api\Cmsrs\Tag;
 
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;
@@ -12,7 +12,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Services\Cmsrs\Base;
 
-abstract class TagApiTestCase extends Base
+abstract class TaggableApiCase extends Base
 {
     use RefreshDatabase;
 
@@ -253,7 +253,7 @@ abstract class TagApiTestCase extends Base
         );
 
         $taggable->tags()->attach(
-            $tag2->id
+            $tag2->id,
         );
 
         $this->assertDatabaseCount('taggables', 2);

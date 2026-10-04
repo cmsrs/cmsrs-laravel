@@ -114,6 +114,14 @@ abstract class TaggableApiCase extends Base
             'taggable_type' => $this->taggableClass(),
             'taggable_id' => $taggable->id,
         ]);
+
+        $this->restDoc->add(
+            'PUT',
+            'api/pages_or_products/$id/tags?token=$token',
+            $data,
+            $res,
+        );
+
     }
 
     public function test_it_will_return_taggable_tags_get_docs(): void
@@ -181,6 +189,14 @@ abstract class TaggableApiCase extends Base
             'pl',
             $res->data->pl[0]->lang
         );
+
+        $this->restDoc->add(
+            'GET',
+            'api/pages_or_products/$id/tags?token=$token',
+            null,
+            $res,
+        );
+
     }
 
     public function test_it_will_return_taggables_by_tag_get_docs(): void
@@ -227,6 +243,14 @@ abstract class TaggableApiCase extends Base
             $taggable2->id,
             $res->data[1]->id
         );
+
+        $this->restDoc->add(
+            'GET',
+            'api/pages/tag/$tag_id?token=$token',
+            null,
+            $res,
+        );
+
     }
 
     public function test_it_will_replace_taggable_tags(): void

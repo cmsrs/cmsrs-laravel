@@ -15,10 +15,6 @@ class ProductTagApiTest extends TaggableApiCase
     {
         return Product::create([
             'published' => 1,
-            'commented' => 0,
-            'after_login' => 0,
-            'position' => 1,
-            'type' => 'cms',
         ]);
     }
 

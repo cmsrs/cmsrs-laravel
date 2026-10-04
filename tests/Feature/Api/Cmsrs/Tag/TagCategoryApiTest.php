@@ -85,6 +85,13 @@ class TagCategoryApiTest extends Base
             'lang' => 'pl',
             'value' => 'Typ produktu',
         ]);
+
+        $this->restDoc->add(
+            'POST',
+            'api/tag-categories?token=$token',
+            $this->testData,
+            $res,
+        );
     }
 
     public function test_it_will_return_all_tag_categories_get_docs(): void
@@ -160,6 +167,13 @@ class TagCategoryApiTest extends Base
             'Tytul',
             $res->data[1]->name->pl
         );
+
+        $this->restDoc->add(
+            'GET',
+            'api/tag-categories?token=$token',
+            null,
+            $res,
+        );
     }
 
     public function test_it_will_return_one_tag_category_get_docs(): void
@@ -210,6 +224,14 @@ class TagCategoryApiTest extends Base
             'product',
             $res->data->entity_type
         );
+
+        $this->restDoc->add(
+            'GET',
+            'api/tag-categories/$category_id?token=$token',
+            null,
+            $res,
+        );
+
     }
 
     public function test_it_will_update_tag_category_put_docs(): void
@@ -272,6 +294,14 @@ class TagCategoryApiTest extends Base
             'lang' => 'en',
             'value' => 'Old name',
         ]);
+
+        $this->restDoc->add(
+            'PUT',
+            'api/tag-categories/$category_id?token=$token',
+            $data,
+            $res,
+        );
+
     }
 
     public function test_it_will_delete_tag_category_delete_docs(): void
@@ -317,6 +347,13 @@ class TagCategoryApiTest extends Base
         $this->assertDatabaseMissing('tag_category_translations', [
             'tag_category_id' => $category->id,
         ]);
+
+        $this->restDoc->add(
+            'DELETE',
+            'api/tag-categories/$category_id?token=$token',
+            null,
+            $res,
+        );
     }
 
     public function test_it_will_not_add_tag_category_with_empty_name(): void

@@ -90,6 +90,13 @@ class TagApiTest extends Base
             'lang' => 'pl',
             'value' => 'Buty',
         ]);
+
+        $this->restDoc->add(
+            'POST',
+            'api/tags?token=$token',
+            $this->testData,
+            $res,
+        );
     }
 
     public function test_it_will_return_all_tags_get_docs(): void
@@ -162,6 +169,12 @@ class TagApiTest extends Base
             $res->data[1]->name->pl
         );
 
+        $this->restDoc->add(
+            'GET',
+            'api/tags?token=token',
+            null,
+            $res,
+        );
     }
 
     public function test_it_will_return_one_tag_get_docs(): void
@@ -211,6 +224,13 @@ class TagApiTest extends Base
         $this->assertEquals(
             'Buty',
             $res->data->name->pl
+        );
+
+        $this->restDoc->add(
+            'GET',
+            'api/tags?token=token',
+            null,
+            $res,
         );
     }
 
@@ -271,6 +291,13 @@ class TagApiTest extends Base
             'lang' => 'en',
             'value' => 'Old shoes',
         ]);
+
+        $this->restDoc->add(
+            'PUT',
+            'api/tags/$tag_id?token=token',
+            $data,
+            $res,
+        );
     }
 
     public function test_it_will_change_tag_category(): void
@@ -358,6 +385,13 @@ class TagApiTest extends Base
 
         $this->assertDatabaseCount('tags', 0);
         $this->assertDatabaseCount('tag_translations', 0);
+
+        $this->restDoc->add(
+            'DELETE',
+            'api/tags/$tag_id?token=token',
+            null,
+            $res,
+        );
     }
 
     public function test_it_will_not_add_tag_with_empty_name(): void

@@ -13,11 +13,14 @@ use App\Services\Cmsrs\Navigation\UrlService;
 use App\Services\Cmsrs\Shop\Product\ProductDataService;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Support\Facades\Auth;
+use Tests\Support\RestDoc;
 use Tests\TestCase;
 
 class Base extends TestCase
 {
     protected $token;
+
+    protected RestDoc $restDoc;
 
     public function createUser()
     {
@@ -58,6 +61,8 @@ class Base extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->restDoc = new RestDoc;
     }
 
     protected function tearDown(): void

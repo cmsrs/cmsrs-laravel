@@ -91,25 +91,4 @@ class TaggableService
             ->orderBy('products.id')
             ->get();
     }
-
-    /**
-     * Convert tag to API structure.
-     *
-     * @return array<string, mixed>
-     */
-    private function tagToApi(Tag $tag): array
-    {
-        $out = [];
-
-        foreach ($tag->translations as $translation) {
-            $out[$translation->lang][] = [
-                'id' => $tag->id,
-                'name' => $translation->value,
-                'lang' => $translation->lang,
-            ];
-        }
-
-        return $out;
-
-    }
 }

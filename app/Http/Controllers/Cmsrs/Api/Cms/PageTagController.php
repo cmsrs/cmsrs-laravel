@@ -64,12 +64,6 @@ class PageTagController extends Controller
             );
         } catch (\Exception $e) {
 
-            // printf(
-            //     "Error updating page tags: %s\n%s\n",
-            //     $e->getMessage(),
-            //     $e->getTraceAsString()
-            // );
-
             return response()->json([
                 'success' => false,
                 'error' => 'Update page tags problem',

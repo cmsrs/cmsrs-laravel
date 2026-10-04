@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Cmsrs\Api\Shop;
 use App\Http\Controllers\Controller;
 use App\Models\Cmsrs\Shop\Product;
 use App\Models\Cmsrs\Tag\Tag;
-use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Tag\TaggableService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,17 +14,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductTagController extends Controller
 {
-    /**
-     * @var array<int, string>
-     */
-    private array $langs = [];
-
     public function __construct(
-        protected ConfigService $configService,
         protected TaggableService $taggableService,
-    ) {
-        $this->langs = $this->configService->arrGetLangs();
-    }
+    ) {}
 
     public function index(Product $product): JsonResponse
     {
@@ -47,17 +38,15 @@ class ProductTagController extends Controller
             ],
         ];
 
-        foreach ($this->langs as $lang) {
-            $rules['tags.'.$lang] = [
-                'nullable',
-                'array',
-            ];
+        $rules['tags.*'] = [
+            'integer',
+            'exists:tags,id',
+        ];
 
-            $rules['tags.'.$lang.'.*'] = [
-                'integer',
-                'exists:tags,id',
-            ];
-        }
+        $validator = Validator::make(
+            $request->all(),
+            $rules
+        );
 
         $validator = Validator::make(
             $request->all(),
@@ -98,10 +87,8 @@ class ProductTagController extends Controller
         $data = [];
 
         foreach ($products as $product) {
-            /** @var Product&object{pivot: object{lang: string}} $product */
             $data[] = [
                 'id' => $product->id,
-                'lang' => $product->pivot->lang,
             ];
         }
 

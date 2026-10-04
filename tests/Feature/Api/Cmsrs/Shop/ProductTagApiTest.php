@@ -8,19 +8,16 @@ use App\Models\Cmsrs\Shop\Product;
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Tag\TagTranslation;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PHPUnit\Framework\Attributes\Group;
 use Tests\Feature\Services\Cmsrs\Base;
 
-#[Group('product-tags')]
 class ProductTagApiTest extends Base
 {
     use RefreshDatabase;
 
     protected function setUp(): void
     {
-        $this->markTestSkipped('Temporarily skipped');
-
         putenv('LANGS="en,pl"');
         putenv('API_SECRET=""');
         putenv('CURRENCY="USD"');
@@ -91,13 +88,8 @@ class ProductTagApiTest extends Base
 
         $data = [
             'tags' => [
-                'en' => [
-                    $tag1->id,
-                    $tag2->id,
-                ],
-                'pl' => [
-                    $tag1->id,
-                ],
+                $tag1->id,
+                $tag2->id,
             ],
         ];
 
@@ -113,27 +105,24 @@ class ProductTagApiTest extends Base
 
         $this->assertTrue($res->success);
 
-        $this->assertDatabaseCount('taggables', 3);
+        $this->assertDatabaseCount('taggables', 2);
 
         $this->assertDatabaseHas('taggables', [
             'tag_id' => $tag1->id,
             'taggable_type' => Product::class,
             'taggable_id' => $product->id,
-            'lang' => 'en',
         ]);
 
         $this->assertDatabaseHas('taggables', [
             'tag_id' => $tag2->id,
             'taggable_type' => Product::class,
             'taggable_id' => $product->id,
-            'lang' => 'en',
         ]);
 
         $this->assertDatabaseHas('taggables', [
             'tag_id' => $tag1->id,
             'taggable_type' => Product::class,
             'taggable_id' => $product->id,
-            'lang' => 'pl',
         ]);
     }
 
@@ -153,17 +142,10 @@ class ProductTagApiTest extends Base
 
         $product->tags()->attach(
             $tag1->id,
-            ['lang' => 'en']
-        );
-
-        $product->tags()->attach(
-            $tag1->id,
-            ['lang' => 'pl']
         );
 
         $product->tags()->attach(
             $tag2->id,
-            ['lang' => 'en']
         );
 
         $response = $this->get(
@@ -178,7 +160,7 @@ class ProductTagApiTest extends Base
         $this->assertTrue($res->success);
 
         $this->assertCount(2, $res->data->en);
-        $this->assertCount(1, $res->data->pl);
+        $this->assertCount(2, $res->data->pl);
 
         $this->assertEquals(
             $tag1->id,
@@ -204,6 +186,11 @@ class ProductTagApiTest extends Base
             'Buty',
             $res->data->pl[0]->name
         );
+
+        $this->assertEquals(
+            'pl',
+            $res->data->pl[0]->lang
+        );
     }
 
     public function test_it_will_return_products_by_tag_get_docs(): void
@@ -218,12 +205,10 @@ class ProductTagApiTest extends Base
 
         $product1->tags()->attach(
             $tag->id,
-            ['lang' => 'en']
         );
 
         $product2->tags()->attach(
             $tag->id,
-            ['lang' => 'pl']
         );
 
         $response = $this->get(
@@ -244,20 +229,13 @@ class ProductTagApiTest extends Base
             $res->data[0]->id
         );
 
-        $this->assertEquals(
-            'en',
-            $res->data[0]->lang
-        );
+        $this->assertFalse(property_exists($res->data[0], 'lang'));
 
         $this->assertEquals(
             $product2->id,
             $res->data[1]->id
         );
 
-        $this->assertEquals(
-            'pl',
-            $res->data[1]->lang
-        );
     }
 
     public function test_it_will_replace_product_tags(): void
@@ -281,21 +259,17 @@ class ProductTagApiTest extends Base
 
         $product->tags()->attach(
             $tag1->id,
-            ['lang' => 'en']
         );
 
         $product->tags()->attach(
             $tag2->id,
-            ['lang' => 'en']
         );
 
         $this->assertDatabaseCount('taggables', 2);
 
         $data = [
             'tags' => [
-                'en' => [
-                    $tag3->id,
-                ],
+                $tag3->id,
             ],
         ];
 
@@ -316,23 +290,20 @@ class ProductTagApiTest extends Base
         $this->assertDatabaseMissing('taggables', [
             'tag_id' => $tag1->id,
             'taggable_id' => $product->id,
-            'lang' => 'en',
         ]);
 
         $this->assertDatabaseMissing('taggables', [
             'tag_id' => $tag2->id,
             'taggable_id' => $product->id,
-            'lang' => 'en',
         ]);
 
         $this->assertDatabaseHas('taggables', [
             'tag_id' => $tag3->id,
             'taggable_id' => $product->id,
-            'lang' => 'en',
         ]);
     }
 
-    public function test_it_will_remove_all_product_whihout_key_tags(): void
+    public function test_it_will_remove_all_product_without_key_tags(): void
     {
         $product = $this->createProduct();
 
@@ -348,20 +319,13 @@ class ProductTagApiTest extends Base
 
         $product->tags()->attach(
             $tag1->id,
-            ['lang' => 'en']
-        );
-
-        $product->tags()->attach(
-            $tag1->id,
-            ['lang' => 'pl']
         );
 
         $product->tags()->attach(
             $tag2->id,
-            ['lang' => 'en']
         );
 
-        $this->assertDatabaseCount('taggables', 3);
+        $this->assertDatabaseCount('taggables', 2);
 
         $data = [
             'tags' => [
@@ -383,7 +347,7 @@ class ProductTagApiTest extends Base
         $this->assertDatabaseCount('taggables', 0);
     }
 
-    public function test_it_will_remove_all_product_with_key_tags(): void
+    public function test_it_will_remove_all_product_add_key_tags_failed(): void
     {
         $product = $this->createProduct();
 
@@ -399,24 +363,18 @@ class ProductTagApiTest extends Base
 
         $product->tags()->attach(
             $tag1->id,
-            ['lang' => 'en']
-        );
-
-        $product->tags()->attach(
-            $tag1->id,
-            ['lang' => 'pl']
         );
 
         $product->tags()->attach(
             $tag2->id,
-            ['lang' => 'en']
         );
 
-        $this->assertDatabaseCount('taggables', 3);
+        $this->assertDatabaseCount('taggables', 2);
 
         $data = [
             'tags' => [
                 'en' => [
+                    $tag2->id,
                 ],
             ],
         ];
@@ -431,9 +389,11 @@ class ProductTagApiTest extends Base
 
         $res = $response->getData();
 
-        $this->assertTrue($res->success);
+        $this->assertFalse($res->success);
 
-        $this->assertDatabaseCount('taggables', 0);
+        $this->assertNotEmpty($res->error);
+
+        $this->assertDatabaseCount('taggables', 2);
     }
 
     public function test_it_will_return_empty_tags_for_product(): void
@@ -460,9 +420,7 @@ class ProductTagApiTest extends Base
 
         $data = [
             'tags' => [
-                'en' => [
-                    99999,
-                ],
+                99999,
             ],
         ];
 
@@ -489,9 +447,7 @@ class ProductTagApiTest extends Base
 
         $data = [
             'wrong' => [
-                'en' => [
-                    1,
-                ],
+                1,
             ],
         ];
 
@@ -531,9 +487,7 @@ class ProductTagApiTest extends Base
 
         $data = [
             'tags' => [
-                'en' => [
-                    $tag->id,
-                ],
+                $tag->id,
             ],
         ];
 
@@ -556,65 +510,22 @@ class ProductTagApiTest extends Base
         $response->assertStatus(404);
     }
 
-    public function test_it_will_add_tags_to_product_for_unknown_lang(): void
+    public function test_it_will_not_attach_same_tag_to_product_twice(): void
     {
         $product = $this->createProduct();
 
-        $tag1 = $this->createTag(
+        $tag = $this->createTag(
             'Shoes',
             'Buty'
         );
 
-        $tag2 = $this->createTag(
-            'Sport',
-            'Sport'
-        );
+        $product->tags()->attach($tag->id);
 
-        $data = [
-            'tags' => [
-                'en' => [
-                    $tag1->id,
-                    $tag2->id,
-                ],
-                'de' => [
-                    $tag1->id,
-                ],
-            ],
-        ];
+        $this->assertDatabaseCount('taggables', 1);
 
-        $response = $this->put(
-            'api/products/'.$product->id.'/tags'.
-            '?token='.$this->token,
-            $data
-        );
+        $this->expectException(QueryException::class);
+        $product->tags()->attach($tag->id);
 
-        $response->assertStatus(200);
-
-        $res = $response->getData();
-
-        $this->assertTrue($res->success);
-
-        $this->assertDatabaseCount('taggables', 2);
-
-        $this->assertDatabaseHas('taggables', [
-            'tag_id' => $tag1->id,
-            'taggable_type' => Product::class,
-            'taggable_id' => $product->id,
-            'lang' => 'en',
-        ]);
-
-        $this->assertDatabaseHas('taggables', [
-            'tag_id' => $tag2->id,
-            'taggable_type' => Product::class,
-            'taggable_id' => $product->id,
-            'lang' => 'en',
-        ]);
-
-        $this->assertDatabaseMissing('taggables', [
-            'tag_id' => $tag1->id,
-            'taggable_type' => Product::class,
-            'taggable_id' => $product->id,
-            'lang' => 'de',
-        ]);
+        $this->assertDatabaseCount('taggables', 1);
     }
 }

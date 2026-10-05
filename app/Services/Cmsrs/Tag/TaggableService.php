@@ -27,7 +27,6 @@ class TaggableService
                 $out[$translation->lang][] = [
                     'id' => $tag->id,
                     'name' => $translation->value,
-                    'lang' => $translation->lang,
                 ];
             }
         }

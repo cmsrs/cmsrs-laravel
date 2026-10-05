@@ -170,10 +170,12 @@ abstract class TaggableApiCase extends Base
             $res->data->en[0]->name
         );
 
-        $this->assertEquals(
-            'en',
-            $res->data->en[0]->lang
-        );
+        // $this->assertEquals(
+        //     'en',
+        //     $res->data->en[0]->lang
+        // );
+
+        $this->assertFalse(property_exists($res->data->en[0], 'lang'));
 
         $this->assertEquals(
             $tag1->id,
@@ -185,10 +187,11 @@ abstract class TaggableApiCase extends Base
             $res->data->pl[0]->name
         );
 
-        $this->assertEquals(
-            'pl',
-            $res->data->pl[0]->lang
-        );
+        // $this->assertEquals(
+        //     'pl',
+        //     $res->data->pl[0]->lang
+        // );
+        $this->assertFalse(property_exists($res->data->pl[0], 'lang'));
 
         $this->restDoc->add(
             'GET',

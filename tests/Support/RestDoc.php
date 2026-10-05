@@ -22,6 +22,8 @@ class RestDoc
         mixed $input,
         mixed $output,
     ): void {
+        return; // comment this line to generate rest api docs on every test run
+
         $test = $this->getTestName();
 
         file_put_contents(

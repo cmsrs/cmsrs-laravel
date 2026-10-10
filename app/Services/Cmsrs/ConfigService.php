@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Cmsrs;
 
+use App\Enums\Cmsrs\Tag\TagCategoryType;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 
@@ -212,5 +213,18 @@ class ConfigService
         // dump( 'formEnv='.$formEnv.' isFileExist ='.$isFileExist);
 
         return $formEnv && $isFileExist;
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    public function getTagEntityTypes(): array
+    {
+        $getAllTagEntityTypes = array_column(TagCategoryType::cases(), 'value');
+        if (! $this->getIsShop()) {
+            $getAllTagEntityTypes = [0 => $getAllTagEntityTypes[0]];
+        }
+
+        return $getAllTagEntityTypes;
     }
 }

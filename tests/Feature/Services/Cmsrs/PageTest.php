@@ -7,6 +7,7 @@ use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\Cms\MenuService;
 use App\Services\Cmsrs\Cms\Page\PageDataService;
 use App\Services\Cmsrs\Cms\Page\PageService;
+use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Navigation\UrlService;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -47,7 +48,7 @@ class PageTest extends Base
         putenv('CACHE_ENABLE=false');
         putenv('CACHE_ENABLE_FILE="app/cache_enable_test.txt"');
         putenv('DEMO_STATUS=false');
-        putenv('IS_SHOP=true');
+        putenv('IS_SHOP=false');
         putenv('IS_LOGIN=true');
         putenv('IS_REGISTER=true');
         putenv('IS_HEADLESS=false');
@@ -1420,5 +1421,14 @@ class PageTest extends Base
         $res = $this->get('api/page/'.$objPage->id);
         $this->assertEquals(404, $res->status());
     }
+
     /** stop - headless - forbidden */
+    public function get_Tag_Entity_Types_is_not_shop()
+    {
+        $types = (app(ConfigService::class))->getTagEntityTypes();
+        $this->assertNotEmpty($types);
+        $this->assertTrue(is_array($types));
+        $this->assertEquals(1, count($types));
+        $this->assertEquals('page', $types[0]);
+    }
 }

@@ -794,6 +794,7 @@ class TagCategoryApiTest extends Base
         $res = $response->getData();
 
         $this->assertFalse($res->success);
+        $this->assertNotEmpty($res->error);
 
         $this->assertDatabaseCount('tag_categories', 0);
     }

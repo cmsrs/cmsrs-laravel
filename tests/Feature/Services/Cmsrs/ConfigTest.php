@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Services\Cmsrs;
 
+use App\Enums\Cmsrs\Tag\TagCategoryType;
 use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\ConfigService;
@@ -45,7 +46,6 @@ class ConfigTest extends Base
     {
         $response = $this->get('api/config?token='.$this->token);
         $res = $response->getData();
-        // print_r($res);
 
         $this->assertTrue($res->success);
         $this->assertNotEmpty($res->data);
@@ -128,6 +128,16 @@ class ConfigTest extends Base
         /* demo status */
         /***************/
         $this->assertEquals(false, $res->data->demo_status);
+
+        /*******************/
+        /* tag entity types */
+        /*******************/
+        $tagCategoryType = TagCategoryType::cases();
+        $this->assertEquals(true, is_array($res->data->tag_entity_types));
+        $this->assertEquals($tagCategoryType[0]->value, $res->data->tag_entity_types[0]);
+        $this->assertEquals('page', $res->data->tag_entity_types[0]);
+        $this->assertEquals($tagCategoryType[1]->value, $res->data->tag_entity_types[1]);
+        $this->assertEquals('product', $res->data->tag_entity_types[1]);
     }
 
     public function test_it_will_get_exception_no_langs()

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Cmsrs\Api;
 
+use App\Enums\Cmsrs\Tag\TagCategoryType;
 use App\Http\Controllers\Controller;
 use App\Services\Cmsrs\ConfigService;
 use Illuminate\Http\JsonResponse;
@@ -29,6 +30,7 @@ class ConfigController extends Controller
             $config['currency'] = $this->configService->getCurrency();
             $config['demo_status'] = $this->configService->getDemoStatus();
             $config['is_shop'] = $this->configService->getIsShop();
+            $config['tag_entity_types'] = array_column(TagCategoryType::cases(), 'value');
         } catch (\Exception $e) {
             Log::error('config ex: '.$e->getMessage().' line: '.$e->getLine().'  file: '.$e->getFile());
 

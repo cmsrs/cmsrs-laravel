@@ -45,7 +45,7 @@ abstract class TaggableCreateApiCase extends Base
         $this->createUser();
     }
 
-    public function test_it_creates_a_taggable_with_a_tag_of_its_entity_type(): void
+    public function test_it_creates_a_taggable_with_a_tag_of_its_entity_type_docs(): void
     {
         $category = TagCategory::create(['entity_type' => $this->entityType()]);
         $tags = [
@@ -54,9 +54,10 @@ abstract class TaggableCreateApiCase extends Base
         ];
         $tagIds = array_map(fn (Tag $tag): int => $tag->id, $tags);
 
+        $dataInput = $this->createData(['tags' => $tagIds]);
         $response = $this->post(
             $this->createRoute().'?token='.$this->token,
-            $this->createData(['tags' => $tagIds])
+            $this->createData($dataInput)
         );
 
         $response->assertOk();
@@ -71,6 +72,14 @@ abstract class TaggableCreateApiCase extends Base
                 'taggable_id' => $response->json($this->idResponsePath()),
             ]);
         }
+
+        $this->restDoc->add(
+            'POST',
+            'api/pages_or_products?token=token',
+            $dataInput,
+            $response->getData(),
+        );
+
     }
 
     public function test_it_creates_a_taggable_without_tags_when_the_key_is_omitted(): void

@@ -11,6 +11,7 @@ use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ImageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -98,8 +99,25 @@ class PageController extends Controller
 
     public function create(Request $request): JsonResponse
     {
-        $data = $request->only('title', 'short_title', 'description', 'published', 'commented', 'after_login', 'type', 'content', 'menu_id', 'page_id', 'images');
-        $validator = Validator::make($data, $this->validationRules);
+        $data = $request->only(
+            'title',
+            'short_title',
+            'description',
+            'published',
+            'commented',
+            'after_login',
+            'type',
+            'content',
+            'menu_id',
+            'page_id',
+            'images',
+            'tags'
+        );
+        $validationRules = $this->validationRules + [
+            'tags' => ['sometimes', 'array'],
+            'tags.*' => ['integer', 'exists:tags,id'],
+        ];
+        $validator = Validator::make($data, $validationRules);
         if ($validator->fails()) {
             return response()->json(['success' => false, 'error' => $validator->messages()], 200);
         }
@@ -111,7 +129,11 @@ class PageController extends Controller
         }
 
         try {
-            $page = $this->pageService->wrapCreate($data);
+            $page = DB::transaction(function () use ($data) {
+                $page = $this->pageService->wrapCreate($data);
+
+                return $page;
+            });
         } catch (\Exception $e) {
             Log::error('page add ex: '.$e->getMessage().' line: '.$e->getLine().'  file: '.$e->getFile()); // .' for: '.var_export($data, true )
 

@@ -10,6 +10,7 @@ use App\Services\Cmsrs\ContentService;
 use App\Services\Cmsrs\Helpers\CacheManagerService;
 use App\Services\Cmsrs\ImageService;
 use App\Services\Cmsrs\Navigation\UrlService;
+use App\Services\Cmsrs\Tag\TaggableService;
 use App\Services\Cmsrs\TranslateService;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Database\Eloquent\Collection;
@@ -24,7 +25,8 @@ class PageService
         private ImageService $imageService,
         private UrlService $urlService,
         private CacheManagerService $cacheManagerService,
-        private TranslationReader $translationReader
+        private TranslationReader $translationReader,
+        protected TaggableService $taggableService,
     ) {}
 
     /**
@@ -95,6 +97,10 @@ class PageService
         if (! empty($data['images']) && is_array($data['images'])) {
             // $this->imageService->setTranslate($this->translateService);
             $this->imageService->createImages($data['images'], 'page', $page->id);
+        }
+
+        if (! empty($data['tags']) && is_array($data['tags'])) {
+            $this->taggableService->updateTags($page, $data['tags']);
         }
 
         return $page;

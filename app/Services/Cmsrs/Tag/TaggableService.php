@@ -37,19 +37,19 @@ class TaggableService
     /**
      * Replace all page tags.
      *
-     * @param  array<string, array<int, int>>  $tagsByLang
+     * @param  array<string, array<int, int>>  $tags
      */
     public function updateTags(
         Page|Product $taggable,
-        array $tagsByLang
+        array $tags
     ): bool {
-        return DB::transaction(function () use ($taggable, $tagsByLang) {
+        return DB::transaction(function () use ($taggable, $tags) {
             DB::table('taggables')
                 ->where('taggable_type', $taggable::class)
                 ->where('taggable_id', $taggable->getId())
                 ->delete();
 
-            foreach ($tagsByLang as $tagId) {
+            foreach ($tags as $tagId) {
                 DB::table('taggables')->insert([
                     'tag_id' => $tagId,
                     'taggable_type' => $taggable::class,

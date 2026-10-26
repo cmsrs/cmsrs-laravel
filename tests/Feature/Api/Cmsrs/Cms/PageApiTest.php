@@ -69,6 +69,7 @@ class PageApiTest extends Base
 
         $response->assertOk();
         $response->assertJsonPath('success', true);
+        $response->assertJsonMissingPath('error');
         $this->assertDatabaseCount('taggables', 0);
     }
 
@@ -81,6 +82,26 @@ class PageApiTest extends Base
 
         $response->assertOk();
         $response->assertJsonPath('success', false);
+        $response->assertJsonPath('error', fn ($value) => ! empty($value));
+
+        $this->assertDatabaseCount('pages', 0);
+        $this->assertDatabaseCount('taggables', 0);
+    }
+
+    public function test_it_does_not_create_a_page_with_a_product_tag(): void
+    {
+        $category = TagCategory::create(['entity_type' => 'product']); // we try add wrong tag - that belongs to product
+        $tag = Tag::create(['tag_category_id' => $category->id]);
+
+        $response = $this->post(
+            'api/pages?token='.$this->token,
+            $this->pageData(['tags' => [$tag->id]])
+        );
+
+        $response->assertOk();
+        $response->assertJsonPath('success', false);
+        $response->assertJsonPath('error', fn ($value) => ! empty($value));
+
         $this->assertDatabaseCount('pages', 0);
         $this->assertDatabaseCount('taggables', 0);
     }

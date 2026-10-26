@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Cmsrs\Api\Cms;
 
 use App\Http\Controllers\Controller;
+use App\Http\Validation\Cmsrs\TagValidationRules;
 use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\Cms\Page\PageService;
 use App\Services\Cmsrs\ConfigService;
@@ -113,10 +114,7 @@ class PageController extends Controller
             'images',
             'tags'
         );
-        $validationRules = $this->validationRules + [
-            'tags' => ['sometimes', 'array'],
-            'tags.*' => ['integer', 'exists:tags,id'],
-        ];
+        $validationRules = $this->validationRules + TagValidationRules::rules('page');
         $validator = Validator::make($data, $validationRules);
         if ($validator->fails()) {
             return response()->json(['success' => false, 'error' => $validator->messages()], 200);

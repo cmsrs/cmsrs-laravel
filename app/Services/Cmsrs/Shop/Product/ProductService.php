@@ -17,6 +17,7 @@ use App\Services\Cmsrs\Helpers\PriceHelperService;
 use App\Services\Cmsrs\ImageService;
 use App\Services\Cmsrs\Shop\DeliverService;
 use App\Services\Cmsrs\Shop\PaymentService;
+use App\Services\Cmsrs\Tag\TaggableService;
 use App\Services\Cmsrs\TranslateService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -33,6 +34,7 @@ class ProductService
         private TranslateService $translateService,
         private ContentService $contentService,
         private ProductDataService $productDataService,
+        private TaggableService $taggableService,
     ) {}
 
     /**
@@ -345,6 +347,9 @@ class ProductService
      */
     public function wrapCreate(array $data): Product
     {
+        $tags = $data['tags'] ?? [];
+        unset($data['tags']);
+
         $product = Product::create($data);
 
         if (empty($product->id)) {
@@ -355,6 +360,10 @@ class ProductService
         if (! empty($data['images']) && is_array($data['images'])) {
             // $this->imageService->setTranslate($this->translateService);
             $this->imageService->createImages($data['images'], 'product', $product->id);
+        }
+
+        if (! empty($tags) && is_array($tags)) {
+            $this->taggableService->updateTags($product, $tags);
         }
 
         return $product;

@@ -91,6 +91,9 @@ class PageService
      */
     public function wrapCreate(array $data): Page
     {
+        $tags = $data['tags'] ?? [];
+        unset($data['tags']);
+
         $page = $this->createPage($data);
         $this->createTranslate(['page_id' => $page->id, 'data' => $data]);
 
@@ -99,8 +102,8 @@ class PageService
             $this->imageService->createImages($data['images'], 'page', $page->id);
         }
 
-        if (! empty($data['tags']) && is_array($data['tags'])) {
-            $this->taggableService->updateTags($page, $data['tags']);
+        if (! empty($tags) && is_array($tags)) {
+            $this->taggableService->updateTags($page, $tags);
         }
 
         return $page;

@@ -127,11 +127,8 @@ class PageController extends Controller
         }
 
         try {
-            $page = DB::transaction(function () use ($data) {
-                $page = $this->pageService->wrapCreate($data);
-
-                return $page;
-            });
+            $page = DB::transaction(fn () => $this->pageService->wrapCreate($data)
+            );
         } catch (\Exception $e) {
             Log::error('page add ex: '.$e->getMessage().' line: '.$e->getLine().'  file: '.$e->getFile()); // .' for: '.var_export($data, true )
 

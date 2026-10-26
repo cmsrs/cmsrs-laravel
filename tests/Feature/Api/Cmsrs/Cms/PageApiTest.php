@@ -5,112 +5,16 @@ declare(strict_types=1);
 namespace Tests\Feature\Api\Cmsrs\Cms;
 
 use App\Models\Cmsrs\Cms\Page;
-use App\Models\Cmsrs\Tag\Tag;
-use App\Models\Cmsrs\Tag\TagCategory;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Feature\Services\Cmsrs\Base;
+use Tests\Feature\Api\Cmsrs\Tag\TaggableCreateApiCase;
 
-class PageApiTest extends Base
+class PageApiTest extends TaggableCreateApiCase
 {
-    use RefreshDatabase;
-
-    protected function setUp(): void
+    protected function createRoute(): string
     {
-        putenv('LANGS="en,pl"');
-        putenv('API_SECRET=""');
-        putenv('CURRENCY="USD"');
-        putenv('CACHE_ENABLE=false');
-        putenv('CACHE_ENABLE_FILE="app/cache_enable_test.txt"');
-        putenv('DEMO_STATUS=false');
-        putenv('IS_SHOP=true');
-        putenv('IS_LOGIN=true');
-        putenv('IS_REGISTER=true');
-        putenv('IS_HEADLESS=false');
-        putenv('IS_SSR=true');
-
-        parent::setUp();
-
-        $this->createUser();
+        return 'api/pages';
     }
 
-    public function test_it_creates_a_page_with_tags(): void
-    {
-        $category = TagCategory::create();
-        $tag1 = Tag::create(['tag_category_id' => $category->id]);
-        $tag2 = Tag::create(['tag_category_id' => $category->id]);
-
-        $data = $this->pageData([
-            'tags' => [$tag1->id, $tag2->id],
-        ]);
-
-        $response = $this->post('api/pages?token='.$this->token, $data);
-
-        $response->assertOk();
-        $response->assertJsonPath('success', true);
-
-        $pageId = $response->json('data.pageId');
-        $this->assertDatabaseCount('taggables', 2);
-        $this->assertDatabaseHas('taggables', [
-            'tag_id' => $tag1->id,
-            'taggable_type' => Page::class,
-            'taggable_id' => $pageId,
-        ]);
-        $this->assertDatabaseHas('taggables', [
-            'tag_id' => $tag2->id,
-            'taggable_type' => Page::class,
-            'taggable_id' => $pageId,
-        ]);
-        $this->assertSame([$tag1->id, $tag2->id], $response->json('data.data.tags'));
-    }
-
-    public function test_it_creates_a_page_without_tags_when_the_key_is_omitted(): void
-    {
-        $response = $this->post('api/pages?token='.$this->token, $this->pageData());
-
-        $response->assertOk();
-        $response->assertJsonPath('success', true);
-        $response->assertJsonMissingPath('error');
-        $this->assertDatabaseCount('taggables', 0);
-    }
-
-    public function test_it_does_not_create_a_page_with_an_unknown_tag(): void
-    {
-        $response = $this->post(
-            'api/pages?token='.$this->token,
-            $this->pageData(['tags' => [999999]])
-        );
-
-        $response->assertOk();
-        $response->assertJsonPath('success', false);
-        $response->assertJsonPath('error', fn ($value) => ! empty($value));
-
-        $this->assertDatabaseCount('pages', 0);
-        $this->assertDatabaseCount('taggables', 0);
-    }
-
-    public function test_it_does_not_create_a_page_with_a_product_tag(): void
-    {
-        $category = TagCategory::create(['entity_type' => 'product']); // we try add wrong tag - that belongs to product
-        $tag = Tag::create(['tag_category_id' => $category->id]);
-
-        $response = $this->post(
-            'api/pages?token='.$this->token,
-            $this->pageData(['tags' => [$tag->id]])
-        );
-
-        $response->assertOk();
-        $response->assertJsonPath('success', false);
-        $response->assertJsonPath('error', fn ($value) => ! empty($value));
-
-        $this->assertDatabaseCount('pages', 0);
-        $this->assertDatabaseCount('taggables', 0);
-    }
-
-    /**
-     * @param  array<string, mixed>  $extra
-     * @return array<string, mixed>
-     */
-    private function pageData(array $extra = []): array
+    protected function createData(array $extra = []): array
     {
         return array_merge([
             'title' => ['en' => 'Page title', 'pl' => 'Tytuł strony'],
@@ -124,5 +28,25 @@ class PageApiTest extends Base
             'menu_id' => '',
             'page_id' => '',
         ], $extra);
+    }
+
+    protected function taggableClass(): string
+    {
+        return Page::class;
+    }
+
+    protected function entityType(): string
+    {
+        return 'page';
+    }
+
+    protected function tableName(): string
+    {
+        return 'pages';
+    }
+
+    protected function idResponsePath(): string
+    {
+        return 'data.pageId';
     }
 }

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Cmsrs\Api\Shop;
 
 use App\Enums\Cmsrs\SortDirection;
 use App\Http\Controllers\Controller;
+use App\Http\Validation\Cmsrs\TagValidationRules;
 use App\Models\Cmsrs\Shop\Product;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\Helpers\PriceHelperService;
@@ -14,6 +15,7 @@ use App\Services\Cmsrs\Shop\Product\ProductDataService;
 use App\Services\Cmsrs\Shop\Product\ProductService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -105,10 +107,12 @@ class ProductController extends Controller
             'price',
             'product_description',
             'page_id',
-            'images'
+            'images',
+            'tags'
         );
 
-        $validator = Validator::make($data, $this->validationRules);
+        $validationRules = $this->validationRules + TagValidationRules::rules('product');
+        $validator = Validator::make($data, $validationRules);
         if ($validator->fails()) {
             return response()->json(['success' => false, 'error' => $validator->messages()], 200);
         }
@@ -120,7 +124,8 @@ class ProductController extends Controller
         }
 
         try {
-            $product = $this->productService->wrapCreate($data);
+            $product = DB::transaction(fn () => $this->productService->wrapCreate($data)
+            );
         } catch (\Exception $e) {
 
             Log::error('product add ex: '.$e->getMessage().' line: '.$e->getLine().'  file: '.$e->getFile()); // .' for: '.var_export($data, true )

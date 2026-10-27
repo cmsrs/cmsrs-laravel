@@ -202,7 +202,7 @@ class ProductTest extends Base
         ];
     }
 
-    public function test_it_will_search_products()
+    public function test_it_will_search_admin_products()
     {
         $price1 = 11200;
         $price2 = 32100;
@@ -1368,6 +1368,13 @@ class ProductTest extends Base
 
         $res0 = $response0->getData();
 
+        $this->restDoc->add(
+            'POST',
+            'api/products?token=token',
+            $this->testData,
+            $res0,
+        );
+
         $this->assertTrue($res0->success);
         $this->assertNotEmpty($res0->data->productId);
 
@@ -1415,7 +1422,7 @@ class ProductTest extends Base
 
     }
 
-    public function test_it_will_read_product_docs()
+    public function test_it_will_read_products_docs()
     {
         $this->setTestData();
         $res0 = $this->post('api/products?token='.$this->token, $this->testData);
@@ -1426,6 +1433,13 @@ class ProductTest extends Base
         $response22 = $this->get('api/products?token='.$this->token);
 
         $res22 = $response22->getData();
+
+        $this->restDoc->add(
+            'GET',
+            'api/products?token=token',
+            null,
+            $res22,
+        );
 
         $this->assertTrue($res22->success);
         $this->assertEquals(count($res22->data), 1);
@@ -1830,6 +1844,13 @@ class ProductTest extends Base
         $response = $this->get('api/products/'.$d->productId.'?token='.$this->token);
         $res = $response->getData();
 
+        $this->restDoc->add(
+            'POST',
+            'api/products/$productId?token=token',
+            null,
+            $res,
+        );
+
         $this->assertTrue($res->success);
         $this->assertEquals($d->productId, $res->data->id);
 
@@ -2197,7 +2218,7 @@ class ProductTest extends Base
         $this->assertEquals($res->data->data[0]->published, 1);
     }
 
-    public function test_search_products_by_sku()
+    public function test_search_admin_products_by_sku()
     {
         $this->setTestData();
         $this->setTestData2();
@@ -2228,7 +2249,7 @@ class ProductTest extends Base
         $this->assertEquals($sku2, $dd[1]->sku);
     }
 
-    public function test_search_products_by_many_columns_pagination_docs()
+    public function test_search_admin_products_by_many_columns_pagination_docs()
     {
         $this->setTestData();
         $d['sku'] = 'app_1';
@@ -2366,7 +2387,7 @@ class ProductTest extends Base
         $this->simpleTestCheckoutData($res->data->data[0]);
     }
 
-    public function test_search_and_sort_checkout_by_total_price_docs()
+    public function test_search_admin_and_sort_checkout_by_total_price_docs()
     {
         $times = 31;
         $out = $this->warpSaveTestCheckoutManyTimes($times);
@@ -2385,25 +2406,25 @@ class ProductTest extends Base
         $this->simpleTestCheckoutData($res->data->data[0]);
     }
 
-    public function test_front_search_fake_products()
+    public function test_front_search_admin_fake_products()
     {
         $response = $this->get('/search?key=abc');
         $response->assertStatus(200);
     }
 
-    public function test_front_search_fake_with_wrong_lang_products()
+    public function test_front_search_admin_fake_with_wrong_lang_products()
     {
         $response = $this->get('/enn_fake/search?key=abc');
         $response->assertStatus(404);
     }
 
-    public function test_front_search_fake_with_correct_lang_products()
+    public function test_front_search_admin_fake_with_correct_lang_products()
     {
         $response = $this->get('/en/search?key=abc');
         $response->assertStatus(404); // because in one lang we can't add lang in url
     }
 
-    public function test_front_search_real_products()
+    public function test_front_search_admin_real_products()
     {
         $this->setTestData();
         $product_name = self::STR_PRODUCT_NAME_EN;
@@ -2411,7 +2432,7 @@ class ProductTest extends Base
         $response->assertStatus(200);
     }
 
-    public function test_front_search_all_products()
+    public function test_front_search_admin_all_products()
     {
         $response = $this->get('/search?key=');
         $response->assertStatus(200);

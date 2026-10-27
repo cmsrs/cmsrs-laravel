@@ -1318,7 +1318,7 @@ class PageTest extends Base
         $this->comparePageFields($testData, $data);
     }
 
-    public function test_it_will_delete_page()
+    public function test_it_will_delete_page_docs()
     {
         $this->setTestData();
         $responseAll = $this->get('api/pages?token='.$this->token);
@@ -1330,6 +1330,13 @@ class PageTest extends Base
         $response0 = $this->delete('api/pages/'.$id.'?token='.$this->token);
         $res0 = $response0->getData();
         $this->assertTrue($res0->success);
+
+        $this->restDoc->add(
+            'DEL',
+            'api/pages/$pageId?token=token',
+            null,
+            $res0,
+        );
 
         $responseAllAfter = $this->get('api/pages?token='.$this->token);
         $resAllAfter = $responseAllAfter->getData();

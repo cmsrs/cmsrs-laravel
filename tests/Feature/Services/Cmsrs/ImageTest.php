@@ -55,7 +55,7 @@ class ImageTest extends Base
 
     }
 
-    private function prepareTestPage($withImages = true)
+    private function prepareTestPage($withImages = true, $showDocs = false)
     {
         $this->arrPageId = [];
 
@@ -89,6 +89,15 @@ class ImageTest extends Base
         $response = $this->post('api/pages?token='.$this->token, $this->testImgData);
         $res = $response->getData();
 
+        if ($showDocs == true) {
+            $this->restDoc->add(
+                'POST',
+                'api/pages?token=token',
+                $this->testImgData,
+                $res,
+            );
+        }
+
         $this->assertTrue($res->success);
 
         $pageId = $res->data->pageId;
@@ -102,6 +111,11 @@ class ImageTest extends Base
     protected function tearDown(): void
     {
         parent::tearDown();
+    }
+
+    public function test_it_will_create_page_with_images_docs()
+    {
+        $this->prepareTestPage(true, true);
     }
 
     public function test_it_will_set_translate()
@@ -118,13 +132,20 @@ class ImageTest extends Base
         $this->assertEquals(null, $altEn2);
     }
 
-    public function test_it_will_get_page_with_images_with_auth_docs()
+    public function test_it_will_get_page_by_id_with_images_with_auth_docs()
     {
         $this->prepareTestPage();
 
         $response0 = $this->get('api/pages/'.$this->pageId.'?token='.$this->token);
         $res0 = $response0->getData();
         $this->assertTrue($res0->success);
+
+        $this->restDoc->add(
+            'GET',
+            'api/pages/$pageId?token=token',
+            null,
+            $res0,
+        );
 
         $pageFields = Page::FIELDS; // app(PageService::class)->pageFields;
         $this->assertFalse(in_array('created_at', $pageFields));
@@ -152,7 +173,7 @@ class ImageTest extends Base
         $this->assertTrue(empty($res0->data->images));
     }
 
-    public function test_it_will_get_page_with_images_without_auth_docs()
+    public function test_it_will_get_page_with_images_without_auth_depreciate()
     {
         $this->markTestSkipped('This API is not used in the project');
 
@@ -204,6 +225,13 @@ class ImageTest extends Base
 
         $res2 = $response2->getData();
         $this->assertTrue($res2->success);
+
+        $this->restDoc->add(
+            'GET',
+            'api/pages?token=token',
+            null,
+            $res2,
+        );
 
         $this->assertEquals(count($res2->data), 1);
 
@@ -596,6 +624,13 @@ class ImageTest extends Base
         $response = $this->put('api/pages/'.$this->pageId.'?token='.$this->token, $testImgData);
         $res = $response->getData();
         $this->assertTrue($res->success);
+
+        $this->restDoc->add(
+            'POST',
+            'api/pages/$pageId?token=token',
+            $testImgData,
+            $res,
+        );
 
         $translateAfter = Translate::query()->whereNotNull('image_id')->where('column', 'alt')->get()->toArray();
         $this->assertEquals(4, count($translateAfter));

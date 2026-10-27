@@ -27,7 +27,6 @@
 </p>
 </br>
 
-
 ## cmsRS ECOSYSTEM:
 
 ![cmsRS ecosystem diagram](./rs/readme_imgs/cmsrs_ecosystem.svg)

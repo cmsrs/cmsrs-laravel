@@ -383,8 +383,15 @@ class ProductService
      */
     public function wrapUpdate(Product $mProduct, array $data): bool
     {
+        $tags = $data['tags'] ?? null;
+        unset($data['tags']);
+
         $res = $mProduct->update($data);
         $this->createTranslate(['product_id' => $mProduct->id, 'data' => $data], false);
+
+        if (is_array($tags)) {
+            $this->taggableService->updateTags($mProduct, $tags);
+        }
 
         return $res;
     }
@@ -414,7 +421,10 @@ class ProductService
             throw new \Exception('Product not found');
         }
 
-        return $this->productDataService->getProductDataByProductArr($productOut);
+        $data = $this->productDataService->getProductDataByProductArr($productOut);
+        $data['tags'] = $this->taggableService->getTagIds($productOut);
+
+        return $data;
     }
 
     /**

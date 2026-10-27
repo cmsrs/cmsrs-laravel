@@ -46,4 +46,17 @@ class PageTagApiTest extends TaggableApiCase
     {
         return Page::class;
     }
+
+    protected function detailRoute(Model $model): string
+    {
+        return 'api/pages/'.$model->id;
+    }
+
+    protected function updateData(array $extra = []): array
+    {
+        return array_merge([
+            'title' => ['en' => 'Updated title', 'pl' => 'Zaktualizowany tytuł'],
+            'short_title' => ['en' => 'Updated', 'pl' => 'Zaktualizowany'],
+        ], $extra);
+    }
 }

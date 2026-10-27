@@ -146,8 +146,8 @@ class PageController extends Controller
         //    return response()->json(['success' => false, 'error' => 'Page not find'], 200);
         // }
 
-        $data = $request->only('title', 'short_title', 'description', 'published', 'commented', 'after_login', 'type', 'content', 'menu_id', 'page_id', 'images'); // 'position',
-        $validator = Validator::make($data, $this->validationRules);
+        $data = $request->only('title', 'short_title', 'description', 'published', 'commented', 'after_login', 'type', 'content', 'menu_id', 'page_id', 'images', 'tags'); // 'position',
+        $validator = Validator::make($data, $this->validationRules + TagValidationRules::rules('page'));
         if ($validator->fails()) {
             return response()->json(['success' => false, 'error' => $validator->messages()], 200);
         }

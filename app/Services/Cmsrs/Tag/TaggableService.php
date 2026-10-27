@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\DB;
 class TaggableService
 {
     /**
+     * @return list<int>
+     */
+    public function getTagIds(Page|Product $model): array
+    {
+        return array_values(
+            $model->tags()
+                ->pluck('tags.id')
+                ->map(fn ($id): int => (int) $id)
+                ->all()
+        );
+    }
+
+    /**
      * Get tags assigned to a page grouped by language.
      *
      * @return array<string, array<int, array<string, mixed>>>

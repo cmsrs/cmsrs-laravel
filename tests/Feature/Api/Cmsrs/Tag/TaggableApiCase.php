@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Api\Cmsrs\Tag;
 
+use App\Models\Cmsrs\Shop\Product;
 use App\Models\Cmsrs\Tag\Tag;
 use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Tag\TagTranslation;
@@ -23,6 +24,10 @@ abstract class TaggableApiCase extends Base
     abstract protected function byTagRoute(Tag $tag): string;
 
     abstract protected function taggableClass(): string;
+
+    abstract protected function detailRoute(Model $model): string;
+
+    abstract protected function updateData(array $extra = []): array;
 
     protected function setUp(): void
     {
@@ -47,7 +52,9 @@ abstract class TaggableApiCase extends Base
         string $en,
         string $pl
     ): Tag {
-        $category = TagCategory::create();
+        $category = TagCategory::create([
+            'entity_type' => $this->taggableClass() === Product::class ? 'product' : 'page',
+        ]);
 
         $tag = Tag::create([
             'tag_category_id' => $category->id,
@@ -66,6 +73,15 @@ abstract class TaggableApiCase extends Base
         ]);
 
         return $tag;
+    }
+
+    private function addNameTranslation(Model $taggable): void
+    {
+        $taggable->translates()->create([
+            'lang' => 'en',
+            'column' => $this->taggableClass() === Product::class ? 'product_name' : 'title',
+            'value' => 'Existing item',
+        ]);
     }
 
     public function test_it_will_add_tags_to_taggable_put_docs(): void
@@ -122,6 +138,91 @@ abstract class TaggableApiCase extends Base
             $res,
         );
 
+    }
+
+    public function test_taggable_detail_includes_tag_ids(): void
+    {
+        $taggable = $this->createTaggable();
+        $this->addNameTranslation($taggable);
+
+        $tags = [
+            $this->createTag('Shoes', 'Buty'),
+            $this->createTag('Sport', 'Sport'),
+        ];
+        $tagIds = array_map(fn (Tag $tag): int => $tag->id, $tags);
+        $taggable->tags()->attach($tagIds);
+
+        $response = $this->get($this->detailRoute($taggable).'?token='.$this->token);
+
+        $response->assertOk()->assertJsonPath('success', true);
+        $this->assertSame($tagIds, $response->json('data.tags'));
+    }
+
+    public function test_taggable_update_replaces_tags(): void
+    {
+        $taggable = $this->createTaggable();
+        $this->addNameTranslation($taggable);
+        $initialTag = $this->createTag('Initial', 'Początkowy');
+        $replacementTag = $this->createTag('Replacement', 'Zamienny');
+        $taggable->tags()->attach($initialTag->id);
+
+        $response = $this->put(
+            $this->detailRoute($taggable).'?token='.$this->token,
+            $this->updateData(['tags' => [$replacementTag->id]])
+        );
+
+        $response->assertOk()->assertJsonPath('success', true);
+        $this->assertDatabaseMissing('taggables', [
+            'tag_id' => $initialTag->id,
+            'taggable_type' => $this->taggableClass(),
+            'taggable_id' => $taggable->id,
+        ]);
+        $this->assertDatabaseHas('taggables', [
+            'tag_id' => $replacementTag->id,
+            'taggable_type' => $this->taggableClass(),
+            'taggable_id' => $taggable->id,
+        ]);
+
+    }
+
+    public function test_taggable_update_without_tags_preserves_existing_tags(): void
+    {
+        $taggable = $this->createTaggable();
+        $this->addNameTranslation($taggable);
+        $tag = $this->createTag('Initial', 'Początkowy');
+        $taggable->tags()->attach($tag->id);
+
+        $response = $this->put(
+            $this->detailRoute($taggable).'?token='.$this->token,
+            $this->updateData()
+        );
+
+        $response->assertOk()->assertJsonPath('success', true);
+        $this->assertDatabaseHas('taggables', [
+            'tag_id' => $tag->id,
+            'taggable_type' => $this->taggableClass(),
+            'taggable_id' => $taggable->id,
+        ]);
+    }
+
+    public function test_taggable_update_with_empty_tags_clears_tags(): void
+    {
+        $taggable = $this->createTaggable();
+        $this->addNameTranslation($taggable);
+        $tag = $this->createTag('Initial', 'Początkowy');
+        $taggable->tags()->attach($tag->id);
+
+        $response = $this->put(
+            $this->detailRoute($taggable).'?token='.$this->token,
+            $this->updateData(['tags' => []])
+        );
+
+        $response->assertOk()->assertJsonPath('success', true);
+        $this->assertDatabaseMissing('taggables', [
+            'tag_id' => $tag->id,
+            'taggable_type' => $this->taggableClass(),
+            'taggable_id' => $taggable->id,
+        ]);
     }
 
     public function test_it_will_return_taggable_tags_get_docs(): void

@@ -148,11 +148,12 @@ class ProductController extends Controller
             'price',
             'product_description',
             'page_id',
-            'images'
+            'images',
+            'tags'
         );
 
         $this->validationRules['sku'] = $this->validationRules['sku'].',sku,'.$product->id; // sku during update - have to be uniq for productId
-        $validator = Validator::make($data, $this->validationRules);
+        $validator = Validator::make($data, $this->validationRules + TagValidationRules::rules('product'));
         if ($validator->fails()) {
             return response()->json(['success' => false, 'error' => $validator->messages()], 200);
         }

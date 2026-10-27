@@ -42,4 +42,18 @@ class ProductTagApiTest extends TaggableApiCase
     {
         return Product::class;
     }
+
+    protected function detailRoute(Model $model): string
+    {
+        return 'api/products/'.$model->id;
+    }
+
+    protected function updateData(array $extra = []): array
+    {
+        return array_merge([
+            'product_name' => ['en' => 'Updated product', 'pl' => 'Zaktualizowany produkt'],
+            'sku' => 'SKU-UPDATED',
+            'price' => 100,
+        ], $extra);
+    }
 }

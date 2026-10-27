@@ -123,8 +123,15 @@ class PageService
      */
     public function wrapUpdate(Page $mPage, array $data): bool
     {
+        $tags = $data['tags'] ?? null;
+        unset($data['tags']);
+
         $mPage->update($data);
         $this->createTranslate(['page_id' => $mPage->id, 'data' => $data], false);
+
+        if (is_array($tags)) {
+            $this->taggableService->updateTags($mPage, $tags);
+        }
 
         return true;
     }
@@ -286,6 +293,7 @@ class PageService
 
         $formatPage = $this->getPageDataFormat($page);
         $formatPage['images'] = $this->imageService->getImagesAndThumbsByTypeAndRefId('page', $mPage->id);
+        $formatPage['tags'] = $this->taggableService->getTagIds($mPage);
 
         return $formatPage;
     }

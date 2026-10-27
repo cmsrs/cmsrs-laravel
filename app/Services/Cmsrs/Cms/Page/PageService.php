@@ -304,16 +304,17 @@ class PageService
     public function getAllPagesWithImages(?string $type = null): array
     {
         if ($type) {
-            $pages = Page::with(['translates', 'contents'])->where('type', $type)->orderBy('position', 'asc')->get(Page::FIELDS)->toArray();
+            $pages = Page::with(['translates', 'contents'])->where('type', $type)->orderBy('position', 'asc')->get(Page::FIELDS);
         } else {
-            $pages = Page::with(['translates', 'contents'])->orderBy('position', 'asc')->get(Page::FIELDS)->toArray();
+            $pages = Page::with(['translates', 'contents'])->orderBy('position', 'asc')->get(Page::FIELDS);
         }
 
         $i = 0;
         $out = [];
         foreach ($pages as $page) {
-            $out[$i] = $this->getPageDataFormat($page);
-            $out[$i]['images'] = $this->imageService->getImagesAndThumbsByTypeAndRefId('page', $page['id']);
+            $out[$i] = $this->getPageDataFormat($page->toArray());
+            $out[$i]['images'] = $this->imageService->getImagesAndThumbsByTypeAndRefId('page', $page->id);
+            $out[$i]['tags'] = $this->taggableService->getTagIds($page);
             $i++;
         }
 

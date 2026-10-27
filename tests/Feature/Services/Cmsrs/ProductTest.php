@@ -10,6 +10,8 @@ use App\Models\Cmsrs\Shop\Basket;
 use App\Models\Cmsrs\Shop\Checkout;
 use App\Models\Cmsrs\Shop\Order;
 use App\Models\Cmsrs\Shop\Product;
+use App\Models\Cmsrs\Tag\Tag;
+use App\Models\Cmsrs\Tag\TagCategory;
 use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\Cms\MenuService;
 use App\Services\Cmsrs\Cms\Page\PageService;
@@ -1361,7 +1363,9 @@ class ProductTest extends Base
 
     public function test_it_will_create_product_docs()
     {
+        $tagIds = $this->createDocumentationTags('product');
         $this->setTestData();
+        $this->testData['tags'] = $tagIds;
 
         $this->testData['published'] = 0;
         $response0 = $this->post('api/products?token='.$this->token, $this->testData);
@@ -1379,6 +1383,7 @@ class ProductTest extends Base
         $this->assertNotEmpty($res0->data->productId);
 
         $this->assertEquals(self::INT_PRODUCT_PRICE, $res0->data->data->price);
+        $this->assertEquals($tagIds, $res0->data->data->tags);
         $this->assertEquals($this->priceDescription, $res0->data->data->price_description);
 
         $products = Product::all()->toArray();
@@ -1424,7 +1429,9 @@ class ProductTest extends Base
 
     public function test_it_will_read_products_docs()
     {
+        $tagIds = $this->createDocumentationTags('product');
         $this->setTestData();
+        $this->testData['tags'] = $tagIds;
         $res0 = $this->post('api/products?token='.$this->token, $this->testData);
         $res = $res0->getData();
 
@@ -1443,6 +1450,7 @@ class ProductTest extends Base
 
         $this->assertTrue($res22->success);
         $this->assertEquals(count($res22->data), 1);
+        $this->assertEquals($tagIds, $res22->data[0]->tags);
 
         $this->assertEquals(self::INT_PRODUCT_PRICE, $res22->data[0]->price);
         $this->assertEquals($this->priceDescription, $res22->data[0]->price_description);
@@ -1485,7 +1493,9 @@ class ProductTest extends Base
 
     public function test_it_will_update_product_docs()
     {
+        $tagIds = $this->createDocumentationTags('product');
         $this->setTestData();
+        $this->testData['tags'] = $tagIds;
 
         $res0 = $this->post('api/products?token='.$this->token, $this->testData);
         $res = $res0->getData();
@@ -1523,6 +1533,13 @@ class ProductTest extends Base
 
         $this->assertTrue($res33->success);
 
+        $this->restDoc->add(
+            'PUT',
+            'api/products/$productId?token=token',
+            $this->testData,
+            $res33,
+        );
+
         $response222 = $this->get('api/products?token='.$this->token);
         $res222 = $response222->getData();
         $productId2 = $res222->data[0]->id;
@@ -1533,6 +1550,7 @@ class ProductTest extends Base
         $this->assertEquals($res222->data[0]->product_description->en, $newDesc);
 
         $this->assertEquals(count($res222->data[0]->images), 3);
+        $this->assertEquals($tagIds, $res222->data[0]->tags);
 
         $this->assertEquals($res222->data[0]->images[0]->alt->en, 'alt1');
         $this->assertEquals($res222->data[0]->images[1]->alt->en, 'alt2');
@@ -1572,7 +1590,9 @@ class ProductTest extends Base
 
     public function test_it_will_delete_product_docs()
     {
+        $tagIds = $this->createDocumentationTags('product');
         $this->setTestData();
+        $this->testData['tags'] = $tagIds;
 
         $res0 = $this->post('api/products?token='.$this->token, $this->testData);
         $res = $res0->getData();
@@ -1580,6 +1600,11 @@ class ProductTest extends Base
         $response22 = $this->get('api/products?token='.$this->token);
         $res22 = $response22->getData();
         $productId = $res22->data[0]->id;
+
+        $this->assertEquals(2, Tag::whereIn('id', $tagIds)->count());
+        $this->assertEquals(1, TagCategory::where('entity_type', 'product')->count());        
+        $tagsBeforeDelete = Product::findOrFail($productId)->tags()->pluck('tags.id')->all();
+        $this->assertEquals($tagIds, $tagsBeforeDelete);
 
         $this->assertEquals(1, Content::query()->where('product_id', $productId)->count());
         $this->assertEquals(1, Translate::query()->where('product_id', $productId)->count());
@@ -1598,6 +1623,17 @@ class ProductTest extends Base
         $res33 = $response33->getData();
 
         $this->assertTrue($res33->success);
+
+        $this->restDoc->add(
+            'DEL',
+            'api/products/$productId?token=token',
+            null,
+            $res33,
+        );
+
+        $this->assertEquals(2, Tag::whereIn('id', $tagIds)->count());
+        $this->assertEquals(1, TagCategory::where('entity_type', 'product')->count());
+        $this->assertSame(0, Tag::findOrFail($tagIds[0])->products()->count());
 
         $this->assertEquals(0, Content::query()->where('product_id', $productId)->count());
         $this->assertEquals(0, Translate::query()->where('product_id', $productId)->count());
@@ -1838,7 +1874,9 @@ class ProductTest extends Base
      */
     public function test_get_product_by_given_id_docs()
     {
+        $tagIds = $this->createDocumentationTags('product');
         $this->setTestData();
+        $this->testData['tags'] = $tagIds;
         $d = $this->createProduct();
 
         $response = $this->get('api/products/'.$d->productId.'?token='.$this->token);
@@ -1853,6 +1891,7 @@ class ProductTest extends Base
 
         $this->assertTrue($res->success);
         $this->assertEquals($d->productId, $res->data->id);
+        $this->assertEquals($tagIds, $res->data->tags);
 
         $this->assertNotEmpty($res->data->price);
         $this->assertNotEmpty($res->data->price_description);

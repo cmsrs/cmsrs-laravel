@@ -4,6 +4,8 @@ namespace Tests\Feature\Services\Cmsrs;
 
 use App\Models\Cmsrs\Cms\Menu;
 use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Tag\Tag;
+use App\Models\Cmsrs\Tag\TagCategory;
 use App\Services\Cmsrs\Cms\MenuService;
 use App\Services\Cmsrs\Cms\Page\PageDataService;
 use App\Services\Cmsrs\Cms\Page\PageService;
@@ -1320,6 +1322,8 @@ class PageTest extends Base
 
     public function test_it_will_delete_page_docs()
     {
+        $tagIds = $this->createDocumentationTags('page');
+        $this->testData['tags'] = $tagIds;
         $this->setTestData();
         $responseAll = $this->get('api/pages?token='.$this->token);
         $resAll = $responseAll->getData();
@@ -1327,9 +1331,17 @@ class PageTest extends Base
         $id = $resAll->data[0]->id;
         $this->assertNotEmpty($id);
 
+        $this->assertSame(2, Tag::whereIn('id', $tagIds)->count());
+        $this->assertSame(1, TagCategory::where('entity_type', 'page')->count());        
+        $this->assertEquals($tagIds, Page::findOrFail($id)->tags()->pluck('tags.id')->all());
+
         $response0 = $this->delete('api/pages/'.$id.'?token='.$this->token);
         $res0 = $response0->getData();
         $this->assertTrue($res0->success);
+
+        $this->assertSame(2, Tag::whereIn('id', $tagIds)->count());
+        $this->assertSame(1, TagCategory::where('entity_type', 'page')->count());
+        $this->assertSame(0, Tag::findOrFail($tagIds[0])->pages()->count());
 
         $this->restDoc->add(
             'DEL',

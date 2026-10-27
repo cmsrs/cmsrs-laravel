@@ -55,7 +55,7 @@ class ImageTest extends Base
 
     }
 
-    private function prepareTestPage($withImages = true, $showDocs = false)
+    private function prepareTestPage($withImages = true, $showDocs = false, $tagEntityType = null)
     {
         $this->arrPageId = [];
 
@@ -86,6 +86,10 @@ class ImageTest extends Base
             'images' => $withImages ? $images : null,
         ];
 
+        if ($tagEntityType !== null) {
+            $this->testImgData['tags'] = $this->createDocumentationTags($tagEntityType);
+        }
+
         $response = $this->post('api/pages?token='.$this->token, $this->testImgData);
         $res = $response->getData();
 
@@ -99,6 +103,9 @@ class ImageTest extends Base
         }
 
         $this->assertTrue($res->success);
+        if ($tagEntityType !== null) {
+            $this->assertEquals($this->testImgData['tags'], $res->data->data->tags);
+        }
 
         $pageId = $res->data->pageId;
         $this->assertNotEmpty($pageId);
@@ -115,7 +122,7 @@ class ImageTest extends Base
 
     public function test_it_will_create_page_with_images_docs()
     {
-        $this->prepareTestPage(true, true);
+        $this->prepareTestPage(true, true, 'page');
     }
 
     public function test_it_will_set_translate()
@@ -134,7 +141,8 @@ class ImageTest extends Base
 
     public function test_it_will_get_page_by_id_with_images_with_auth_docs()
     {
-        $this->prepareTestPage();
+        $this->prepareTestPage(true, false, 'page');
+        $tagIds = $this->testImgData['tags'];
 
         $response0 = $this->get('api/pages/'.$this->pageId.'?token='.$this->token);
         $res0 = $response0->getData();
@@ -157,6 +165,7 @@ class ImageTest extends Base
 
         $this->assertNotEmpty($res0->data->id);
         $this->assertNotEmpty($res0->data->images);
+        $this->assertEquals($tagIds, $res0->data->tags);
     }
 
     public function test_it_will_get_page_without_images_with_auth_simple()
@@ -219,7 +228,7 @@ class ImageTest extends Base
 
     public function test_it_will_get_pages_with_images_docs()
     {
-        $this->prepareTestPage();
+        $this->prepareTestPage(true, false, 'page');
 
         $response2 = $this->get('api/pages?token='.$this->token);
 
@@ -236,6 +245,7 @@ class ImageTest extends Base
         $this->assertEquals(count($res2->data), 1);
 
         $this->assertEquals($res2->data[0]->id, $this->pageId);
+        $this->assertEquals($this->testImgData['tags'], $res2->data[0]->tags);
 
         $this->assertEquals(count($res2->data[0]->images), count($this->testImgData['images']));
 
@@ -578,7 +588,7 @@ class ImageTest extends Base
 
     public function test_it_will_update_page_with_images_docs()
     {
-        $this->prepareTestPage();
+        $this->prepareTestPage(true, false, 'page');
         $this->assertEquals(count((array) $this->pageData->images), 2);
         $this->assertEquals($this->pageData->title->en, $this->testImgData['title']['en']);
 
@@ -611,9 +621,11 @@ class ImageTest extends Base
         $this->assertEquals(count($images), 4);
 
         $updateTitle = 'Update img Title';
+        $testImgData = $this->testImgData;
         $testImgData['title']['en'] = $updateTitle;
         $testImgData['short_title']['en'] = 'test123';
         $testImgData['images'] = $images;
+        $testImgData['tags'] = $this->testImgData['tags'];
 
         $translateBefore = Translate::query()->whereNotNull('image_id')->where('column', 'alt')->get()->toArray();
         $this->assertEquals(2, count($translateBefore));
@@ -648,6 +660,7 @@ class ImageTest extends Base
         $this->assertEquals($testPage->id, $this->pageId);
 
         $this->assertEquals($testPage->title->en, $updateTitle);
+        $this->assertEquals($this->testImgData['tags'], $testPage->tags);
         $this->assertEquals(count($testPage->images), 4);
 
         $this->assertEquals(pathinfo($testPage->images[2]->fs->org, PATHINFO_BASENAME), $name3);

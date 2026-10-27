@@ -12,6 +12,7 @@ use App\Services\Cmsrs\Helpers\LangHelperService;
 use App\Services\Cmsrs\Helpers\PriceHelperService;
 use App\Services\Cmsrs\ImageService;
 use App\Services\Cmsrs\Navigation\UrlService;
+use App\Services\Cmsrs\Tag\TaggableService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 
@@ -24,7 +25,8 @@ class ProductDataService
         private UrlService $urlService,
         private ImageService $imageService,
         private PriceHelperService $priceHelperService,
-        private CacheManagerService $cacheManagerService
+        private CacheManagerService $cacheManagerService,
+        private TaggableService $taggableService,
     ) {
 
         $this->productFields = [
@@ -145,6 +147,7 @@ class ProductDataService
         }
 
         $out['images'] = $this->imageService->getImagesAndThumbsByTypeAndRefId('product', $product->id, $lang);
+        $out['tags'] = $this->taggableService->getTagIds($product);
 
         return $out;
     }

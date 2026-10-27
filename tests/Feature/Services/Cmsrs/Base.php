@@ -5,6 +5,10 @@ namespace Tests\Feature\Services\Cmsrs;
 use App\Models\Cmsrs\Cms\Menu;
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Shop\Product;
+use App\Models\Cmsrs\Tag\Tag;
+use App\Models\Cmsrs\Tag\TagCategory;
+use App\Models\Cmsrs\Tag\TagCategoryTranslation;
+use App\Models\Cmsrs\Tag\TagTranslation;
 use App\Models\User;
 use App\Services\Cmsrs\Cms\MenuService;
 use App\Services\Cmsrs\Cms\Page\PageService;
@@ -21,6 +25,30 @@ class Base extends TestCase
     protected $token;
 
     protected RestDoc $restDoc;
+
+    /** Create two translated tags for a page or product documentation example. */
+    protected function createDocumentationTags(string $tagEntityType): array
+    {
+        $category = TagCategory::create(['entity_type' => $tagEntityType]);
+        TagCategoryTranslation::create([
+            'tag_category_id' => $category->id,
+            'lang' => 'en',
+            'value' => ucfirst($tagEntityType).' topics',
+        ]);
+
+        $ids = [];
+        foreach (['Featured', 'Recommended'] as $name) {
+            $tag = Tag::create(['tag_category_id' => $category->id]);
+            TagTranslation::create([
+                'tag_id' => $tag->id,
+                'lang' => 'en',
+                'value' => $name,
+            ]);
+            $ids[] = $tag->id;
+        }
+
+        return $ids;
+    }
 
     public function createUser()
     {

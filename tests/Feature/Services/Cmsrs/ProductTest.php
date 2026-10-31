@@ -1361,6 +1361,38 @@ class ProductTest extends Base
         $this->assertTrue(strpos($res2->error->product_name, 'Duplicate product name') === 0);
     }
 
+    public function test_it_will_create_product_with_price_string_with_alfabetic_sign()
+    {
+        $this->setTestData();
+
+        $this->testData['price'] = '123aa';
+        $response0 = $this->post('api/products?token='.$this->token, $this->testData);
+
+        $res0 = $response0->getData();
+        $this->assertFalse($res0->success);
+        $this->assertNotEmpty($res0->error);
+
+        $products = Product::all()->toArray();
+        $this->assertEquals(count($products), 0);
+    }
+
+    public function test_it_will_create_product_with_price_string_with_integer_string()
+    {
+        $this->setTestData();
+
+        $this->testData['price'] = '123';
+        $response0 = $this->post('api/products?token='.$this->token, $this->testData);
+
+        $res0 = $response0->getData();
+        $this->assertTrue($res0->success);
+        $this->assertNotEmpty($res0->data->productId);
+
+        $products = Product::all()->toArray();
+        $this->assertEquals(count($products), 1);
+
+        $this->assertTrue($products[0]['price'] === 123);
+    }
+
     public function test_it_will_create_product_docs()
     {
         $tagIds = $this->createDocumentationTags('product');
@@ -1602,7 +1634,7 @@ class ProductTest extends Base
         $productId = $res22->data[0]->id;
 
         $this->assertEquals(2, Tag::whereIn('id', $tagIds)->count());
-        $this->assertEquals(1, TagCategory::where('entity_type', 'product')->count());        
+        $this->assertEquals(1, TagCategory::where('entity_type', 'product')->count());
         $tagsBeforeDelete = Product::findOrFail($productId)->tags()->pluck('tags.id')->all();
         $this->assertEquals($tagIds, $tagsBeforeDelete);
 

@@ -122,6 +122,7 @@ class ProductController extends Controller
         if (empty($valid['success'])) {
             return response()->json($valid, 200);
         }
+        $data['price'] = (int) $data['price'];
 
         try {
             $product = DB::transaction(fn () => $this->productService->wrapCreate($data)

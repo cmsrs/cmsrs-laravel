@@ -1332,7 +1332,7 @@ class PageTest extends Base
         $this->assertNotEmpty($id);
 
         $this->assertSame(2, Tag::whereIn('id', $tagIds)->count());
-        $this->assertSame(1, TagCategory::where('entity_type', 'page')->count());        
+        $this->assertSame(1, TagCategory::where('entity_type', 'page')->count());
         $this->assertEquals($tagIds, Page::findOrFail($id)->tags()->pluck('tags.id')->all());
 
         $response0 = $this->delete('api/pages/'.$id.'?token='.$this->token);

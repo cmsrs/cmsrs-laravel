@@ -1523,6 +1523,30 @@ class ProductTest extends Base
 
     }
 
+    public function test_it_will_update_product_integer_price()
+    {
+        $this->setTestData();
+
+        $res0 = $this->post('api/products?token='.$this->token, $this->testData);
+        $res = $res0->getData();
+
+        $this->assertTrue($res->success);
+        $this->assertNotEmpty($res->data->productId);
+
+        $productId = $res->data->productId;
+
+        $this->testData['price'] = '1234';
+
+        $response33 = $this->put('api/products/'.$productId.'?token='.$this->token, $this->testData);
+        $res33 = $response33->getData();
+
+        $this->assertTrue($res33->success);
+
+        $products = Product::all()->toArray();
+        $this->assertEquals(count($products), 1);
+        $this->assertTrue($products[0]['price'] === 1234);
+    }
+
     public function test_it_will_update_product_docs()
     {
         $tagIds = $this->createDocumentationTags('product');

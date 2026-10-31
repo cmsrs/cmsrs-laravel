@@ -164,6 +164,7 @@ class ProductController extends Controller
         if (empty($valid['success'])) {
             return response()->json($valid, 200);
         }
+        $data['price'] = (int) $data['price']; // Not necessary because the model casts it, but kept consistent with create.
 
         try {
             $res = $this->productService->wrapUpdate($product, $data);

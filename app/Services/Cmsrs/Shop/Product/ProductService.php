@@ -105,23 +105,34 @@ class ProductService
         //     Log::debug(' create basket: '.var_export( $basket , true ) );
         // }
 
-        DB::beginTransaction();
         try {
-            $objCheckout = Checkout::create($checkout);
-            if (empty($objCheckout->id)) {
-                throw new \Exception('I cant get objCheckout id - problem with save checkout');
-            }
+            $objCheckout = DB::transaction(function () use ($checkout, $baskets) {
+                $objCheckout = Checkout::create($checkout);
 
-            foreach ($baskets as $basket) {
-                $basket['checkout_id'] = $objCheckout->id;
-                Basket::create($basket);
-                // Log::debug(' create basket: '.var_export( $basket , true ) );
-            }
-            DB::commit();
-        } catch (\Exception $e) {
-            Log::debug(' transaction problem: '.var_export($e->getMessage(), true));
-            DB::rollback();
-            // throw $e;
+                if (empty($objCheckout->id)) {
+                    throw new \Exception(
+                        'I cant get objCheckout id - problem with save checkout'
+                    );
+                }
+
+                foreach ($baskets as $basket) {
+                    $basket['checkout_id'] = $objCheckout->id;
+                    Basket::create($basket);
+                }
+
+                return $objCheckout;
+            });
+
+        } catch (\Throwable $e) {
+            Log::error('Checkout transaction failed', [
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'user_id' => $userId,
+                'session_id' => $sessionId,
+            ]);
+
+            throw $e;
         }
 
         return [

@@ -1,0 +1,68 @@
+{
+    "product": [
+        {
+            "category_name": {
+                "en": "Education Level",
+                "pl": "Poziom edukacji"
+            },
+            "tags": [
+                {"name": {"en": "Primary School", "pl": "Szkoła podstawowa"}},
+                {"name": {"en": "High School", "pl": "Szkoła średnia"}},
+                {"name": {"en": "University", "pl": "Studia wyższe"}},
+                {"name": {"en": "Self-study", "pl": "Samokształcenie"}}
+            ]
+        },
+        {
+            "category_name": {
+                "en": "Subject",
+                "pl": "Tematyka"
+            },
+            "tags": [
+                {"name": {"en": "Programming", "pl": "Programowanie"}},
+                {"name": {"en": "Databases", "pl": "Bazy danych"}},
+                {"name": {"en": "Graphic Design", "pl": "Projektowanie graficzne"}},
+                {"name": {"en": "Project Management", "pl": "Zarządzanie projektami"}},
+                {"name": {"en": "English Learning", "pl": "Nauka języka angielskiego"}}
+            ]
+        },
+        {
+            "category_name": {
+                "en": "Programming Language",
+                "pl": "Język programowania"
+            },
+            "tags": [
+                {"name": {"en": "PHP", "pl": "PHP"}},
+                {"name": {"en": "Java", "pl": "Java"}},
+                {"name": {"en": "C++", "pl": "C++"}},
+                {"name": {"en": "Python", "pl": "Python"}},
+                {"name": {"en": "JavaScript", "pl": "JavaScript"}}
+            ]
+        },
+        {
+            "category_name": {
+                "en": "Language Level",
+                "pl": "Poziom znajomości języka"
+            },
+            "tags": [
+                {"name": {"en": "A1 - Beginner", "pl": "A1 - Początkujący"}},
+                {"name": {"en": "A2 - Elementary", "pl": "A2 - Podstawowy"}},
+                {"name": {"en": "B1 - Intermediate", "pl": "B1 - Średnio zaawansowany"}},
+                {"name": {"en": "B2 - Upper Intermediate", "pl": "B2 - Wyższy średnio zaawansowany"}},
+                {"name": {"en": "C1 - Advanced", "pl": "C1 - Zaawansowany"}}
+            ]
+        }
+    ],
+    "page": [
+        {
+            "category_name": {
+                "en": "Article Type",
+                "pl": "Rodzaj artykułu"
+            },
+            "tags": [
+                {"name": {"en": "Latest Articles", "pl": "Najnowsze artykuły"}},
+                {"name": {"en": "Tutorials", "pl": "Poradniki"}},
+                {"name": {"en": "News", "pl": "Aktualności"}}
+            ]
+        }
+    ]
+}

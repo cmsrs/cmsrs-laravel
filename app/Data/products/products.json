@@ -1,0 +1,1978 @@
+[
+    {
+        "product_name": {
+            "en": "Math Adventures",
+            "pl": "Matematyczne przygody"
+        },
+        "sku": "1/001/01",
+        "price": 1237,
+        "product_description": {
+            "en": "Math Adventures is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Matematyczne przygody to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "education",
+        "images": {
+            "name": "photo_001_01_09_15.jpg",
+            "path": "books/education/photo_001_01_09_15.jpg",
+            "alt": {
+                "en": "Math Adventures",
+                "pl": "Matematyczne przygody"
+            }
+        },
+        "tags_name": [
+            "Primary School",
+            "English Learning",
+            "A1 - Beginner"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Learning ABC",
+            "pl": "Poznaj alfabet"
+        },
+        "sku": "1/002/01",
+        "price": 1374,
+        "product_description": {
+            "en": "Learning ABC is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Poznaj alfabet to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "education",
+        "images": {
+            "name": "photo_002_01_09_15.jpg",
+            "path": "books/education/photo_002_01_09_15.jpg",
+            "alt": {
+                "en": "Learning ABC",
+                "pl": "Poznaj alfabet"
+            }
+        },
+        "tags_name": [
+            "Primary School",
+            "English Learning",
+            "A1 - Beginner"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Science for Kids",
+            "pl": "Nauka dla dzieci"
+        },
+        "sku": "1/003/01",
+        "price": 1511,
+        "product_description": {
+            "en": "Science for Kids is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Nauka dla dzieci to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_003_01_09_15.jpg",
+            "path": "digital_products/e_books/photo_003_01_09_15.jpg",
+            "alt": {
+                "en": "Science for Kids",
+                "pl": "Nauka dla dzieci"
+            }
+        },
+        "tags_name": [
+            "Primary School",
+            "English Learning",
+            "A1 - Beginner"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Creative Workbook",
+            "pl": "Kreatywny zeszyt ćwiczeń"
+        },
+        "sku": "1/004/01",
+        "price": 1648,
+        "product_description": {
+            "en": "Creative Workbook is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Kreatywny zeszyt ćwiczeń to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_004_01_09_15.jpg",
+            "path": "digital_products/e_books/photo_004_01_09_15.jpg",
+            "alt": {
+                "en": "Creative Workbook",
+                "pl": "Kreatywny zeszyt ćwiczeń"
+            }
+        },
+        "tags_name": [
+            "Primary School",
+            "English Learning",
+            "A1 - Beginner"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Study Smart",
+            "pl": "Ucz się skutecznie"
+        },
+        "sku": "1/005/02",
+        "price": 1785,
+        "product_description": {
+            "en": "Study Smart is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Ucz się skutecznie to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "education",
+        "images": {
+            "name": "photo_005_02_09_16.jpg",
+            "path": "books/education/photo_005_02_09_16.jpg",
+            "alt": {
+                "en": "Study Smart",
+                "pl": "Ucz się skutecznie"
+            }
+        },
+        "tags_name": [
+            "High School",
+            "English Learning",
+            "A2 - Elementary"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Exam Preparation",
+            "pl": "Przygotowanie do egzaminów"
+        },
+        "sku": "1/006/02",
+        "price": 1922,
+        "product_description": {
+            "en": "Exam Preparation is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Przygotowanie do egzaminów to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "education",
+        "images": {
+            "name": "photo_006_02_09_16.jpg",
+            "path": "books/education/photo_006_02_09_16.jpg",
+            "alt": {
+                "en": "Exam Preparation",
+                "pl": "Przygotowanie do egzaminów"
+            }
+        },
+        "tags_name": [
+            "High School",
+            "English Learning",
+            "A2 - Elementary"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Science Essentials",
+            "pl": "Najważniejsze zagadnienia naukowe"
+        },
+        "sku": "1/007/02",
+        "price": 2059,
+        "product_description": {
+            "en": "Science Essentials is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Najważniejsze zagadnienia naukowe to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_007_02_09_16.jpg",
+            "path": "digital_products/e_books/photo_007_02_09_16.jpg",
+            "alt": {
+                "en": "Science Essentials",
+                "pl": "Najważniejsze zagadnienia naukowe"
+            }
+        },
+        "tags_name": [
+            "High School",
+            "English Learning",
+            "A2 - Elementary"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Mathematics Workbook",
+            "pl": "Matematyczny zeszyt ćwiczeń"
+        },
+        "sku": "1/008/02",
+        "price": 2196,
+        "product_description": {
+            "en": "Mathematics Workbook is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Matematyczny zeszyt ćwiczeń to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_008_02_09_16.jpg",
+            "path": "digital_products/e_books/photo_008_02_09_16.jpg",
+            "alt": {
+                "en": "Mathematics Workbook",
+                "pl": "Matematyczny zeszyt ćwiczeń"
+            }
+        },
+        "tags_name": [
+            "High School",
+            "English Learning",
+            "A2 - Elementary"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Academic Toolkit",
+            "pl": "Niezbędnik studenta"
+        },
+        "sku": "1/009/03",
+        "price": 2333,
+        "product_description": {
+            "en": "Academic Toolkit is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Niezbędnik studenta to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "education",
+        "images": {
+            "name": "photo_009_03_09_17.jpg",
+            "path": "books/education/photo_009_03_09_17.jpg",
+            "alt": {
+                "en": "Academic Toolkit",
+                "pl": "Niezbędnik studenta"
+            }
+        },
+        "tags_name": [
+            "University",
+            "English Learning",
+            "B1 - Intermediate"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Research Methods",
+            "pl": "Metody badań naukowych"
+        },
+        "sku": "1/010/03",
+        "price": 2470,
+        "product_description": {
+            "en": "Research Methods is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Metody badań naukowych to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "education",
+        "images": {
+            "name": "photo_010_03_09_17.jpg",
+            "path": "books/education/photo_010_03_09_17.jpg",
+            "alt": {
+                "en": "Research Methods",
+                "pl": "Metody badań naukowych"
+            }
+        },
+        "tags_name": [
+            "University",
+            "English Learning",
+            "B1 - Intermediate"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Study Strategies",
+            "pl": "Skuteczne strategie nauki"
+        },
+        "sku": "1/011/03",
+        "price": 2607,
+        "product_description": {
+            "en": "Study Strategies is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Skuteczne strategie nauki to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_011_03_09_17.jpg",
+            "path": "digital_products/e_books/photo_011_03_09_17.jpg",
+            "alt": {
+                "en": "Study Strategies",
+                "pl": "Skuteczne strategie nauki"
+            }
+        },
+        "tags_name": [
+            "University",
+            "English Learning",
+            "B1 - Intermediate"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Lecture Companion",
+            "pl": "Przewodnik po wykładach"
+        },
+        "sku": "1/012/03",
+        "price": 2744,
+        "product_description": {
+            "en": "Lecture Companion is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Przewodnik po wykładach to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_012_03_09_17.jpg",
+            "path": "digital_products/e_books/photo_012_03_09_17.jpg",
+            "alt": {
+                "en": "Lecture Companion",
+                "pl": "Przewodnik po wykładach"
+            }
+        },
+        "tags_name": [
+            "University",
+            "English Learning",
+            "B1 - Intermediate"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Learn at Your Pace",
+            "pl": "Ucz się we własnym tempie"
+        },
+        "sku": "1/013/04",
+        "price": 2881,
+        "product_description": {
+            "en": "Learn at Your Pace is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Ucz się we własnym tempie to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "education",
+        "images": {
+            "name": "photo_013_04_09_15.jpg",
+            "path": "books/education/photo_013_04_09_15.jpg",
+            "alt": {
+                "en": "Learn at Your Pace",
+                "pl": "Ucz się we własnym tempie"
+            }
+        },
+        "tags_name": [
+            "Self-study",
+            "English Learning",
+            "A1 - Beginner"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Independent Learning",
+            "pl": "Samodzielna nauka krok po kroku"
+        },
+        "sku": "1/014/04",
+        "price": 3018,
+        "product_description": {
+            "en": "Independent Learning is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Samodzielna nauka krok po kroku to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "education",
+        "images": {
+            "name": "photo_014_04_09_15.jpg",
+            "path": "books/education/photo_014_04_09_15.jpg",
+            "alt": {
+                "en": "Independent Learning",
+                "pl": "Samodzielna nauka krok po kroku"
+            }
+        },
+        "tags_name": [
+            "Self-study",
+            "English Learning",
+            "A1 - Beginner"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Practical Study Guide",
+            "pl": "Praktyczny przewodnik nauki"
+        },
+        "sku": "1/015/04",
+        "price": 3155,
+        "product_description": {
+            "en": "Practical Study Guide is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Praktyczny przewodnik nauki to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_015_04_09_15.jpg",
+            "path": "digital_products/e_books/photo_015_04_09_15.jpg",
+            "alt": {
+                "en": "Practical Study Guide",
+                "pl": "Praktyczny przewodnik nauki"
+            }
+        },
+        "tags_name": [
+            "Self-study",
+            "English Learning",
+            "A1 - Beginner"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Skills Workbook",
+            "pl": "Zeszyt ćwiczeń rozwijających umiejętności"
+        },
+        "sku": "1/016/04",
+        "price": 3292,
+        "product_description": {
+            "en": "Skills Workbook is a practical learning resource for readers who want to make steady progress. It explores foundational knowledge, clear explanations and age-appropriate learning activities through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Zeszyt ćwiczeń rozwijających umiejętności to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_016_04_09_15.jpg",
+            "path": "digital_products/e_books/photo_016_04_09_15.jpg",
+            "alt": {
+                "en": "Skills Workbook",
+                "pl": "Zeszyt ćwiczeń rozwijających umiejętności"
+            }
+        },
+        "tags_name": [
+            "Self-study",
+            "English Learning",
+            "A1 - Beginner"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Programming Foundations",
+            "pl": "Podstawy programowania"
+        },
+        "sku": "1/017/05",
+        "price": 3429,
+        "product_description": {
+            "en": "Programming Foundations is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podstawy programowania to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_017_05_13_14.jpg",
+            "path": "books/it_books/photo_017_05_13_14.jpg",
+            "alt": {
+                "en": "Programming Foundations",
+                "pl": "Podstawy programowania"
+            }
+        },
+        "tags_name": [
+            "Programming",
+            "Python",
+            "JavaScript"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Code by Example",
+            "pl": "Programowanie na przykładach"
+        },
+        "sku": "1/018/05",
+        "price": 3566,
+        "product_description": {
+            "en": "Code by Example is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Programowanie na przykładach to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_018_05_13_14.jpg",
+            "path": "books/it_books/photo_018_05_13_14.jpg",
+            "alt": {
+                "en": "Code by Example",
+                "pl": "Programowanie na przykładach"
+            }
+        },
+        "tags_name": [
+            "Programming",
+            "Python",
+            "JavaScript"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Developer Handbook",
+            "pl": "Podręcznik programisty"
+        },
+        "sku": "1/019/05",
+        "price": 3703,
+        "product_description": {
+            "en": "Developer Handbook is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podręcznik programisty to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_019_05_13_14.jpg",
+            "path": "digital_products/e_books/photo_019_05_13_14.jpg",
+            "alt": {
+                "en": "Developer Handbook",
+                "pl": "Podręcznik programisty"
+            }
+        },
+        "tags_name": [
+            "Programming",
+            "Python",
+            "JavaScript"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Practical Coding",
+            "pl": "Praktyczne kodowanie"
+        },
+        "sku": "1/020/05",
+        "price": 3840,
+        "product_description": {
+            "en": "Practical Coding is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Praktyczne kodowanie to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_020_05_13_14.jpg",
+            "path": "digital_products/e_books/photo_020_05_13_14.jpg",
+            "alt": {
+                "en": "Practical Coding",
+                "pl": "Praktyczne kodowanie"
+            }
+        },
+        "tags_name": [
+            "Programming",
+            "Python",
+            "JavaScript"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Database Design",
+            "pl": "Projektowanie baz danych"
+        },
+        "sku": "1/021/06",
+        "price": 3977,
+        "product_description": {
+            "en": "Database Design is a practical learning resource for readers who want to make steady progress. It explores database design, SQL queries, structured information and reliable data management through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Projektowanie baz danych to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia projektowanie baz danych, zapytania SQL, porządkowanie informacji i zarządzanie danymi za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_021_06_13_03.jpg",
+            "path": "books/it_books/photo_021_06_13_03.jpg",
+            "alt": {
+                "en": "Database Design",
+                "pl": "Projektowanie baz danych"
+            }
+        },
+        "tags_name": [
+            "Databases",
+            "Python",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "SQL in Practice",
+            "pl": "SQL w praktyce"
+        },
+        "sku": "1/022/06",
+        "price": 4114,
+        "product_description": {
+            "en": "SQL in Practice is a practical learning resource for readers who want to make steady progress. It explores database design, SQL queries, structured information and reliable data management through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "SQL w praktyce to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia projektowanie baz danych, zapytania SQL, porządkowanie informacji i zarządzanie danymi za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_022_06_13_03.jpg",
+            "path": "books/it_books/photo_022_06_13_03.jpg",
+            "alt": {
+                "en": "SQL in Practice",
+                "pl": "SQL w praktyce"
+            }
+        },
+        "tags_name": [
+            "Databases",
+            "Python",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Data Modeling",
+            "pl": "Modelowanie danych"
+        },
+        "sku": "1/023/06",
+        "price": 4251,
+        "product_description": {
+            "en": "Data Modeling is a practical learning resource for readers who want to make steady progress. It explores database design, SQL queries, structured information and reliable data management through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Modelowanie danych to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia projektowanie baz danych, zapytania SQL, porządkowanie informacji i zarządzanie danymi za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_023_06_13_03.jpg",
+            "path": "digital_products/e_books/photo_023_06_13_03.jpg",
+            "alt": {
+                "en": "Data Modeling",
+                "pl": "Modelowanie danych"
+            }
+        },
+        "tags_name": [
+            "Databases",
+            "Python",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Query Workshop",
+            "pl": "Warsztaty zapytań SQL"
+        },
+        "sku": "1/024/06",
+        "price": 4388,
+        "product_description": {
+            "en": "Query Workshop is a practical learning resource for readers who want to make steady progress. It explores database design, SQL queries, structured information and reliable data management through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Warsztaty zapytań SQL to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia projektowanie baz danych, zapytania SQL, porządkowanie informacji i zarządzanie danymi za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_024_06_13_03.jpg",
+            "path": "digital_products/e_books/photo_024_06_13_03.jpg",
+            "alt": {
+                "en": "Query Workshop",
+                "pl": "Warsztaty zapytań SQL"
+            }
+        },
+        "tags_name": [
+            "Databases",
+            "Python",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Visual Design Basics",
+            "pl": "Podstawy projektowania graficznego"
+        },
+        "sku": "1/025/07",
+        "price": 4525,
+        "product_description": {
+            "en": "Visual Design Basics is a practical learning resource for readers who want to make steady progress. It explores visual composition, typography, color choices and the creation of clear designs through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podstawy projektowania graficznego to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia kompozycję, typografię, dobór kolorów i tworzenie czytelnych projektów graficznych za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_025_07_03_04.jpg",
+            "path": "books/it_books/photo_025_07_03_04.jpg",
+            "alt": {
+                "en": "Visual Design Basics",
+                "pl": "Podstawy projektowania graficznego"
+            }
+        },
+        "tags_name": [
+            "Graphic Design",
+            "University",
+            "Self-study"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Creative Layouts",
+            "pl": "Kreatywne układy graficzne"
+        },
+        "sku": "1/026/07",
+        "price": 4662,
+        "product_description": {
+            "en": "Creative Layouts is a practical learning resource for readers who want to make steady progress. It explores visual composition, typography, color choices and the creation of clear designs through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Kreatywne układy graficzne to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia kompozycję, typografię, dobór kolorów i tworzenie czytelnych projektów graficznych za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_026_07_03_04.jpg",
+            "path": "books/it_books/photo_026_07_03_04.jpg",
+            "alt": {
+                "en": "Creative Layouts",
+                "pl": "Kreatywne układy graficzne"
+            }
+        },
+        "tags_name": [
+            "Graphic Design",
+            "University",
+            "Self-study"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Typography Handbook",
+            "pl": "Podręcznik typografii"
+        },
+        "sku": "1/027/07",
+        "price": 4799,
+        "product_description": {
+            "en": "Typography Handbook is a practical learning resource for readers who want to make steady progress. It explores visual composition, typography, color choices and the creation of clear designs through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podręcznik typografii to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia kompozycję, typografię, dobór kolorów i tworzenie czytelnych projektów graficznych za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_027_07_03_04.jpg",
+            "path": "digital_products/e_books/photo_027_07_03_04.jpg",
+            "alt": {
+                "en": "Typography Handbook",
+                "pl": "Podręcznik typografii"
+            }
+        },
+        "tags_name": [
+            "Graphic Design",
+            "University",
+            "Self-study"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Design Principles",
+            "pl": "Zasady projektowania"
+        },
+        "sku": "1/028/07",
+        "price": 4936,
+        "product_description": {
+            "en": "Design Principles is a practical learning resource for readers who want to make steady progress. It explores visual composition, typography, color choices and the creation of clear designs through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Zasady projektowania to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia kompozycję, typografię, dobór kolorów i tworzenie czytelnych projektów graficznych za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_028_07_03_04.jpg",
+            "path": "digital_products/e_books/photo_028_07_03_04.jpg",
+            "alt": {
+                "en": "Design Principles",
+                "pl": "Zasady projektowania"
+            }
+        },
+        "tags_name": [
+            "Graphic Design",
+            "University",
+            "Self-study"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Project Planning",
+            "pl": "Planowanie projektów"
+        },
+        "sku": "1/029/08",
+        "price": 5073,
+        "product_description": {
+            "en": "Project Planning is a practical learning resource for readers who want to make steady progress. It explores project planning, team collaboration, task tracking and practical Agile methods through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Planowanie projektów to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia planowanie projektów, współpracę zespołu, śledzenie zadań i praktyczne metody Agile za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_029_08_03_04.jpg",
+            "path": "books/it_books/photo_029_08_03_04.jpg",
+            "alt": {
+                "en": "Project Planning",
+                "pl": "Planowanie projektów"
+            }
+        },
+        "tags_name": [
+            "Project Management",
+            "University",
+            "Self-study"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Agile Toolkit",
+            "pl": "Narzędzia Agile"
+        },
+        "sku": "1/030/08",
+        "price": 5210,
+        "product_description": {
+            "en": "Agile Toolkit is a practical learning resource for readers who want to make steady progress. It explores project planning, team collaboration, task tracking and practical Agile methods through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Narzędzia Agile to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia planowanie projektów, współpracę zespołu, śledzenie zadań i praktyczne metody Agile za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_030_08_03_04.jpg",
+            "path": "books/it_books/photo_030_08_03_04.jpg",
+            "alt": {
+                "en": "Agile Toolkit",
+                "pl": "Narzędzia Agile"
+            }
+        },
+        "tags_name": [
+            "Project Management",
+            "University",
+            "Self-study"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Team Management",
+            "pl": "Zarządzanie zespołem"
+        },
+        "sku": "1/031/08",
+        "price": 5347,
+        "product_description": {
+            "en": "Team Management is a practical learning resource for readers who want to make steady progress. It explores project planning, team collaboration, task tracking and practical Agile methods through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Zarządzanie zespołem to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia planowanie projektów, współpracę zespołu, śledzenie zadań i praktyczne metody Agile za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_031_08_03_04.jpg",
+            "path": "digital_products/e_books/photo_031_08_03_04.jpg",
+            "alt": {
+                "en": "Team Management",
+                "pl": "Zarządzanie zespołem"
+            }
+        },
+        "tags_name": [
+            "Project Management",
+            "University",
+            "Self-study"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Project Handbook",
+            "pl": "Podręcznik zarządzania projektami"
+        },
+        "sku": "1/032/08",
+        "price": 5484,
+        "product_description": {
+            "en": "Project Handbook is a practical learning resource for readers who want to make steady progress. It explores project planning, team collaboration, task tracking and practical Agile methods through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podręcznik zarządzania projektami to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia planowanie projektów, współpracę zespołu, śledzenie zadań i praktyczne metody Agile za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_032_08_03_04.jpg",
+            "path": "digital_products/e_books/photo_032_08_03_04.jpg",
+            "alt": {
+                "en": "Project Handbook",
+                "pl": "Podręcznik zarządzania projektami"
+            }
+        },
+        "tags_name": [
+            "Project Management",
+            "University",
+            "Self-study"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Everyday English",
+            "pl": "Angielski na co dzień"
+        },
+        "sku": "1/033/09",
+        "price": 5621,
+        "product_description": {
+            "en": "Everyday English is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Angielski na co dzień to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_033_09_15_16.jpg",
+            "path": "digital_products/pdf_materials/photo_033_09_15_16.jpg",
+            "alt": {
+                "en": "Everyday English",
+                "pl": "Angielski na co dzień"
+            }
+        },
+        "tags_name": [
+            "English Learning",
+            "A1 - Beginner",
+            "A2 - Elementary"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "English Practice",
+            "pl": "Ćwiczenia z angielskiego"
+        },
+        "sku": "1/034/09",
+        "price": 5758,
+        "product_description": {
+            "en": "English Practice is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Ćwiczenia z angielskiego to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_034_09_15_16.jpg",
+            "path": "digital_products/pdf_materials/photo_034_09_15_16.jpg",
+            "alt": {
+                "en": "English Practice",
+                "pl": "Ćwiczenia z angielskiego"
+            }
+        },
+        "tags_name": [
+            "English Learning",
+            "A1 - Beginner",
+            "A2 - Elementary"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Build Your Vocabulary",
+            "pl": "Rozwijaj angielskie słownictwo"
+        },
+        "sku": "1/035/09",
+        "price": 5895,
+        "product_description": {
+            "en": "Build Your Vocabulary is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Rozwijaj angielskie słownictwo to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_035_09_15_16.jpg",
+            "path": "digital_products/pdf_materials/photo_035_09_15_16.jpg",
+            "alt": {
+                "en": "Build Your Vocabulary",
+                "pl": "Rozwijaj angielskie słownictwo"
+            }
+        },
+        "tags_name": [
+            "English Learning",
+            "A1 - Beginner",
+            "A2 - Elementary"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "English Skills",
+            "pl": "Umiejętności języka angielskiego"
+        },
+        "sku": "1/036/09",
+        "price": 6032,
+        "product_description": {
+            "en": "English Skills is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Umiejętności języka angielskiego to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_036_09_15_16.jpg",
+            "path": "digital_products/pdf_materials/photo_036_09_15_16.jpg",
+            "alt": {
+                "en": "English Skills",
+                "pl": "Umiejętności języka angielskiego"
+            }
+        },
+        "tags_name": [
+            "English Learning",
+            "A1 - Beginner",
+            "A2 - Elementary"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "PHP Essentials",
+            "pl": "Podstawy PHP"
+        },
+        "sku": "1/037/10",
+        "price": 6169,
+        "product_description": {
+            "en": "PHP Essentials is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podstawy PHP to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_037_10_05_03.jpg",
+            "path": "books/it_books/photo_037_10_05_03.jpg",
+            "alt": {
+                "en": "PHP Essentials",
+                "pl": "Podstawy PHP"
+            }
+        },
+        "tags_name": [
+            "PHP",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Modern PHP",
+            "pl": "Nowoczesne PHP"
+        },
+        "sku": "1/038/10",
+        "price": 6306,
+        "product_description": {
+            "en": "Modern PHP is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Nowoczesne PHP to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_038_10_05_03.jpg",
+            "path": "books/it_books/photo_038_10_05_03.jpg",
+            "alt": {
+                "en": "Modern PHP",
+                "pl": "Nowoczesne PHP"
+            }
+        },
+        "tags_name": [
+            "PHP",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "PHP Projects",
+            "pl": "Projekty w PHP"
+        },
+        "sku": "1/039/10",
+        "price": 6443,
+        "product_description": {
+            "en": "PHP Projects is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Projekty w PHP to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_039_10_05_03.jpg",
+            "path": "digital_products/e_books/photo_039_10_05_03.jpg",
+            "alt": {
+                "en": "PHP Projects",
+                "pl": "Projekty w PHP"
+            }
+        },
+        "tags_name": [
+            "PHP",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Web Development with PHP",
+            "pl": "Tworzenie stron w PHP"
+        },
+        "sku": "1/040/10",
+        "price": 6580,
+        "product_description": {
+            "en": "Web Development with PHP is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Tworzenie stron w PHP to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_040_10_05_03.jpg",
+            "path": "digital_products/e_books/photo_040_10_05_03.jpg",
+            "alt": {
+                "en": "Web Development with PHP",
+                "pl": "Tworzenie stron w PHP"
+            }
+        },
+        "tags_name": [
+            "PHP",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Java Essentials",
+            "pl": "Podstawy języka Java"
+        },
+        "sku": "1/041/11",
+        "price": 6717,
+        "product_description": {
+            "en": "Java Essentials is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podstawy języka Java to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_041_11_05_03.jpg",
+            "path": "books/it_books/photo_041_11_05_03.jpg",
+            "alt": {
+                "en": "Java Essentials",
+                "pl": "Podstawy języka Java"
+            }
+        },
+        "tags_name": [
+            "Java",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Object-Oriented Java",
+            "pl": "Programowanie obiektowe w Javie"
+        },
+        "sku": "1/042/11",
+        "price": 6854,
+        "product_description": {
+            "en": "Object-Oriented Java is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Programowanie obiektowe w Javie to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_042_11_05_03.jpg",
+            "path": "books/it_books/photo_042_11_05_03.jpg",
+            "alt": {
+                "en": "Object-Oriented Java",
+                "pl": "Programowanie obiektowe w Javie"
+            }
+        },
+        "tags_name": [
+            "Java",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Java Projects",
+            "pl": "Projekty w Javie"
+        },
+        "sku": "1/043/11",
+        "price": 6991,
+        "product_description": {
+            "en": "Java Projects is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Projekty w Javie to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_043_11_05_03.jpg",
+            "path": "digital_products/e_books/photo_043_11_05_03.jpg",
+            "alt": {
+                "en": "Java Projects",
+                "pl": "Projekty w Javie"
+            }
+        },
+        "tags_name": [
+            "Java",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Modern Java",
+            "pl": "Nowoczesna Java"
+        },
+        "sku": "1/044/11",
+        "price": 7128,
+        "product_description": {
+            "en": "Modern Java is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Nowoczesna Java to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_044_11_05_03.jpg",
+            "path": "digital_products/e_books/photo_044_11_05_03.jpg",
+            "alt": {
+                "en": "Modern Java",
+                "pl": "Nowoczesna Java"
+            }
+        },
+        "tags_name": [
+            "Java",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "C++ Fundamentals",
+            "pl": "Podstawy C++"
+        },
+        "sku": "1/045/12",
+        "price": 7265,
+        "product_description": {
+            "en": "C++ Fundamentals is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podstawy C++ to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_045_12_05_03.jpg",
+            "path": "books/it_books/photo_045_12_05_03.jpg",
+            "alt": {
+                "en": "C++ Fundamentals",
+                "pl": "Podstawy C++"
+            }
+        },
+        "tags_name": [
+            "C++",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Modern C++",
+            "pl": "Nowoczesne C++"
+        },
+        "sku": "1/046/12",
+        "price": 7402,
+        "product_description": {
+            "en": "Modern C++ is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Nowoczesne C++ to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_046_12_05_03.jpg",
+            "path": "books/it_books/photo_046_12_05_03.jpg",
+            "alt": {
+                "en": "Modern C++",
+                "pl": "Nowoczesne C++"
+            }
+        },
+        "tags_name": [
+            "C++",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "C++ Practice",
+            "pl": "Ćwiczenia z C++"
+        },
+        "sku": "1/047/12",
+        "price": 7539,
+        "product_description": {
+            "en": "C++ Practice is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Ćwiczenia z C++ to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_047_12_05_03.jpg",
+            "path": "digital_products/e_books/photo_047_12_05_03.jpg",
+            "alt": {
+                "en": "C++ Practice",
+                "pl": "Ćwiczenia z C++"
+            }
+        },
+        "tags_name": [
+            "C++",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Programming with C++",
+            "pl": "Programowanie w C++"
+        },
+        "sku": "1/048/12",
+        "price": 7676,
+        "product_description": {
+            "en": "Programming with C++ is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Programowanie w C++ to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_048_12_05_03.jpg",
+            "path": "digital_products/e_books/photo_048_12_05_03.jpg",
+            "alt": {
+                "en": "Programming with C++",
+                "pl": "Programowanie w C++"
+            }
+        },
+        "tags_name": [
+            "C++",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Python Essentials",
+            "pl": "Podstawy Pythona"
+        },
+        "sku": "1/049/13",
+        "price": 7813,
+        "product_description": {
+            "en": "Python Essentials is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podstawy Pythona to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_049_13_05_03.jpg",
+            "path": "books/it_books/photo_049_13_05_03.jpg",
+            "alt": {
+                "en": "Python Essentials",
+                "pl": "Podstawy Pythona"
+            }
+        },
+        "tags_name": [
+            "Python",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Practical Python",
+            "pl": "Praktyczny Python"
+        },
+        "sku": "1/050/13",
+        "price": 7950,
+        "product_description": {
+            "en": "Practical Python is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Praktyczny Python to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_050_13_05_03.jpg",
+            "path": "books/it_books/photo_050_13_05_03.jpg",
+            "alt": {
+                "en": "Practical Python",
+                "pl": "Praktyczny Python"
+            }
+        },
+        "tags_name": [
+            "Python",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Python Projects",
+            "pl": "Projekty w Pythonie"
+        },
+        "sku": "1/051/13",
+        "price": 8087,
+        "product_description": {
+            "en": "Python Projects is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Projekty w Pythonie to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_051_13_05_03.jpg",
+            "path": "digital_products/e_books/photo_051_13_05_03.jpg",
+            "alt": {
+                "en": "Python Projects",
+                "pl": "Projekty w Pythonie"
+            }
+        },
+        "tags_name": [
+            "Python",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Data with Python",
+            "pl": "Analiza danych w Pythonie"
+        },
+        "sku": "1/052/13",
+        "price": 8224,
+        "product_description": {
+            "en": "Data with Python is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Analiza danych w Pythonie to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_052_13_05_03.jpg",
+            "path": "digital_products/e_books/photo_052_13_05_03.jpg",
+            "alt": {
+                "en": "Data with Python",
+                "pl": "Analiza danych w Pythonie"
+            }
+        },
+        "tags_name": [
+            "Python",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "JavaScript Essentials",
+            "pl": "Podstawy JavaScriptu"
+        },
+        "sku": "1/053/14",
+        "price": 8361,
+        "product_description": {
+            "en": "JavaScript Essentials is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Podstawy JavaScriptu to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_053_14_05_03.jpg",
+            "path": "books/it_books/photo_053_14_05_03.jpg",
+            "alt": {
+                "en": "JavaScript Essentials",
+                "pl": "Podstawy JavaScriptu"
+            }
+        },
+        "tags_name": [
+            "JavaScript",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Modern JavaScript",
+            "pl": "Nowoczesny JavaScript"
+        },
+        "sku": "1/054/14",
+        "price": 8498,
+        "product_description": {
+            "en": "Modern JavaScript is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Nowoczesny JavaScript to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "it_books",
+        "images": {
+            "name": "photo_054_14_05_03.jpg",
+            "path": "books/it_books/photo_054_14_05_03.jpg",
+            "alt": {
+                "en": "Modern JavaScript",
+                "pl": "Nowoczesny JavaScript"
+            }
+        },
+        "tags_name": [
+            "JavaScript",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "JavaScript Projects",
+            "pl": "Projekty w JavaScript"
+        },
+        "sku": "1/055/14",
+        "price": 8635,
+        "product_description": {
+            "en": "JavaScript Projects is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Projekty w JavaScript to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_055_14_05_03.jpg",
+            "path": "digital_products/e_books/photo_055_14_05_03.jpg",
+            "alt": {
+                "en": "JavaScript Projects",
+                "pl": "Projekty w JavaScript"
+            }
+        },
+        "tags_name": [
+            "JavaScript",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Web Scripts",
+            "pl": "Skrypty internetowe"
+        },
+        "sku": "1/056/14",
+        "price": 8772,
+        "product_description": {
+            "en": "Web Scripts is a practical learning resource for readers who want to make steady progress. It explores programming concepts, practical coding exercises and building useful software projects through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Skrypty internetowe to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "e_books",
+        "images": {
+            "name": "photo_056_14_05_03.jpg",
+            "path": "digital_products/e_books/photo_056_14_05_03.jpg",
+            "alt": {
+                "en": "Web Scripts",
+                "pl": "Skrypty internetowe"
+            }
+        },
+        "tags_name": [
+            "JavaScript",
+            "Programming",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "English A1 Starter",
+            "pl": "Angielski A1 od podstaw"
+        },
+        "sku": "1/057/15",
+        "price": 8909,
+        "product_description": {
+            "en": "English A1 Starter is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Angielski A1 od podstaw to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_057_15_09_01.jpg",
+            "path": "digital_products/pdf_materials/photo_057_15_09_01.jpg",
+            "alt": {
+                "en": "English A1 Starter",
+                "pl": "Angielski A1 od podstaw"
+            }
+        },
+        "tags_name": [
+            "A1 - Beginner",
+            "English Learning",
+            "Primary School"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "First English Steps",
+            "pl": "Pierwsze kroki z angielskim"
+        },
+        "sku": "1/058/15",
+        "price": 9046,
+        "product_description": {
+            "en": "First English Steps is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Pierwsze kroki z angielskim to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_058_15_09_01.jpg",
+            "path": "digital_products/pdf_materials/photo_058_15_09_01.jpg",
+            "alt": {
+                "en": "First English Steps",
+                "pl": "Pierwsze kroki z angielskim"
+            }
+        },
+        "tags_name": [
+            "A1 - Beginner",
+            "English Learning",
+            "Primary School"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "A1 Vocabulary",
+            "pl": "Słownictwo A1"
+        },
+        "sku": "1/059/15",
+        "price": 9183,
+        "product_description": {
+            "en": "A1 Vocabulary is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Słownictwo A1 to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_059_15_09_01.jpg",
+            "path": "digital_products/pdf_materials/photo_059_15_09_01.jpg",
+            "alt": {
+                "en": "A1 Vocabulary",
+                "pl": "Słownictwo A1"
+            }
+        },
+        "tags_name": [
+            "A1 - Beginner",
+            "English Learning",
+            "Primary School"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Beginner Grammar",
+            "pl": "Gramatyka dla początkujących"
+        },
+        "sku": "1/060/15",
+        "price": 9320,
+        "product_description": {
+            "en": "Beginner Grammar is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Gramatyka dla początkujących to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_060_15_09_01.jpg",
+            "path": "digital_products/pdf_materials/photo_060_15_09_01.jpg",
+            "alt": {
+                "en": "Beginner Grammar",
+                "pl": "Gramatyka dla początkujących"
+            }
+        },
+        "tags_name": [
+            "A1 - Beginner",
+            "English Learning",
+            "Primary School"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "English A2 Practice",
+            "pl": "Angielski A2 w praktyce"
+        },
+        "sku": "1/061/16",
+        "price": 9457,
+        "product_description": {
+            "en": "English A2 Practice is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Angielski A2 w praktyce to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_061_16_09_02.jpg",
+            "path": "digital_products/pdf_materials/photo_061_16_09_02.jpg",
+            "alt": {
+                "en": "English A2 Practice",
+                "pl": "Angielski A2 w praktyce"
+            }
+        },
+        "tags_name": [
+            "A2 - Elementary",
+            "English Learning",
+            "High School"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Elementary Vocabulary",
+            "pl": "Słownictwo na poziomie podstawowym"
+        },
+        "sku": "1/062/16",
+        "price": 9594,
+        "product_description": {
+            "en": "Elementary Vocabulary is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Słownictwo na poziomie podstawowym to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_062_16_09_02.jpg",
+            "path": "digital_products/pdf_materials/photo_062_16_09_02.jpg",
+            "alt": {
+                "en": "Elementary Vocabulary",
+                "pl": "Słownictwo na poziomie podstawowym"
+            }
+        },
+        "tags_name": [
+            "A2 - Elementary",
+            "English Learning",
+            "High School"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "A2 Grammar",
+            "pl": "Gramatyka A2"
+        },
+        "sku": "1/063/16",
+        "price": 9731,
+        "product_description": {
+            "en": "A2 Grammar is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Gramatyka A2 to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_063_16_09_02.jpg",
+            "path": "digital_products/pdf_materials/photo_063_16_09_02.jpg",
+            "alt": {
+                "en": "A2 Grammar",
+                "pl": "Gramatyka A2"
+            }
+        },
+        "tags_name": [
+            "A2 - Elementary",
+            "English Learning",
+            "High School"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Everyday Phrases",
+            "pl": "Codzienne zwroty po angielsku"
+        },
+        "sku": "1/064/16",
+        "price": 9868,
+        "product_description": {
+            "en": "Everyday Phrases is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Codzienne zwroty po angielsku to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_064_16_09_02.jpg",
+            "path": "digital_products/pdf_materials/photo_064_16_09_02.jpg",
+            "alt": {
+                "en": "Everyday Phrases",
+                "pl": "Codzienne zwroty po angielsku"
+            }
+        },
+        "tags_name": [
+            "A2 - Elementary",
+            "English Learning",
+            "High School"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "English B1 Skills",
+            "pl": "Angielski B1: rozwijaj umiejętności"
+        },
+        "sku": "1/065/17",
+        "price": 1105,
+        "product_description": {
+            "en": "English B1 Skills is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Angielski B1: rozwijaj umiejętności to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_065_17_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_065_17_09_03.jpg",
+            "alt": {
+                "en": "English B1 Skills",
+                "pl": "Angielski B1: rozwijaj umiejętności"
+            }
+        },
+        "tags_name": [
+            "B1 - Intermediate",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Intermediate Grammar",
+            "pl": "Gramatyka na poziomie średniozaawansowanym"
+        },
+        "sku": "1/066/17",
+        "price": 1242,
+        "product_description": {
+            "en": "Intermediate Grammar is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Gramatyka na poziomie średniozaawansowanym to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_066_17_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_066_17_09_03.jpg",
+            "alt": {
+                "en": "Intermediate Grammar",
+                "pl": "Gramatyka na poziomie średniozaawansowanym"
+            }
+        },
+        "tags_name": [
+            "B1 - Intermediate",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "B1 Vocabulary",
+            "pl": "Słownictwo B1"
+        },
+        "sku": "1/067/17",
+        "price": 1379,
+        "product_description": {
+            "en": "B1 Vocabulary is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Słownictwo B1 to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_067_17_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_067_17_09_03.jpg",
+            "alt": {
+                "en": "B1 Vocabulary",
+                "pl": "Słownictwo B1"
+            }
+        },
+        "tags_name": [
+            "B1 - Intermediate",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Confident English",
+            "pl": "Pewność w komunikacji po angielsku"
+        },
+        "sku": "1/068/17",
+        "price": 1516,
+        "product_description": {
+            "en": "Confident English is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Pewność w komunikacji po angielsku to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_068_17_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_068_17_09_03.jpg",
+            "alt": {
+                "en": "Confident English",
+                "pl": "Pewność w komunikacji po angielsku"
+            }
+        },
+        "tags_name": [
+            "B1 - Intermediate",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "English B2 Mastery",
+            "pl": "Angielski B2: poziom wyższy"
+        },
+        "sku": "1/069/18",
+        "price": 1653,
+        "product_description": {
+            "en": "English B2 Mastery is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Angielski B2: poziom wyższy to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_069_18_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_069_18_09_03.jpg",
+            "alt": {
+                "en": "English B2 Mastery",
+                "pl": "Angielski B2: poziom wyższy"
+            }
+        },
+        "tags_name": [
+            "B2 - Upper Intermediate",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Advanced Conversations",
+            "pl": "Zaawansowane konwersacje"
+        },
+        "sku": "1/070/18",
+        "price": 1790,
+        "product_description": {
+            "en": "Advanced Conversations is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Zaawansowane konwersacje to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_070_18_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_070_18_09_03.jpg",
+            "alt": {
+                "en": "Advanced Conversations",
+                "pl": "Zaawansowane konwersacje"
+            }
+        },
+        "tags_name": [
+            "B2 - Upper Intermediate",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "B2 Grammar",
+            "pl": "Gramatyka B2"
+        },
+        "sku": "1/071/18",
+        "price": 1927,
+        "product_description": {
+            "en": "B2 Grammar is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Gramatyka B2 to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_071_18_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_071_18_09_03.jpg",
+            "alt": {
+                "en": "B2 Grammar",
+                "pl": "Gramatyka B2"
+            }
+        },
+        "tags_name": [
+            "B2 - Upper Intermediate",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Fluent English",
+            "pl": "Płynna komunikacja po angielsku"
+        },
+        "sku": "1/072/18",
+        "price": 2064,
+        "product_description": {
+            "en": "Fluent English is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Płynna komunikacja po angielsku to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_072_18_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_072_18_09_03.jpg",
+            "alt": {
+                "en": "Fluent English",
+                "pl": "Płynna komunikacja po angielsku"
+            }
+        },
+        "tags_name": [
+            "B2 - Upper Intermediate",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "English C1 Mastery",
+            "pl": "Angielski C1: poziom zaawansowany"
+        },
+        "sku": "1/073/19",
+        "price": 2201,
+        "product_description": {
+            "en": "English C1 Mastery is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Angielski C1: poziom zaawansowany to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_073_19_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_073_19_09_03.jpg",
+            "alt": {
+                "en": "English C1 Mastery",
+                "pl": "Angielski C1: poziom zaawansowany"
+            }
+        },
+        "tags_name": [
+            "C1 - Advanced",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Advanced English Skills",
+            "pl": "Zaawansowane umiejętności językowe"
+        },
+        "sku": "1/074/19",
+        "price": 2338,
+        "product_description": {
+            "en": "Advanced English Skills is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Zaawansowane umiejętności językowe to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_074_19_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_074_19_09_03.jpg",
+            "alt": {
+                "en": "Advanced English Skills",
+                "pl": "Zaawansowane umiejętności językowe"
+            }
+        },
+        "tags_name": [
+            "C1 - Advanced",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "C1 Vocabulary",
+            "pl": "Słownictwo C1"
+        },
+        "sku": "1/075/19",
+        "price": 2475,
+        "product_description": {
+            "en": "C1 Vocabulary is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Słownictwo C1 to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_075_19_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_075_19_09_03.jpg",
+            "alt": {
+                "en": "C1 Vocabulary",
+                "pl": "Słownictwo C1"
+            }
+        },
+        "tags_name": [
+            "C1 - Advanced",
+            "English Learning",
+            "University"
+        ]
+    },
+    {
+        "product_name": {
+            "en": "Academic English",
+            "pl": "Angielski akademicki"
+        },
+        "sku": "1/076/19",
+        "price": 2612,
+        "product_description": {
+            "en": "Academic English is a practical learning resource for readers who want to make steady progress. It explores English vocabulary, grammar, reading comprehension and confident everyday communication through accessible explanations, focused examples and ideas that can be applied beyond the page. The material is suitable for independent study or as a helpful companion to classes. Its clear structure makes it easy to return to key concepts, practise new skills and build confidence step by step.",
+            "pl": "Angielski akademicki to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. Publikacja omawia angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień za pomocą przystępnych wyjaśnień, konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        },
+        "page_name": "pdf_materials",
+        "images": {
+            "name": "photo_076_19_09_03.jpg",
+            "path": "digital_products/pdf_materials/photo_076_19_09_03.jpg",
+            "alt": {
+                "en": "Academic English",
+                "pl": "Angielski akademicki"
+            }
+        },
+        "tags_name": [
+            "C1 - Advanced",
+            "English Learning",
+            "University"
+        ]
+    }
+]

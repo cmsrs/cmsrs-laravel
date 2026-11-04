@@ -19,13 +19,13 @@ Each product:
     - one primary tag
     - additional related tags
 
-Also generates products.csv.
+Also generates products.json with bilingual product metadata.
 """
 
 from pathlib import Path
 import argparse
-import csv
 import html
+import json
 from io import BytesIO
 
 import cairosvg
@@ -229,6 +229,178 @@ TITLES = {
         "Academic English",
     ],
 }
+
+
+POLISH_TITLES = {
+    "Primary School": [
+        "Matematyczne przygody",
+        "Poznaj alfabet",
+        "Nauka dla dzieci",
+        "Kreatywny zeszyt ćwiczeń",
+    ],
+    "High School": [
+        "Ucz się skutecznie",
+        "Przygotowanie do egzaminów",
+        "Najważniejsze zagadnienia naukowe",
+        "Matematyczny zeszyt ćwiczeń",
+    ],
+    "University": [
+        "Niezbędnik studenta",
+        "Metody badań naukowych",
+        "Skuteczne strategie nauki",
+        "Przewodnik po wykładach",
+    ],
+    "Self-study": [
+        "Ucz się we własnym tempie",
+        "Samodzielna nauka krok po kroku",
+        "Praktyczny przewodnik nauki",
+        "Zeszyt ćwiczeń rozwijających umiejętności",
+    ],
+    "Programming": [
+        "Podstawy programowania",
+        "Programowanie na przykładach",
+        "Podręcznik programisty",
+        "Praktyczne kodowanie",
+    ],
+    "Databases": [
+        "Projektowanie baz danych",
+        "SQL w praktyce",
+        "Modelowanie danych",
+        "Warsztaty zapytań SQL",
+    ],
+    "Graphic Design": [
+        "Podstawy projektowania graficznego",
+        "Kreatywne układy graficzne",
+        "Podręcznik typografii",
+        "Zasady projektowania",
+    ],
+    "Project Management": [
+        "Planowanie projektów",
+        "Narzędzia Agile",
+        "Zarządzanie zespołem",
+        "Podręcznik zarządzania projektami",
+    ],
+    "English Learning": [
+        "Angielski na co dzień",
+        "Ćwiczenia z angielskiego",
+        "Rozwijaj angielskie słownictwo",
+        "Umiejętności języka angielskiego",
+    ],
+    "PHP": [
+        "Podstawy PHP",
+        "Nowoczesne PHP",
+        "Projekty w PHP",
+        "Tworzenie stron w PHP",
+    ],
+    "Java": [
+        "Podstawy języka Java",
+        "Programowanie obiektowe w Javie",
+        "Projekty w Javie",
+        "Nowoczesna Java",
+    ],
+    "C++": [
+        "Podstawy C++",
+        "Nowoczesne C++",
+        "Ćwiczenia z C++",
+        "Programowanie w C++",
+    ],
+    "Python": [
+        "Podstawy Pythona",
+        "Praktyczny Python",
+        "Projekty w Pythonie",
+        "Analiza danych w Pythonie",
+    ],
+    "JavaScript": [
+        "Podstawy JavaScriptu",
+        "Nowoczesny JavaScript",
+        "Projekty w JavaScript",
+        "Skrypty internetowe",
+    ],
+    "A1 - Beginner": [
+        "Angielski A1 od podstaw",
+        "Pierwsze kroki z angielskim",
+        "Słownictwo A1",
+        "Gramatyka dla początkujących",
+    ],
+    "A2 - Elementary": [
+        "Angielski A2 w praktyce",
+        "Słownictwo na poziomie podstawowym",
+        "Gramatyka A2",
+        "Codzienne zwroty po angielsku",
+    ],
+    "B1 - Intermediate": [
+        "Angielski B1: rozwijaj umiejętności",
+        "Gramatyka na poziomie średniozaawansowanym",
+        "Słownictwo B1",
+        "Pewność w komunikacji po angielsku",
+    ],
+    "B2 - Upper Intermediate": [
+        "Angielski B2: poziom wyższy",
+        "Zaawansowane konwersacje",
+        "Gramatyka B2",
+        "Płynna komunikacja po angielsku",
+    ],
+    "C1 - Advanced": [
+        "Angielski C1: poziom zaawansowany",
+        "Zaawansowane umiejętności językowe",
+        "Słownictwo C1",
+        "Angielski akademicki",
+    ],
+}
+
+
+DESCRIPTION_TOPICS = {
+    "en": {
+        "education": "foundational knowledge, clear explanations and age-appropriate learning activities",
+        "it": "programming concepts, practical coding exercises and building useful software projects",
+        "databases": "database design, SQL queries, structured information and reliable data management",
+        "design": "visual composition, typography, color choices and the creation of clear designs",
+        "management": "project planning, team collaboration, task tracking and practical Agile methods",
+        "english": "English vocabulary, grammar, reading comprehension and confident everyday communication",
+    },
+    "pl": {
+        "education": "wiedzę od podstaw, jasne wyjaśnienia i ćwiczenia dopasowane do etapu nauki",
+        "it": "zagadnienia programistyczne, praktyczne ćwiczenia z kodowania i tworzenie użytecznych projektów",
+        "databases": "projektowanie baz danych, zapytania SQL, porządkowanie informacji i zarządzanie danymi",
+        "design": "kompozycję, typografię, dobór kolorów i tworzenie czytelnych projektów graficznych",
+        "management": "planowanie projektów, współpracę zespołu, śledzenie zadań i praktyczne metody Agile",
+        "english": "angielskie słownictwo, gramatykę, rozumienie tekstu i swobodną komunikację na co dzień",
+    },
+}
+
+
+def make_product_description(tag_name, title_en, title_pl, category):
+    """Build distinct Polish and English descriptions from a product's topic."""
+    if tag_name in ("PHP", "Java", "C++", "Python", "JavaScript", "Programming"):
+        topic = "it"
+    elif tag_name == "Databases":
+        topic = "databases"
+    elif tag_name == "Graphic Design":
+        topic = "design"
+    elif tag_name == "Project Management":
+        topic = "management"
+    elif tag_name == "English Learning" or tag_name.startswith(("A1", "A2", "B1", "B2", "C1")):
+        topic = "english"
+    else:
+        topic = "education"
+
+    descriptions = {
+        "en": (
+            f"{title_en} is a practical learning resource for readers who want to make steady progress. "
+            f"It explores {DESCRIPTION_TOPICS['en'][topic]} through accessible explanations, focused examples "
+            f"and ideas that can be applied beyond the page. The material is suitable for independent study "
+            f"or as a helpful companion to classes. Its clear structure makes it easy to return to key "
+            f"concepts, practise new skills and build confidence step by step."
+        ),
+        "pl": (
+            f"{title_pl} to praktyczny materiał dla osób, które chcą systematycznie rozwijać swoją wiedzę. "
+            f"Publikacja omawia {DESCRIPTION_TOPICS['pl'][topic]} za pomocą przystępnych wyjaśnień, "
+            f"konkretnych przykładów i wskazówek do wykorzystania w praktyce. Sprawdzi się podczas "
+            f"samodzielnej nauki oraz jako uzupełnienie zajęć. Przejrzysty układ ułatwia powracanie "
+            f"do najważniejszych zagadnień, ćwiczenie nowych umiejętności i budowanie pewności krok po kroku."
+        ),
+    }
+    return descriptions
 
 
 # ============================================================
@@ -528,10 +700,17 @@ def main():
                 f"photo_{product_no:03d}_{tag_suffix}"
             )
 
-            title = TITLES[tag_name][variation - 1]
+            title_en = TITLES[tag_name][variation - 1]
+            title_pl = POLISH_TITLES[tag_name][variation - 1]
 
             category_label = (
                 f"{top_category} / {leaf_category}"
+            )
+            product_description = make_product_description(
+                tag_name,
+                title_en,
+                title_pl,
+                leaf_category
             )
 
             palette = PALETTES[
@@ -540,7 +719,7 @@ def main():
 
             # Generate SVG
             svg = make_svg(
-                title,
+                title_en,
                 category_label,
                 assigned_names,
                 product_no,
@@ -571,49 +750,33 @@ def main():
                     optimize=True
                 )
 
-            # CSV metadata
+            # JSON product metadata
             rows.append({
-
-                "product_no": product_no,
-
-                "title": title,
-
-                "category": category_label,
-
-                "primary_tag_id": tag_id,
-
-                "primary_tag": tag_name,
-
-                "all_tag_ids": ";".join(
-                    map(str, assigned_ids)
-                ),
-
-                "all_tags": ";".join(
-                    assigned_names
-                ),
-
-                "svg": str(svg_path),
-
-                "jpg": str(jpg_path),
-
+                "product_name": {
+                    "en": title_en,
+                    "pl": title_pl,
+                },
+                "sku": f"1/{product_no:03d}/{tag_id:02d}",
+                "price": 1100 + (product_no * 137) % 8900,
+                "product_description": product_description,
+                "page_name": leaf_category,
+                "images": {
+                    "name": jpg_path.name,
+                    "path": jpg_path.relative_to(output_root).as_posix(),
+                    "alt": {
+                        "en": title_en,
+                        "pl": title_pl,
+                    },
+                },
+                "tags_name": assigned_names,
             })
 
-    # Save CSV
-    csv_path = output_root / "products.csv"
+    # Save JSON
+    json_path = output_root / "products.json"
 
-    with csv_path.open(
-        "w",
-        newline="",
-        encoding="utf-8-sig"
-    ) as file:
-
-        writer = csv.DictWriter(
-            file,
-            fieldnames=rows[0].keys()
-        )
-
-        writer.writeheader()
-        writer.writerows(rows)
+    with json_path.open("w", encoding="utf-8") as file:
+        json.dump(rows, file, ensure_ascii=False, indent=4)
+        file.write("\n")
 
     # Summary
     print()
@@ -632,14 +795,15 @@ def main():
 
         count = sum(
             1 for row in rows
-            if row["category"] == f"{top} / {leaf}"
+            if row["page_name"] == leaf
+            and row["images"]["path"].startswith(f"{top}/{leaf}/")
         )
 
         print(f"{top}/{leaf}: {count} products")
 
     print()
     print(f"Output directory: {output_root.resolve()}")
-    print(f"CSV file:         {csv_path.resolve()}")
+    print(f"JSON file:        {json_path.resolve()}")
 
     print("=" * 50)
 

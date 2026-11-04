@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+        width="400" height="400" viewBox="0 0 400 400">
+
+    <defs>
+
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#392F5A"/>
+            <stop offset="100%" stop-color="#101820"/>
+        </linearGradient>
+
+        <pattern id="dots" width="22" height="22"
+            patternUnits="userSpaceOnUse">
+
+            <circle cx="3" cy="3" r="1.5"
+                fill="#FFFFFF" opacity=".16"/>
+
+        </pattern>
+
+    </defs>
+
+    <rect width="400" height="400" fill="url(#bg)"/>
+    <rect width="400" height="400" fill="url(#dots)"/>
+
+    <circle cx="350" cy="70" r="92"
+        fill="#E0AFA0" opacity=".18"/>
+
+    <path d="M0 315 Q145 260 260 330 T440 300
+        L440 420 L0 420Z"
+        fill="#E0AFA0" opacity=".16"/>
+
+    <rect x="28" y="28" width="344" height="344"
+        rx="16" fill="none"
+        stroke="#FFFFFF" stroke-opacity=".25"/>
+
+    <rect x="34" y="42" width="9" height="48"
+        rx="4" fill="#E0AFA0"/>
+
+    <text x="58" y="61" class="eyebrow">
+        DIGITAL_PRODUCTS / E_BOOKS
+    </text>
+
+    <text x="58" y="82" class="small">
+        DEMO COLLECTION / 003
+    </text>
+
+    <g>
+
+        <path d="M285 112 l28 -18 28 18 v42
+            l-28 18 -28 -18z"
+            fill="#E0AFA0"/>
+
+        <path d="M313 94 v78 M285 112 l28 18 28 -18"
+            stroke="#392F5A" stroke-width="3"
+            fill="none"/>
+
+    </g>
+
+    <text x="34" y="205" class="title">Science for Kids</text>
+
+    <rect x="34" y="292" width="332" height="1"
+        fill="#FFFFFF" opacity=".35"/>
+
+    <text x="34" y="321" class="tag">
+        Primary School • English Learning
+    </text>
+
+    <text x="34" y="350" class="footer">
+        LEARN • CREATE • GROW
+    </text>
+
+    <text x="366" y="350" text-anchor="end" class="footer">
+        #003
+    </text>
+
+    <style>
+
+        text {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+        }
+
+        .eyebrow {
+            fill: #E0AFA0;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.7px;
+        }
+
+        .small {
+            fill: #FFFFFF;
+            opacity: .62;
+            font-size: 9px;
+            letter-spacing: 1.2px;
+        }
+
+        .title {
+            fill: #FFFFFF;
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .tag {
+            fill: #FFFFFF;
+            opacity: .82;
+            font-size: 11px;
+        }
+
+        .footer {
+            fill: #FFFFFF;
+            opacity: .58;
+            font-size: 9px;
+            letter-spacing: 1.2px;
+        }
+
+    </style>
+
+</svg>

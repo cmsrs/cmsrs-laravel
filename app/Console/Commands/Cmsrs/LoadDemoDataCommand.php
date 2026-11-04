@@ -30,10 +30,6 @@ class LoadDemoDataCommand extends Command
      */
     protected $description = 'Load Demo Data';
 
-    // private $langs;
-    // private $translate;
-    // private $content;
-
     /**
      * Create a new command instance.
      *
@@ -42,12 +38,6 @@ class LoadDemoDataCommand extends Command
     public function __construct()
     {
         parent::__construct();
-
-        // $this->langs = ['en'];
-        // $this->translate = new TranslateService;
-        // $this->translate->setArrLangs($this->langs);
-        // $this->content = new ContentService;
-        // $this->content->setArrLangs($this->langs);
     }
 
     private function wrapSaveUser(int $i): int

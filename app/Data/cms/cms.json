@@ -245,16 +245,16 @@
           "category": "software_development",
           "tags": ["news"],
           "title": {
-            "en": "Laravel 13 – What's New",
-            "pl": "Laravel 13 – co nowego?"
+            "en": "Laravel 13 - What's New",
+            "pl": "Laravel 13 - co nowego?"
           },
           "short_title": {
             "en": "Laravel 13",
             "pl": "Laravel 13"
           },
           "h1": {
-            "en": "Laravel 13 – What's New",
-            "pl": "Laravel 13 – co nowego?"
+            "en": "Laravel 13 - What's New",
+            "pl": "Laravel 13 - co nowego?"
           },
           "slug": {
             "en": "laravel-13-whats-new",

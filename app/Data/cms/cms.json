@@ -1,0 +1,819 @@
+{
+  "config": {
+    "name": "cmsRS Demo",
+    "languages": ["en", "pl"],
+    "default_language": "en"
+  },
+  "navigation": [
+    {
+      "type": "menu",
+      "key": "about",
+      "name": {
+        "en": "About",
+        "pl": "O mnie"
+      },
+      "pages": [
+        {
+          "type": "cms",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "About me",
+            "pl": "O mnie"
+          },
+          "short_title": {
+            "en": "About",
+            "pl": "O mnie"
+          },
+          "h1": {
+            "en": "About me",
+            "pl": "O mnie"
+          },
+          "slug": {
+            "en": "about",
+            "pl": "o-mnie"
+          },
+          "description": {
+            "en": "Learn more about me and my work.",
+            "pl": "Dowiedz się więcej o mnie i mojej działalności."
+          },
+          "content": {
+            "en": "<p>Welcome to my website. Here you can learn more about me, my interests and the work I do. I created this website to share useful information, articles and experiences related to technology, programming and everyday life.</p><p>Feel free to explore the different sections of the website. You will find articles, photo galleries and other interesting materials. I hope you enjoy your visit!</p>",
+            "pl": "<p>Witaj na mojej stronie. Tutaj możesz dowiedzieć się więcej o mnie, moich zainteresowaniach oraz działalności. Stworzyłem tę stronę, aby dzielić się przydatnymi informacjami, artykułami i doświadczeniami związanymi z technologią, programowaniem oraz codziennym życiem.</p><p>Zapraszam do zapoznania się z poszczególnymi sekcjami serwisu. Znajdziesz tutaj artykuły, galerie zdjęć i inne interesujące materiały. Mam nadzieję, że miło spędzisz tutaj czas!</p>"
+          },
+          "images": [
+            {
+              "name": "me.jpg",
+              "file": "rs/demo_data/img/about_me/me.jpg",
+              "alt": {
+                "en": "About me",
+                "pl": "O mnie"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "key": "blog",
+      "name": {
+        "en": "Blog",
+        "pl": "Blog"
+      },
+      "pages": [
+        {
+          "type": "blog_category",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Web Development",
+            "pl": "Tworzenie stron internetowych"
+          },
+          "short_title": {
+            "en": "Web Development",
+            "pl": "Tworzenie stron"
+          },
+          "h1": {
+            "en": "Web Development",
+            "pl": "Tworzenie stron internetowych"
+          },
+          "slug": {
+            "en": "web-development",
+            "pl": "tworzenie-stron-internetowych"
+          },
+          "description": {
+            "en": "Articles about web development.",
+            "pl": "Artykuły dotyczące tworzenia stron internetowych."
+          },
+          "content": {
+            "en": "<p>Web development is a constantly evolving field that combines programming, design and problem-solving. Modern websites need to be functional, accessible, responsive and easy to use.</p><p>In this section, you will find tutorials, practical examples and articles about technologies used to build websites and web applications. Whether you are just starting out or already have some experience, you can find useful information to help you improve your skills.</p>",
+            "pl": "<p>Tworzenie stron internetowych to stale rozwijająca się dziedzina, która łączy programowanie, projektowanie i rozwiązywanie problemów. Nowoczesne strony powinny być funkcjonalne, dostępne, responsywne i wygodne w obsłudze.</p><p>W tej sekcji znajdziesz poradniki, praktyczne przykłady i artykuły dotyczące technologii wykorzystywanych do budowania stron oraz aplikacji internetowych. Niezależnie od tego, czy dopiero zaczynasz naukę, czy masz już doświadczenie, znajdziesz tu informacje pomagające rozwijać swoje umiejętności.</p>"
+          }
+        },
+        {
+          "type": "blog_category",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Software Development",
+            "pl": "Tworzenie oprogramowania"
+          },
+          "short_title": {
+            "en": "Software Development",
+            "pl": "Oprogramowanie"
+          },
+          "h1": {
+            "en": "Software Development",
+            "pl": "Tworzenie oprogramowania"
+          },
+          "slug": {
+            "en": "software-development",
+            "pl": "tworzenie-oprogramowania"
+          },
+          "description": {
+            "en": "Software development news and articles.",
+            "pl": "Aktualności i artykuły dotyczące tworzenia oprogramowania."
+          },
+          "content": {
+            "en": "<p>Software development involves designing, building, testing and maintaining applications that solve real-world problems. It covers many technologies, programming languages, frameworks and development practices.</p><p>Here you can read about software development tools, new framework releases, useful programming techniques and changes in the technology landscape. The goal is to make complex topics easier to understand and provide practical knowledge for developers.</p>",
+            "pl": "<p>Tworzenie oprogramowania obejmuje projektowanie, budowanie, testowanie i utrzymywanie aplikacji rozwiązujących konkretne problemy. Jest to szeroka dziedzina wykorzystująca wiele technologii, języków programowania, frameworków i dobrych praktyk.</p><p>W tej sekcji znajdziesz informacje o narzędziach programistycznych, nowych wersjach frameworków, przydatnych technikach programowania oraz zmianach w świecie technologii. Celem jest przedstawianie złożonych zagadnień w przystępny sposób i dostarczanie praktycznej wiedzy programistom.</p>"
+          }
+        },
+        {
+          "type": "blog_category",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Database Management",
+            "pl": "Zarządzanie bazami danych"
+          },
+          "short_title": {
+            "en": "Database Management",
+            "pl": "Bazy danych"
+          },
+          "h1": {
+            "en": "Database Management",
+            "pl": "Zarządzanie bazami danych"
+          },
+          "slug": {
+            "en": "database-management",
+            "pl": "zarzadzanie-bazami-danych"
+          },
+          "description": {
+            "en": "Database tutorials and optimization.",
+            "pl": "Poradniki dotyczące baz danych i ich optymalizacji."
+          },
+          "content": {
+            "en": "<p>Databases are an essential part of most modern applications. They make it possible to store, organize and retrieve information efficiently and reliably.</p><p>This section focuses on database management, SQL queries, data organization, security and performance optimization. You will find practical tips that can help you design better databases and improve the performance of your applications.</p>",
+            "pl": "<p>Bazy danych są nieodłącznym elementem większości nowoczesnych aplikacji. Umożliwiają przechowywanie, organizowanie i pobieranie informacji w sposób wydajny oraz niezawodny.</p><p>Ta sekcja poświęcona jest zarządzaniu bazami danych, zapytaniom SQL, organizacji danych, bezpieczeństwu i optymalizacji wydajności. Znajdziesz tu praktyczne wskazówki, które pomogą Ci projektować lepsze bazy danych i poprawiać działanie aplikacji.</p>"
+          }
+        },
+        {
+          "type": "blog_category",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Project Management",
+            "pl": "Zarządzanie projektami"
+          },
+          "short_title": {
+            "en": "Project Management",
+            "pl": "Zarządzanie projektami"
+          },
+          "h1": {
+            "en": "Project Management",
+            "pl": "Zarządzanie projektami"
+          },
+          "slug": {
+            "en": "project-management",
+            "pl": "zarzadzanie-projektami"
+          },
+          "description": {
+            "en": "Articles about project management.",
+            "pl": "Artykuły o zarządzaniu projektami."
+          },
+          "content": {
+            "en": "<p>Successful project management requires good planning, clear communication and effective organization. Every project has its own goals, resources, deadlines and challenges.</p><p>In this section, you will find articles about planning tasks, setting priorities, managing time, working with teams and monitoring project progress. These ideas can be useful both in professional projects and in everyday activities.</p>",
+            "pl": "<p>Skuteczne zarządzanie projektami wymaga dobrego planowania, jasnej komunikacji i sprawnej organizacji. Każdy projekt ma swoje cele, zasoby, terminy i wyzwania.</p><p>W tej sekcji znajdziesz artykuły dotyczące planowania zadań, ustalania priorytetów, zarządzania czasem, pracy zespołowej i monitorowania postępów. Przedstawione wskazówki mogą być przydatne zarówno w projektach zawodowych, jak i w codziennych działaniach.</p>"
+          }
+        },
+        {
+          "type": "blog_category",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Language Learning",
+            "pl": "Nauka języków"
+          },
+          "short_title": {
+            "en": "Language Learning",
+            "pl": "Nauka języków"
+          },
+          "h1": {
+            "en": "Language Learning",
+            "pl": "Nauka języków obcych"
+          },
+          "slug": {
+            "en": "language-learning",
+            "pl": "nauka-jezykow"
+          },
+          "description": {
+            "en": "Language learning tips and articles.",
+            "pl": "Porady i artykuły dotyczące nauki języków."
+          },
+          "content": {
+            "en": "<p>Learning a foreign language is a process that requires regular practice, patience and motivation. Even a few minutes of learning every day can bring noticeable results over time.</p><p>This section contains practical tips, learning methods and ideas for improving vocabulary, grammar, listening and speaking skills. The articles are intended for people who want to learn more effectively and make language learning part of their daily routine.</p>",
+            "pl": "<p>Nauka języka obcego to proces wymagający regularnych ćwiczeń, cierpliwości i motywacji. Nawet kilka minut nauki dziennie może z czasem przynieść zauważalne efekty.</p><p>W tej sekcji znajdziesz praktyczne porady, metody nauki i pomysły na rozwijanie słownictwa, gramatyki, rozumienia ze słuchu oraz umiejętności mówienia. Artykuły są przeznaczone dla osób, które chcą uczyć się skuteczniej i włączyć naukę języków do codziennej rutyny.</p>"
+          }
+        },
+        {
+          "type": "blog",
+          "key": "start-programming-php",
+          "published": true,
+          "category": "web_development",
+          "tags": ["tutorials"],
+          "title": {
+            "en": "How to Start Programming in PHP",
+            "pl": "Jak rozpocząć programowanie w PHP"
+          },
+          "short_title": {
+            "en": "Getting Started with PHP",
+            "pl": "Pierwsze kroki z PHP"
+          },
+          "h1": {
+            "en": "How to Start Programming in PHP",
+            "pl": "Jak rozpocząć programowanie w PHP"
+          },
+          "slug": {
+            "en": "how-to-start-programming-in-php",
+            "pl": "jak-zaczac-programowac-w-php"
+          },
+          "description": {
+            "en": "Learn the basics of PHP programming.",
+            "pl": "Poznaj podstawy programowania w PHP."
+          },
+          "content": {
+            "en": "<p>PHP is a popular server-side programming language used to build dynamic websites and web applications. It works particularly well with HTML and databases, making it a useful technology for creating everything from simple websites to complex content management systems.</p><h2>What do you need to get started?</h2><p>To begin programming in PHP, you need a PHP interpreter and a code editor. You can install a local development environment on your computer or use a ready-made development package. A local server makes it possible to run PHP scripts and test your code before publishing a website.</p><h2>Learn the basic syntax</h2><p>Start with variables, data types, conditions, loops and functions. These concepts are the foundation of almost every PHP application. Once you understand them, try working with arrays, forms and basic file operations.</p><h2>Practice with a small project</h2><p>A good way to learn PHP is to build something practical. You could create a simple contact form, a small calculator or a basic application that stores information in a database. Working on a real project helps you understand how individual programming concepts fit together.</p><p>Remember to write readable code, test your solutions and consult the official documentation whenever you need help. Regular practice is the best way to develop your programming skills.</p>",
+            "pl": "<p>PHP to popularny język programowania działający po stronie serwera, wykorzystywany do tworzenia dynamicznych stron internetowych i aplikacji webowych. Bardzo dobrze współpracuje z HTML i bazami danych, dzięki czemu można w nim budować zarówno proste strony, jak i rozbudowane systemy zarządzania treścią.</p><h2>Czego potrzebujesz na początek?</h2><p>Aby rozpocząć programowanie w PHP, potrzebujesz interpretera PHP oraz edytora kodu. Możesz zainstalować lokalne środowisko programistyczne na swoim komputerze albo skorzystać z gotowego pakietu. Lokalny serwer pozwala uruchamiać skrypty PHP i testować kod przed opublikowaniem strony.</p><h2>Poznaj podstawową składnię</h2><p>Na początku warto nauczyć się zmiennych, typów danych, instrukcji warunkowych, pętli i funkcji. Są to podstawowe elementy niemal każdej aplikacji PHP. Gdy je opanujesz, możesz przejść do tablic, obsługi formularzy i podstawowych operacji na plikach.</p><h2>Ćwicz na małym projekcie</h2><p>Dobrym sposobem nauki PHP jest stworzenie czegoś praktycznego. Możesz przygotować prosty formularz kontaktowy, niewielki kalkulator albo podstawową aplikację zapisującą dane w bazie danych. Praca nad rzeczywistym projektem pomaga zrozumieć, jak poszczególne elementy programowania współpracują ze sobą.</p><p>Pamiętaj o czytelnym kodzie, testowaniu swoich rozwiązań i korzystaniu z oficjalnej dokumentacji. Regularna praktyka to najlepszy sposób na rozwijanie umiejętności programistycznych.</p>"
+          }
+        },
+        {
+          "type": "blog",
+          "key": "laravel-13-whats-new",
+          "published": true,
+          "category": "software_development",
+          "tags": ["news"],
+          "title": {
+            "en": "Laravel 13 – What's New",
+            "pl": "Laravel 13 – co nowego?"
+          },
+          "short_title": {
+            "en": "Laravel 13",
+            "pl": "Laravel 13"
+          },
+          "h1": {
+            "en": "Laravel 13 – What's New",
+            "pl": "Laravel 13 – co nowego?"
+          },
+          "slug": {
+            "en": "laravel-13-whats-new",
+            "pl": "laravel-13-co-nowego"
+          },
+          "description": {
+            "en": "Discover the new features in Laravel 13.",
+            "pl": "Poznaj nowe funkcje Laravel 13."
+          },
+          "content": {
+            "en": "<p>Laravel is a popular PHP framework designed to make web application development more efficient and enjoyable. It provides a clear structure, useful built-in tools and a large ecosystem of packages that help developers build and maintain modern applications.</p><h2>What should you look for in a new Laravel release?</h2><p>When a new major version is introduced, developers usually pay attention to framework performance, security improvements, updated dependencies and changes to the development experience. These areas can influence how applications are built, maintained and upgraded.</p><h2>Preparing an existing application</h2><p>Before upgrading a project, review the official release notes and upgrade guide. Check the PHP version requirements, update dependencies and identify any deprecated features used by your application. It is also important to run automated tests after making changes.</p><h2>Keeping your projects up to date</h2><p>Regular framework updates help keep applications secure and compatible with modern development tools. However, every upgrade should be planned and tested carefully, especially when working with production systems.</p><p>For the most accurate information about Laravel 13 features and compatibility, always consult the official Laravel documentation and release announcements.</p>",
+            "pl": "<p>Laravel to popularny framework PHP, którego celem jest ułatwienie i usprawnienie tworzenia aplikacji internetowych. Oferuje przejrzystą strukturę, wiele przydatnych narzędzi oraz rozbudowany ekosystem pakietów, które pomagają programistom budować i utrzymywać nowoczesne aplikacje.</p><h2>Na co zwracać uwagę w nowej wersji Laravel?</h2><p>Przy premierze nowej głównej wersji frameworka programiści zazwyczaj zwracają uwagę na wydajność, poprawki bezpieczeństwa, aktualizacje zależności oraz zmiany wpływające na komfort pracy. Wszystkie te elementy mogą mieć znaczenie dla sposobu tworzenia, utrzymywania i aktualizowania aplikacji.</p><h2>Przygotowanie istniejącej aplikacji</h2><p>Przed aktualizacją projektu warto zapoznać się z oficjalną listą zmian oraz instrukcją migracji. Należy sprawdzić wymagania dotyczące wersji PHP, zaktualizować zależności i zidentyfikować funkcje oznaczone jako przestarzałe. Po wprowadzeniu zmian ważne jest również uruchomienie testów automatycznych.</p><h2>Aktualizowanie projektów</h2><p>Regularne aktualizacje frameworka pomagają utrzymać aplikacje w dobrym stanie, zwiększają bezpieczeństwo i zapewniają zgodność z nowoczesnymi narzędziami programistycznymi. Każdą aktualizację należy jednak odpowiednio zaplanować i przetestować, szczególnie w przypadku systemów produkcyjnych.</p><p>Najbardziej aktualnych informacji o funkcjach i wymaganiach Laravel 13 należy szukać w oficjalnej dokumentacji oraz komunikatach dotyczących wydań frameworka.</p>"
+          }
+        },
+        {
+          "type": "blog",
+          "key": "mysql-database-optimization",
+          "published": true,
+          "category": "database_management",
+          "tags": ["tutorials"],
+          "title": {
+            "en": "MySQL Database Optimization",
+            "pl": "Optymalizacja baz danych MySQL"
+          },
+          "short_title": {
+            "en": "MySQL Optimization",
+            "pl": "Optymalizacja MySQL"
+          },
+          "h1": {
+            "en": "MySQL Database Optimization",
+            "pl": "Optymalizacja baz danych MySQL"
+          },
+          "slug": {
+            "en": "mysql-database-optimization",
+            "pl": "optymalizacja-baz-danych-mysql"
+          },
+          "description": {
+            "en": "Learn how to improve MySQL database performance.",
+            "pl": "Dowiedz się, jak poprawić wydajność baz danych MySQL."
+          },
+          "content": {
+            "en": "<p>Database optimization is essential for fast and reliable applications. As a database grows, queries may take longer to execute and the application may become less responsive. Fortunately, a few good practices can make a significant difference.</p><h2>Use indexes wisely</h2><p>Indexes help MySQL find records without scanning an entire table. They are particularly useful for columns frequently used in WHERE conditions, JOIN operations and sorting. However, too many indexes can slow down INSERT, UPDATE and DELETE operations, so they should be selected carefully.</p><h2>Analyze your SQL queries</h2><p>The EXPLAIN statement helps you understand how MySQL executes a query. It can show which indexes are used and whether the database needs to examine a large number of rows. Reviewing slow queries is a good starting point when investigating performance problems.</p><h2>Keep your database structure organized</h2><p>Choose appropriate data types, define primary and foreign keys and avoid storing unnecessary duplicate information. A well-designed database structure makes data easier to manage and can improve application performance.</p><p>Database optimization is an ongoing process. Monitor your application, measure query performance and make changes based on real results rather than assumptions.</p>",
+            "pl": "<p>Optymalizacja baz danych jest bardzo ważna dla szybkiego i niezawodnego działania aplikacji. Wraz ze wzrostem ilości danych zapytania mogą wykonywać się coraz dłużej, a aplikacja może reagować wolniej. Na szczęście zastosowanie kilku dobrych praktyk potrafi znacząco poprawić wydajność.</p><h2>Rozsądnie korzystaj z indeksów</h2><p>Indeksy pomagają MySQL odnajdywać rekordy bez konieczności przeszukiwania całej tabeli. Są szczególnie przydatne dla kolumn często wykorzystywanych w warunkach WHERE, operacjach JOIN i sortowaniu. Zbyt duża liczba indeksów może jednak spowalniać operacje INSERT, UPDATE i DELETE, dlatego należy dobierać je świadomie.</p><h2>Analizuj zapytania SQL</h2><p>Instrukcja EXPLAIN pozwala sprawdzić, w jaki sposób MySQL wykonuje dane zapytanie. Można dzięki niej zobaczyć, z których indeksów korzysta baza oraz czy musi analizować dużą liczbę rekordów. Przegląd wolno działających zapytań to dobry punkt wyjścia do rozwiązywania problemów z wydajnością.</p><h2>Dbaj o strukturę bazy danych</h2><p>Wybieraj odpowiednie typy danych, definiuj klucze główne i obce oraz unikaj niepotrzebnego powielania informacji. Dobrze zaprojektowana struktura ułatwia zarządzanie danymi i może pozytywnie wpłynąć na wydajność aplikacji.</p><p>Optymalizacja bazy danych jest procesem ciągłym. Monitoruj działanie aplikacji, mierz czas wykonywania zapytań i wprowadzaj zmiany na podstawie rzeczywistych wyników, a nie przypuszczeń.</p>"
+          }
+        },
+        {
+          "type": "blog",
+          "key": "project-management-basics",
+          "published": true,
+          "category": "project_management",
+          "tags": ["latest_articles"],
+          "title": {
+            "en": "Project Management Basics",
+            "pl": "Podstawy zarządzania projektami"
+          },
+          "short_title": {
+            "en": "Project Management Basics",
+            "pl": "Podstawy zarządzania projektami"
+          },
+          "h1": {
+            "en": "Project Management Basics",
+            "pl": "Podstawy zarządzania projektami"
+          },
+          "slug": {
+            "en": "project-management-basics",
+            "pl": "podstawy-zarzadzania-projektami"
+          },
+          "description": {
+            "en": "An introduction to project management.",
+            "pl": "Wprowadzenie do zarządzania projektami."
+          },
+          "content": {
+            "en": "<p>Project management is the process of planning, organizing and coordinating work to achieve a specific goal. It helps teams use their time and resources effectively while keeping activities focused on the expected results.</p><h2>Define the project goals</h2><p>Every project should start with a clear description of what needs to be achieved. Define the expected results, scope and main requirements. Clear goals make it easier to plan activities and evaluate progress.</p><h2>Break work into smaller tasks</h2><p>Large projects can feel difficult to manage. Dividing them into smaller tasks makes the work more predictable and easier to monitor. Assign responsibilities, estimate the time required and identify important deadlines.</p><h2>Communicate and monitor progress</h2><p>Regular communication helps team members understand priorities and identify problems early. Track completed tasks, discuss potential risks and adjust the plan when circumstances change.</p><p>Good project management does not require complicated tools. A clear plan, realistic deadlines and consistent communication are often enough to make a project run more smoothly.</p>",
+            "pl": "<p>Zarządzanie projektami to proces planowania, organizowania i koordynowania pracy w celu osiągnięcia określonego rezultatu. Pomaga zespołom efektywnie wykorzystywać czas i zasoby oraz koncentrować działania na wyznaczonych celach.</p><h2>Określ cele projektu</h2><p>Każdy projekt powinien rozpoczynać się od jasnego określenia tego, co ma zostać osiągnięte. Warto zdefiniować oczekiwane rezultaty, zakres prac i najważniejsze wymagania. Konkretne cele ułatwiają planowanie działań i ocenę postępów.</p><h2>Podziel pracę na mniejsze zadania</h2><p>Duże projekty mogą wydawać się trudne do kontrolowania. Podzielenie ich na mniejsze zadania sprawia, że praca staje się bardziej przewidywalna i łatwiejsza do monitorowania. Przydziel odpowiedzialności, oszacuj potrzebny czas i określ najważniejsze terminy.</p><h2>Komunikuj się i kontroluj postępy</h2><p>Regularna komunikacja pomaga członkom zespołu rozumieć priorytety i odpowiednio wcześnie identyfikować problemy. Monitoruj wykonane zadania, omawiaj potencjalne ryzyka i dostosowuj plan, gdy zmieniają się okoliczności.</p><p>Dobre zarządzanie projektem nie wymaga skomplikowanych narzędzi. Przejrzysty plan, realistyczne terminy i systematyczna komunikacja często wystarczą, aby projekt przebiegał sprawniej.</p>"
+          }
+        },
+        {
+          "type": "blog",
+          "key": "improve-english-vocabulary",
+          "published": true,
+          "category": "language_learning",
+          "tags": ["tutorials"],
+          "title": {
+            "en": "How to Improve English Vocabulary",
+            "pl": "Jak rozwijać angielskie słownictwo"
+          },
+          "short_title": {
+            "en": "Improve English Vocabulary",
+            "pl": "Rozwijanie słownictwa"
+          },
+          "h1": {
+            "en": "How to Improve English Vocabulary",
+            "pl": "Jak rozwijać angielskie słownictwo"
+          },
+          "slug": {
+            "en": "improve-english-vocabulary",
+            "pl": "jak-rozwijac-angielskie-slownictwo"
+          },
+          "description": {
+            "en": "Practical tips for learning English vocabulary.",
+            "pl": "Praktyczne porady dotyczące nauki angielskiego słownictwa."
+          },
+          "content": {
+            "en": "<p>Building a strong English vocabulary takes time and regular practice. Learning individual words from a list can be useful, but it is usually easier to remember new vocabulary when you see it in context and use it in everyday situations.</p><h2>Learn words in context</h2><p>Instead of memorizing isolated words, try learning complete phrases and example sentences. This helps you understand how a word is used and which other words commonly appear with it. Reading articles, books and short stories is a great way to discover vocabulary naturally.</p><h2>Review new vocabulary regularly</h2><p>Repetition is important for long-term memory. Keep a notebook or use a vocabulary application to collect new words. Review them regularly and return to older material so that you do not forget what you have already learned.</p><h2>Use new words actively</h2><p>Try writing short sentences, keeping a journal or describing your day in English. Speaking practice is also important because it helps you recall words more quickly during real conversations.</p><p>Set a realistic daily goal, for example learning five new words and reviewing previously learned vocabulary. Small, consistent steps can lead to significant progress over time.</p>",
+            "pl": "<p>Rozwijanie angielskiego słownictwa wymaga czasu i regularnej praktyki. Nauka pojedynczych słów z listy może być przydatna, ale zazwyczaj łatwiej zapamiętać nowe wyrażenia, gdy poznajemy je w kontekście i wykorzystujemy w codziennych sytuacjach.</p><h2>Ucz się słów w kontekście</h2><p>Zamiast zapamiętywać wyłącznie pojedyncze słowa, spróbuj uczyć się całych zwrotów i przykładowych zdań. Dzięki temu lepiej zrozumiesz, w jaki sposób używa się danego wyrazu i jakie inne słowa często występują razem z nim. Czytanie artykułów, książek i krótkich opowiadań to dobry sposób na naturalne poznawanie nowego słownictwa.</p><h2>Regularnie powtarzaj materiał</h2><p>Powtórki mają duże znaczenie dla trwałego zapamiętywania. Prowadź zeszyt ze słówkami albo korzystaj z aplikacji do nauki języków. Wracaj do zapisanych wyrażeń i regularnie powtarzaj również starszy materiał, aby nie zapominać wcześniej poznanych słów.</p><h2>Aktywnie wykorzystuj nowe słownictwo</h2><p>Staraj się układać krótkie zdania, prowadzić dziennik lub opisywać swój dzień po angielsku. Ważne są również ćwiczenia mówienia, ponieważ pomagają szybciej przypominać sobie słowa podczas prawdziwych rozmów.</p><p>Ustal realistyczny cel na każdy dzień, na przykład naukę pięciu nowych słów i powtórzenie wcześniej poznanego słownictwa. Małe, systematyczne kroki mogą z czasem przynieść bardzo dobre rezultaty.</p>"
+          }
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "key": "gallery",
+      "name": {
+        "en": "Gallery",
+        "pl": "Galeria"
+      },
+      "pages": [
+        {
+          "type": "gallery",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Poland",
+            "pl": "Polska"
+          },
+          "short_title": {
+            "en": "Poland",
+            "pl": "Polska"
+          },
+          "h1": {
+            "en": "Photos from Poland",
+            "pl": "Zdjęcia z Polski"
+          },
+          "slug": {
+            "en": "gallery/poland",
+            "pl": "galeria/polska"
+          },
+          "description": {
+            "en": "Photos from Poland.",
+            "pl": "Zdjęcia z Polski."
+          },
+          "content": {
+            "en": "<p>Below, I present photos from Poland.</p>",
+            "pl": "<p>Poniżej przedstawiam zdjęcia z Polski.</p>"
+          },
+          "images": [
+            {
+                "name": "img1.jpg",
+                "file": "rs/demo_data/img/gallery/img1.jpg",
+                "alt": {
+                "en": "Poland landscape 1",
+                "pl": "Krajobraz Polski 1"
+                }
+            },
+            {
+                "name": "img2.jpg",
+                "file": "rs/demo_data/img/gallery/img2.jpg",
+                "alt": {
+                "en": "Poland landscape 2",
+                "pl": "Krajobraz Polski 2"
+                }
+            },
+            {
+                "name": "img3.jpg",
+                "file": "rs/demo_data/img/gallery/img3.jpg",
+                "alt": {
+                "en": "Poland landscape 3",
+                "pl": "Krajobraz Polski 3"
+                }
+            },
+            {
+                "name": "img4.jpg",
+                "file": "rs/demo_data/img/gallery/img4.jpg",
+                "alt": {
+                "en": "Poland landscape 4",
+                "pl": "Krajobraz Polski 4"
+                }
+            },
+            {
+                "name": "imgb1.jpg",
+                "file": "rs/demo_data/img/gallery/imgb1.jpg",
+                "alt": {
+                "en": "Poland photo 5",
+                "pl": "Zdjęcie z Polski 5"
+                }
+            },
+            {
+                "name": "imgb2.jpg",
+                "file": "rs/demo_data/img/gallery/imgb2.jpg",
+                "alt": {
+                "en": "Poland photo 6",
+                "pl": "Zdjęcie z Polski 6"
+                }
+            },
+            {
+                "name": "imgb3.jpg",
+                "file": "rs/demo_data/img/gallery/imgb3.jpg",
+                "alt": {
+                "en": "Poland photo 7",
+                "pl": "Zdjęcie z Polski 7"
+                }
+            },
+            {
+                "name": "imgb4.jpg",
+                "file": "rs/demo_data/img/gallery/imgb4.jpg",
+                "alt": {
+                "en": "Poland photo 8",
+                "pl": "Zdjęcie z Polski 8"
+                }
+            },
+            {
+                "name": "imgc1.jpg",
+                "file": "rs/demo_data/img/gallery/imgc1.jpg",
+                "alt": {
+                "en": "Poland photo 9",
+                "pl": "Zdjęcie z Polski 9"
+                }
+            },
+            {
+                "name": "imgc2.jpg",
+                "file": "rs/demo_data/img/gallery/imgc2.jpg",
+                "alt": {
+                "en": "Poland photo 10",
+                "pl": "Zdjęcie z Polski 10"
+                }
+            },
+            {
+                "name": "imgc3.jpg",
+                "file": "rs/demo_data/img/gallery/imgc3.jpg",
+                "alt": {
+                "en": "Poland photo 11",
+                "pl": "Zdjęcie z Polski 11"
+                }
+            },
+            {
+                "name": "imgc4.jpg",
+                "file": "rs/demo_data/img/gallery/imgc4.jpg",
+                "alt": {
+                "en": "Poland photo 12",
+                "pl": "Zdjęcie z Polski 12"
+                }
+            },
+            {
+                "name": "imgc5.jpg",
+                "file": "rs/demo_data/img/gallery/imgc5.jpg",
+                "alt": {
+                "en": "Poland photo 13",
+                "pl": "Zdjęcie z Polski 13"
+                }
+            },
+            {
+                "name": "imgc6.jpg",
+                "file": "rs/demo_data/img/gallery/imgc6.jpg",
+                "alt": {
+                "en": "Poland photo 14",
+                "pl": "Zdjęcie z Polski 14"
+                }
+            },
+            {
+                "name": "imgc7.jpg",
+                "file": "rs/demo_data/img/gallery/imgc7.jpg",
+                "alt": {
+                "en": "Poland photo 15",
+                "pl": "Zdjęcie z Polski 15"
+                }
+            },
+            {
+                "name": "imgc8.jpg",
+                "file": "rs/demo_data/img/gallery/imgc8.jpg",
+                "alt": {
+                "en": "Poland photo 16",
+                "pl": "Zdjęcie z Polski 16"
+                }
+            },
+            {
+                "name": "imgc9.jpg",
+                "file": "rs/demo_data/img/gallery/imgc9.jpg",
+                "alt": {
+                "en": "Poland photo 17",
+                "pl": "Zdjęcie z Polski 17"
+                }
+            },
+            {
+                "name": "imgc10.jpg",
+                "file": "rs/demo_data/img/gallery/imgc10.jpg",
+                "alt": {
+                "en": "Poland photo 18",
+                "pl": "Zdjęcie z Polski 18"
+                }
+            },
+            {
+                "name": "imgc11.jpg",
+                "file": "rs/demo_data/img/gallery/imgc11.jpg",
+                "alt": {
+                "en": "Poland photo 19",
+                "pl": "Zdjęcie z Polski 19"
+                }
+            },
+            {
+                "name": "imgc12.jpg",
+                "file": "rs/demo_data/img/gallery/imgc12.jpg",
+                "alt": {
+                "en": "Poland photo 20",
+                "pl": "Zdjęcie z Polski 20"
+                }
+            }
+        ]
+        },
+        {
+          "type": "gallery",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Greece",
+            "pl": "Grecja"
+          },
+          "short_title": {
+            "en": "Greece",
+            "pl": "Grecja"
+          },
+          "h1": {
+            "en": "Photos from Greece",
+            "pl": "Zdjęcia z Grecji"
+          },
+          "slug": {
+            "en": "gallery/greece",
+            "pl": "galeria/grecja"
+          },
+          "description": {
+            "en": "Photos from Greece.",
+            "pl": "Zdjęcia z Grecji."
+          },
+          "content": {
+            "en": "<p>Photos from my travels in Greece.</p>",
+            "pl": "<p>Zdjęcia z moich podróży po Grecji.</p>"
+          },
+          "images": [
+                {
+                    "name": "imggreece1.jpg",
+                    "file": "rs/demo_data/img/gallery/greece/imggreece1.jpg",
+                    "alt": {
+                    "en": "Greece landscape 1",
+                    "pl": "Krajobraz Grecji 1"
+                    }
+                },
+                {
+                    "name": "imggreece2.jpg",
+                    "file": "rs/demo_data/img/gallery/greece/imggreece2.jpg",
+                    "alt": {
+                    "en": "Greece landscape 2",
+                    "pl": "Krajobraz Grecji 2"
+                    }
+                }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "key": "shop",
+      "name": {
+        "en": "Shop",
+        "pl": "Sklep"
+      },
+      "pages": [
+        {
+          "type": "shop",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Books",
+            "pl": "Książki"
+          },
+          "short_title": {
+            "en": "Books",
+            "pl": "Książki"
+          },
+          "h1": {
+            "en": "Books",
+            "pl": "Książki"
+          },
+          "slug": {
+            "en": "shop/books",
+            "pl": "sklep/ksiazki"
+          },
+          "description": {
+            "en": "Browse our books.",
+            "pl": "Zobacz dostępne książki."
+          },
+          "children": [
+            {
+              "type": "shop",
+              "name": "it_books",
+              "published": true,
+              "title": {
+                "en": "IT Books",
+                "pl": "Książki IT"
+              },
+              "short_title": {
+                "en": "IT Books",
+                "pl": "Książki IT"
+              },
+              "h1": {
+                "en": "IT Books",
+                "pl": "Książki informatyczne"
+              },
+              "slug": {
+                "en": "shop/books/it-books",
+                "pl": "sklep/ksiazki/ksiazki-it"
+              },
+              "description": {
+                "en": "Books about programming and IT.",
+                "pl": "Książki o programowaniu i informatyce."
+              }
+            },
+            {
+              "type": "shop",
+              "name": "education",
+              "published": true,
+              "title": {
+                "en": "Education",
+                "pl": "Edukacja"
+              },
+              "short_title": {
+                "en": "Education",
+                "pl": "Edukacja"
+              },
+              "h1": {
+                "en": "Educational Materials",
+                "pl": "Materiały edukacyjne"
+              },
+              "slug": {
+                "en": "shop/books/education",
+                "pl": "sklep/ksiazki/edukacja"
+              },
+              "description": {
+                "en": "Educational books and materials.",
+                "pl": "Książki i materiały edukacyjne."
+              }
+            }
+          ]
+        },
+        {
+          "type": "shop",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Digital Products",
+            "pl": "Produkty cyfrowe"
+          },
+          "short_title": {
+            "en": "Digital Products",
+            "pl": "Produkty cyfrowe"
+          },
+          "h1": {
+            "en": "Digital Products",
+            "pl": "Produkty cyfrowe"
+          },
+          "slug": {
+            "en": "shop/digital-products",
+            "pl": "sklep/produkty-cyfrowe"
+          },
+          "description": {
+            "en": "Digital products available in our shop.",
+            "pl": "Produkty cyfrowe dostępne w naszym sklepie."
+          },
+          "children": [
+            {
+              "type": "shop",
+              "name": "e_books",
+              "published": true,
+              "title": {
+                "en": "E-books",
+                "pl": "E-booki"
+              },
+              "short_title": {
+                "en": "E-books",
+                "pl": "E-booki"
+              },
+              "h1": {
+                "en": "E-books",
+                "pl": "E-booki"
+              },
+              "slug": {
+                "en": "shop/digital-products/e-books",
+                "pl": "sklep/produkty-cyfrowe/e-booki"
+              },
+              "description": {
+                "en": "Browse our e-books.",
+                "pl": "Zobacz nasze e-booki."
+              }
+            },
+            {
+              "type": "shop",
+              "name": "pdf_materials",
+              "published": true,
+              "title": {
+                "en": "PDF Materials",
+                "pl": "Materiały PDF"
+              },
+              "short_title": {
+                "en": "PDF Materials",
+                "pl": "Materiały PDF"
+              },
+              "h1": {
+                "en": "PDF Materials",
+                "pl": "Materiały PDF"
+              },
+              "slug": {
+                "en": "shop/digital-products/pdf-materials",
+                "pl": "sklep/produkty-cyfrowe/materialy-pdf"
+              },
+              "description": {
+                "en": "Downloadable PDF materials.",
+                "pl": "Materiały PDF do pobrania."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "key": "contact",
+      "name": {
+        "en": "Contact",
+        "pl": "Kontakt"
+      },
+      "pages": [
+        {
+          "type": "contact",
+          "name": "",
+          "published": true,
+          "title": {
+            "en": "Contact",
+            "pl": "Kontakt"
+          },
+          "short_title": {
+            "en": "Contact",
+            "pl": "Kontakt"
+          },
+          "h1": {
+            "en": "Contact me",
+            "pl": "Skontaktuj się ze mną"
+          },
+          "slug": {
+            "en": "contact",
+            "pl": "kontakt"
+          },
+          "description": {
+            "en": "Contact information.",
+            "pl": "Dane kontaktowe."
+          },
+          "content": {
+            "en": "<p>Contact me using the contact form.</p>",
+            "pl": "<p>Skontaktuj się ze mną za pomocą formularza kontaktowego.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}

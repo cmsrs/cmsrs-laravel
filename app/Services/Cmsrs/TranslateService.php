@@ -30,6 +30,10 @@ class TranslateService
      */
     public function wrapCreate(array $data, bool $create = true): bool
     {
+        // Empty values in existing translation fields have historically been stored as null.
+        // Page headings and slugs keep their explicit value, including an empty heading.
+        //$data = $this->normalizeEmptyValues($data, ['h1', 'url_slug']);
+
         if (! empty($data['menu_id'])) {
             $requiredColumn = (new Menu)->requiredColumn;
             $columns = ['name' => in_array('name', $requiredColumn)];
@@ -56,4 +60,26 @@ class TranslateService
 
         return true;
     }
+
+    /**
+     * @param  array<string, mixed>  $data
+     * @param  array<int, string>  $preserveEmptyColumns
+     * @return array<string, mixed>
+     */
+    // private function normalizeEmptyValues(array $data, array $preserveEmptyColumns = []): array
+    // {
+    //     foreach (($data['data'] ?? []) as $column => $translations) {
+    //         if (! is_array($translations) || in_array($column, $preserveEmptyColumns, true)) {
+    //             continue;
+    //         }
+
+    //         foreach ($translations as $lang => $value) {
+    //             if (empty($value)) {
+    //                 $data['data'][$column][$lang] = '';
+    //             }
+    //         }
+    //     }
+
+    //     return $data;
+    // }
 }

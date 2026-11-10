@@ -64,6 +64,8 @@ class PageTest extends Base
         $this->testData =
         [
             'title' => ['en' => $this->strTestTitle],
+            'h1' => ['en' => 'page1 h1'],
+            'url_slug' => ['en' => 'page1-url-slug'],
             'short_title' => ['en' => 'page1'],
             'description' => ['en' => 'this page: test desc ...'],
             'published' => 1,
@@ -343,6 +345,9 @@ class PageTest extends Base
         $this->assertSame($compareWith['title']['en'], $data->title->en);
         $this->assertSame($compareWith['short_title']['en'], $data->short_title->en);
         $this->assertSame($compareWith['description']['en'], $data->description->en);
+        $this->assertSame($compareWith['url_slug']['en'], $data->url_slug->en);
+        $this->assertSame($compareWith['h1']['en'], $data->h1->en);                
+
         $this->assertSame($compareWith['content']['en'], $data->content->en);
     }
 
@@ -1129,7 +1134,7 @@ class PageTest extends Base
         $this->assertEquals($slug, Str::slug($this->testData['title']['en'], '-'));
     }
 
-    public function test_it_will_update_page()
+    public function test_it_will_update_page_uniq_method()
     {
         $this->setTestData();
         $responseAll = $this->get('api/pages?token='.$this->token);
@@ -1138,8 +1143,11 @@ class PageTest extends Base
 
         $this->assertNotEmpty($id);
 
-        $slug = (app(UrlService::class))->getSlugByLang(Page::find($id), 'en');
-        $this->assertEquals($slug, Str::slug($this->testData['title']['en'], '-'));
+        $slug = $resAll->data[0]->url_slug->en;
+        $this->assertEquals($slug, $this->testData['url_slug']['en']);
+
+        $h1 = $resAll->data[0]->h1->en;
+        $this->assertEquals($h1, $this->testData['h1']['en']);
 
         $testData3 =
       [
@@ -1158,19 +1166,20 @@ class PageTest extends Base
       ];
 
         $response0 = $this->put('api/pages/'.$id.'?token='.$this->token, $testData3);
+        $updateRes = $response0->getData();
+        $this->assertTrue($updateRes->success);
 
-        $slugAfter = (app(UrlService::class))->getSlugByLang(Page::find($id), 'en');
-        $this->assertEquals($slug, $slugAfter); // Updating title does not rewrite an existing URL slug.
+        $responseAllAfter = $this->get('api/pages?token='.$this->token);
+        $resAllAfter = $responseAllAfter->getData();
+        $this->assertEquals(count($resAllAfter->data), 1);
+        $data = $resAllAfter->data[0];
+        dd($data);        
 
-        $res0 = $response0->getData();
-        $this->assertTrue($res0->success);
+        $idAfter = $data->id;
+        $this->assertEquals($id, $idAfter);
+        $this->assertEquals($slug, $data->url_slug->en);
+        $this->assertEquals($h1, $data->h1->en);        
 
-        // retrieve $menus
-        $response = $this->get('api/pages?token='.$this->token);
-        $res = $response->getData();
-        $this->assertTrue($res->success);
-        $this->assertEquals(count($res->data), 1);
-        $data = $res->data[0];
 
         $this->comparePageFields($testData3, $data);
 

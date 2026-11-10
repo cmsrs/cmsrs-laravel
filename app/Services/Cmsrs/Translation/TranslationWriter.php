@@ -24,24 +24,12 @@ class TranslationWriter
         $refId = $d[$refName];
         $data = $d['data'];
         foreach ($columns as $column => $require) {
-            if (! $create && ! array_key_exists($column, $data)) {
-                continue;
-            }
-
             if ($require && empty($data[$column])) {
                 throw new \Exception("Translation problem, require column: $column, var= ".var_export($data, true));
             }
-            $col = (isset($data[$column]) && is_array($data[$column])) ? $data[$column] : [];
+            $col = ! empty($data[$column]) ? $data[$column] : []; // $col = $data[$column] ?? [];
             foreach ($this->configService->arrGetLangs() as $lang) {
-                if (! $create && ! array_key_exists($lang, $col)) { // problem with h1, url_slug
-                    continue;
-                }
-                if (in_array($column, ['h1', 'url_slug'], true)) { // problem with h1, url_slug
-                    $value = array_key_exists($lang, $col) ? $col[$lang] : null;
-                } else { // prblem with h1, url_slug
-                    // Preserve legacy behavior for existing translation fields.
-                    $value = ! empty($col[$lang]) ? $col[$lang] : null;
-                }
+                $value = ! empty($col[$lang]) ? $col[$lang] : null; // $value = $col[$lang] ?? null;
 
                 if ($require && ! $value) {
                     throw new \Exception("Translation problem, require lang: $lang for column: $column, var= ".var_export($data, true));

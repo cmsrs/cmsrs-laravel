@@ -64,6 +64,8 @@ class HeadlessTest extends Base
         $this->assertTrue($data->success);
 
         $this->assertEquals($shortTitle.'1', $data->data[0]->short_title->en);
+        $this->assertSame($data->data[0]->title->en, $data->data[0]->h1->en);
+        $this->assertNotEmpty($data->data[0]->url_slug->en);
         $this->assertEquals($shortTitle.'2', $data->data[1]->short_title->en);
         $this->assertEquals($shortTitle.'3', $data->data[2]->short_title->en);
         $this->assertEquals(3, count($data->data));
@@ -81,6 +83,8 @@ class HeadlessTest extends Base
 
         $this->assertEquals(count($predefinedShortTitle), count($data->data));
         $this->assertEquals($predefinedShortTitle[0], $data->data[0]->short_title->en);
+        $this->assertNotEmpty($data->data[0]->h1->en);
+        $this->assertNotEmpty($data->data[0]->url_slug->en);
     }
 
     public function test_it_will_get_one_page_by_lang_without_auth_123() // old _docs
@@ -106,11 +110,14 @@ class HeadlessTest extends Base
         $this->assertEquals($testData['content']['en'], $data->data->content);
         $this->assertEquals($testData['description']['en'], $data->data->description);
         $this->assertEquals($testData['short_title']['en'], $data->data->short_title);
+        $this->assertEquals($testData['title']['en'], $data->data->h1);
+        $this->assertEquals('inner-title', $data->data->url_slug);
         $this->assertTrue(! property_exists($data->data, 'products'));  // because it is not shop page, so products is empty  (type => inner)
     }
 
     public function test_it_will_get_one_page_by_lang_with_products_without_auth_docs()
     {
+        // h1 i url_slug przetestowac
         $images = $this->prepareTestImages();
         $lang = 'en';
         $testData =
@@ -177,6 +184,9 @@ class HeadlessTest extends Base
         $this->assertEquals($testData['short_title']['en'], $page['short_title']);
         $this->assertEquals($testData['content']['en'], $page['content']);
         $this->assertEquals($testData['description']['en'], $page['description']);
+        $this->assertEquals($testData['title']['en'], $page['h1']);
+        // $this->assertEquals($testData['h1']['en'], $page['h1']); //todo
+        $this->assertEquals('inner-title', $page['url_slug']);
     }
 
     /**

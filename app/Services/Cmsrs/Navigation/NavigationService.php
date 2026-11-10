@@ -31,6 +31,8 @@ class NavigationService
      *     pages: array<int, array{
      *          url: array<string,string>,
      *          short_title: array<string, string>,
+     *          h1: array<string, string>,
+     *          url_slug: array<string, string>,
      *          page_id: int,
      *          children?: array<int, array{
      *               url: array<string,string>,
@@ -89,6 +91,8 @@ class NavigationService
             $menuData = [ // default values for menu
                 'menu_name' => [],
                 'url' => null,
+                'h1' => [],
+                'url_slug' => [],
                 'page_id' => null,
                 'id' => $menu->id,
                 'pages' => [],
@@ -100,6 +104,8 @@ class NavigationService
                 }
                 $menuData['menu_name'] = $this->translatePageColumn($pageFirst, 'short_title'); // it is not mistake!
                 $menuData['url'] = $this->urlService->getUrls($pageFirst);
+                $menuData['h1'] = $this->translatePageColumn($pageFirst, 'h1');
+                $menuData['url_slug'] = $this->translatePageColumn($pageFirst, 'url_slug');
                 $menuData['page_id'] = $pageFirst->getId(); // phpstan error, but it should not happen
                 $menuData['pages'] = [];
             } else {
@@ -133,6 +139,8 @@ class NavigationService
      * @return array{
      *         url: array<string,string>,
      *         short_title: array<string, string>,
+     *         h1: array<string, string>,
+     *         url_slug: array<string, string>,
      *         page_id: int,
      * }
      */
@@ -141,6 +149,8 @@ class NavigationService
         return [
             'url' => $this->urlService->getUrls($page),
             'short_title' => $this->translatePageColumn($page, 'short_title'),
+            'h1' => $this->translatePageColumn($page, 'h1'),
+            'url_slug' => $this->translatePageColumn($page, 'url_slug'),
             'page_id' => $page->id,
         ];
     }

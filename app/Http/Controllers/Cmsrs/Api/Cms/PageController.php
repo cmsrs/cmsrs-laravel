@@ -39,6 +39,8 @@ class PageController extends Controller
         $langs = $this->configService->arrGetLangs();
         foreach ($langs as $lang) {
             $this->validationRules['title.'.$lang] = 'max:255|required';
+            $this->validationRules['h1.'.$lang] = 'max:510';
+            $this->validationRules['url_slug.'.$lang] = 'max:510';
             $this->validationRules['short_title.'.$lang] = 'max:128|required';
             $this->validationRules['description.'.$lang] = 'max:1027';
         }
@@ -102,6 +104,8 @@ class PageController extends Controller
     {
         $data = $request->only(
             'title',
+            'h1',
+            'url_slug',
             'short_title',
             'description',
             'published',
@@ -122,6 +126,10 @@ class PageController extends Controller
 
         // check unique
         $valid = $this->pageService->checkIsDuplicateTitleByMenu($data);
+        if (empty($valid['success'])) {
+            return response()->json($valid, 200);
+        }
+        $valid = $this->pageService->checkIsDuplicateUrlSlug($data);
         if (empty($valid['success'])) {
             return response()->json($valid, 200);
         }
@@ -146,14 +154,25 @@ class PageController extends Controller
         //    return response()->json(['success' => false, 'error' => 'Page not find'], 200);
         // }
 
-        $data = $request->only('title', 'short_title', 'description', 'published', 'commented', 'after_login', 'type', 'content', 'menu_id', 'page_id', 'images', 'tags'); // 'position',
-        $validator = Validator::make($data, $this->validationRules + TagValidationRules::rules('page'));
+        $data = $request->only('title', 'h1', 'url_slug', 'short_title', 'description', 'published', 'commented', 'after_login', 'type', 'content', 'menu_id', 'page_id', 'images', 'tags'); // 'position',
+        $updateRules = $this->validationRules;
+        foreach ($this->configService->arrGetLangs() as $lang) {
+            foreach (['title', 'short_title'] as $column) {
+                $updateRules[$column.'.'.$lang] = 'sometimes|max:'.($column === 'title' ? '255' : '128').'|required';
+            }
+        }
+
+        $validator = Validator::make($data, $updateRules + TagValidationRules::rules('page'));
         if ($validator->fails()) {
             return response()->json(['success' => false, 'error' => $validator->messages()], 200);
         }
 
         // check unique
         $valid = $this->pageService->checkIsDuplicateTitleByMenu($data, $page->id);
+        if (empty($valid['success'])) {
+            return response()->json($valid, 200);
+        }
+        $valid = $this->pageService->checkIsDuplicateUrlSlug($data, $page->id);
         if (empty($valid['success'])) {
             return response()->json($valid, 200);
         }

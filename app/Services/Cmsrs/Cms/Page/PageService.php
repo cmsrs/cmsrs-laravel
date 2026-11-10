@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Cmsrs\Cms\Page;
 
 use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ContentService;
 use App\Services\Cmsrs\Helpers\CacheManagerService;
@@ -48,11 +49,13 @@ class PageService
                 continue;
             }
 
-            foreach ($page['title'] as $lang => $title) {
-                if (empty($data['title']) || empty($data['title'][$lang])) {
-                    throw new \Exception('page title is empty - but is require');
+            // ???
+            foreach (($data['title'] ?? []) as $lang => $titleInValue) {
+                if (empty($titleInValue) || ! isset($page['title'][$lang])) {
+                    continue;
                 }
-                $titleIn = Str::slug($data['title'][$lang], '-');
+                $title = $page['title'][$lang];
+                $titleIn = Str::slug($titleInValue, '-');
                 $t = Str::slug($title, '-');
                 if ($titleIn == $t) {
                     $out['success'] = false;
@@ -63,6 +66,26 @@ class PageService
         }
 
         return $out;
+    }
+
+    /** @return array{success: bool, error?: string} */
+    public function checkIsDuplicateUrlSlug(array $data, ?int $id = null): array
+    {
+        foreach (($data['url_slug'] ?? []) as $lang => $value) {
+            $slug = Str::slug((string) $value, '-');
+            if ($slug === '') {
+                continue;
+            }
+            $query = Translate::query()->where('column', 'url_slug')->where('lang', $lang)->where('value', $slug);
+            if ($id !== null) {
+                $query->where('page_id', '<>', $id);
+            }
+            if ($query->exists()) {
+                return ['success' => false, 'error' => "Duplicate url_slug: $slug ($lang)"];
+            }
+        }
+
+        return ['success' => true];
     }
 
     /**
@@ -91,11 +114,13 @@ class PageService
      */
     public function wrapCreate(array $data): Page
     {
+        $data = $this->preparePageTranslations($data, null);
         $tags = $data['tags'] ?? [];
         unset($data['tags']);
 
         $page = $this->createPage($data);
         $this->createTranslate(['page_id' => $page->id, 'data' => $data]);
+        $this->forgetNavigationCache();
 
         if (! empty($data['images']) && is_array($data['images'])) {
             // $this->imageService->setTranslate($this->translateService);
@@ -123,17 +148,98 @@ class PageService
      */
     public function wrapUpdate(Page $mPage, array $data): bool
     {
+        $data = $this->preparePageTranslations($data, $mPage);
         $tags = $data['tags'] ?? null;
         unset($data['tags']);
 
         $mPage->update($data);
         $this->createTranslate(['page_id' => $mPage->id, 'data' => $data], false);
+        $this->forgetNavigationCache();
 
         if (is_array($tags)) {
             $this->taggableService->updateTags($mPage, $tags);
         }
 
         return true;
+    }
+
+    private function forgetNavigationCache(): void
+    {
+        return; // TODO - remove this return, when we will be sure that cache is working properly
+        cache()->forget($this->cacheManagerService->key('navigationtree', 'auth'));
+        cache()->forget($this->cacheManagerService->key('navigationtree', 'not_auth'));
+    }
+
+    /** Fill translations for newly introduced languages and keep slugs unique per language. */
+    private function preparePageTranslations(array $data, ?Page $page): array
+    {
+        foreach (($data['title'] ?? []) as $lang => $title) {
+            if (! is_string($title) || $title === '') {
+                throw new \InvalidArgumentException('problem with title for lang: '.$lang);
+            }
+            if (! array_key_exists($lang, $data['h1'] ?? [])) {
+                $existing = $page ? $this->translationReader->translatesByColumnAndLang($page, 'h1', (string) $lang) : null;
+                if ($existing === null) {
+                    $data['h1'][$lang] = $title;
+                }
+            }
+            if (! array_key_exists($lang, $data['url_slug'] ?? [])) {
+                $existing = $page ? $this->translationReader->translatesByColumnAndLang($page, 'url_slug', (string) $lang) : null;
+                if ($existing === null) {
+                    $data['url_slug'][$lang] = $this->uniquePageSlug($title, (string) $lang, $page?->id);
+                }
+            }
+        }
+        foreach ($data['url_slug'] ?? [] as $lang => $slug) {
+            $normalizedSlug = Str::slug((string) $slug, '-');
+            if ($normalizedSlug !== '') {
+                $conflict = $this->isDuplicateSlug($normalizedSlug, (string) $lang, $page?->id);
+                // $conflict = Translate::query()
+                //     ->where('column', 'url_slug')
+                //     ->where('lang', $lang)
+                //     ->where('value', $normalizedSlug)
+                //     ->when($page !== null, fn ($query) => $query->where('page_id', '<>', $page->id))
+                //     ->exists();
+                if ($conflict) {
+                    throw new \InvalidArgumentException("Duplicate url_slug (2): $normalizedSlug ($lang)");
+                }
+            } else {
+                throw new \InvalidArgumentException("Invalid url_slug: $slug ($lang)");
+            }
+            $data['url_slug'][$lang] = $normalizedSlug;
+        }
+
+        return $data;
+    }
+
+    private function isDuplicateSlug(string $slug, string $lang, ?int $pageId): bool
+    {
+        return Translate::query()
+            ->where('column', 'url_slug')
+            ->where('lang', $lang)
+            ->where('value', $slug)
+            ->when($pageId !== null, fn ($query) => $query->where('page_id', '<>', $pageId))
+            ->exists();
+    }
+
+    private function uniquePageSlug(string $value, string $lang, ?int $pageId): string
+    {
+        if ($value === '') {
+            throw new \InvalidArgumentException('problem with title for value: '.$value);
+        }
+        $base = Str::slug($value, '-');
+        if ($base === '') {
+            throw new \InvalidArgumentException('problem with slug for value: '.$value);
+        }
+        $slug = $base;
+        $suffix = 2;
+        while (
+            $this->isDuplicateSlug($slug, $lang, $pageId)
+        ) {
+            $slug = $base.'-'.$suffix++;
+        }
+
+        return $slug;
     }
 
     public function unpublishedChildren(Page $mPage): void

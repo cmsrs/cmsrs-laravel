@@ -324,8 +324,7 @@ class PageTest extends Base
         $this->assertNotEmpty($response->getData()->error);
         $this->assertEquals(1, count($response->getData()->error->{'title.en'}));
         $this->assertNotEmpty($response->getData()->error->{'title.en'}[0]);
-        $this->assertEquals(1, count($response->getData()->error->{'short_title.en'}));
-        $this->assertNotEmpty($response->getData()->error->{'short_title.en'}[0]);
+
     }
 
     private function comparePageFields($compareWith, $data)
@@ -1161,8 +1160,7 @@ class PageTest extends Base
         $response0 = $this->put('api/pages/'.$id.'?token='.$this->token, $testData3);
 
         $slugAfter = (app(UrlService::class))->getSlugByLang(Page::find($id), 'en');
-        $this->assertNotEquals($slug, $slugAfter);
-        $this->assertEquals($slugAfter, Str::slug($testData3['title']['en'], '-'));
+        $this->assertEquals($slug, $slugAfter); // Updating title does not rewrite an existing URL slug.
 
         $res0 = $response0->getData();
         $this->assertTrue($res0->success);

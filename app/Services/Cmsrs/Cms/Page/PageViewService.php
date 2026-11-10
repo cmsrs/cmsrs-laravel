@@ -45,7 +45,10 @@ class PageViewService
             'page' => $mPage,
             'menus' => isset($dataIn['menus']) ? $dataIn['menus'] : null,
             'images' => $this->imageService->getImagesAndThumbsByTypeAndRefId('page', $mPage->id),
-            'h1_title' => $this->translationReader->translatesByColumnAndLang($mPage, 'title', $lang) ?? config('app.name', 'cmsRS'),
+            // to powinno byc rozdzielone na h1 i title, ale w cmsRS jest tylko h1, wiec title = h1
+            'h1_title' => $this->translationReader->translatesByColumnAndLang($mPage, 'h1', $lang)
+                ?? $this->translationReader->translatesByColumnAndLang($mPage, 'title', $lang)
+                ?? config('app.name', 'cmsRS'),
             'content' => $this->translationReader->translatesByColumnAndLang($mPage, 'content', $lang),
             'seo_description' => $this->translationReader->translatesByColumnAndLang($mPage, 'description', $lang) ?? config('app.name', 'cmsRS'),
             'products' => $products,

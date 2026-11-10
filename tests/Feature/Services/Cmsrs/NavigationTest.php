@@ -97,6 +97,8 @@ class NavigationTest extends Base
             if (isset($menuUrl['url'])) {
                 $this->assertNotEmpty($menuUrl['url']);
                 $this->assertNotEmpty($menuUrl['url']['en']);
+                $this->assertNotEmpty($menuUrl['url_slug']['en']);
+                $this->assertNotEmpty($menuUrl['h1']['en']);
                 $this->assertNotEmpty($menuUrl['page_id']);
                 $this->assertEmpty($menuUrl['pages']); // !!
             } else {
@@ -109,6 +111,8 @@ class NavigationTest extends Base
                 foreach ($menuUrl['pages'] as $page) {
                     $this->assertNotEmpty($page['short_title']);
                     $this->assertNotEmpty($page['short_title']['en']);
+                    $this->assertNotEmpty($page['h1']['en']);
+                    $this->assertNotEmpty($page['url_slug']['en']);
                     $this->assertNotEmpty($page['url']);
                     $this->assertNotEmpty($page['page_id']);
                     if (isset($page['children'])) {
@@ -117,6 +121,8 @@ class NavigationTest extends Base
                             $this->assertNotEmpty($child['short_title']['en']);
                             $this->assertNotEmpty($child['url']);
                             $this->assertNotEmpty($child['url']['en']);
+                            $this->assertNotEmpty($child['url_slug']['en']);
+                            $this->assertNotEmpty($child['h1']['en']);
                             $this->assertNotEmpty($child['page_id']);
                             $tt = true;
                         }

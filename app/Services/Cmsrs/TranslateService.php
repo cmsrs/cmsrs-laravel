@@ -40,6 +40,8 @@ class TranslateService
                 'title' => in_array('title', $requiredColumn),
                 'short_title' => in_array('short_title', $requiredColumn),
                 'description' => in_array('description', $requiredColumn),
+                'h1' => false,
+                'url_slug' => false,
             ];
             $this->translationWriter->genericCreateTranslate($data, 'page_id', $columns, Translate::class, $create);
         } elseif (! empty($data['image_id'])) {

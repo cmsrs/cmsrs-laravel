@@ -95,8 +95,12 @@ class UrlService
 
     public function getSlugByLang(Page $model, string $lang): ?string
     {
-        $column = 'title';
+        $column = 'url_slug';
         $name = $this->translationReader->translatesByColumnAndLang($model, $column, $lang);
+        // Keep pages created before the backfill migration routable during deployment.
+        // if ($name === null) {
+        //     $name = $this->translationReader->translatesByColumnAndLang($model, 'title', $lang);
+        // }
 
         if ($name === null || $name === '') {
             throw new \RuntimeException("I cant create slug for page column: $column for lang: $lang, because value is empty");

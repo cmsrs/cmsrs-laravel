@@ -76,7 +76,7 @@ class FrontTest extends Base
 
         $this->assertEquals(1, Menu::All()->count());
         $this->assertEquals(1, Page::All()->count());
-        $this->assertEquals(4, Translate::All()->count()); // 1 from menu, 3 from page
+        $this->assertEquals(6, Translate::All()->count()); // 1 from menu, 5 page translations including h1 and url_slug
     }
 
     public function test_it_will_get_directly_to_page()

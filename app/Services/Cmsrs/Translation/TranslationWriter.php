@@ -7,10 +7,11 @@ namespace App\Services\Cmsrs\Translation;
 use App\Models\Cmsrs\Content;
 use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\ConfigService;
+use App\Services\Cmsrs\Helpers\CacheManagerService;
 
 class TranslationWriter
 {
-    public function __construct(private ConfigService $configService) {}
+    public function __construct(private ConfigService $configService, private CacheManagerService $cacheManagerService) {}
 
     /**
      * @param  array<string, mixed>  $d
@@ -23,12 +24,24 @@ class TranslationWriter
         $refId = $d[$refName];
         $data = $d['data'];
         foreach ($columns as $column => $require) {
+            if (! $create && ! array_key_exists($column, $data)) { // problem with h1, url_slug
+                continue;
+            }
+
             if ($require && empty($data[$column])) {
                 throw new \Exception("Translation problem, require column: $column, var= ".var_export($data, true));
             }
-            $col = ! empty($data[$column]) ? $data[$column] : []; // $col = $data[$column] ?? [];
+            $col = (isset($data[$column]) && is_array($data[$column])) ? $data[$column] : [];
             foreach ($this->configService->arrGetLangs() as $lang) {
-                $value = ! empty($col[$lang]) ? $col[$lang] : null; // $value = $col[$lang] ?? null;
+                if (! $create && ! array_key_exists($lang, $col)) { // problem with h1, url_slug
+                    continue;
+                }
+                if (in_array($column, ['h1', 'url_slug'], true)) { // problem with h1, url_slug
+                    $value = array_key_exists($lang, $col) ? $col[$lang] : null;
+                } else { // prblem with h1, url_slug
+                    // Preserve legacy behavior for existing translation fields.
+                    $value = ! empty($col[$lang]) ? $col[$lang] : null;
+                }
 
                 if ($require && ! $value) {
                     throw new \Exception("Translation problem, require lang: $lang for column: $column, var= ".var_export($data, true));
@@ -82,6 +95,13 @@ class TranslationWriter
         } else {
             $obj->update(['value' => $row['value']]);
         }
+
+        // TODO: cache clear -  required tests
+        // $modelName = strtolower(class_basename($modelClass));
+        // $modelId = $row['page_id'] ?? $row['menu_id'] ?? $row['image_id'] ?? $row['product_id'] ?? null;
+        // if ($modelId !== null) {
+        //     cache()->forget($this->cacheManagerService->key($modelName.'_translate', $row['column'].'_'.$modelId, $row['lang']));
+        // }
 
         return true;
     }

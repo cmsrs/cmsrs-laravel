@@ -24,7 +24,7 @@ class TranslationWriter
         $refId = $d[$refName];
         $data = $d['data'];
         foreach ($columns as $column => $require) {
-            if (! $create && ! array_key_exists($column, $data)) { // problem with h1, url_slug
+            if (! $create && ! array_key_exists($column, $data)) {
                 continue;
             }
 

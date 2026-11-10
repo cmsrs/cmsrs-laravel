@@ -193,7 +193,27 @@ class TranslateTest extends Base
         $this->assertEquals($numOfLangs, Translate::query()->where('page_id', $p->id)->where('column', 'description')->whereNull('value')->count());
         $this->assertEquals($numOfLangs, Content::query()->where('page_id', $p->id)->where('column', 'content')->whereNull('value')->count());
 
-        $this->assertEquals(3 * $numOfLangs, Translate::query()->whereNotNull('image_id')->where('column', 'alt')->whereNull('value')->count());
+        $tmp = Translate::query()->where('page_id', $p->id)->where('lang', 'en')->pluck('column')->toArray();
+
+        $expected = [
+            'description',
+            'h1',
+            'short_title',
+            'title',
+            'url_slug',
+        ];
+
+        sort($expected);
+        sort($tmp);
+        $this->assertSame($expected, $tmp);
+
+        // $tmp2 = Translate::query()->whereNotNull('image_id')->where('column', 'alt')->whereNull('value')->get('column')->toArray();
+        // dd($tmp2);
+
+        // $tmp2 = Translate::query()->whereNotNull('image_id')->where('column', 'alt')->whereNull('value')->get()->toArray();
+        // dd($tmp2);
+
+        $this->assertEquals(count($data['images']) * $numOfLangs, Translate::query()->whereNotNull('image_id')->where('column', 'alt')->whereNull('value')->count());
     }
 
     public function test_page_translate_wrap_create_wrong_1()

@@ -68,26 +68,6 @@ class PageService
         return $out;
     }
 
-    /** @return array{success: bool, error?: string} */
-    public function checkIsDuplicateUrlSlug(array $data, ?int $id = null): array
-    {
-        foreach (($data['url_slug'] ?? []) as $lang => $value) {
-            $slug = Str::slug((string) $value, '-');
-            if ($slug === '') {
-                continue;
-            }
-            $query = Translate::query()->where('column', 'url_slug')->where('lang', $lang)->where('value', $slug);
-            if ($id !== null) {
-                $query->where('page_id', '<>', $id);
-            }
-            if ($query->exists()) {
-                return ['success' => false, 'error' => "Duplicate url_slug: $slug ($lang)"];
-            }
-        }
-
-        return ['success' => true];
-    }
-
     /**
      * @param  array<string, mixed>  $data
      */
@@ -171,7 +151,7 @@ class PageService
     }
 
     /** Fill translations for newly introduced languages and keep slugs unique per language. */
-    private function preparePageTranslations(array $data, ?Page $page): array
+    public function preparePageTranslations(array $data, ?Page $page = null): array
     {
         foreach (($data['title'] ?? []) as $lang => $title) {
             if (! is_string($title) || $title === '') {
@@ -195,7 +175,7 @@ class PageService
             if ($normalizedSlug !== '') {
                 $conflict = $this->isDuplicateSlug($normalizedSlug, (string) $lang, $page?->id);
                 if ($conflict) {
-                    throw new \InvalidArgumentException("Duplicate url_slug (2): $normalizedSlug ($lang)");
+                    throw new \InvalidArgumentException("Duplicate url_slug: $normalizedSlug ($lang)");
                 }
             } else {
                 throw new \InvalidArgumentException("Invalid url_slug: $slug ($lang)");

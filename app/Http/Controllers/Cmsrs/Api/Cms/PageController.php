@@ -107,9 +107,11 @@ class PageController extends Controller
         if (empty($valid['success'])) {
             return response()->json($valid, 200);
         }
-        $valid = $this->pageService->checkIsDuplicateUrlSlug($data);
-        if (empty($valid['success'])) {
-            return response()->json($valid, 200);
+
+        try {
+            $data = $this->pageService->preparePageTranslations($data);
+        } catch (\InvalidArgumentException $e) {
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 200);
         }
 
         try {
@@ -165,9 +167,11 @@ class PageController extends Controller
         if (empty($valid['success'])) {
             return response()->json($valid, 200);
         }
-        $valid = $this->pageService->checkIsDuplicateUrlSlug($data, $page->id);
-        if (empty($valid['success'])) {
-            return response()->json($valid, 200);
+
+        try {
+            $data = $this->pageService->preparePageTranslations($data, $page);
+        } catch (\InvalidArgumentException $e) {
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 200);
         }
 
         try {

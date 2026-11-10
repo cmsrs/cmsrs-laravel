@@ -194,12 +194,6 @@ class PageService
             $normalizedSlug = Str::slug((string) $slug, '-');
             if ($normalizedSlug !== '') {
                 $conflict = $this->isDuplicateSlug($normalizedSlug, (string) $lang, $page?->id);
-                // $conflict = Translate::query()
-                //     ->where('column', 'url_slug')
-                //     ->where('lang', $lang)
-                //     ->where('value', $normalizedSlug)
-                //     ->when($page !== null, fn ($query) => $query->where('page_id', '<>', $page->id))
-                //     ->exists();
                 if ($conflict) {
                     throw new \InvalidArgumentException("Duplicate url_slug (2): $normalizedSlug ($lang)");
                 }

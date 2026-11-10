@@ -46,28 +46,6 @@ class PageController extends Controller
         }
     }
 
-    /*
-    //not remove this comment
-    public function oneItem(Request $request, $id, $lang)
-    {
-        $page = Page::find($id);
-
-        if (empty($page)) {
-            return response()->json(['success' => false, 'error' => 'Page not find'], 404);
-        }
-
-        try {
-            $page = $this->pageService->getPageWithImages($page, $lang);
-        } catch (\Exception $e) {
-            Log::error('page add ex: '.$e->getMessage().' line: '.$e->getLine().'  file: '.$e->getFile().' for: '.var_export($e, true));
-
-            return response()->json(['success' => false, 'error' => 'Get page with lang problem, details in the log file.'], 200); // .$e->getMessage()
-        }
-
-        return response()->json(['success' => true, 'data' => $page], 200);
-    }
-    */
-
     public function oneItemAdmin(Request $request, Page $page): JsonResponse
     {
         // if (empty($page)) {
@@ -149,12 +127,27 @@ class PageController extends Controller
     public function update(Request $request, Page $page): JsonResponse
     {
         // $page = Page::find($id);
-
         // if (empty($page)) {
         //    return response()->json(['success' => false, 'error' => 'Page not find'], 200);
         // }
 
-        $data = $request->only('title', 'h1', 'url_slug', 'short_title', 'description', 'published', 'commented', 'after_login', 'type', 'content', 'menu_id', 'page_id', 'images', 'tags'); // 'position',
+        $data = $request->only(
+            'title',
+            'h1',
+            'url_slug',
+            'short_title',
+            'description',
+            'published',
+            'commented',
+            'after_login',
+            'type',
+            'content',
+            'menu_id',
+            'page_id',
+            'images',
+            'tags'
+        ); // 'position',
+
         $updateRules = $this->validationRules;
         foreach ($this->configService->arrGetLangs() as $lang) {
             foreach (['title', 'short_title'] as $column) {
@@ -215,4 +208,27 @@ class PageController extends Controller
 
         return response()->json(['success' => true], 200);
     }
+
+    /*
+    //not remove this comment
+    public function oneItem(Request $request, $id, $lang)
+    {
+        $page = Page::find($id);
+
+        if (empty($page)) {
+            return response()->json(['success' => false, 'error' => 'Page not find'], 404);
+        }
+
+        try {
+            $page = $this->pageService->getPageWithImages($page, $lang);
+        } catch (\Exception $e) {
+            Log::error('page add ex: '.$e->getMessage().' line: '.$e->getLine().'  file: '.$e->getFile().' for: '.var_export($e, true));
+
+            return response()->json(['success' => false, 'error' => 'Get page with lang problem, details in the log file.'], 200); // .$e->getMessage()
+        }
+
+        return response()->json(['success' => true, 'data' => $page], 200);
+    }
+    */
+
 }

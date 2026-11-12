@@ -74,16 +74,26 @@ class PageApiTest extends TaggableCreateApiCase
         $this->assertSame('Page title', $byType->json('data.0.h1.en'));
         $this->assertSame('page-title', $byType->json('data.0.url_slug.en'));
 
-        $this->put('api/pages/'.$pageId.'?token='.$this->token, [
-            'title' => ['en' => 'Updated title'],
-        ])->assertJsonPath('success', true);
-        $this->assertSame('page-title', $reader->translatesByColumnAndLang($page, 'url_slug', 'en'));
-        $this->assertSame('Tytuł strony', $reader->translatesByColumnAndLang($page, 'h1', 'pl'));
+        $responseWrong = $this->put('api/pages/'.$pageId.'?token='.$this->token, [
+            'title' => ['en' => 'Updated title', 'pl' => 'Zaktualizowany tytul'],
+        ]);
 
-        $this->put('api/pages/'.$pageId.'?token='.$this->token, [
-            'url_slug' => ['en' => 'custom address changed'],
-        ])->assertJsonPath('success', true);
-        $this->assertSame('custom-address-changed', $reader->translatesByColumnAndLang($page, 'url_slug', 'en'));
+        $responseWrong->assertJsonPath('success', false);
+        $responseWrong->assertJsonPath('error', 'Invalid url_slug:  (en)');
+
+        $response = $this->put('api/pages/'.$pageId.'?token='.$this->token, [
+            'title' => ['en' => 'Updated title', 'pl' => 'Zaktualizowany tytul'],
+            'url_slug' => ['en' => 'custom-address', 'pl' => 'niestandardowy-adres'],
+            'short_title' => ['en' => 'Page', 'pl' => 'Strona'],
+            'h1' => ['en' => 'test123', 'pl' => ''],
+        ]);
+
+        //$d = $response->getData(); dd($d);
+        $response->assertJsonPath('success', true);
+
+        $this->assertSame('custom-address', $reader->translatesByColumnAndLang($page, 'url_slug', 'en'));
+        $this->assertSame('test123', $reader->translatesByColumnAndLang($page, 'h1', 'en'));
+        $this->assertSame(null, $reader->translatesByColumnAndLang($page, 'h1', 'pl'));
     }
 
     public function test_page_creation_the_same_url_slug(): void

@@ -129,7 +129,7 @@ class TranslateTest extends Base
         $data1p = [
             'title' => ['en' => 'About me', 'pl' => 'O mnie', 'es' => 'Fake' ],//require,
             'url_slug' => ['en' => 'about-me', 'pl' => 'o-mnie', 'es' => 'Fake'],
-            'short_title' => ['en' => 'About me', 'pl' => 'O mnie', 'es' => 'Fake'],//require,
+            'short_title' => 'string',//['en' => 'About me', 'pl' => 'O mnie', 'es' => 'Fake'],//require,
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis... potrzebne dla googla', 'es' => 'Fake'],//not require,
             'published' => 1,
             'commented' => 0,

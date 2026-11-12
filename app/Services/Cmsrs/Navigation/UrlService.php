@@ -95,6 +95,9 @@ class UrlService
 
     public function getSlugByLang(Page $page, string $lang): ?string
     {
+
+        //dd($page);
+
         $column = 'url_slug';
         $name = $this->translationReader->translatesByColumnAndLang($page, $column, $lang);
         // Keep pages created before the backfill migration routable during deployment.

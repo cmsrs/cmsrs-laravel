@@ -94,6 +94,7 @@ class HeadlessTest extends Base
         [
             'title' => ['en' => 'inner title'],
             'url_slug' => ['en' => 'inner-title'],
+            'h1' => ['en' => 'inner h1'],
             'short_title' => ['en' => 'inner short_title'],
             'published' => 1,
             'type' => 'inner',
@@ -111,7 +112,7 @@ class HeadlessTest extends Base
         $this->assertEquals($testData['content']['en'], $data->data->content);
         $this->assertEquals($testData['description']['en'], $data->data->description);
         $this->assertEquals($testData['short_title']['en'], $data->data->short_title);
-        $this->assertEquals($testData['title']['en'], $data->data->h1);
+        $this->assertEquals($testData['h1']['en'], $data->data->h1);
         $this->assertEquals('inner-title', $data->data->url_slug);
         $this->assertTrue(! property_exists($data->data, 'products'));  // because it is not shop page, so products is empty  (type => inner)
     }
@@ -171,6 +172,7 @@ class HeadlessTest extends Base
         [
             'title' => ['en' => 'inner title'],
             'short_title' => ['en' => 'inner short_title'],
+            'h1' => ['en' => 'inner h1'],
             'url_slug' => ['en' => 'inner-title'],
             'published' => 1,
             'type' => 'inner',
@@ -187,8 +189,8 @@ class HeadlessTest extends Base
         $this->assertEquals($testData['short_title']['en'], $page['short_title']);
         $this->assertEquals($testData['content']['en'], $page['content']);
         $this->assertEquals($testData['description']['en'], $page['description']);
-        $this->assertEquals($testData['title']['en'], $page['h1']);
-        // $this->assertEquals($testData['h1']['en'], $page['h1']); //todo
+        //$this->assertEquals($testData['title']['en'], $page['h1']);
+        $this->assertEquals($testData['h1']['en'], $page['h1']); //todo
         $this->assertEquals('inner-title', $page['url_slug']);
     }
 

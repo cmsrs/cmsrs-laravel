@@ -496,6 +496,7 @@ class ImageTest extends Base
         $this->assertEquals($this->testImgData['images'][0]['name'], $this->testImgData['images'][1]['name']);
 
         $this->testImgData['title']['en'] = 'uniq tilte';
+        $this->testImgData['url_slug']['en'] = 'uniq-slug';
         $responseErr = $this->post('api/pages?token='.$this->token, $this->testImgData);
         $resErr = $responseErr->getData();
 
@@ -541,6 +542,7 @@ class ImageTest extends Base
 
         $newImagesPosition['title']['en'] = 'Update2 img Title';
         $newImagesPosition['short_title']['en'] = 'u2 test123';
+        $newImagesPosition['url_slug']['en'] = 'u2-test123';
         $newImagesPosition['images'][0]['id'] = $id1Before;
         $newImagesPosition['images'][0]['alt']['en'] = 'last';
         $newImagesPosition['images'][0]['position'] = '202';

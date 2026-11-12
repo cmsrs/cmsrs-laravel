@@ -70,6 +70,7 @@ class FrontLangsTest extends Base
         $this->testData =
         [
             'title' => ['en' => 'page 1 test test slug', 'pl' => 'strona testowa'],
+            'url_slug' => ['en' => 'page-1-test-test-slug', 'pl' => 'strona-testowa'],
             'short_title' => ['en' => 'page1', 'pl' => 'strona testowa'],
             'published' => 1,
             'position' => 7,
@@ -89,6 +90,7 @@ class FrontLangsTest extends Base
         $this->testData =
         [
             'title' => ['en' => 'page 2 test test slug', 'pl' => 'strona 2 testowa'],
+            'url_slug' => ['en' => 'page-2-test-test-slug', 'pl' => 'strona-2-testowa'],
             'short_title' => ['en' => 'page2', 'pl' => 'strona 2 testowa'],
             'published' => 1,
             'position' => 7,

@@ -16,4 +16,10 @@ class StrHelperService
 
         return $filteredName.'.'.strtolower(trim($extension));
     }
+
+    public static function isEmpty(?string $value): bool
+    {
+        return $value === null || trim($value) === '';
+    }    
+
 }

@@ -47,6 +47,7 @@ class MenuTest extends Base
         $this->testPageData =
         [
             'title' => ['en' => 'some title'],
+            'url_slug' => ['en' => 'some-slug'],
             'short_title' => ['en' => 'page1'],
             'description' => ['en' => 'this page: test desc ...'],
             'published' => 1,
@@ -102,6 +103,7 @@ class MenuTest extends Base
         $testData =
         [
             'title' => ['en' => $nameEn],
+            'url_slug' => ['en' => 'some-slug'],
             'short_title' => ['en' => $ttt],
             'published' => 0,
             'type' => 'cms',
@@ -337,6 +339,7 @@ class MenuTest extends Base
         $testData44 =
       [
           'name_fake' => ['en' => 'test menu2222'],
+          'url_slug' => ['en' => 'some-slug'],
           'position' => '3a12',
           'fake' => 234,
       ];
@@ -349,6 +352,7 @@ class MenuTest extends Base
         $testData55 =
       [
           'name' => ['fr' => 'test menu2'],
+          'url_slug' => ['fr' => 'some-slug'],
           'position' => '3a12',
           'fake' => 234,
       ];
@@ -372,6 +376,7 @@ class MenuTest extends Base
       [
           'id' => $id,
           'name' => ['en' => 'test menu3  żółta żółć'],
+          'url_slug' => ['en' => 'some-slug'],
       ];
 
         $response0 = $this->put('api/menus/'.$id.'?token='.$this->token, $testData3);
@@ -400,6 +405,7 @@ class MenuTest extends Base
         $testData33 =
       [
           'id' => $id,
+          'url_slug' => ['en' => 'some-slug'],
           'name' => ['fr' => 'test menu3'],
           'position' => '3d33',
       ];

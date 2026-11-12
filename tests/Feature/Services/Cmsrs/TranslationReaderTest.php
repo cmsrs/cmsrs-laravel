@@ -59,6 +59,7 @@ class TranslationReaderTest extends Base
         $this->testData =
         [
             'title' => ['en' => $this->strTestTitle],
+            'url_slug' => ['en' => 'page-1-test'],
             'short_title' => ['en' => 'page1'],
             'description' => ['en' => 'this page: test desc ...'],
             'published' => 1,

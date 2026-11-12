@@ -65,6 +65,7 @@ class FrontTest extends Base
         [
             'title' => ['en' => 'page 1 test test slug'],
             'short_title' => ['en' => 'page1'],
+            'url_slug' => ['en' => 'page-1-test-test-slug'],
             'published' => 1,
             'position' => 7,
             'type' => 'cms',
@@ -85,6 +86,7 @@ class FrontTest extends Base
         $testData =
         [
             'title' => ['en' => 'home'],
+            'url_slug' => ['en' => 'home'],
             'short_title' => ['en' => 'home'],
             'published' => 1,
             'type' => 'home',
@@ -128,6 +130,7 @@ class FrontTest extends Base
         foreach ($pageTypes as $page_type) {
             $data = [
                 'title' => ['en' => $page_type.' en'],
+                'url_slug' => ['en' => $page_type.'-slug'],
                 'short_title' => ['en' => $page_type],
                 'description' => ['en' => 'Description... Needed for google'],
                 'published' => 1,
@@ -178,6 +181,7 @@ class FrontTest extends Base
         $this->testData =
         [
             'title' => ['en' => 'contact'],
+            'url_slug' => ['en' => 'contact'],
             'short_title' => ['en' => 'contact'],
             'published' => 1,
             'type' => 'contact',
@@ -191,8 +195,9 @@ class FrontTest extends Base
         $this->assertEquals(1, $count);
 
         $testMainPage =
-        [
+        [            
             'title' => ['en' => 'cmsRS'],
+            'url_slug' => ['en' => 'home'],
             'short_title' => ['en' => 'cmsRS'],
             'description' => ['en' => 'cmsRS'],
             'published' => 1,
@@ -241,6 +246,7 @@ class FrontTest extends Base
         $testData2 =
         [
             'title' => ['en' => 'cmsRS'],
+            'url_slug' => ['en' => 'home'],
             'short_title' => ['en' => 'cmsRS'],
             'description' => ['en' => 'cmsRS'],
             'published' => 1,
@@ -272,6 +278,7 @@ class FrontTest extends Base
         $testData2 =
         [
             'title' => ['en' => 'cmsRS'],
+            'url_slug' => ['en' => 'home'],
             'short_title' => ['en' => 'cmsRS'],
             'description' => ['en' => 'cmsRS'],
             'published' => 1,
@@ -332,6 +339,7 @@ class FrontTest extends Base
         $testData2 =
         [
             'title' => ['en' => 'cmsRS'],
+            'url_slug' => ['en' => 'cmsrs'],
             'short_title' => ['en' => 'cmsRS'],
             'description' => ['en' => 'cmsRS'],
             'published' => 1,
@@ -369,6 +377,7 @@ class FrontTest extends Base
         $pPrivacy = [
             'title' => ['en' => 'Privacy policy', 'pl' => 'polityka prywatnosci'],
             'short_title' => ['en' => 'Privacy policy', 'pl' => 'polityka prywatnosci'],
+            'url_slug' => ['en' => 'privacy-policy', 'pl' => 'polityka-prywatnosci'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'polityka prywatnosci'],
             'published' => 1,
             'commented' => 0,

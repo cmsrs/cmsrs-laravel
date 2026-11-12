@@ -15,7 +15,7 @@ class ContentOneLangTest extends Base
 
     protected function setUp(): void
     {
-        putenv('LANGS="pl"'); // tudoalem 1 jezyk!!!!!!!!!!!!!!!!!!!!
+        putenv('LANGS="pl"'); // on language!!!!!!!!!!!!!!!!!!!!
         putenv('API_SECRET=""');
         putenv('CURRENCY="USD"');
         putenv('CACHE_ENABLE=false');

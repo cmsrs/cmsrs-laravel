@@ -74,6 +74,7 @@ class ImageTest extends Base
         $this->testImgData =
         [
             'title' => ['en' => 'test p2'],
+            'url_slug' => ['en' => 'test-p2'],
             'short_title' => ['en' => 'p22'],
             'description' => ['en' => 'test1234'],
             'published' => 0,

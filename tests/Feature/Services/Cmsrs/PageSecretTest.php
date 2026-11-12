@@ -45,6 +45,7 @@ class PageSecretTest extends Base
         $this->testData =
         [
             'title' => ['en' => 'page 1 test'],
+            'url_slug' => ['en' => 'page-1-test'],
             'short_title' => ['en' => 'page1'],
             'description' => ['en' => 'this page: test desc ...'],
             'published' => 1,
@@ -82,6 +83,7 @@ class PageSecretTest extends Base
         $testData2 =
       [
           'title' => ['en' => 'test p2xx'],
+          'url_slug' => ['en' => 'test-p2'],
           'short_title' => ['en' => 'p22'],
           'description' => ['en' => 'test1234'],
           'published' => 1,

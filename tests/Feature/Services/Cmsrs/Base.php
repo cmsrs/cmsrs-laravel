@@ -365,6 +365,7 @@ class Base extends TestCase
         $testData1 =
         [
             'title' => ['en' => 'test p1'],
+            'url_slug' => ['en' => 'test-p1'],
             'short_title' => ['en' => 'p11'],
             'published' => 1,
             'type' => 'cms',
@@ -377,6 +378,7 @@ class Base extends TestCase
         $testData2 =
         [
             'title' => ['en' => PageTest::STR_PARENT_TWO],
+            'url_slug' => ['en' => 'test-p2'],
             'short_title' => ['en' => 'p22'],
             'published' => 1,
             'type' => 'cms',
@@ -406,6 +408,7 @@ class Base extends TestCase
         $testData3 =
         [
             'title' => ['en' => PageTest::STR_CHILD_ONE],
+            'url_slug' => ['en' => 'test-p3'],
             'short_title' => ['en' => 'p33'],
             'published' => 1,
             'type' => 'cms',
@@ -419,6 +422,7 @@ class Base extends TestCase
         $testData4 =
         [
             'title' => ['en' => PageTest::STR_CHILD_TWO],
+            'url_slug' => ['en' => 'test-p4'],
             'short_title' => ['en' => 'p44'],
             'published' => 1,
             'type' => 'cms',
@@ -432,6 +436,7 @@ class Base extends TestCase
         $testData5 =
         [
             'title' => ['en' => PageTest::STR_PARENT_TREE], // 'p5',
+            'url_slug' => ['en' => 'test-p5'],
             'short_title' => ['en' => 'p55'],
             'published' => 1,
             'type' => 'cms',
@@ -451,6 +456,7 @@ class Base extends TestCase
 
         $data1p = [
             'title' => ['en' => 'About me', 'pl' => 'O mnie', 'es' => 'Fake'], // require
+            'url_slug' => ['en' => 'about-me', 'pl' => 'o-mnie', 'es' => 'fake'], // require
             'short_title' => ['en' => 'About me', 'pl' => 'O mnie', 'es' => 'Fake'], // require
             'description' => ['en' => 'Description... Needed for google', 'pplll' => 'Opis... potrzebne dla googla', 'es' => 'Fake'], // not require
             'published' => 1,
@@ -474,6 +480,7 @@ class Base extends TestCase
             $testData =
                 [
                     'title' => ['en' => "title $shortTitle"],
+                    'url_slug' => ['en' => "slug-$shortTitle"],
                     'short_title' => ['en' => $shortTitle],
                     'published' => 1,
                     'after_login' => 0,

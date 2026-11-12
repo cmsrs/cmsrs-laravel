@@ -17,6 +17,7 @@ use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Services\Cmsrs\Helpers\StrHelperService;
 
 class PageService
 {
@@ -27,6 +28,7 @@ class PageService
         private UrlService $urlService,
         private CacheManagerService $cacheManagerService,
         private TranslationReader $translationReader,
+        private ConfigService $configService,
         protected TaggableService $taggableService,
     ) {}
 
@@ -94,7 +96,7 @@ class PageService
      */
     public function wrapCreate(array $data): Page
     {
-        $data = $this->preparePageTranslations($data, null);
+        //$data = $this->preparePageTranslations($data, null);
         $tags = $data['tags'] ?? [];
         unset($data['tags']);
 
@@ -128,7 +130,7 @@ class PageService
      */
     public function wrapUpdate(Page $mPage, array $data): bool
     {
-        $data = $this->preparePageTranslations($data, $mPage);
+        //$data = $this->preparePageTranslations($data, $mPage);
         $tags = $data['tags'] ?? null;
         unset($data['tags']);
 
@@ -153,32 +155,43 @@ class PageService
     /** Fill translations for newly introduced languages and keep slugs unique per language. */
     public function preparePageTranslations(array $data, ?Page $page = null): array
     {
-        foreach (($data['title'] ?? []) as $lang => $title) {
-            if (! is_string($title) || $title === '') {
+        $langs = $this->configService->arrGetLangs();        
+        //update - for empty h1 and url_slug (in request = data), we will fill it with title and unique slug        
+        foreach ($langs as $lang) {
+            $title = $data['title'][$lang] ?? null;
+            if ( StrHelperService::isEmpty($title) ) {
                 throw new \InvalidArgumentException('problem with title for lang: '.$lang);
             }
-            if (! array_key_exists($lang, $data['h1'] ?? [])) {
-                $existing = $page ? $this->translationReader->translatesByColumnAndLang($page, 'h1', (string) $lang) : null;
-                if ($existing === null) {
+
+            $h1 = $data['h1'][$lang] ?? null;
+            $urlSlug = $data['url_slug'][$lang] ?? null;
+
+            if ( StrHelperService::isEmpty($h1) ) {
+                $existingH1 = $page ? $this->translationReader->translatesByColumnAndLang($page, 'h1', (string) $lang) : null;
+                if (StrHelperService::isEmpty($existingH1) ) {
                     $data['h1'][$lang] = $title;
                 }
             }
-            if (! array_key_exists($lang, $data['url_slug'] ?? [])) {
-                $existing = $page ? $this->translationReader->translatesByColumnAndLang($page, 'url_slug', (string) $lang) : null;
-                if ($existing === null) {
+
+            if ( StrHelperService::isEmpty($urlSlug) ) {
+                $existingUrlSlug = $page ? $this->translationReader->translatesByColumnAndLang($page, 'url_slug', (string) $lang) : null;
+                if ( StrHelperService::isEmpty($existingUrlSlug) ) {
                     $data['url_slug'][$lang] = $this->uniquePageSlug($title, (string) $lang, $page?->id);
                 }
             }
         }
-        foreach ($data['url_slug'] ?? [] as $lang => $slug) {
+
+        //create - for new data (deliberately introduced), we will normalize the slugs and check for duplicates
+        foreach ($langs as $lang) {
+            $slug = $data['url_slug'][$lang] ?? '';
             $normalizedSlug = Str::slug((string) $slug, '-');
-            if ($normalizedSlug !== '') {
-                $conflict = $this->isDuplicateSlug($normalizedSlug, (string) $lang, $page?->id);
-                if ($conflict) {
-                    throw new \InvalidArgumentException("Duplicate url_slug: $normalizedSlug ($lang)");
-                }
-            } else {
+            if ($normalizedSlug === '') {
                 throw new \InvalidArgumentException("Invalid url_slug: $slug ($lang)");
+            }
+
+            $conflict = $this->isDuplicateSlug($normalizedSlug, (string) $lang, $page?->id);
+            if ($conflict) {
+                throw new \InvalidArgumentException("Duplicate url_slug: $normalizedSlug ($lang)");
             }
             $data['url_slug'][$lang] = $normalizedSlug;
         }

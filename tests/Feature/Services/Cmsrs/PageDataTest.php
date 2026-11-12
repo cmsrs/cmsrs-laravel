@@ -91,6 +91,7 @@ class PageDataTest extends Base
         $this->testImgData =
         [
             'title' => ['en' => 'test p2'],
+            'url_slug' => ['en' => 'test-p2'],
             'short_title' => ['en' => 'p22'],
             'description' => ['en' => 'test1234'],
             'published' => 1,
@@ -217,7 +218,7 @@ class PageDataTest extends Base
 
         $this->assertEquals($result1, $result2);
 
-        // 🔥 KLUCZOWE
+        // essential assertion to ensure that the second call does not hit the database
         $this->assertEquals(
             0,
             $queriesAfterSecond,
@@ -259,7 +260,7 @@ class PageDataTest extends Base
         $this->assertEquals($this->objPage->id, $result2->id);
         $this->assertEquals($result1->id, $result2->id);
 
-        // 🔥 KLUCZOWE
+        // essential assertion to ensure that the second call does not hit the database
         $this->assertEquals(
             0,
             $queriesAfterSecond,

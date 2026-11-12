@@ -96,6 +96,7 @@ class PageController extends Controller
             'images',
             'tags'
         );
+
         $validationRules = $this->validationRules + TagValidationRules::rules('page');
         $validator = Validator::make($data, $validationRules);
         if ($validator->fails()) {

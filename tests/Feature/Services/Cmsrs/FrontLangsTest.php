@@ -248,6 +248,7 @@ class FrontLangsTest extends Base
         $testData2 =
         [
             'title' => ['en' => $this->titleEn, 'pl' => $this->titlePl],
+            'url_slug' => ['en' => 'main-page', 'pl' => 'glowna'],
             'short_title' => ['en' => 'cmsRS', 'pl' => 'cmsRS'],
             'description' => ['en' => 'cmsRS', 'pl' => 'cmsRS'],
             'published' => 1,
@@ -314,6 +315,7 @@ class FrontLangsTest extends Base
         $testData2 =
         [
             'title' => ['en' => 'cmsRS', 'pl' => 'cmsRS'],
+            'url_slug' => ['en' => 'cmsrs', 'pl' => 'cmsrs'],
             'short_title' => ['en' => 'cmsRS', 'pl' => 'cmsRS'],
             'description' => ['en' => 'cmsRS', 'pl' => 'cmsRS'],
             'published' => 1,
@@ -350,6 +352,7 @@ class FrontLangsTest extends Base
     {
         $pPrivacy = [
             'title' => ['en' => 'Privacy policy', 'pl' => 'polityka prywatnosci'],
+            'url_slug' => ['en' => 'privacy-policy', 'pl' => 'polityka-prywatnosci'],
             'short_title' => ['en' => 'Privacy policy', 'pl' => 'polityka prywatnosci'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'polityka prywatnosci'],
             'published' => 1,
@@ -383,6 +386,7 @@ class FrontLangsTest extends Base
         foreach ($pageTypes as $page_type) {
             $data = [
                 'title' => ['en' => 'titile '.$page_type.' en',  'pl' => 'titile '.$page_type.' pl'],
+                'url_slug' => ['en' => $page_type.'-slug', 'pl' => $page_type.'-slug-pl'],
                 'short_title' => ['en' => $page_type.' en',  'pl' => $page_type.' pl'],
                 'description' => ['en' => 'Description... Needed for google en',  'pl' => $page_type.' pl'],
                 'published' => 1,

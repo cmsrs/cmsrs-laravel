@@ -61,6 +61,8 @@ class ConfigTest extends Base
         foreach ($res->data->page_types as $page_type) {
             $data = [
                 'title' => ['en' => $page_type],
+                'url_slug' => ['en' => $page_type],
+                'h1' => ['en' => $page_type],
                 'short_title' => ['en' => $page_type],
                 'description' => ['en' => 'Description... Needed for google'],
                 'published' => 1,

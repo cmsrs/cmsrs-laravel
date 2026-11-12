@@ -214,6 +214,8 @@ class Demo
 
         $pInner1 = [
             'title' => ['en' => 'Box1 test en', 'pl' => 'Box1 test pl'],
+            'url_slug' => ['en' => 'main_page_box1', 'pl' => 'inner url_slug pl'],
+            'h1' => ['en' => 'Box1 test en', 'pl' => 'Box1 test pl'],
             'short_title' => ['en' => 'main_page_box1', 'pl' => 'inner short_title pl'],
             'content' => ['en' => $this->getDummyTest(),  'pl' => $this->getDummyTestPl()],
             'published' => 1,
@@ -224,6 +226,8 @@ class Demo
 
         $pInner2 = [
             'title' => ['en' => 'Box2 test en', 'pl' => 'Box2 test pl'],
+            'url_slug' => ['en' => 'main_page_box2', 'pl' => 'inner url_slug pl'],
+            'h1' => ['en' => 'Box2 test en', 'pl' => 'Box2 test pl'],
             'short_title' => ['en' => 'main_page_box2', 'pl' => 'inner short_title pl'],
             'content' => ['en' => $this->getDummyTest(),  'pl' => $this->getDummyTestPl()],
             'published' => 1,
@@ -234,6 +238,8 @@ class Demo
 
         $pInner3 = [
             'title' => ['en' => 'Box3 test en', 'pl' => 'Box3 test pl'],
+            'url_slug' => ['en' => 'main_page_box3', 'pl' => 'inner url_slug pl'],
+            'h1' => ['en' => 'Box3 test en', 'pl' => 'Box3 test pl'],
             'short_title' => ['en' => 'main_page_box3', 'pl' => 'inner short_title pl'],
             'content' => ['en' => $this->getDummyTest(),  'pl' => $this->getDummyTestPl()],
             'published' => 1,
@@ -244,6 +250,8 @@ class Demo
 
         $pInner200 = [
             'title' => ['en' => 'Company data', 'pl' => 'Dane firmy'],
+            'url_slug' => ['en' => 'company_data', 'pl' => 'company_data'],
+            'h1' => ['en' => 'Company data', 'pl' => 'Dane firmy'],
             'short_title' => ['en' => 'company_data', 'pl' => 'company_data'],
             'content' => ['en' => '<b>Company Data:</b><br><br> ul. Kolejowa 1/1000<br>00-123 Warsaw<br>Poland',  'pl' => '<b>Siedziba firmy:</b><br><br> ul. Kolejowa 1/1000<br>00-123 Warszawa<br>Polska'],
             'published' => 1,
@@ -254,6 +262,8 @@ class Demo
 
         $pSlider = [
             'title' => ['en' => 'Slider', 'pl' => 'Slider pl'],
+            'url_slug' => ['en' => 'main_page_slider', 'pl' => 'main_page_slider'],
+            'h1' => ['en' => 'Slider', 'pl' => 'Slider pl'],
             'short_title' => ['en' => 'main_page_slider', 'pl' => 'main_page_slider'],
             // 'content' => [ "en" =>,  "pl" =>$this->getDummyTestPl()],
             'published' => 1,
@@ -270,8 +280,10 @@ class Demo
         $mainPage =
         [
             'title' => ['en' => 'cmsRS demo site', 'pl' => 'cmsRS wersja demo'],
+            'url_slug' => ['en' => 'main_page', 'pl' => 'main_page'],
+            'h1' => ['en' => 'cmsRS demo site', 'pl' => 'cmsRS wersja demo'],
             'short_title' => ['en' => 'cmsRS demo', 'pl' => 'cmsRS demo'],
-            'description' => ['en' => 'cmsRS demo site - description', 'pl' => 'cmsRS wersja demo'],
+            'description' => ['en' => 'cmsRS demo site - description', 'pl' => 'cmsRS wersja demo'],            
             'published' => 1,
             'commented' => 0,
             'after_login' => 0,
@@ -369,6 +381,8 @@ class Demo
 
         $data1p = [
             'title' => ['en' => 'About me', 'pl' => 'O mnie'],
+            'url_slug' => ['en' => 'about-me', 'pl' => 'o-mnie'],
+            'h1' => ['en' => 'About me', 'pl' => 'O mnie'],
             'short_title' => ['en' => 'About me', 'pl' => 'O mnie'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -381,6 +395,8 @@ class Demo
 
         $data2p = [
             'title' => ['en' => 'About page', 'pl' => 'O stronie'],
+            'url_slug' => ['en' => 'about-page', 'pl' => 'o-stronie'],
+            'h1' => ['en' => 'About page', 'pl' => 'O stronie'],
             'short_title' => ['en' => 'About page', 'pl' => 'O stronie'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -392,6 +408,8 @@ class Demo
 
         $data2pUnpublished = [
             'title' => ['en' => 'Something page', 'pl' => 'Jakaś strona'],
+            'url_slug' => ['en' => 'something-page', 'pl' => 'jakaś-strona'],
+            'h1' => ['en' => 'Sth page', 'pl' => 'Strona'],
             'short_title' => ['en' => 'Sth page', 'pl' => 'Strona'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 0,
@@ -403,6 +421,8 @@ class Demo
 
         $data22pSecret = [
             'title' => ['en' => 'Secret info', 'pl' => 'Tajna informacja'],
+            'url_slug' => ['en' => 'secret-info', 'pl' => 'tajna-informacja'],
+            'h1' => ['en' => 'Secret info', 'pl' => 'Tajna informacja'],
             'short_title' => ['en' => 'Secret info', 'pl' => 'Tajna informacja'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -421,6 +441,8 @@ class Demo
         $m2 = $this->getMenuObj()->wrapCreate(['name' => ['en' => 'Gallery', 'pl' => 'Galeria']]);
         $data3p = [
             'title' => ['en' => 'Poland', 'pl' => 'Polska'],
+            'url_slug' => ['en' => 'poland', 'pl' => 'polska'],
+            'h1' => ['en' => 'Poland', 'pl' => 'polska'],
             'short_title' => ['en' => 'Poland', 'pl' => 'Polska'],
             'description' => ['en' => 'Description...  needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -434,6 +456,8 @@ class Demo
 
         $data44p = [
             'title' => ['en' => 'Greece', 'pl' => 'Grecja'],
+            'url_slug' => ['en' => 'greece', 'pl' => 'grecja'],
+            'h1' => ['en' => 'Greece', 'pl' => 'Grecja'],
             'short_title' => ['en' => 'Greece', 'pl' => 'Grecja'],
             'description' => ['en' => 'Description...  needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -448,6 +472,8 @@ class Demo
         $m3 = $this->getMenuObj()->wrapCreate(['name' => ['en' => 'Books', 'pl' => 'Książki']]);
         $data4p = [
             'title' => ['en' => 'IT books', 'pl' => 'Książki IT'],
+            'url_slug' => ['en' => 'it-books', 'pl' => 'ksiazki-it'],
+            'h1' => ['en' => 'IT books', 'pl' => 'Książki IT'],
             'short_title' => ['en' => 'IT books', 'pl' => 'Książki IT'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -460,6 +486,8 @@ class Demo
 
         $data5p = [
             'title' => ['en' => 'PHP', 'pl' => 'PHP'],
+            'url_slug' => ['en' => 'php', 'pl' => 'php'],
+            'h1' => ['en' => 'PHP', 'pl' => 'PHP'],
             'short_title' => ['en' => 'PHP',  'pl' => 'PHP'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -473,6 +501,8 @@ class Demo
 
         $data6p = [
             'title' => ['en' => 'Java', 'pl' => 'Java'],
+            'url_slug' => ['en' => 'java', 'pl' => 'java'],
+            'h1' => ['en' => 'Java', 'pl' => 'Java'],
             'short_title' => ['en' => 'Java', 'pl' => 'Java'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -486,6 +516,8 @@ class Demo
 
         $data7p = [
             'title' => ['en' => 'English', 'pl' => 'Angielski'],
+            'url_slug' => ['en' => 'english', 'pl' => 'angielski'],
+            'h1' => ['en' => 'English', 'pl' => 'Angielski'],
             'short_title' => ['en' => 'English', 'pl' => 'Angielski'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -499,6 +531,8 @@ class Demo
         $m4 = $this->getMenuObj()->wrapCreate(['name' => ['en' => 'Clothes', 'pl' => 'Ubrania']]);
         $dataM4a = [
             'title' => ['en' => 'Man', 'pl' => 'Mężczyzna'],
+            'url_slug' => ['en' => 'man', 'pl' => 'mezczyzna'],
+            'h1' => ['en' => 'Man', 'pl' => 'Meężczyzna'],
             'short_title' => ['en' => 'Man', 'pl' => 'Mężczyzna'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -513,6 +547,8 @@ class Demo
 
         $data8p = [
             'title' => ['en' => 'Sox', 'pl' => 'Skarpery'],
+            'url_slug' => ['en' => 'sox', 'pl' => 'skarpery'],
+            'h1' => ['en' => 'Sox', 'pl' => 'skarpery'],
             'short_title' => ['en' => 'Sox', 'pl' => 'Skarpery'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -526,6 +562,8 @@ class Demo
 
         $dataM4b = [
             'title' => ['en' => 'Woman', 'pl' => 'Kobieta'],
+            'url_slug' => ['en' => 'woman', 'pl' => 'kobieta'],
+            'h1' => ['en' => 'Woman', 'pl' => 'Kobieta'],
             'short_title' => ['en' => 'Woman', 'pl' => 'Kobieta'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -540,6 +578,8 @@ class Demo
 
         $pContact = [
             'title' => ['en' => 'Contact', 'pl' => 'Kontakt'],
+            'url_slug' => ['en' => 'contact', 'pl' => 'kontakt'],
+            'h1' => ['en' => 'Contact', 'pl' => 'Kontakt'],
             'short_title' => ['en' => 'Contact', 'pl' => 'Kontakt'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,
@@ -554,6 +594,8 @@ class Demo
 
         $pPrivacy = [
             'title' => ['en' => 'Privacy policy', 'pl' => 'Polityka prywatności'],
+            'url_slug' => ['en' => 'privacy-policy', 'pl' => 'polityka-prywatnosci'],
+            'h1' => ['en' => 'Privacy policy', 'pl' => 'Polityka prywatności'],
             'short_title' => ['en' => 'Privacy policy', 'pl' => 'Polityka prywatności'],
             'description' => ['en' => 'Description... Needed for google', 'pl' => 'Opis..... Potrzebne dla googla'],
             'published' => 1,

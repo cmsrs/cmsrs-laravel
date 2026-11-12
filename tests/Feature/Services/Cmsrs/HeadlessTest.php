@@ -93,6 +93,7 @@ class HeadlessTest extends Base
         $testData =
         [
             'title' => ['en' => 'inner title'],
+            'url_slug' => ['en' => 'inner-title'],
             'short_title' => ['en' => 'inner short_title'],
             'published' => 1,
             'type' => 'inner',
@@ -123,6 +124,7 @@ class HeadlessTest extends Base
         $testData =
         [
             'title' => ['en' => 'shop title'],
+            'url_slug' => ['en' => 'shop-title'],
             'short_title' => ['en' => ' short_title'],
             'published' => 1,
             'type' => 'shop',
@@ -169,6 +171,7 @@ class HeadlessTest extends Base
         [
             'title' => ['en' => 'inner title'],
             'short_title' => ['en' => 'inner short_title'],
+            'url_slug' => ['en' => 'inner-title'],
             'published' => 1,
             'type' => 'inner',
             'content' => ['en' => 'content test4333 inner'],
@@ -200,6 +203,7 @@ class HeadlessTest extends Base
         $testData2 =
         [
             'title' => ['en' => 'cmsRS'],
+            'url_slug' => ['en' => 'home'],
             'short_title' => ['en' => 'cmsRS'],
             'description' => ['en' => 'cmsRS'],
             'published' => 1,

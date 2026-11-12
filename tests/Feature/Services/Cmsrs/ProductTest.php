@@ -110,6 +110,7 @@ class ProductTest extends Base
         $this->testPage =
         [
             'title' => ['en' => 'programmer'],
+            'url_slug' => ['en' => 'programmer'],
             'short_title' => ['en' => 'page1'],
             'published' => 1,
             'position' => 7,

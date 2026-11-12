@@ -10,19 +10,19 @@ class HomeTest extends Base
 {
     use RefreshDatabase;
 
-    private $testData;
+    // private $testData;
 
-    private $testDataMenu;
+    // private $testDataMenu;
 
-    private $menuId;
+    // private $menuId;
 
-    private $menuObj;
+    // private $menuObj;
 
-    private $titleEn = 'eeeeeeeeeeeeeeeennnnnnnnnnnnnnnnn';
+    // private $titleEn = 'eeeeeeeeeeeeeeeennnnnnnnnnnnnnnnn';
 
-    private $titlePl = 'pppppppppppppppplllllllllllllllll';
+    // private $titlePl = 'pppppppppppppppplllllllllllllllll';
 
-    private $langs;
+    // private $langs;
 
     protected function setUp(): void
     {

@@ -159,6 +159,7 @@ class ProductTest extends Base
         $testPage =
         [
             'title' => ['en' => 'programmer2'],
+            'url_slug' => ['en' => 'programmer2'],
             'short_title' => ['en' => 'page2'],
             'published' => 1,
             'position' => 7,

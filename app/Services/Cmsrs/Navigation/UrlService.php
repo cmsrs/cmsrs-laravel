@@ -100,6 +100,8 @@ class UrlService
 
         $column = 'url_slug';
         $name = $this->translationReader->translatesByColumnAndLang($page, $column, $lang);
+
+
         // Keep pages created before the backfill migration routable during deployment.
         // if ($name === null) {
         //     $name = $this->translationReader->translatesByColumnAndLang($model, 'title', $lang);

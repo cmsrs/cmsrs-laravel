@@ -145,14 +145,19 @@ class PageService
         return true;
     }
 
+
     private function forgetNavigationCache(): void
     {
-        return; // TODO - remove this return, when we will be sure that cache is working properly
         cache()->forget($this->cacheManagerService->key('navigationtree', 'auth'));
         cache()->forget($this->cacheManagerService->key('navigationtree', 'not_auth'));
     }
 
-    /** Fill SEO translations and keep routable page slugs unique per language. */
+    /**
+     * Fill SEO translations and keep routable page slugs unique per language.
+     *
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
+     */
     public function preparePageTranslations(array $data, ?Page $page = null): array
     {
         $langs = $this->configService->arrGetLangs();

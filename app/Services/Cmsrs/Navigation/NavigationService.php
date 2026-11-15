@@ -71,6 +71,8 @@ class NavigationService
      *     pages: array<int, array{
      *          url: array<string,string>,
      *          short_title: array<string, string>,
+     *          h1: array<string, string>,
+     *          url_slug: array<string, string>,
      *          page_id: int,
      *          children?: array<int, array{
      *               url: array<string,string>,

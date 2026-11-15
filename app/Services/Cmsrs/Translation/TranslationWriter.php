@@ -84,13 +84,32 @@ class TranslationWriter
             $obj->update(['value' => $row['value']]);
         }
 
-        // TODO: cache clear -  required tests
-        // $modelName = strtolower(class_basename($modelClass));
-        // $modelId = $row['page_id'] ?? $row['menu_id'] ?? $row['image_id'] ?? $row['product_id'] ?? null;
-        // if ($modelId !== null) {
-        //     cache()->forget($this->cacheManagerService->key($modelName.'_translate', $row['column'].'_'.$modelId, $row['lang']));
-        // }
+        $this->forgetTranslationCache($row);
 
         return true;
+    }
+
+    /**
+     * @param  array<string, mixed>  $row
+     */
+    private function forgetTranslationCache(array $row): void
+    {
+        foreach ([
+            'page_id' => 'page',
+            'product_id' => 'product',
+            'menu_id' => 'menu',
+            'image_id' => 'image',
+        ] as $reference => $model) {
+            if (! empty($row[$reference])) {
+                $key = $this->cacheManagerService->key(
+                    $model.'_translate',
+                    $row['column'].'_'.$row[$reference],
+                    $row['lang'],
+                );
+                cache()->forget($key);
+
+                return;
+            }
+        }
     }
 }

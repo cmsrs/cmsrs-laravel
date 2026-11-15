@@ -9,6 +9,7 @@ use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\ConfigService;
 use App\Services\Cmsrs\ContentService;
 use App\Services\Cmsrs\Helpers\CacheManagerService;
+use App\Services\Cmsrs\Helpers\StrHelperService;
 use App\Services\Cmsrs\ImageService;
 use App\Services\Cmsrs\Navigation\UrlService;
 use App\Services\Cmsrs\Tag\TaggableService;
@@ -17,7 +18,6 @@ use App\Services\Cmsrs\Translation\TranslationReader;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use App\Services\Cmsrs\Helpers\StrHelperService;
 
 class PageService
 {
@@ -96,7 +96,7 @@ class PageService
      */
     public function wrapCreate(array $data): Page
     {
-        //$data = $this->preparePageTranslations($data, null);
+        // $data = $this->preparePageTranslations($data, null);
         $tags = $data['tags'] ?? [];
         unset($data['tags']);
 
@@ -129,7 +129,7 @@ class PageService
      */
     public function wrapUpdate(Page $mPage, array $data): bool
     {
-        //$data = $this->preparePageTranslations($data, $mPage);
+        // $data = $this->preparePageTranslations($data, $mPage);
         $tags = $data['tags'] ?? null;
         unset($data['tags']);
 
@@ -142,7 +142,6 @@ class PageService
 
         return true;
     }
-
 
     /**
      * Fill SEO translations and keep routable page slugs unique per language.
@@ -157,16 +156,16 @@ class PageService
 
         foreach ($langs as $lang) {
             $title = $data['title'][$lang] ?? null;
-            if ( StrHelperService::isEmpty($title) ) {
+            if (StrHelperService::isEmpty($title)) {
                 throw new \InvalidArgumentException('problem with title for lang: '.$lang);
             }
 
             $h1 = $data['h1'][$lang] ?? null;
             $urlSlug = $data['url_slug'][$lang] ?? null;
 
-            if ( StrHelperService::isEmpty($h1) ) {
+            if (StrHelperService::isEmpty($h1)) {
                 $existingH1 = $page ? $this->translationReader->translatesByColumnAndLang($page, 'h1', (string) $lang) : null;
-                if (StrHelperService::isEmpty($existingH1) ) {
+                if (StrHelperService::isEmpty($existingH1)) {
                     $data['h1'][$lang] = $title;
                 }
             }
@@ -178,9 +177,9 @@ class PageService
                 continue;
             }
 
-            if ( StrHelperService::isEmpty($urlSlug) ) {
+            if (StrHelperService::isEmpty($urlSlug)) {
                 $existingUrlSlug = $page ? $this->translationReader->translatesByColumnAndLang($page, 'url_slug', (string) $lang) : null;
-                if ( StrHelperService::isEmpty($existingUrlSlug) ) {
+                if (StrHelperService::isEmpty($existingUrlSlug)) {
                     $data['url_slug'][$lang] = $this->uniquePageSlug($title, (string) $lang, $page?->id);
                 }
             }

@@ -283,7 +283,7 @@ class Demo
             'url_slug' => ['en' => 'main_page', 'pl' => 'main_page'],
             'h1' => ['en' => 'cmsRS demo site', 'pl' => 'cmsRS wersja demo'],
             'short_title' => ['en' => 'cmsRS demo', 'pl' => 'cmsRS demo'],
-            'description' => ['en' => 'cmsRS demo site - description', 'pl' => 'cmsRS wersja demo'],            
+            'description' => ['en' => 'cmsRS demo site - description', 'pl' => 'cmsRS wersja demo'],
             'published' => 1,
             'commented' => 0,
             'after_login' => 0,

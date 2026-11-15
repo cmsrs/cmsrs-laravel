@@ -152,7 +152,7 @@ class FrontGuestTest extends Base
         $testData2 =
         [
             'title' => ['en' => 'cmsRS'],
-            'url_slug' => ['en' => 'cmsrs'],            
+            'url_slug' => ['en' => 'cmsrs'],
             'short_title' => ['en' => 'cmsRS'],
             'description' => ['en' => 'cmsRS'],
             'published' => 1,

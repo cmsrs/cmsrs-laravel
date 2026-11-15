@@ -195,7 +195,7 @@ class FrontTest extends Base
         $this->assertEquals(1, $count);
 
         $testMainPage =
-        [            
+        [
             'title' => ['en' => 'cmsRS'],
             'url_slug' => ['en' => 'home'],
             'short_title' => ['en' => 'cmsRS'],

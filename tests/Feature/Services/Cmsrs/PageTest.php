@@ -208,7 +208,7 @@ class PageTest extends Base
     {
         $p1 = (app(PageService::class))->wrapCreate($this->testData);
         $this->testData['title'] = ['en' => 'uniq'];
-        //$this->testData['url_slug'] = ['en' => 'uniq'];
+        // $this->testData['url_slug'] = ['en' => 'uniq'];
         $this->testData['type'] = 'clear';
         $p2 = (app(PageService::class))->wrapCreate($this->testData);
 
@@ -286,7 +286,7 @@ class PageTest extends Base
 
         $title = 'uniq title';
         $this->testData['title']['en'] = $title;
-        //$this->testData['url_slug']['en'] = Str::slug($title, '-');
+        // $this->testData['url_slug']['en'] = Str::slug($title, '-');
         $p2 = (app(PageService::class))->wrapCreate($this->testData);
         $this->assertNotEmpty($p2->id);
         $this->assertEquals(2, Page::All()->count());
@@ -349,7 +349,7 @@ class PageTest extends Base
         $this->assertSame($compareWith['short_title']['en'], $data->short_title->en);
         $this->assertSame($compareWith['description']['en'], $data->description->en);
         $this->assertSame($compareWith['url_slug']['en'], $data->url_slug->en);
-        $this->assertSame($compareWith['h1']['en'], $data->h1->en);                
+        $this->assertSame($compareWith['h1']['en'], $data->h1->en);
 
         $this->assertSame($compareWith['content']['en'], $data->content->en);
     }
@@ -553,7 +553,7 @@ class PageTest extends Base
         $response = $this->post('api/pages?token='.$this->token, $testData2);
 
         $res = $response->getData();
-        //dd($res);
+        // dd($res);
 
         $this->assertTrue($res->success);
 
@@ -592,7 +592,7 @@ class PageTest extends Base
 
         $resUpdate = $responseUpdate->getData();
 
-        //dd($resUpdate);
+        // dd($resUpdate);
         $this->assertTrue($resUpdate->success);
 
         $response2Update = $this->get('api/pages?token='.$this->token);
@@ -1149,7 +1149,7 @@ class PageTest extends Base
         $this->assertNotEmpty($id);
 
         $slug = (app(UrlService::class))->getSlugByLang(Page::find($id), 'en');
-        //$this->assertEquals($slug, Str::slug($this->testData['title']['en'], '-'));
+        // $this->assertEquals($slug, Str::slug($this->testData['title']['en'], '-'));
         $this->assertEquals($slug, $this->testData['url_slug']['en']);
     }
 
@@ -1176,16 +1176,15 @@ class PageTest extends Base
         $this->assertEquals($h1, $this->testData['title']['en']);
 
         $response44 = $this->put('api/pages/'.$id.'?token='.$this->token, $this->testData);
-        $res44 = $response44->getData();        
+        $res44 = $response44->getData();
         $this->assertFalse($res44->success);
         $this->assertEquals('Invalid url_slug:  (en)', $res44->error);
     }
 
-
     public function test_it_will_create_page_seo_empty_h1_slug()
     {
-        $this->testData['h1']['en'] =  '';
-        $this->testData['url_slug']['en'] =  '';
+        $this->testData['h1']['en'] = '';
+        $this->testData['url_slug']['en'] = '';
         $res = $this->post('api/pages?token='.$this->token, $this->testData);
         $resData = $res->getData();
         $this->assertTrue($resData->success);
@@ -1204,16 +1203,15 @@ class PageTest extends Base
         $this->assertEquals($h1, $this->testData['title']['en']);
 
         $response44 = $this->put('api/pages/'.$id.'?token='.$this->token, $this->testData);
-        $res44 = $response44->getData();        
+        $res44 = $response44->getData();
         $this->assertFalse($res44->success);
         $this->assertEquals('Invalid url_slug:  (en)', $res44->error);
-        
-        $this->testData['url_slug']['en'] =  'aaa bbb';
+
+        $this->testData['url_slug']['en'] = 'aaa bbb';
         $response55 = $this->put('api/pages/'.$id.'?token='.$this->token, $this->testData);
         $res55 = $response55->getData();
         $this->assertTrue($res55->success);
 
-        
         $responseAllAgain = $this->get('api/pages?token='.$this->token);
         $resAllAgain = $responseAllAgain->getData();
         $idAgain = $resAllAgain->data[0]->id;
@@ -1225,7 +1223,7 @@ class PageTest extends Base
         $this->assertEquals($slugAgain, 'aaa-bbb');
         $h1Again = $resAllAgain->data[0]->h1->en;
         $this->assertEquals($h1Again, $this->testData['h1']['en']);
-        $this->assertEquals($h1Again, '');        
+        $this->assertEquals($h1Again, '');
     }
 
     public function test_it_will_update_page_seo_method()
@@ -1271,12 +1269,12 @@ class PageTest extends Base
         $resAllAfter = $responseAllAfter->getData();
         $this->assertEquals(count($resAllAfter->data), 1);
         $data = $resAllAfter->data[0];
-        //dd($data);        
+        // dd($data);
 
         $idAfter = $data->id;
         $this->assertEquals($id, $idAfter);
-        $this->assertEquals($newSlug, $data->url_slug->en); //1180 line
-        $this->assertEquals($newH1, $data->h1->en);        
+        $this->assertEquals($newSlug, $data->url_slug->en); // 1180 line
+        $this->assertEquals($newH1, $data->h1->en);
 
         $this->comparePageFields($testData3, $data);
 
@@ -1285,40 +1283,40 @@ class PageTest extends Base
           'id' => $id,
           'title' => ['en' => 'test p3'],
           'h1' => ['en' => ''],
-          'url_slug' => ['en' => ''],        
+          'url_slug' => ['en' => ''],
           'short_title' => ['en' => 'p3'],
           'commented' => 1,
           'position' => '3d33',
       ];
         $response33 = $this->put('api/pages/'.$id.'?token='.$this->token, $testData33);
-        $res33 = $response33->getData();        
-        $this->assertFalse($res33->success);        
+        $res33 = $response33->getData();
+        $this->assertFalse($res33->success);
         $this->assertEquals('Invalid url_slug:  (en)', $res33->error);
 
-        $urlSlug4 = 'test p3 updated'; 
+        $urlSlug4 = 'test p3 updated';
         $h1_44 = '';
         $testData44 =
       [
           'id' => $id,
           'title' => ['en' => 'test p3'],
           'h1' => ['en' => $h1_44],
-          'url_slug' => ['en' => $urlSlug4],        
+          'url_slug' => ['en' => $urlSlug4],
           'short_title' => ['en' => 'p3'],
           'commented' => 1,
           'position' => '3d33',
       ];
 
         $response44 = $this->put('api/pages/'.$id.'?token='.$this->token, $testData44);
-        $res44 = $response44->getData();        
-        $this->assertTrue($res44->success);     
+        $res44 = $response44->getData();
+        $this->assertTrue($res44->success);
 
         $response44 = $this->get('api/pages?token='.$this->token);
         $res44 = $response44->getData();
         $this->assertEquals(count($res44->data), 1);
         $data44 = $res44->data[0];
 
-        $this->assertEquals( Str::slug($urlSlug4, '-'), $data44->url_slug->en);
-        $this->assertEquals($h1_44, $data44->h1->en);        
+        $this->assertEquals(Str::slug($urlSlug4, '-'), $data44->url_slug->en);
+        $this->assertEquals($h1_44, $data44->h1->en);
     }
 
     public function test_it_will_update2_page_with_menu()

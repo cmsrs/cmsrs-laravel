@@ -88,7 +88,7 @@ class PageApiTest extends TaggableCreateApiCase
             'h1' => ['en' => 'test123', 'pl' => ''],
         ]);
 
-        //$d = $response->getData(); dd($d);
+        // $d = $response->getData(); dd($d);
         $response->assertJsonPath('success', true);
 
         $this->assertSame('custom-address', $reader->translatesByColumnAndLang($page, 'url_slug', 'en'));

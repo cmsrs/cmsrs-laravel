@@ -32,7 +32,7 @@ class TranslateService
     {
         // Empty values in existing translation fields have historically been stored as null.
         // Page headings and slugs keep their explicit value, including an empty heading.
-        //$data = $this->normalizeEmptyValues($data, ['h1', 'url_slug']);
+        // $data = $this->normalizeEmptyValues($data, ['h1', 'url_slug']);
 
         if (! empty($data['menu_id'])) {
             $requiredColumn = (new Menu)->requiredColumn;

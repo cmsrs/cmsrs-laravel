@@ -189,8 +189,8 @@ class HeadlessTest extends Base
         $this->assertEquals($testData['short_title']['en'], $page['short_title']);
         $this->assertEquals($testData['content']['en'], $page['content']);
         $this->assertEquals($testData['description']['en'], $page['description']);
-        //$this->assertEquals($testData['title']['en'], $page['h1']);
-        $this->assertEquals($testData['h1']['en'], $page['h1']); //todo
+        // $this->assertEquals($testData['title']['en'], $page['h1']);
+        $this->assertEquals($testData['h1']['en'], $page['h1']); // todo
         $this->assertEquals('inner-title', $page['url_slug']);
     }
 

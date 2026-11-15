@@ -20,6 +20,5 @@ class StrHelperService
     public static function isEmpty(?string $value): bool
     {
         return $value === null || trim($value) === '';
-    }    
-
+    }
 }

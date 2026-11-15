@@ -1137,13 +1137,13 @@ class ProductTest extends Base
 
         $urls = app(ProductService::class)->getProductsUrl();
 
-        //dd($urls);
+        // dd($urls);
 
         $this->assertEquals(1, count($urls));
         $prodUrl = $urls[0]['en'];
         $this->assertNotEmpty($prodUrl);
         $response = $this->get($prodUrl);
-        //dd($response);
+        // dd($response);
         $response->assertStatus(200);
 
         $response22 = $this->get('api/products?token='.$this->token);

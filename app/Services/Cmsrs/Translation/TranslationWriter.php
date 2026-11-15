@@ -7,11 +7,10 @@ namespace App\Services\Cmsrs\Translation;
 use App\Models\Cmsrs\Content;
 use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\ConfigService;
-use App\Services\Cmsrs\Helpers\CacheManagerService;
 
 class TranslationWriter
 {
-    public function __construct(private ConfigService $configService, private CacheManagerService $cacheManagerService) {}
+    public function __construct(private ConfigService $configService) {}
 
     /**
      * @param  array<string, mixed>  $d
@@ -84,32 +83,6 @@ class TranslationWriter
             $obj->update(['value' => $row['value']]);
         }
 
-        $this->forgetTranslationCache($row);
-
         return true;
-    }
-
-    /**
-     * @param  array<string, mixed>  $row
-     */
-    private function forgetTranslationCache(array $row): void
-    {
-        foreach ([
-            'page_id' => 'page',
-            'product_id' => 'product',
-            'menu_id' => 'menu',
-            'image_id' => 'image',
-        ] as $reference => $model) {
-            if (! empty($row[$reference])) {
-                $key = $this->cacheManagerService->key(
-                    $model.'_translate',
-                    $row['column'].'_'.$row[$reference],
-                    $row['lang'],
-                );
-                cache()->forget($key);
-
-                return;
-            }
-        }
     }
 }

@@ -102,7 +102,6 @@ class PageService
 
         $page = $this->createPage($data);
         $this->createTranslate(['page_id' => $page->id, 'data' => $data]);
-        $this->forgetNavigationCache();
 
         if (! empty($data['images']) && is_array($data['images'])) {
             // $this->imageService->setTranslate($this->translateService);
@@ -136,7 +135,6 @@ class PageService
 
         $mPage->update($data);
         $this->createTranslate(['page_id' => $mPage->id, 'data' => $data], false);
-        $this->forgetNavigationCache();
 
         if (is_array($tags)) {
             $this->taggableService->updateTags($mPage, $tags);
@@ -145,12 +143,6 @@ class PageService
         return true;
     }
 
-
-    private function forgetNavigationCache(): void
-    {
-        cache()->forget($this->cacheManagerService->key('navigationtree', 'auth'));
-        cache()->forget($this->cacheManagerService->key('navigationtree', 'not_auth'));
-    }
 
     /**
      * Fill SEO translations and keep routable page slugs unique per language.

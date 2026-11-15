@@ -572,6 +572,7 @@ class PageTest extends Base
         $this->assertEquals('main_page', $page->type);
         $this->assertEquals(null, $page->menu_id);
         $this->assertEquals(null, $page->page_id);
+        $this->assertEmpty($page->url_slug->en);
 
         $testData2Update =
         [
@@ -611,6 +612,7 @@ class PageTest extends Base
         $this->assertEquals(null, $pageU->page_id);
         $this->assertEquals($testData2Update['title']['en'], $pageU->title->en);
         $this->assertEquals($testData2Update['content']['en'], $pageU->content->en);
+        $this->assertEmpty($pageU->url_slug->en);
 
         $testData3 =
         [

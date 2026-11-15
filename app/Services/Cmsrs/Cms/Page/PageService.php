@@ -152,11 +152,12 @@ class PageService
         cache()->forget($this->cacheManagerService->key('navigationtree', 'not_auth'));
     }
 
-    /** Fill translations for newly introduced languages and keep slugs unique per language. */
+    /** Fill SEO translations and keep routable page slugs unique per language. */
     public function preparePageTranslations(array $data, ?Page $page = null): array
     {
-        $langs = $this->configService->arrGetLangs();        
-        //update - for empty h1 and url_slug (in request = data), we will fill it with title and unique slug        
+        $langs = $this->configService->arrGetLangs();
+        $isMainPage = ($data['type'] ?? $page?->type) === 'main_page';
+
         foreach ($langs as $lang) {
             $title = $data['title'][$lang] ?? null;
             if ( StrHelperService::isEmpty($title) ) {
@@ -173,6 +174,13 @@ class PageService
                 }
             }
 
+            // A main page resolves to the language root, so it has no URL slug.
+            if ($isMainPage) {
+                $data['url_slug'][$lang] = '';
+
+                continue;
+            }
+
             if ( StrHelperService::isEmpty($urlSlug) ) {
                 $existingUrlSlug = $page ? $this->translationReader->translatesByColumnAndLang($page, 'url_slug', (string) $lang) : null;
                 if ( StrHelperService::isEmpty($existingUrlSlug) ) {
@@ -181,8 +189,12 @@ class PageService
             }
         }
 
-        //create - for new data (deliberately introduced), we will normalize the slugs and check for duplicates
+        // Main pages resolve to the language root and do not participate in slug validation.
         foreach ($langs as $lang) {
+            if ($isMainPage) {
+                continue;
+            }
+
             $slug = $data['url_slug'][$lang] ?? '';
             $normalizedSlug = Str::slug((string) $slug, '-');
             if ($normalizedSlug === '') {

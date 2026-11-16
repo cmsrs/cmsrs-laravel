@@ -1092,7 +1092,7 @@ class PageTest extends Base
             'GET',
             'api/pages/type/'.$type.'?token=token',
             null,
-            $res,
+            $data,
         );
 
         $this->assertEquals(1, count($data->data));

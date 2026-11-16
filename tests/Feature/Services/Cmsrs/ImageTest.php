@@ -641,7 +641,7 @@ class ImageTest extends Base
         $this->assertTrue($res->success);
 
         $this->restDoc->add(
-            'POST',
+            'PUT',
             'api/pages/$pageId?token=token',
             $testImgData,
             $res,

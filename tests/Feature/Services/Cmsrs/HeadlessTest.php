@@ -63,6 +63,13 @@ class HeadlessTest extends Base
         $data = $res->getData();
         $this->assertTrue($data->success);
 
+        $this->restDoc->add(
+            'GET',
+            'api/headless/pages-short-title/'.$shortTitle,
+            null,
+            $data,
+        );
+
         $this->assertEquals($shortTitle.'1', $data->data[0]->short_title->en);
         $this->assertSame($data->data[0]->title->en, $data->data[0]->h1->en);
         $this->assertNotEmpty($data->data[0]->url_slug->en);
@@ -79,6 +86,14 @@ class HeadlessTest extends Base
 
         $resType = $this->get('api/headless/pages-type/'.$type);
         $data = $resType->getData();
+
+        $this->restDoc->add(
+            'GET',
+            'api/headless/pages-type/'.$type,
+            null,
+            $data,
+        );
+
         $this->assertTrue($data->success);
 
         $this->assertEquals(count($predefinedShortTitle), count($data->data));
@@ -152,6 +167,13 @@ class HeadlessTest extends Base
 
         $res = $this->get('api/headless/page/'.$objPage->id.'/'.$lang);
         $data = $res->getData();
+
+        $this->restDoc->add(
+            'GET',
+            'api/headless/page/'.$objPage->id.'/'.$lang,
+            null,
+            $data,
+        );
 
         $this->assertTrue($data->success);
         $this->assertTrue(property_exists($data->data, 'products'));
@@ -236,6 +258,14 @@ class HeadlessTest extends Base
         $res = $this->get('api/headless/menus');
         // dd($res->getContent());
         $data = $res->getData();
+
+        $this->restDoc->add(
+            'GET',
+            'api/headless/menus',
+            null,
+            $data,
+        );
+
         $this->assertTrue($data->success); // todo
 
         $this->assertEquals(5, count($data->data));

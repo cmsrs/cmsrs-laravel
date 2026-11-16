@@ -903,6 +903,9 @@ class PageTest extends Base
 
         $response = $this->post('api/pages?token='.$this->token, $testData2);
         $res = $response->getData();
+
+        // print_r($res);die('test_it_will_add_pages_to_check_position_docs');
+
         $this->assertTrue($res->success);
         $pageId = $res->data->pageId;
         $this->assertTrue(! empty($pageId));
@@ -1084,6 +1087,13 @@ class PageTest extends Base
 
         $data = $res->getData();
         $this->assertTrue($data->success);
+
+        $this->restDoc->add(
+            'GET',
+            'api/pages/type/'.$type.'?token=token',
+            null,
+            $res,
+        );
 
         $this->assertEquals(1, count($data->data));
         $this->assertEquals($type, $data->data[0]->type);

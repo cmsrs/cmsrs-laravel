@@ -75,6 +75,7 @@ class ImageTest extends Base
         [
             'title' => ['en' => 'test p2'],
             'url_slug' => ['en' => 'test-p2'],
+            'h1' => ['en' => 'test p2'],
             'short_title' => ['en' => 'p22'],
             'description' => ['en' => 'test1234'],
             'published' => 0,

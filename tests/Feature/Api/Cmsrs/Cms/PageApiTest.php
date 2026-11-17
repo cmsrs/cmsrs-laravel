@@ -162,4 +162,47 @@ class PageApiTest extends TaggableCreateApiCase
         $four->assertJsonPath('success', true);
         $this->assertDatabaseCount('pages', 3);
     }
+
+    public function test_page_creation_with_empty_h1_and_slug_generates_them_from_title(): void
+    {
+        $data = $this->createData([
+            'title' => ['en' => 'Unique!', 'pl' => 'Unikalny'],
+            'h1' => ['en' => '', 'pl' => ''],
+            'url_slug' => ['en' => '', 'pl' => ''],
+        ]);
+        $first = $this->post($this->createRoute().'?token='.$this->token, $data);
+        $first->assertJsonPath('success', true);
+        $page1 = Page::findOrFail($first->json($this->idResponsePath()));
+        $reader = app(TranslationReader::class);
+        $this->assertSame('Unique!', $reader->translatesByColumnAndLang($page1, 'h1', 'en'));
+        $this->assertSame('unique', $reader->translatesByColumnAndLang($page1, 'url_slug', 'en'));
+    }
+
+    public function test_page_creation_with_empty_h1_and_slug_generates_them_from_title_for_main_page() : void
+    {
+        $data = $this->createData([
+            'title' => ['en' => 'Main page', 'pl' => 'Strona główna'],
+            'h1' => ['en' => '', 'pl' => 'h1 pl'],
+            'url_slug' => ['en' => '', 'pl' => 'test123'],
+            'type' => 'main_page',
+        ]);
+        $first = $this->post($this->createRoute().'?token='.$this->token, $data);    
+        $first->assertJsonPath('success', true);
+        $pageId = $first->json($this->idResponsePath());        
+        $page1 = Page::findOrFail($pageId);
+        $reader = app(TranslationReader::class);
+        $this->assertSame('Main page', $reader->translatesByColumnAndLang($page1, 'h1', 'en'));
+        $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'en'));
+
+        $this->assertSame('h1 pl', $reader->translatesByColumnAndLang($page1, 'h1', 'pl')); 
+        $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'pl'));               
+
+        $detail = $this->get('api/pages/'.$pageId.'?token='.$this->token)->assertJsonPath('success', true);
+        //dd($detail->getData());
+        $this->assertSame('Main page', $detail->json('data.h1.en'));
+        $this->assertSame('h1 pl', $detail->json('data.h1.pl'));        
+        $this->assertSame(null, $detail->json('data.url_slug.en')); // maybe we should return empty string instead of null?
+        $this->assertSame(null, $detail->json('data.url_slug.pl'));                
+    }
+
 }

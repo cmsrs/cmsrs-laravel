@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Tests\Feature\Api\Cmsrs\Cms;
 
 use App\Models\Cmsrs\Cms\Page;
+use App\Models\Cmsrs\Translate;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Tests\Feature\Api\Cmsrs\Tag\TaggableCreateApiCase;
-use App\Models\Cmsrs\Translate;
 
 class PageApiTest extends TaggableCreateApiCase
 {
@@ -71,7 +71,7 @@ class PageApiTest extends TaggableCreateApiCase
         $detail = $this->get('api/pages/'.$pageId.'?token='.$this->token)->assertJsonPath('success', true);
         $this->assertSame('Page title', $detail->json('data.h1.en'));
         $this->assertSame('page-title', $detail->json('data.url_slug.en'));
-        $byType = $this->get('api/pages/type/contact?token='.$this->token)->assertJsonPath('success', true);
+        $byType = $this->get('api/pages/type/cms?token='.$this->token)->assertJsonPath('success', true);
         $this->assertSame('Page title', $byType->json('data.0.h1.en'));
         $this->assertSame('page-title', $byType->json('data.0.url_slug.en'));
 
@@ -179,7 +179,7 @@ class PageApiTest extends TaggableCreateApiCase
         $this->assertSame('unique', $reader->translatesByColumnAndLang($page1, 'url_slug', 'en'));
     }
 
-    public function test_page_creation_with_empty_h1_and_slug_generates_them_from_title_for_main_page() : void
+    public function test_page_creation_with_empty_h1_and_slug_generates_them_from_title_for_main_page(): void
     {
         $data = $this->createData([
             'title' => ['en' => 'Main page', 'pl' => 'Strona główna'],
@@ -187,26 +187,26 @@ class PageApiTest extends TaggableCreateApiCase
             'url_slug' => ['en' => '', 'pl' => 'test123'],
             'type' => 'main_page',
         ]);
-        $first = $this->post($this->createRoute().'?token='.$this->token, $data);    
+        $first = $this->post($this->createRoute().'?token='.$this->token, $data);
         $first->assertJsonPath('success', true);
-        $pageId = $first->json($this->idResponsePath());        
+        $pageId = $first->json($this->idResponsePath());
         $page1 = Page::findOrFail($pageId);
         $reader = app(TranslationReader::class);
         $this->assertSame('Main page', $reader->translatesByColumnAndLang($page1, 'h1', 'en'));
         $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'en'));
 
-        $this->assertSame('h1 pl', $reader->translatesByColumnAndLang($page1, 'h1', 'pl')); 
-        $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'pl'));               
+        $this->assertSame('h1 pl', $reader->translatesByColumnAndLang($page1, 'h1', 'pl'));
+        $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'pl'));
 
         $detail = $this->get('api/pages/'.$pageId.'?token='.$this->token)->assertJsonPath('success', true);
-        //dd($detail->getData());
+        // dd($detail->getData());
         $this->assertSame('Main page', $detail->json('data.h1.en'));
-        $this->assertSame('h1 pl', $detail->json('data.h1.pl'));        
+        $this->assertSame('h1 pl', $detail->json('data.h1.pl'));
         $this->assertSame(null, $detail->json('data.url_slug.en')); // maybe we should return empty string instead of null?
-        $this->assertSame(null, $detail->json('data.url_slug.pl'));                
+        $this->assertSame(null, $detail->json('data.url_slug.pl'));
     }
 
-    public function test_page_update_with_empty_h1_and_slug_generates_them_from_title_for_main_page() : void
+    public function test_page_update_with_empty_h1_and_slug_generates_them_from_title_for_main_page(): void
     {
         $data = $this->createData([
             'title' => ['en' => 'Main page', 'pl' => 'Strona główna'],
@@ -214,9 +214,9 @@ class PageApiTest extends TaggableCreateApiCase
             'url_slug' => ['en' => '', 'pl' => 'test123'],
             'type' => 'main_page',
         ]);
-        $first = $this->post($this->createRoute().'?token='.$this->token, $data);    
+        $first = $this->post($this->createRoute().'?token='.$this->token, $data);
         $first->assertJsonPath('success', true);
-        $pageId = $first->json($this->idResponsePath());        
+        $pageId = $first->json($this->idResponsePath());
         $page1 = Page::findOrFail($pageId);
         $reader = app(TranslationReader::class);
         $this->assertSame('Main page', $reader->translatesByColumnAndLang($page1, 'h1', 'en'));
@@ -232,17 +232,16 @@ class PageApiTest extends TaggableCreateApiCase
         $response->assertJsonPath('success', true);
 
         $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'en'));
-        $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'pl'));               
+        $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'pl'));
 
-        $this->assertSame('h1 en changed', $reader->translatesByColumnAndLang($page1, 'h1', 'en')); 
-        $this->assertSame('h1 pl changed', $reader->translatesByColumnAndLang($page1, 'h1', 'pl'));         
+        $this->assertSame('h1 en changed', $reader->translatesByColumnAndLang($page1, 'h1', 'en'));
+        $this->assertSame('h1 pl changed', $reader->translatesByColumnAndLang($page1, 'h1', 'pl'));
 
-        $translate = Translate::where( 'column', 'url_slug' )->get()->toArray();
-        $this->assertEquals( 'en', $translate[0]['lang'] );
-        $this->assertEquals( null, $translate[0]['value'] );
+        $translate = Translate::where('column', 'url_slug')->get()->toArray();
+        $this->assertEquals('en', $translate[0]['lang']);
+        $this->assertEquals(null, $translate[0]['value']);
 
-        $this->assertEquals( 'pl', $translate[1]['lang'] );        
-        $this->assertEquals( null, $translate[1]['value'] ); 
+        $this->assertEquals('pl', $translate[1]['lang']);
+        $this->assertEquals(null, $translate[1]['value']);
     }
-
 }

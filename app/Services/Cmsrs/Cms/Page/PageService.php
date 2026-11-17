@@ -173,7 +173,6 @@ class PageService
             // A main page resolves to the language root, so it has no URL slug.
             if ($isMainPage) {
                 $data['url_slug'][$lang] = '';
-
                 continue;
             }
 

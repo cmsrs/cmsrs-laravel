@@ -7,6 +7,7 @@ namespace Tests\Feature\Api\Cmsrs\Cms;
 use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\Translation\TranslationReader;
 use Tests\Feature\Api\Cmsrs\Tag\TaggableCreateApiCase;
+use App\Models\Cmsrs\Translate;
 
 class PageApiTest extends TaggableCreateApiCase
 {
@@ -24,7 +25,7 @@ class PageApiTest extends TaggableCreateApiCase
             'published' => 0,
             'commented' => 0,
             'after_login' => 0,
-            'type' => 'contact',
+            'type' => 'cms',
             'content' => ['en' => 'Content', 'pl' => 'Treść'],
             'menu_id' => '',
             'page_id' => '',
@@ -203,6 +204,45 @@ class PageApiTest extends TaggableCreateApiCase
         $this->assertSame('h1 pl', $detail->json('data.h1.pl'));        
         $this->assertSame(null, $detail->json('data.url_slug.en')); // maybe we should return empty string instead of null?
         $this->assertSame(null, $detail->json('data.url_slug.pl'));                
+    }
+
+    public function test_page_update_with_empty_h1_and_slug_generates_them_from_title_for_main_page() : void
+    {
+        $data = $this->createData([
+            'title' => ['en' => 'Main page', 'pl' => 'Strona główna'],
+            'h1' => ['en' => '', 'pl' => 'h1 pl'],
+            'url_slug' => ['en' => '', 'pl' => 'test123'],
+            'type' => 'main_page',
+        ]);
+        $first = $this->post($this->createRoute().'?token='.$this->token, $data);    
+        $first->assertJsonPath('success', true);
+        $pageId = $first->json($this->idResponsePath());        
+        $page1 = Page::findOrFail($pageId);
+        $reader = app(TranslationReader::class);
+        $this->assertSame('Main page', $reader->translatesByColumnAndLang($page1, 'h1', 'en'));
+        $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'en'));
+
+        $response = $this->put('api/pages/'.$pageId.'?token='.$this->token, [
+            'title' => ['en' => 'Updated title', 'pl' => 'Zaktualizowany tytul'],
+            'short_title' => ['en' => 'Updated short title', 'pl' => 'Zaktualizowany krótki tytul'],
+            'h1' => ['en' => 'h1 en changed', 'pl' => 'h1 pl changed'],
+            'url_slug' => ['en' => 'it shoud be empty', 'pl' => ''],
+        ]);
+
+        $response->assertJsonPath('success', true);
+
+        $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'en'));
+        $this->assertSame(null, $reader->translatesByColumnAndLang($page1, 'url_slug', 'pl'));               
+
+        $this->assertSame('h1 en changed', $reader->translatesByColumnAndLang($page1, 'h1', 'en')); 
+        $this->assertSame('h1 pl changed', $reader->translatesByColumnAndLang($page1, 'h1', 'pl'));         
+
+        $translate = Translate::where( 'column', 'url_slug' )->get()->toArray();
+        $this->assertEquals( 'en', $translate[0]['lang'] );
+        $this->assertEquals( null, $translate[0]['value'] );
+
+        $this->assertEquals( 'pl', $translate[1]['lang'] );        
+        $this->assertEquals( null, $translate[1]['value'] ); 
     }
 
 }

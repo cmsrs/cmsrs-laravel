@@ -544,6 +544,7 @@ class ImageTest extends Base
         $newImagesPosition['title']['en'] = 'Update2 img Title';
         $newImagesPosition['short_title']['en'] = 'u2 test123';
         $newImagesPosition['url_slug']['en'] = 'u2-test123';
+        $newImagesPosition['type'] = 'gallery';
         $newImagesPosition['images'][0]['id'] = $id1Before;
         $newImagesPosition['images'][0]['alt']['en'] = 'last';
         $newImagesPosition['images'][0]['position'] = '202';
@@ -555,6 +556,13 @@ class ImageTest extends Base
         $response = $this->put('api/pages/'.$this->pageId.'?token='.$this->token, $newImagesPosition);
         $res = $response->getData();
         $this->assertTrue($res->success);
+
+        $this->restDoc->add(
+            'PUT',
+            'api/pages/$pageId?token=token',
+            $newImagesPosition,
+            $res,
+        );
 
         // check
         $response1 = $this->get('api/pages/'.$this->pageId.'?token='.$this->token);

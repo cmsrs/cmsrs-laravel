@@ -1052,7 +1052,9 @@ class PageTest extends Base
         [
             'title' => ['en' => 'test p2 uniq'],
             'short_title' => ['en' => 'p2'],
+            'url_slug' => ['en' => 'p2'],
             'position' => '3a12',
+            'type' => 'cms',
         ];
 
         $response22 = $this->post('api/pages?token='.$this->token, $testData22);
@@ -1061,7 +1063,7 @@ class PageTest extends Base
 
         $pages = Page::all()->toArray();
         $lastPage = $pages[count($pages) - 1];
-        $this->assertEquals('cms', $lastPage['type']); // cms - it is default value
+        $this->assertEquals('cms', $lastPage['type']); // cms - it is default value -- maybe type should not be require ?
     }
 
     public function test_it_will_get_pages_by_type_docs()
@@ -1188,7 +1190,7 @@ class PageTest extends Base
         $response44 = $this->put('api/pages/'.$id.'?token='.$this->token, $this->testData);
         $res44 = $response44->getData();
         $this->assertFalse($res44->success);
-        $this->assertEquals('Invalid url_slug:  (en)', $res44->error);
+        $this->assertEquals('The url slug.en field is required.', $res44->error->{ 'url_slug.en' }[0]);
     }
 
     public function test_it_will_create_page_seo_empty_h1_slug()
@@ -1215,7 +1217,7 @@ class PageTest extends Base
         $response44 = $this->put('api/pages/'.$id.'?token='.$this->token, $this->testData);
         $res44 = $response44->getData();
         $this->assertFalse($res44->success);
-        $this->assertEquals('Invalid url_slug:  (en)', $res44->error);
+        $this->assertEquals('The url slug.en field is required.', $res44->error->{ 'url_slug.en' }[0]);
 
         $this->testData['url_slug']['en'] = 'aaa bbb';
         $response55 = $this->put('api/pages/'.$id.'?token='.$this->token, $this->testData);
@@ -1301,7 +1303,7 @@ class PageTest extends Base
         $response33 = $this->put('api/pages/'.$id.'?token='.$this->token, $testData33);
         $res33 = $response33->getData();
         $this->assertFalse($res33->success);
-        $this->assertEquals('Invalid url_slug:  (en)', $res33->error);
+        $this->assertEquals('The url slug.en field is required.', $res33->error->{ 'url_slug.en' }[0]);
 
         $urlSlug4 = 'test p3 updated';
         $h1_44 = '';
@@ -1314,6 +1316,7 @@ class PageTest extends Base
           'short_title' => ['en' => 'p3'],
           'commented' => 1,
           'position' => '3d33',
+          'type' => 'cms',
       ];
 
         $response44 = $this->put('api/pages/'.$id.'?token='.$this->token, $testData44);

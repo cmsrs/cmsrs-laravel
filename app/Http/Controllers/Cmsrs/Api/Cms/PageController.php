@@ -29,15 +29,22 @@ class PageController extends Controller
         'after_login' => 'boolean',
     ];
 
+    /**
+     * list of langs
+     *
+     * @var array<int, string>
+     */
+    private $langs;
+
     public function __construct(
         protected ConfigService $configService,
         protected PageService $pageService,
         protected ImageService $imageService,
     ) {
-        $this->validationRules['type'] = 'in:'.ConfigService::getPageTypes();
+        $this->validationRules['type'] = 'required|in:'.ConfigService::getPageTypes();
 
-        $langs = $this->configService->arrGetLangs();
-        foreach ($langs as $lang) {
+        $this->langs = $this->configService->arrGetLangs();
+        foreach ($this->langs as $lang) {
             $this->validationRules['title.'.$lang] = 'max:255|required';
             $this->validationRules['h1.'.$lang] = 'max:510';
             $this->validationRules['url_slug.'.$lang] = 'max:510';
@@ -97,7 +104,9 @@ class PageController extends Controller
             'tags'
         );
 
-        $validationRules = $this->validationRules + TagValidationRules::rules('page');
+        $rules = $this->validationRules;
+
+        $validationRules = $rules + TagValidationRules::rules('page');
         $validator = Validator::make($data, $validationRules);
         if ($validator->fails()) {
             return response()->json(['success' => false, 'error' => $validator->messages()], 200);
@@ -151,16 +160,32 @@ class PageController extends Controller
             'tags'
         ); // 'position',
 
-        $updateRules = $this->validationRules;
-        foreach ($this->configService->arrGetLangs() as $lang) {
-            foreach (['title', 'short_title'] as $column) {
-                $updateRules[$column.'.'.$lang] = 'sometimes|max:'.($column === 'title' ? '255' : '128').'|required';
+        // $updateRules = $this->validationRules;
+        // foreach ($this->configService->arrGetLangs() as $lang) {
+        //     foreach (['title', 'short_title'] as $column) {
+        //         $updateRules[$column.'.'.$lang] = 'sometimes|max:'.($column === 'title' ? '255' : '128').'|required';
+        //     }
+        // }
+
+        $rules = $this->validationRules;
+        // $rules['type'] = 'required|string';
+
+        if (($data['type'] ?? null) !== 'main_page') {
+            foreach ($this->langs as $lang) {
+                $rules['url_slug.'.$lang] = 'required|max:255';
             }
         }
 
-        $validator = Validator::make($data, $updateRules + TagValidationRules::rules('page'));
+        $validator = Validator::make(
+            $data,
+            $rules + TagValidationRules::rules('page')
+        );
+
         if ($validator->fails()) {
-            return response()->json(['success' => false, 'error' => $validator->messages()], 200);
+            return response()->json([
+                'success' => false,
+                'error' => $validator->messages(),
+            ], 200);
         }
 
         // check unique

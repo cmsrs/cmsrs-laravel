@@ -77,21 +77,24 @@ class PageApiTest extends TaggableCreateApiCase
 
         $responseWrong = $this->put('api/pages/'.$pageId.'?token='.$this->token, [
             'title' => ['en' => 'Updated title', 'pl' => 'Zaktualizowany tytul'],
+            'url_slug' => ['en' => '', 'pl' => 'niestandardowy-adres'],
+            'short_title' => ['en' => 'Page', 'pl' => 'Strona'],
+            'type' => 'cms',
         ]);
 
+        $tmp = $responseWrong->getData();
         $responseWrong->assertJsonPath('success', false);
-        $responseWrong->assertJsonPath('error', 'Invalid url_slug:  (en)');
+        $this->assertEquals('The url slug.en field is required.', $tmp->error->{'url_slug.en'}[0]);
 
         $response = $this->put('api/pages/'.$pageId.'?token='.$this->token, [
             'title' => ['en' => 'Updated title', 'pl' => 'Zaktualizowany tytul'],
             'url_slug' => ['en' => 'custom-address', 'pl' => 'niestandardowy-adres'],
             'short_title' => ['en' => 'Page', 'pl' => 'Strona'],
             'h1' => ['en' => 'test123', 'pl' => ''],
+            'type' => 'cms',
         ]);
 
-        // $d = $response->getData(); dd($d);
         $response->assertJsonPath('success', true);
-
         $this->assertSame('custom-address', $reader->translatesByColumnAndLang($page, 'url_slug', 'en'));
         $this->assertSame('test123', $reader->translatesByColumnAndLang($page, 'h1', 'en'));
         $this->assertSame(null, $reader->translatesByColumnAndLang($page, 'h1', 'pl'));
@@ -164,6 +167,61 @@ class PageApiTest extends TaggableCreateApiCase
         $this->assertDatabaseCount('pages', 3);
     }
 
+    public function test_error_message_for_require_fileds(): void
+    {
+        $data = [
+            'title' => ['en' => 'Unique!', 'pl' => 'Unikalny'],
+            'short_title' => ['en' => 'Unique!', 'pl' => 'Unikalny'],
+            'h1' => ['en' => '', 'pl' => ''],
+            'url_slug' => ['en' => '', 'pl' => ''],
+            'type' => 'cms',
+        ];
+        $first = $this->post($this->createRoute().'?token='.$this->token, $data);
+        $res = $first->getData();
+
+        $first->assertJsonPath('success', true);
+        $pageId = $first->json($this->idResponsePath());
+        $this->assertNotEmpty($pageId);
+
+        $dataWrong = [
+            'title' => ['en' => '', 'pl' => ''],
+            'short_title' => ['en' => '', 'pl' => ''],
+            'h1' => ['en' => '', 'pl' => ''],
+            'url_slug' => ['en' => '', 'pl' => ''],
+        ];
+
+        $responseWrong = $this->put('api/pages/'.$pageId.'?token='.$this->token, $dataWrong);
+        $responseWrong->assertJsonPath('success', false);
+        $res = $responseWrong->getData();
+        $err = $res->error;
+        $this->validateErrorsRequireFields($err);
+
+        $dataWrongEmpty = [];
+
+        $responseWrong = $this->put('api/pages/'.$pageId.'?token='.$this->token, $dataWrongEmpty);
+        $responseWrong->assertJsonPath('success', false);
+        $res = $responseWrong->getData();
+        $err = $res->error;
+        $this->validateErrorsRequireFields($err);
+    }
+
+    private function validateErrorsRequireFields(object $err)
+    {
+        $errArr = (array) $err;
+        $this->assertEquals(7, count($errArr));
+
+        $this->assertTrue(! empty($err->{'title.en'}));
+        $this->assertTrue(! empty($err->{'title.pl'}));
+
+        $this->assertTrue(! empty($err->{'short_title.en'}));
+        $this->assertTrue(! empty($err->{'short_title.pl'}));
+
+        $this->assertTrue(! empty($err->{'url_slug.en'}));
+        $this->assertTrue(! empty($err->{'url_slug.pl'}));
+
+        $this->assertTrue(! empty($err->{'type'}));
+    }
+
     public function test_page_creation_with_empty_h1_and_slug_generates_them_from_title(): void
     {
         $data = $this->createData([
@@ -227,6 +285,7 @@ class PageApiTest extends TaggableCreateApiCase
             'short_title' => ['en' => 'Updated short title', 'pl' => 'Zaktualizowany krótki tytul'],
             'h1' => ['en' => 'h1 en changed', 'pl' => 'h1 pl changed'],
             'url_slug' => ['en' => 'it shoud be empty', 'pl' => ''],
+            'type' => 'main_page',
         ]);
 
         $response->assertJsonPath('success', true);

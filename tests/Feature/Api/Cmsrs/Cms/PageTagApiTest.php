@@ -57,6 +57,8 @@ class PageTagApiTest extends TaggableApiCase
         return array_merge([
             'title' => ['en' => 'Updated title', 'pl' => 'Zaktualizowany tytuł'],
             'short_title' => ['en' => 'Updated', 'pl' => 'Zaktualizowany'],
+            'url_slug' => ['en' => 'updated', 'pl' => 'zaktualizowany'],
+            'type' => 'cms',
         ], $extra);
     }
 }

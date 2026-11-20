@@ -115,7 +115,7 @@ class Demo
             $imagesSlider = [
                 ['name' => 's1.png', 'data' => $this->getTestPhoto('clothes/sox.jpg'), 'alt' => ['en' => 'slider1', 'pl' => 'pl_slider1']],
                 // ['name' => 's2.png', 'data' => $this->getTestPhoto('books/php5.jpg'), 'alt' => ['en' => 'slider2', 'pl' => 'pl_slider2']],
-                ['name' => 's3.png', 'data' => $this->getTestPhoto('books/java.jpg'), 'alt' => ['en' => 'slider2', 'pl' => 'pl_slider2']],
+                ['name' => 's3.png', 'data' => $this->getTestPhoto('books/java_01.jpg'), 'alt' => ['en' => 'slider2', 'pl' => 'pl_slider2']],
             ];
 
         } else {
@@ -137,43 +137,43 @@ class Demo
         if (! $unitTest) {
             $out = [
                 'product1' => [
-                    ['name' => 'php.jpg', 'data' => $this->getTestPhoto('books/php3.jpg'), 'alt' => ['en' => 'php3 front', 'pl' => 'php3 front']],
+                    ['name' => 'php.jpg', 'data' => $this->getTestPhoto('books/php_01.jpg'), 'alt' => ['en' => 'php3 front', 'pl' => 'php3 front']],
                 ],
                 'product2' => [
-                    ['name' => 'php5.jpg', 'data' => $this->getTestPhoto('books/php5.jpg'), 'alt' => ['en' => 'php5 front', 'pl' => 'php5 front']],
-                    ['name' => 'php5_back.jpg', 'data' => $this->getTestPhoto('books/php5_back.jpg'), 'alt' => ['en' => 'php5 back', 'pl' => 'php5 back']],
+                    ['name' => 'php5.jpg', 'data' => $this->getTestPhoto('books/php_02.jpg'), 'alt' => ['en' => 'php5 front', 'pl' => 'php5 front']],
+                    //['name' => 'php5_back.jpg', 'data' => $this->getTestPhoto('books/php5_back.jpg'), 'alt' => ['en' => 'php5 back', 'pl' => 'php5 back']],
                 ],
                 'product3' => [
-                    ['name' => 'java.jpg', 'data' => $this->getTestPhoto('books/java.jpg'), 'alt' => ['en' => 'java front', 'pl' => 'java front']],
-                    ['name' => 'java_back.jpg', 'data' => $this->getTestPhoto('books/java_back.jpg'), 'alt' => ['en' => 'java back', 'pl' => 'java back']],
+                    ['name' => 'java.jpg', 'data' => $this->getTestPhoto('books/java_01.jpg'), 'alt' => ['en' => 'java front', 'pl' => 'java front']],
+                    //['name' => 'java_back.jpg', 'data' => $this->getTestPhoto('books/java_back.jpg'), 'alt' => ['en' => 'java back', 'pl' => 'java back']],
                 ],
                 'product4' => [
-                    ['name' => 'english.jpg', 'data' => $this->getTestPhoto('books/english.jpg'), 'alt' => ['en' => 'english front', 'pl' => 'english front']],
-                    ['name' => 'english_back.jpg', 'data' => $this->getTestPhoto('books/english_back.jpg'), 'alt' => ['en' => 'english back', 'pl' => 'english back']],
+                    ['name' => 'english.jpg', 'data' => $this->getTestPhoto('books/english_01.jpg'), 'alt' => ['en' => 'english front', 'pl' => 'english front']],
+                    //['name' => 'english_back.jpg', 'data' => $this->getTestPhoto('books/english_back.jpg'), 'alt' => ['en' => 'english back', 'pl' => 'english back']],
                 ],
 
                 'product5' => [
-                    ['name' => 'eng1.jpg', 'data' => $this->getTestPhoto('books/eng1.jpg'), 'alt' => ['en' => 'english1 front', 'pl' => 'english1 front']],
+                    ['name' => 'eng1.jpg', 'data' => $this->getTestPhoto('books/english_02.jpg'), 'alt' => ['en' => 'english1 front', 'pl' => 'english1 front']],
                 ],
                 'product6' => [
-                    ['name' => 'eng2.jpg', 'data' => $this->getTestPhoto('books/eng2.jpg'), 'alt' => ['en' => 'english2 front', 'pl' => 'english2 front']],
+                    ['name' => 'eng2.jpg', 'data' => $this->getTestPhoto('books/english_03.jpg'), 'alt' => ['en' => 'english2 front', 'pl' => 'english2 front']],
                 ],
                 'product7' => [
-                    ['name' => 'eng3.jpg', 'data' => $this->getTestPhoto('books/eng3.jpg'), 'alt' => ['en' => 'english3 front', 'pl' => 'english3 front']],
+                    ['name' => 'eng3.jpg', 'data' => $this->getTestPhoto('books/english_04.jpg'), 'alt' => ['en' => 'english3 front', 'pl' => 'english3 front']],
                 ],
                 'product8' => [
-                    ['name' => 'eng4.jpg', 'data' => $this->getTestPhoto('books/eng4.jpg'), 'alt' => ['en' => 'english4 front', 'pl' => 'english4 front']],
+                    ['name' => 'eng4.jpg', 'data' => $this->getTestPhoto('books/english_05.jpg'), 'alt' => ['en' => 'english4 front', 'pl' => 'english4 front']],
                 ],
                 'product9' => [
-                    ['name' => 'eng5.jpg', 'data' => $this->getTestPhoto('books/eng5.jpg'), 'alt' => ['en' => 'english5 front', 'pl' => 'english5 front']],
+                    ['name' => 'eng5.jpg', 'data' => $this->getTestPhoto('books/english_06.jpg'), 'alt' => ['en' => 'english5 front', 'pl' => 'english5 front']],
                 ],
 
                 'product10' => [
-                    ['name' => 'eng5.jpg', 'data' => $this->getTestPhoto('books/php5_frameworks.jpg'), 'alt' => ['en' => 'php5 frameworks', 'pl' => 'php5 frameworks']],
+                    ['name' => 'eng5.jpg', 'data' => $this->getTestPhoto('books/php_01.jpg'), 'alt' => ['en' => 'php5 frameworks', 'pl' => 'php5 frameworks']],
                 ],
 
                 'product11' => [
-                    ['name' => 'pm.jpg', 'data' => $this->getTestPhoto('books/pm.jpg'), 'alt' => ['en' => 'programme manager', 'pl' => 'kierownik programistów']],
+                    ['name' => 'pm.jpg', 'data' => $this->getTestPhoto('books/project_management_01.jpg'), 'alt' => ['en' => 'programme manager', 'pl' => 'kierownik programistów']],
                 ],
 
                 'product12' => [

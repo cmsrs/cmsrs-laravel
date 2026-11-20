@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Data;
+namespace App\Data\Cmsrs\Demo\Simple;
 
 use App\Models\Cmsrs\Cms\Page;
 use App\Models\Cmsrs\Shop\Product;
@@ -141,15 +141,15 @@ class Demo
                 ],
                 'product2' => [
                     ['name' => 'php5.jpg', 'data' => $this->getTestPhoto('books/php_02.jpg'), 'alt' => ['en' => 'php5 front', 'pl' => 'php5 front']],
-                    //['name' => 'php5_back.jpg', 'data' => $this->getTestPhoto('books/php5_back.jpg'), 'alt' => ['en' => 'php5 back', 'pl' => 'php5 back']],
+                    // ['name' => 'php5_back.jpg', 'data' => $this->getTestPhoto('books/php5_back.jpg'), 'alt' => ['en' => 'php5 back', 'pl' => 'php5 back']],
                 ],
                 'product3' => [
                     ['name' => 'java.jpg', 'data' => $this->getTestPhoto('books/java_01.jpg'), 'alt' => ['en' => 'java front', 'pl' => 'java front']],
-                    //['name' => 'java_back.jpg', 'data' => $this->getTestPhoto('books/java_back.jpg'), 'alt' => ['en' => 'java back', 'pl' => 'java back']],
+                    // ['name' => 'java_back.jpg', 'data' => $this->getTestPhoto('books/java_back.jpg'), 'alt' => ['en' => 'java back', 'pl' => 'java back']],
                 ],
                 'product4' => [
                     ['name' => 'english.jpg', 'data' => $this->getTestPhoto('books/english_01.jpg'), 'alt' => ['en' => 'english front', 'pl' => 'english front']],
-                    //['name' => 'english_back.jpg', 'data' => $this->getTestPhoto('books/english_back.jpg'), 'alt' => ['en' => 'english back', 'pl' => 'english back']],
+                    // ['name' => 'english_back.jpg', 'data' => $this->getTestPhoto('books/english_back.jpg'), 'alt' => ['en' => 'english back', 'pl' => 'english back']],
                 ],
 
                 'product5' => [

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands\Cmsrs;
 
-use App\Data\Demo;
+use App\Data\Cmsrs\Demo\Simple\Demo;
 use App\Models\Cmsrs\Cms\Comment;
 use App\Models\Cmsrs\Shop\Product;
 use App\Models\User;

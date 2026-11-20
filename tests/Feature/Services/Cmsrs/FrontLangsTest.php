@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Services\Cmsrs;
 
-use App\Data\Demo;
+use App\Data\Cmsrs\Demo\Simple\Demo;
 // use App\Page;
 use App\Models\Cmsrs\Cms\Page;
 use App\Services\Cmsrs\Cms\MenuService;
